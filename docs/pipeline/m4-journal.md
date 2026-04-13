@@ -6,6 +6,15 @@
 |------|-------|
 | 2026-04-13 | M4 pipeline started. US-5.1 (Login), US-5.2 (Profile Submission), US-2.3 (Edit Profile Form) |
 | 2026-04-13 | Builder phase complete: all features implemented, all screenshots captured, exploration log written |
+| 2026-04-13 | Evaluator R1: PASS 4/5. Auditor: PASS (0 HIGH/CRITICAL, 3 MEDIUM, 1 LOW). Evaluator R2: PASS 5/5. |
+| 2026-04-13 | Committed aa3c290, pushed to GitHub, deployed to Vercel. Deploy verified with 3 screenshots. |
+
+## Deploy
+
+- **Commit:** aa3c290
+- **Production URL:** https://process-mining-anthonyjameshunt-4034s-projects.vercel.app
+- **Deploy verification:** PASS
+- **Screenshots:** m4-deploy-verify-01.png (login page), m4-deploy-verify-02.png (dashboard logged in), m4-deploy-verify-03.png (edit profile form full page)
 
 ## Builder Summary
 
