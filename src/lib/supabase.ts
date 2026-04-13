@@ -21,6 +21,7 @@ export type Database = {
           bio: string
           keywords: string[]
           status: 'pending' | 'approved' | 'rejected'
+          rejection_reason: string | null
           map_x: number | null
           map_y: number | null
           cluster_id: string | null

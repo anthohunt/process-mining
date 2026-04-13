@@ -97,9 +97,17 @@ export function ProfilePage() {
 
   const hasMapCoords = !!(profile.map_x && profile.map_y)
 
+  const isRejected = profile.status === 'rejected' && !!profile.rejection_reason
+
   return (
     <div>
       <ToastContainer toasts={toasts} onRemove={removeToast} />
+
+      {isOwn && isRejected && (
+        <div className="banner-error" role="alert" style={{ marginBottom: 16 }}>
+          <strong>Votre profil a ete rejete.</strong> Raison : {profile.rejection_reason}
+        </div>
+      )}
 
       <div className="breadcrumb">
         <a href="/researchers" onClick={e => { e.preventDefault(); navigate('/researchers') }}>
@@ -167,14 +175,19 @@ export function ProfilePage() {
               </button>
             )}
             {isLoggedIn && !isOwn && (
-              <button
-                className="btn btn-outline btn-sm"
-                disabled
-                aria-label={t('profile.editLocked')}
-                title={t('profile.editLocked')}
-              >
-                🔒 {t('profile.edit')}
-              </button>
+              <div>
+                <button
+                  className="btn btn-outline btn-sm"
+                  disabled
+                  aria-label={t('profile.editLocked')}
+                  title={t('profile.editLocked')}
+                >
+                  🔒 {t('profile.edit')}
+                </button>
+                <p style={{ fontSize: 12, color: 'var(--pm-text-muted)', marginTop: 4 }}>
+                  {t('profile.editLocked')}
+                </p>
+              </div>
             )}
           </div>
         </div>

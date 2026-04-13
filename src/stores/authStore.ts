@@ -11,6 +11,7 @@ interface AuthState {
   signIn: (email: string, password: string) => Promise<{ error: string | null }>
   signOut: () => Promise<void>
   initialize: () => Promise<void>
+  handleSessionExpiry: () => void
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -36,13 +37,24 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ user: null, session: null, isAdmin: false })
   },
 
+  handleSessionExpiry: () => {
+    set({ user: null, session: null, isAdmin: false })
+    if (typeof window !== 'undefined') {
+      window.location.href = '/login?expired=1'
+    }
+  },
+
   initialize: async () => {
     const { data: { session } } = await supabase.auth.getSession()
     get().setSession(session)
     set({ isLoading: false })
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      get().setSession(session)
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN') {
+        get().setSession(session)
+      } else if (event === 'SIGNED_OUT') {
+        set({ user: null, session: null, isAdmin: false })
+      }
     })
   },
 }))

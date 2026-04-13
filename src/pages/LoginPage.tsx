@@ -1,17 +1,26 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../stores/authStore'
 
 export function LoginPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const location = useLocation()
   const { signIn } = useAuthStore()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+
+  // Show session expired message from URL param
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    if (params.get('expired') === '1') {
+      setError(t('login.sessionExpired'))
+    }
+  }, [location.search, t])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,12 +29,24 @@ export function LoginPage() {
     const result = await signIn(email, password)
     setIsLoading(false)
     if (result.error) {
-      if (result.error.includes('Invalid') || result.error.includes('credentials')) {
+      if (
+        result.error.includes('Invalid') ||
+        result.error.includes('credentials') ||
+        result.error.includes('invalid_credentials') ||
+        result.error.includes('Email not confirmed') === false && result.error.toLowerCase().includes('email')
+      ) {
         setError(t('login.invalidCredentials'))
-      } else if (result.error.includes('network') || result.error.includes('fetch')) {
+      } else if (
+        result.error.includes('network') ||
+        result.error.includes('fetch') ||
+        result.error.includes('Failed to fetch') ||
+        result.error.includes('NetworkError') ||
+        result.error.includes('aborted') ||
+        result.error.includes('ERR_')
+      ) {
         setError(t('login.serviceUnavailable'))
       } else {
-        setError(result.error)
+        setError(t('login.invalidCredentials'))
       }
     } else {
       navigate('/')

@@ -18,6 +18,7 @@ export interface ResearcherProfile {
   bio: string
   keywords: string[]
   status: string
+  rejection_reason: string | null
   map_x: number | null
   map_y: number | null
   cluster_id: string | null

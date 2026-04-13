@@ -1,8 +1,27 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '../../stores/authStore'
 import { getInitials, stringToColor } from '../../lib/formatting'
+import { supabase } from '../../lib/supabase'
+
+function useOwnResearcherId(userId: string | undefined) {
+  return useQuery({
+    queryKey: ['own-researcher-id', userId],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('researchers')
+        .select('id')
+        .eq('user_id', userId!)
+        .maybeSingle()
+      if (error) throw new Error(error.message)
+      return data?.id ?? null
+    },
+    enabled: !!userId,
+    staleTime: 60000,
+  })
+}
 
 export function UserDropdown() {
   const { t } = useTranslation()
@@ -11,6 +30,8 @@ export function UserDropdown() {
   const [open, setOpen] = useState(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const btnRef = useRef<HTMLButtonElement>(null)
+
+  const { data: ownResearcherId } = useOwnResearcherId(user?.id)
 
   const name = user?.user_metadata?.full_name ?? user?.email ?? 'User'
   const initials = getInitials(name)
@@ -74,7 +95,14 @@ export function UserDropdown() {
           <button
             className="dropdown-item"
             role="menuitem"
-            onClick={() => { setOpen(false); navigate('/researchers') }}
+            onClick={() => {
+              setOpen(false)
+              if (ownResearcherId) {
+                navigate(`/researchers/${ownResearcherId}`)
+              } else {
+                navigate('/researchers')
+              }
+            }}
           >
             {t('nav.myProfile')}
           </button>

@@ -15,11 +15,26 @@ import { useAuthStore } from './stores/authStore'
 import './i18n'
 
 export default function App() {
-  const { initialize } = useAuthStore()
+  const { initialize, handleSessionExpiry, user } = useAuthStore()
 
   useEffect(() => {
     void initialize()
   }, [initialize])
+
+  // Global fetch interceptor for 401 responses
+  useEffect(() => {
+    const originalFetch = window.fetch
+    window.fetch = async (...args) => {
+      const response = await originalFetch(...args)
+      if (response.status === 401 && useAuthStore.getState().user) {
+        useAuthStore.getState().handleSessionExpiry()
+      }
+      return response
+    }
+    return () => {
+      window.fetch = originalFetch
+    }
+  }, [handleSessionExpiry, user])
 
   return (
     <Routes>

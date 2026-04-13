@@ -1,0 +1,242 @@
+{
+  "US-5.1-01-navbar-logged-out.png": {
+    "action": "The user views the application before logging in",
+    "expected": "A 'Connexion' button is visible at the right of the navbar"
+  },
+  "US-5.1-02-login-screen.png": {
+    "action": "The user clicks the 'Connexion' button in the navbar",
+    "expected": "A login card appears with email, password fields and demo buttons"
+  },
+  "US-5.1-03-login-card.png": {
+    "action": "The user views the login card on the login page",
+    "expected": "The login card shows email input, password input, 'Se connecter' button, and two demo buttons"
+  },
+  "US-5.1-04-login-success.png": {
+    "action": "The user enters valid credentials and clicks 'Se connecter'",
+    "expected": "Login succeeds and the user is redirected to the dashboard, showing 'Marie Dupont' in the navbar"
+  },
+  "US-5.1-05-navbar-logged-in.png": {
+    "action": "The user observes the navbar after a successful login",
+    "expected": "The 'Connexion' button is replaced by the user's avatar initials and name 'Marie Dupont'"
+  },
+  "US-5.1-06-dropdown-open.png": {
+    "action": "The user clicks on their name in the navbar",
+    "expected": "A dropdown opens with 'Mon profil' and 'Deconnexion' options"
+  },
+  "US-5.1-07-own-profile.png": {
+    "action": "The user clicks 'Mon profil' in the dropdown",
+    "expected": "The user's own profile page loads showing their name, bio, keywords, and publications"
+  },
+  "US-5.1-08-dropdown-again.png": {
+    "action": "The user returns to the dashboard and clicks the user area again",
+    "expected": "The dropdown reopens with 'Mon profil' and 'Deconnexion' options"
+  },
+  "US-5.1-09-logged-out.png": {
+    "action": "The user clicks 'Deconnexion' in the dropdown",
+    "expected": "The user is logged out and the navbar reverts to showing the 'Connexion' button"
+  },
+  "US-5.1-10-login-screen.png": {
+    "action": "The user navigates to the login page",
+    "expected": "The login card is displayed with email, password fields, and demo login buttons"
+  },
+  "US-5.1-11-admin-login.png": {
+    "action": "The user clicks the 'Demo Admin' button on the login page",
+    "expected": "The admin is authenticated and redirected to the dashboard with an 'Admin' tab and badge visible"
+  },
+  "US-5.1-12-admin-tab.png": {
+    "action": "The user observes the navbar after admin login",
+    "expected": "An 'Admin' tab is visible in the navbar and an 'ADMIN' badge appears next to the user name"
+  },
+  "US-5.1-13-admin-panel.png": {
+    "action": "The user clicks the 'Admin' tab in the navbar",
+    "expected": "The administration page loads with a placeholder note that the full panel is available in M5"
+  },
+  "US-5.1-E1-01-login-screen.png": {
+    "action": "The user navigates to the login page to test invalid credentials",
+    "expected": "The empty login form is displayed"
+  },
+  "US-5.1-E1-02-submit.png": {
+    "action": "The user enters 'bad@email.com' and a wrong password, then clicks 'Se connecter'",
+    "expected": "The login fails and an error message 'Email ou mot de passe incorrect' appears in red below the fields"
+  },
+  "US-5.1-E1-03-error-message.png": {
+    "action": "The user observes the form after a failed login attempt",
+    "expected": "The error message 'Email ou mot de passe incorrect' remains visible below the input fields"
+  },
+  "US-5.1-E2-01-intercept.png": {
+    "action": "The user views the login form while the authentication service is unavailable",
+    "expected": "The login form is displayed with credentials filled in"
+  },
+  "US-5.1-E2-02-submit.png": {
+    "action": "The user clicks 'Se connecter' while the authentication service is blocked",
+    "expected": "The request fails and the error 'Service indisponible, reessayez plus tard' appears in red"
+  },
+  "US-5.1-E2-03-service-error.png": {
+    "action": "The user observes the form after a service failure",
+    "expected": "The error 'Service indisponible, reessayez plus tard' is shown below the form fields"
+  },
+  "US-5.1-E3-01-logged-in.png": {
+    "action": "The user logs in successfully before a session expiry is simulated",
+    "expected": "The dashboard loads with the user 'Marie Dupont' shown in the navbar"
+  },
+  "US-5.1-E3-02-intercept.png": {
+    "action": "The session expiry interception is set up while the user is on the dashboard",
+    "expected": "The dashboard appears normally before any further action triggers the expired session"
+  },
+  "US-5.1-E3-03-action.png": {
+    "action": "The user navigates to another page after the session has expired",
+    "expected": "The researchers page shows 'Une erreur est survenue' with a 'Reessayer' button, indicating a failed API call"
+  },
+  "US-5.1-E3-04-session-expired.png": {
+    "action": "The system detects the expired session and redirects the user",
+    "expected": "The login page appears with the message 'Session expiree, veuillez vous reconnecter' in red"
+  },
+  "US-5.2-01-logged-in.png": {
+    "action": "The user logs in as Marie Dupont (researcher)",
+    "expected": "The dashboard loads with 'Marie Dupont' visible in the navbar"
+  },
+  "US-5.2-02-own-profile.png": {
+    "action": "The user navigates to their own profile page",
+    "expected": "Marie Dupont's profile page loads with bio, keywords, publications, and a 'Modifier' button"
+  },
+  "US-5.2-03-edit-enabled.png": {
+    "action": "The user observes the 'Modifier' button on their own profile",
+    "expected": "The 'Modifier' button is enabled and clickable with no lock icon"
+  },
+  "US-5.2-04-edit-form.png": {
+    "action": "The user clicks the 'Modifier' button on their profile",
+    "expected": "The profile edit form loads with pre-filled name, lab, keywords, bio, and publications"
+  },
+  "US-5.2-05-approval-banner.png": {
+    "action": "The user views the edit form for their profile",
+    "expected": "A yellow banner appears at the top stating the profile will require admin approval before being published"
+  },
+  "US-5.2-06-saved.png": {
+    "action": "The user modifies their bio and clicks 'Enregistrer'",
+    "expected": "A green success toast 'Profil enregistre avec succes.' appears at the bottom right"
+  },
+  "US-5.2-07-logged-in.png": {
+    "action": "The user logs in as Marie Dupont to test viewing another researcher's profile",
+    "expected": "The profile edit form is displayed with the bottom of the form and save/cancel buttons visible"
+  },
+  "US-5.2-08-other-profile.png": {
+    "action": "The user navigates to Ahmed Benali's profile page",
+    "expected": "Ahmed Benali's profile loads with a locked 'Modifier' button and note that only your own profile can be edited"
+  },
+  "US-5.2-09-edit-locked.png": {
+    "action": "The user observes the 'Modifier' button on another researcher's profile",
+    "expected": "The 'Modifier' button is shown with a lock icon and the note 'Vous ne pouvez modifier que votre propre profil'"
+  },
+  "US-5.2-10-anonymous-profile.png": {
+    "action": "A non-logged-in user navigates to a researcher's profile",
+    "expected": "The profile page loads without any 'Modifier' button visible"
+  },
+  "US-5.2-11-no-edit-button.png": {
+    "action": "The anonymous user observes the profile page edit area",
+    "expected": "No 'Modifier' button is present on the profile page for unauthenticated visitors"
+  },
+  "US-5.2-E1-01-intercept.png": {
+    "action": "The user opens the profile edit form while an 'already pending' response is configured",
+    "expected": "The profile edit form is displayed with the approval banner and pre-filled fields"
+  },
+  "US-5.2-E1-02-submit.png": {
+    "action": "The user submits the profile form when a pending submission already exists",
+    "expected": "The form is submitted but the API returns a pending error"
+  },
+  "US-5.2-E1-03-already-pending.png": {
+    "action": "The user sees the result after submitting a profile with a pending submission",
+    "expected": "A pink warning banner 'Vous avez deja une soumission en attente' appears above the form fields"
+  },
+  "US-5.2-E2-01-intercept.png": {
+    "action": "The user views the profile edit form while the save API is configured to fail",
+    "expected": "The profile edit form loads normally with all fields pre-filled"
+  },
+  "US-5.2-E2-02-submit.png": {
+    "action": "The user fills the form and clicks 'Enregistrer' while the server is unavailable",
+    "expected": "The save fails and a red error toast 'Erreur de sauvegarde, veuillez reessayer.' appears"
+  },
+  "US-5.2-E2-03-error-toast.png": {
+    "action": "The user observes the form after a save failure",
+    "expected": "The red error toast 'Erreur de sauvegarde, veuillez reessayer.' is visible and all form data is preserved"
+  },
+  "US-5.2-E3-01-intercept.png": {
+    "action": "The user's profile is loaded with a rejection status injected by the test",
+    "expected": "The profile page shows a red banner 'Votre profil a ete rejete' with the admin's rejection reason"
+  },
+  "US-5.2-E3-02-profile.png": {
+    "action": "The user logs in and navigates to their own profile after an admin rejection",
+    "expected": "The profile page displays with a rejection notice banner at the top indicating the reason given by the admin"
+  },
+  "US-5.2-E3-03-rejection-notice.png": {
+    "action": "The user observes the rejection notification on their profile",
+    "expected": "The red banner reads 'Votre profil a ete rejete. Raison : Informations insuffisantes, veuillez completer votre biographie.'"
+  },
+  "US-2.3-01-form-loaded.png": {
+    "action": "The user logs in and navigates to the profile edit form",
+    "expected": "The edit form loads with name, lab, keywords, bio, and publications pre-filled, with an approval banner"
+  },
+  "US-2.3-02-form-fields.png": {
+    "action": "The user views the full edit form including all its fields",
+    "expected": "The form displays all sections: name, lab dropdown, keywords tags, biography textarea, and publication blocks"
+  },
+  "US-2.3-03-add-keyword.png": {
+    "action": "The user types 'NLP' in the keywords input and presses Enter",
+    "expected": "A new 'NLP' tag is added alongside the existing keywords in the tag area"
+  },
+  "US-2.3-04-remove-keyword.png": {
+    "action": "The user clicks the 'x' on the 'alignement' keyword tag to remove it",
+    "expected": "The 'alignement' tag is removed and only 'conformance', 'process mining', and 'NLP' remain"
+  },
+  "US-2.3-05-add-publication.png": {
+    "action": "The user clicks '+ Ajouter une publication'",
+    "expected": "A new blank 'Publication 3' block appears with empty title, co-authors, venue, and year fields"
+  },
+  "US-2.3-06-fill-publication.png": {
+    "action": "The user fills in the new publication fields with title, co-authors, venue, and year",
+    "expected": "The publication block shows 'Process Mining with NLP', Sophie Leclerc, CAiSE 2024, 2024"
+  },
+  "US-2.3-07-saved.png": {
+    "action": "The user clicks 'Enregistrer' to save the updated profile",
+    "expected": "A green success toast 'Profil enregistre avec succes.' appears at the bottom right"
+  },
+  "US-2.3-08-cancelled.png": {
+    "action": "The user returns to the form and clicks 'Annuler'",
+    "expected": "The user is navigated back to their profile page without saving any changes"
+  },
+  "US-2.3-E1-01-form-loaded.png": {
+    "action": "The user opens the profile edit form to test required field validation",
+    "expected": "The edit form loads with all fields filled and the approval banner at the top"
+  },
+  "US-2.3-E1-02-submit-empty.png": {
+    "action": "The user clears the 'Nom complet' field and clicks 'Enregistrer'",
+    "expected": "The name field is empty and focused, triggering validation"
+  },
+  "US-2.3-E1-03-validation-error.png": {
+    "action": "The user observes the form after submitting with the name field empty",
+    "expected": "The name field is highlighted in red with the message 'Ce champ est requis.' below it"
+  },
+  "US-2.3-E2-01-intercept.png": {
+    "action": "The user views the edit form while the save endpoint is configured to return a server error",
+    "expected": "The profile edit form is displayed normally with all fields pre-filled"
+  },
+  "US-2.3-E2-02-submit.png": {
+    "action": "The user fills in the form and clicks 'Enregistrer' while the server is failing",
+    "expected": "The save fails and a red error toast 'Erreur de sauvegarde, veuillez reessayer.' appears"
+  },
+  "US-2.3-E2-03-error-preserved.png": {
+    "action": "The user observes the form after a save API failure",
+    "expected": "The red error toast is shown and all form data remains intact, including the name, keywords, bio, and publications"
+  },
+  "US-2.3-E3-01-form-loaded.png": {
+    "action": "The user opens the profile form that already has the tag 'conformance' present",
+    "expected": "The edit form loads with existing keywords 'conformance', 'alignement', and 'process mining' visible"
+  },
+  "US-2.3-E3-02-type-duplicate.png": {
+    "action": "The user types 'conformance' in the keywords input, which already exists as a tag",
+    "expected": "The text 'conformance' is visible in the keyword input field alongside the existing tags"
+  },
+  "US-2.3-E3-03-duplicate-rejected.png": {
+    "action": "The user presses Enter to add the duplicate keyword 'conformance'",
+    "expected": "The tag is not added and a red message 'Mot-cle deja present' appears below the keywords field"
+  }
+}
