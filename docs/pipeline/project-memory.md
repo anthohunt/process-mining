@@ -14,9 +14,11 @@
 
 **M3 complete** (deployed). Interactive D3 cluster map with zoom/pan, filter panel (theme+lab), legend, cluster popovers with lazy member loading (truncated at 10), researcher dots with hover tooltips and disambiguation for overlaps, theme list with expandable cards and cross-navigation, detailed statistics with bar/line/histogram D3 charts and breadcrumb. 26 Playwright specs all passing.
 
-**Next:** M4 — Auth & Profile Management (US-5.1, US-5.2, US-2.3). Login system, profile editing, approval workflow.
+**M4 complete** (commit 4b56e35, deployed). Login flow with demo buttons (researcher/admin), "Mon profil" navigates to own researcher profile via useOwnResearcherId hook, global 401 fetch interceptor for session expiry redirect. Profile edit button states (own=enabled, other=locked+note, anonymous=hidden), rejection banner. Full edit profile form: name/lab/bio/keywords tag input (Enter-to-add, x-to-remove, duplicate rejection)/publications dynamic blocks with Supabase upsert. 60 exploration screenshots, 23 Playwright test cases.
 
-**Roadmap:** M1-M3 done, M4-M5 remaining. M4: Auth & Profile Mgmt, M5: Administration.
+**Next:** M5 — Administration (US-4.1, US-4.2, US-4.3, US-4.4). User management, bulk import, settings, audit logs.
+
+**Roadmap:** M1-M4 done, M5 remaining.
 
 **Known issues from M1:**
 - fetchStats() returns 0 via ?? 0 instead of throwing — StatGrid error/retry unreachable under API abort

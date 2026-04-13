@@ -213,7 +213,7 @@ export function MapPage() {
     }
   }, [navigate, addToast, t])
 
-  const handleDotClick = useCallback((memberId: string, memberName: string, screenX: number, screenY: number) => {
+  const handleDotClick = useCallback((memberId: string, _memberName: string, screenX: number, screenY: number) => {
     setPopover(null)
     const overlapping = getOverlappingDots(memberId)
     if (overlapping.length > 1) {
