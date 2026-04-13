@@ -2,8 +2,8 @@
 
 ## Timeline
 - **Started:** 2026-04-13
-- **Committed:** (pending)
-- **Pushed:** (pending)
+- **Committed:** 08336e5
+- **Pushed:** 2026-04-13
 
 ## Decisions & Notes
 - M3 scope: US-3.1 (Interactive Cluster Map), US-3.2 (Cluster Click for Members), US-3.3 (Researcher Dot to Profile), US-3.4 (Theme List View), US-1.4 (Detailed Statistics)
@@ -976,4 +976,7 @@ Fixes applied during consolidation:
 
 ## Deploy
 
-*(pending — commit and push next)*
+- **Commit:** 08336e5
+- **Pushed:** 2026-04-13 to origin/master
+- **Vercel auto-deploy triggered**
+- **Production URL:** https://process-mining-six.vercel.app
