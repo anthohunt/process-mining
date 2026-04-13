@@ -1,60 +1,37 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@tanstack/react-query'
-import { supabase } from '../lib/supabase'
+import { useResearcherList } from '../hooks/useResearchers'
 import { getInitials, stringToColor } from '../lib/formatting'
 import { LoadingSpinner } from '../components/common/LoadingSpinner'
 import { ErrorState } from '../components/common/ErrorState'
 import { EmptyState } from '../components/common/EmptyState'
-
-interface Researcher {
-  id: string
-  full_name: string
-  lab: string
-  keywords: string[]
-  status: string
-}
-
-async function fetchResearchers(q: string, lab: string): Promise<Researcher[]> {
-  let query = supabase
-    .from('researchers')
-    .select('id, full_name, lab, keywords, status')
-    .eq('status', 'approved')
-    .order('full_name')
-
-  if (lab) query = query.eq('lab', lab)
-
-  const { data, error } = await query
-  if (error) throw new Error(error.message)
-
-  if (q) {
-    const lower = q.toLowerCase()
-    return (data ?? []).filter(r =>
-      r.full_name.toLowerCase().includes(lower) ||
-      r.keywords?.some((k: string) => k.toLowerCase().includes(lower))
-    )
-  }
-  return data ?? []
-}
 
 export function ResearchersPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [search, setSearch] = useState('')
   const [labFilter, setLabFilter] = useState('')
+  const [themeFilter, setThemeFilter] = useState('')
 
-  const { data, isLoading, isError, refetch } = useQuery({
-    queryKey: ['researchers', search, labFilter],
-    queryFn: () => fetchResearchers(search, labFilter),
-    staleTime: 30000,
-  })
+  const { data, isLoading, isError, refetch } = useResearcherList(search, labFilter, themeFilter)
 
-  const labs = [...new Set((data ?? []).map(r => r.lab))].sort()
+  // Build lab/theme options from full unfiltered data when available
+  const allLabs = [...new Set((data ?? []).map(r => r.lab))].sort()
+  const allThemes = [...new Set((data ?? []).flatMap(r => r.keywords ?? []))].sort()
 
   return (
     <div>
-      <h1 className="page-title">{t('researchers.title')}</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+        <h1 className="page-title" style={{ marginBottom: 0 }}>{t('researchers.title')}</h1>
+        <button
+          className="btn btn-outline btn-sm"
+          onClick={() => navigate('/themes')}
+          aria-label="Explorer les themes"
+        >
+          Explorer par theme
+        </button>
+      </div>
 
       <div className="search-bar">
         <input
@@ -72,12 +49,36 @@ export function ResearchersPage() {
           aria-label={t('researchers.filterLab')}
         >
           <option value="">{t('researchers.filterLab')}</option>
-          {labs.map(lab => <option key={lab} value={lab}>{lab}</option>)}
+          {allLabs.map(lab => <option key={lab} value={lab}>{lab}</option>)}
         </select>
+        <select
+          className="form-control"
+          value={themeFilter}
+          onChange={e => setThemeFilter(e.target.value)}
+          aria-label={t('researchers.filterTheme')}
+        >
+          <option value="">{t('researchers.filterTheme')}</option>
+          {allThemes.map(theme => <option key={theme} value={theme}>{theme}</option>)}
+        </select>
+        {(search || labFilter || themeFilter) && (
+          <button
+            className="btn btn-ghost btn-sm"
+            onClick={() => { setSearch(''); setLabFilter(''); setThemeFilter('') }}
+            aria-label="Effacer les filtres"
+          >
+            Effacer
+          </button>
+        )}
       </div>
 
       {isLoading && <LoadingSpinner />}
-      {isError && <ErrorState onRetry={() => void refetch()} />}
+      {isError && (
+        <ErrorState
+          message={t('common.error')}
+          onRetry={() => void refetch()}
+          retryLabel={t('common.retry')}
+        />
+      )}
 
       {!isLoading && !isError && data && data.length === 0 && (
         <EmptyState message={t('researchers.noResults')} />
@@ -91,12 +92,17 @@ export function ResearchersPage() {
                 <th>{t('researchers.table.name')}</th>
                 <th>{t('researchers.table.lab')}</th>
                 <th>{t('researchers.table.themes')}</th>
+                <th>{t('researchers.table.publications')}</th>
                 <th>{t('researchers.table.actions')}</th>
               </tr>
             </thead>
             <tbody>
               {data.map(r => (
-                <tr key={r.id} onClick={() => navigate(`/researchers/${r.id}`)} style={{ cursor: 'pointer' }}>
+                <tr
+                  key={r.id}
+                  onClick={() => navigate(`/researchers/${r.id}`)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <div
@@ -114,7 +120,11 @@ export function ResearchersPage() {
                     {r.keywords?.slice(0, 3).map(k => (
                       <span key={k} className="tag tag-blue">{k}</span>
                     ))}
+                    {r.keywords?.length > 3 && (
+                      <span className="tag tag-gray">+{r.keywords.length - 3}</span>
+                    )}
                   </td>
+                  <td style={{ textAlign: 'center' }}>{r.publication_count}</td>
                   <td>
                     <button
                       className="btn btn-outline btn-sm"
