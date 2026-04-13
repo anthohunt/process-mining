@@ -4,15 +4,17 @@
 
 **Architecture:** 11 screens + login system. Vite + React + TypeScript frontend, Supabase backend (PostgreSQL + Auth + Edge Functions), D3.js for map/charts, deployed on Vercel.
 
-**M1 complete** (commit 87ddd14, pushed). Full scaffold + Dashboard with StatGrid, ActivityFeed, MiniMap. 44 exploration screenshots, 18 passing Playwright regression tests. 7-table Supabase schema deployed with seed data.
+**M1 complete** (commit 87ddd14). Full scaffold + Dashboard with StatGrid, ActivityFeed, MiniMap. 44 exploration screenshots, 18 passing Playwright regression tests. 7-table Supabase schema deployed with seed data.
+
+**M2 complete** (commit 25129c5, deployed). Researcher list with search/filter (AND logic), profile view (sidebar, keywords, publications, breadcrumb), side-by-side comparison (Jaccard gauge, common themes highlighting), profile-to-map navigation (SVG viewBox centering). 61 exploration screenshots, 22 Playwright specs. Auditor caught 2 HIGH bugs (map centering not implemented, similarity error path unreachable) — both fixed in Round 2.
 
 **Git remote:** GitHub — https://github.com/anthohunt/process-mining (pushOnEpic: true)
 
 **Deployment:** Vercel (account: anthonyjameshunt-4034, project: process-mining). Supabase resource: supabase-citrine-saddle (us-east-1, Free plan). 17 env vars synced to .env.local.
 
-**Next:** M2 — Researchers & Profiles (US-2.1, US-2.2, US-2.4, US-2.5). Searchable list, profiles, comparison, map navigation.
+**Next:** M3 — Thematic Map & Themes + Stats (US-3.1, US-3.2, US-3.3, US-3.4, US-1.4). Interactive SVG map, cluster popovers, theme explorer, detailed stats charts.
 
-**Roadmap:** M1 done, M2-M5 remaining. M2: Researchers & Profiles, M3: Map & Themes + Stats, M4: Auth & Profile Mgmt, M5: Administration.
+**Roadmap:** M1-M2 done, M3-M5 remaining. M3: Map & Themes + Stats, M4: Auth & Profile Mgmt, M5: Administration.
 
 **Known issues from M1:**
 - fetchStats() returns 0 via ?? 0 instead of throwing — StatGrid error/retry unreachable under API abort
