@@ -1,0 +1,290 @@
+{
+  "US-3.1-01-map-loaded.png": {
+    "action": "The user opens the thematic map page",
+    "expected": "A dark background map canvas loads successfully"
+  },
+  "US-3.1-02-clusters-visible.png": {
+    "action": "The user observes the map SVG area",
+    "expected": "Colored cluster regions and researcher dots are visible on the map"
+  },
+  "US-3.1-03-filter-panel.png": {
+    "action": "The user observes the filter panel",
+    "expected": "A floating panel shows Theme and Lab dropdowns with an Apply button"
+  },
+  "US-3.1-04-legend.png": {
+    "action": "The user observes the map legend",
+    "expected": "A bottom-right legend lists cluster colors paired with theme names"
+  },
+  "US-3.1-05-zoom-in.png": {
+    "action": "The user scrolls to zoom in on the map",
+    "expected": "The map zooms in and clusters and dots appear larger"
+  },
+  "US-3.1-06-pan.png": {
+    "action": "The user clicks and drags the map to pan",
+    "expected": "The map viewport shifts to reveal a different area"
+  },
+  "US-3.1-07-filter-applied.png": {
+    "action": "The user selects a theme in the filter and clicks Apply",
+    "expected": "Only the selected theme's cluster and its researchers remain visible"
+  },
+  "US-3.1-08-crossnav-list.png": {
+    "action": "The user clicks the List View cross-navigation button",
+    "expected": "The application navigates to the themes list page"
+  },
+  "US-3.1-E1-01-intercept.png": {
+    "action": "The system intercepts the clusters API to return an empty list",
+    "expected": "The API is configured to respond with no cluster data"
+  },
+  "US-3.1-E1-02-map-loaded.png": {
+    "action": "The user navigates to the map with no cluster data available",
+    "expected": "The map page loads with its dark background container"
+  },
+  "US-3.1-E1-03-empty-state.png": {
+    "action": "The user observes the map area when no clusters exist",
+    "expected": "An empty state message is centered on the dark map background"
+  },
+  "US-3.1-E2-01-map-loaded.png": {
+    "action": "The user opens the map page",
+    "expected": "The map loads and displays clusters normally"
+  },
+  "US-3.1-E2-02-zooming.png": {
+    "action": "The user scrolls to zoom in repeatedly",
+    "expected": "The map progressively zooms in with each scroll action"
+  },
+  "US-3.1-E2-03-max-zoom.png": {
+    "action": "The user attempts to zoom in further at maximum zoom",
+    "expected": "The zoom level is capped and the view no longer changes"
+  },
+  "US-3.1-E3-01-intercept.png": {
+    "action": "The system intercepts the clusters API to simulate a timeout error",
+    "expected": "The API is configured to respond with a gateway timeout"
+  },
+  "US-3.1-E3-02-map-loaded.png": {
+    "action": "The user navigates to the map while the API is failing",
+    "expected": "The map page starts to load"
+  },
+  "US-3.1-E3-03-error-retry.png": {
+    "action": "The user observes the map area after a load failure",
+    "expected": "An error message with a retry button is shown centered on the map"
+  },
+  "US-3.2-01-map-loaded.png": {
+    "action": "The user opens the thematic map page",
+    "expected": "The map loads and displays colored cluster regions"
+  },
+  "US-3.2-02-popover-open.png": {
+    "action": "The user clicks on a cluster region on the map",
+    "expected": "A popover appears listing the member researchers of that cluster"
+  },
+  "US-3.2-03-popover-content.png": {
+    "action": "The user observes the cluster popover content",
+    "expected": "Theme tags and researcher names displayed as clickable links"
+  },
+  "US-3.2-04-navigate-profile.png": {
+    "action": "The user clicks a researcher name in the cluster popover",
+    "expected": "The application navigates to that researcher's profile page"
+  },
+  "US-3.2-E1-01-intercept.png": {
+    "action": "The system intercepts cluster data to include a cluster with 55 members",
+    "expected": "The API is configured to return an oversized member list"
+  },
+  "US-3.2-E1-02-popover-open.png": {
+    "action": "The user clicks the large cluster on the map",
+    "expected": "The cluster popover opens"
+  },
+  "US-3.2-E1-03-truncated.png": {
+    "action": "The user observes the popover for a cluster with many members",
+    "expected": "The popover shows the first members with a link indicating additional ones"
+  },
+  "US-3.2-E2-01-popover-open.png": {
+    "action": "The user opens a cluster popover by clicking a cluster region",
+    "expected": "The popover is visible over the map"
+  },
+  "US-3.2-E2-02-popover-closed.png": {
+    "action": "The user clicks the dark map background outside the popover",
+    "expected": "The popover closes and the map is visible without any overlay"
+  },
+  "US-3.2-E3-01-intercept.png": {
+    "action": "The system intercepts the cluster members endpoint with a slow delay",
+    "expected": "The API is configured to respond slowly for member data"
+  },
+  "US-3.2-E3-02-popover-open.png": {
+    "action": "The user clicks a cluster while member data is loading slowly",
+    "expected": "The cluster popover opens while awaiting member data"
+  },
+  "US-3.2-E3-03-loading.png": {
+    "action": "The user observes the popover while member data is still loading",
+    "expected": "A loading spinner is visible inside the popover"
+  },
+  "US-3.3-01-map-loaded.png": {
+    "action": "The user opens the thematic map page",
+    "expected": "The map loads and researcher dots are visible across the canvas"
+  },
+  "US-3.3-02-hover-tooltip.png": {
+    "action": "The user hovers over a researcher dot on the map",
+    "expected": "A tooltip with the researcher's name appears and the cursor changes to a pointer"
+  },
+  "US-3.3-03-navigate-profile.png": {
+    "action": "The user clicks a researcher dot on the map",
+    "expected": "The application navigates to that researcher's profile page"
+  },
+  "US-3.3-E1-01-intercept.png": {
+    "action": "The system intercepts cluster data so two researchers share the same position",
+    "expected": "The API is configured to place two researcher dots at identical coordinates"
+  },
+  "US-3.3-E1-02-disambiguation.png": {
+    "action": "The user clicks on overlapping researcher dots",
+    "expected": "A disambiguation popover lists the names of both researchers"
+  },
+  "US-3.3-E1-03-selected.png": {
+    "action": "The user clicks one name in the disambiguation popover",
+    "expected": "The application navigates to that specific researcher's profile"
+  },
+  "US-3.3-E2-01-intercept.png": {
+    "action": "The system intercepts the researcher profile API to return an error",
+    "expected": "The API is configured to fail when a researcher profile is requested"
+  },
+  "US-3.3-E2-02-click-dot.png": {
+    "action": "The user clicks a researcher dot on the map",
+    "expected": "The application attempts to navigate to the researcher's profile"
+  },
+  "US-3.3-E2-03-toast.png": {
+    "action": "The user observes the result after clicking an unavailable researcher",
+    "expected": "A toast notification appears indicating the profile is unavailable"
+  },
+  "US-3.3-E3-01-zoomed-out.png": {
+    "action": "The user zooms the map out to its minimum zoom level",
+    "expected": "The map is displayed at minimum zoom with small researcher dots"
+  },
+  "US-3.3-E3-02-touch-target.png": {
+    "action": "The user inspects a researcher dot at full zoom out",
+    "expected": "Each dot maintains a minimum clickable area regardless of visual size"
+  },
+  "US-3.4-01-themes-loaded.png": {
+    "action": "The user opens the themes explorer page",
+    "expected": "The page loads with the heading and a grid of theme cluster cards"
+  },
+  "US-3.4-02-card-grid.png": {
+    "action": "The user observes the cluster card grid",
+    "expected": "Cards for each research theme are displayed in a grid layout"
+  },
+  "US-3.4-03-card-detail.png": {
+    "action": "The user observes a single theme cluster card",
+    "expected": "The card shows the cluster name, researcher count, sub-theme tags, and a colored border"
+  },
+  "US-3.4-04-expanded.png": {
+    "action": "The user clicks on a theme cluster card to expand it",
+    "expected": "The card expands to reveal member researcher names as clickable links"
+  },
+  "US-3.4-05-navigate-profile.png": {
+    "action": "The user clicks a researcher name inside an expanded theme card",
+    "expected": "The application navigates to that researcher's profile page"
+  },
+  "US-3.4-06-crossnav-researchers.png": {
+    "action": "The user clicks the See All Researchers link in an expanded card",
+    "expected": "The application navigates to the researchers list filtered by that theme"
+  },
+  "US-3.4-07-crossnav-map.png": {
+    "action": "The user clicks the View on Map button at the top of the themes page",
+    "expected": "The application navigates to the thematic map page"
+  },
+  "US-3.4-E1-01-intercept.png": {
+    "action": "The system intercepts the clusters API to return an empty list",
+    "expected": "The API is configured to respond with no cluster data"
+  },
+  "US-3.4-E1-02-loaded.png": {
+    "action": "The user navigates to the themes page with no clusters available",
+    "expected": "The themes page loads"
+  },
+  "US-3.4-E1-03-empty-state.png": {
+    "action": "The user observes the themes page when no themes exist",
+    "expected": "An empty state message is displayed centered on the page"
+  },
+  "US-3.4-E2-01-intercept.png": {
+    "action": "The system intercepts cluster data to include a cluster with zero members",
+    "expected": "The API is configured to return a cluster with an empty researcher list"
+  },
+  "US-3.4-E2-02-loaded.png": {
+    "action": "The user navigates to the themes page with an empty cluster present",
+    "expected": "The themes page loads with all cluster cards visible"
+  },
+  "US-3.4-E2-03-zero-members.png": {
+    "action": "The user observes the card for a cluster with no researchers",
+    "expected": "The card shows zero researchers and cannot be expanded"
+  },
+  "US-3.4-E3-01-intercept.png": {
+    "action": "The system intercepts the clusters API to return malformed data",
+    "expected": "The API is configured to respond with invalid JSON"
+  },
+  "US-3.4-E3-02-loaded.png": {
+    "action": "The user navigates to the themes page while the API returns bad data",
+    "expected": "The themes page loads"
+  },
+  "US-3.4-E3-03-error.png": {
+    "action": "The user observes the themes page after a data parsing failure",
+    "expected": "An error message with a retry button is shown in place of the card grid"
+  },
+  "US-1.4-01-stats-loaded.png": {
+    "action": "The user opens the detailed statistics page",
+    "expected": "The stats page loads with a heading and chart sections visible"
+  },
+  "US-1.4-02-breadcrumb.png": {
+    "action": "The user observes the breadcrumb navigation at the top of the stats page",
+    "expected": "A breadcrumb trail showing the path back to the dashboard is visible"
+  },
+  "US-1.4-03-bar-chart.png": {
+    "action": "The user observes the bar chart on the stats page",
+    "expected": "A bar chart displays theme distribution with theme names and counts on the axes"
+  },
+  "US-1.4-04-bar-tooltip.png": {
+    "action": "The user hovers over a bar in the bar chart",
+    "expected": "A tooltip appears showing the exact researcher count for that theme"
+  },
+  "US-1.4-05-line-chart.png": {
+    "action": "The user observes the line chart on the stats page",
+    "expected": "A line chart shows temporal trends with time on the x-axis and count on the y-axis"
+  },
+  "US-1.4-06-histogram.png": {
+    "action": "The user observes the histogram on the stats page",
+    "expected": "A histogram shows similarity score distribution across score ranges"
+  },
+  "US-1.4-07-back-dashboard.png": {
+    "action": "The user clicks the Dashboard link in the breadcrumb",
+    "expected": "The application navigates back to the main dashboard"
+  },
+  "US-1.4-E1-01-intercept.png": {
+    "action": "The system intercepts the detailed stats API to return empty data arrays",
+    "expected": "The API is configured to respond with no chart data"
+  },
+  "US-1.4-E1-02-loaded.png": {
+    "action": "The user navigates to the stats page with no data available",
+    "expected": "The stats page loads with its layout"
+  },
+  "US-1.4-E1-03-empty-charts.png": {
+    "action": "The user observes the charts when no data is available",
+    "expected": "All three charts show a message indicating insufficient data to generate the graph"
+  },
+  "US-1.4-E2-01-intercept.png": {
+    "action": "The system intercepts the stats API to return data for only one researcher",
+    "expected": "The API is configured with a single researcher and no similarity data"
+  },
+  "US-1.4-E2-02-loaded.png": {
+    "action": "The user navigates to the stats page with only one researcher in the system",
+    "expected": "The stats page loads with the bar and line charts visible"
+  },
+  "US-1.4-E2-03-histogram-message.png": {
+    "action": "The user observes the histogram when only one researcher exists",
+    "expected": "The histogram shows a message that at least two researchers are required for similarity"
+  },
+  "US-1.4-E3-01-intercept.png": {
+    "action": "The system intercepts the detailed stats API to return malformed data",
+    "expected": "The API is configured to respond with invalid JSON"
+  },
+  "US-1.4-E3-02-loaded.png": {
+    "action": "The user navigates to the stats page while the API returns bad data",
+    "expected": "The stats page loads"
+  },
+  "US-1.4-E3-03-error-state.png": {
+    "action": "The user observes the charts after a data parsing failure",
+    "expected": "Each chart section shows an error message with a retry link"
+  }
+}

@@ -12,9 +12,11 @@
 
 **Deployment:** Vercel (account: anthonyjameshunt-4034, project: process-mining). Supabase resource: supabase-citrine-saddle (us-east-1, Free plan). 17 env vars synced to .env.local.
 
-**Next:** M3 — Thematic Map & Themes + Stats (US-3.1, US-3.2, US-3.3, US-3.4, US-1.4). Interactive SVG map, cluster popovers, theme explorer, detailed stats charts.
+**M3 complete** (deployed). Interactive D3 cluster map with zoom/pan, filter panel (theme+lab), legend, cluster popovers with lazy member loading (truncated at 10), researcher dots with hover tooltips and disambiguation for overlaps, theme list with expandable cards and cross-navigation, detailed statistics with bar/line/histogram D3 charts and breadcrumb. 26 Playwright specs all passing.
 
-**Roadmap:** M1-M2 done, M3-M5 remaining. M3: Map & Themes + Stats, M4: Auth & Profile Mgmt, M5: Administration.
+**Next:** M4 — Auth & Profile Management (US-5.1, US-5.2, US-2.3). Login system, profile editing, approval workflow.
+
+**Roadmap:** M1-M3 done, M4-M5 remaining. M4: Auth & Profile Mgmt, M5: Administration.
 
 **Known issues from M1:**
 - fetchStats() returns 0 via ?? 0 instead of throwing — StatGrid error/retry unreachable under API abort

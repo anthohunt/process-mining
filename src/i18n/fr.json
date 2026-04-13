@@ -98,7 +98,12 @@
     "apply": "Appliquer",
     "resetFilter": "Tous",
     "legend": "Legende",
-    "ariaLabel": "Carte thematique des clusters de recherche"
+    "ariaLabel": "Carte thematique des clusters de recherche",
+    "viewList": "Vue en liste",
+    "clusterMembers": "Membres",
+    "andNOthers": "et {{count}} autres",
+    "profileUnavailable": "Profil indisponible",
+    "disambiguation": "Plusieurs chercheurs a cette position"
   },
   "themes": {
     "title": "Explorer les Themes",
@@ -108,7 +113,8 @@
     "viewOnMap": "Voir sur la carte",
     "researchers_one": "{{count}} chercheur",
     "researchers_other": "{{count}} chercheurs",
-    "noMembers": "Aucun membre dans ce cluster."
+    "noMembers": "Aucun membre dans ce cluster.",
+    "viewAllResearchers": "Voir tous les chercheurs"
   },
   "stats": {
     "title": "Statistiques Detaillees",
@@ -118,7 +124,9 @@
     "noData": "Pas assez de donnees pour generer ce graphique.",
     "needTwoResearchers": "Au moins 2 chercheurs requis pour calculer la similarite.",
     "error": "Erreur de chargement",
-    "retry": "Reessayer"
+    "retry": "Reessayer",
+    "breadcrumbDashboard": "Dashboard",
+    "breadcrumbStats": "Statistiques detaillees"
   },
   "login": {
     "title": "Connexion",

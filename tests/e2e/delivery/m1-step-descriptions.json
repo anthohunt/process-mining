@@ -1,0 +1,178 @@
+{
+  "US-1.1-01-dashboard-loaded.png": {
+    "action": "Open the dashboard",
+    "expected": "The dashboard loads with the page title 'Tableau de Bord'"
+  },
+  "US-1.1-02-stat-cards-visible.png": {
+    "action": "View the statistics overview",
+    "expected": "4 counters are visible: Chercheurs, Themes, Clusters, and Publications"
+  },
+  "US-1.1-03-stat-values.png": {
+    "action": "Each counter displays a number",
+    "expected": "Every counter shows a numeric value greater than zero with a label"
+  },
+  "US-1.1-04-click-chercheurs-card.png": {
+    "action": "Click on the Researchers counter",
+    "expected": "The Researchers list page opens"
+  },
+  "US-1.1-05-back-to-dashboard.png": {
+    "action": "Return to the dashboard",
+    "expected": "The dashboard reloads with all counters visible"
+  },
+  "US-1.1-06-click-themes-card.png": {
+    "action": "Click on the Themes counter",
+    "expected": "The Themes list page opens"
+  },
+  "US-1.1-E1-01-intercept-set.png": {
+    "action": "When the server is temporarily unavailable",
+    "expected": "The dashboard begins to load while the server cannot be reached"
+  },
+  "US-1.1-E1-02-dashboard-loading.png": {
+    "action": "The dashboard loads while the server is unavailable",
+    "expected": "The page structure appears even though data cannot be fetched"
+  },
+  "US-1.1-E1-03-error-state.png": {
+    "action": "The dashboard handles the outage gracefully",
+    "expected": "The statistics area shows an error state instead of numbers"
+  },
+  "US-1.1-E1-04-retry-visible.png": {
+    "action": "A retry option is available",
+    "expected": "A 'Reessayer' button is visible so the user can try again"
+  },
+  "US-1.1-E2-01-intercept-zeros.png": {
+    "action": "When the database is empty (no data yet)",
+    "expected": "The server responds with zero counts for all categories"
+  },
+  "US-1.1-E2-02-dashboard-loaded.png": {
+    "action": "The dashboard loads with empty data",
+    "expected": "The page loads successfully even with no records in the database"
+  },
+  "US-1.1-E2-03-zero-stats.png": {
+    "action": "All counters show zero",
+    "expected": "Each of the 4 stat counters displays '0'"
+  },
+  "US-1.1-E2-04-empty-message.png": {
+    "action": "An informative message explains there's no data",
+    "expected": "A message such as 'Aucune donnee disponible' is shown to the user"
+  },
+  "US-1.1-E3-01-intercept-large.png": {
+    "action": "When the database contains a large volume of data",
+    "expected": "The server responds with very high counts (e.g. 100,000 researchers)"
+  },
+  "US-1.1-E3-02-dashboard-loaded.png": {
+    "action": "The dashboard loads with large data",
+    "expected": "The page loads successfully with large numbers"
+  },
+  "US-1.1-E3-03-formatted-numbers.png": {
+    "action": "Large numbers are formatted for readability",
+    "expected": "Numbers use thousands separators (e.g. '100 000' instead of '100000')"
+  },
+  "US-1.2-01-dashboard-loaded.png": {
+    "action": "Open the dashboard",
+    "expected": "The dashboard loads with the page title 'Tableau de Bord'"
+  },
+  "US-1.2-02-activity-section.png": {
+    "action": "View the recent activity feed",
+    "expected": "The 'Activite Recente' section is visible with activity items below it"
+  },
+  "US-1.2-03-activity-items.png": {
+    "action": "Up to 5 recent activities are displayed",
+    "expected": "Each activity shows an avatar, a name, an action description, and a timestamp"
+  },
+  "US-1.2-04-sort-order.png": {
+    "action": "Activities are ordered by most recent first",
+    "expected": "The first activity item has the most recent timestamp"
+  },
+  "US-1.2-05-click-name.png": {
+    "action": "Click on a researcher's name",
+    "expected": "The researcher's profile page opens"
+  },
+  "US-1.2-E1-01-intercept-empty.png": {
+    "action": "When there's no recent activity",
+    "expected": "The server returns an empty activity list"
+  },
+  "US-1.2-E1-02-dashboard-loaded.png": {
+    "action": "The dashboard loads",
+    "expected": "The page loads successfully"
+  },
+  "US-1.2-E1-03-empty-state.png": {
+    "action": "A message explains there's no activity yet",
+    "expected": "'Aucune activite recente' is displayed in place of the activity list"
+  },
+  "US-1.2-E2-01-intercept-error.png": {
+    "action": "When the activity service encounters an error",
+    "expected": "The server returns a failure response for the activity feed"
+  },
+  "US-1.2-E2-02-dashboard-loaded.png": {
+    "action": "The dashboard loads",
+    "expected": "The page loads successfully while the activity section handles the error"
+  },
+  "US-1.2-E2-03-error-retry.png": {
+    "action": "An error message with retry option is shown",
+    "expected": "The activity section shows an error message and a 'Reessayer' button"
+  },
+  "US-1.2-E3-01-intercept-deleted.png": {
+    "action": "When a referenced researcher has been removed",
+    "expected": "The server returns an activity linked to a researcher who no longer exists"
+  },
+  "US-1.2-E3-02-dashboard-loaded.png": {
+    "action": "The dashboard loads",
+    "expected": "The page loads successfully"
+  },
+  "US-1.2-E3-03-deleted-name.png": {
+    "action": "The removed researcher's name is shown but not clickable",
+    "expected": "The name appears grayed out with '(profil supprime)' and has no link to a profile"
+  },
+  "US-1.3-01-dashboard-loaded.png": {
+    "action": "Open the dashboard",
+    "expected": "The dashboard loads with the page title 'Tableau de Bord'"
+  },
+  "US-1.3-02-mini-map-visible.png": {
+    "action": "View the thematic map preview",
+    "expected": "A miniature map preview of research clusters is visible with the hint 'Cliquer pour ouvrir la carte complete'"
+  },
+  "US-1.3-03-hover-effect.png": {
+    "action": "Hover over the map preview",
+    "expected": "The cursor changes to a pointer and a blue outline appears around the map preview"
+  },
+  "US-1.3-04-navigated-to-map.png": {
+    "action": "Click the map preview to open full view",
+    "expected": "The full thematic map page opens"
+  },
+  "US-1.3-E1-01-intercept-empty.png": {
+    "action": "When no research clusters exist yet",
+    "expected": "The server returns an empty list of clusters"
+  },
+  "US-1.3-E1-02-dashboard-loaded.png": {
+    "action": "The dashboard loads",
+    "expected": "The page loads successfully"
+  },
+  "US-1.3-E1-03-placeholder.png": {
+    "action": "A placeholder explains the map is not available",
+    "expected": "'Carte non disponible' is shown in place of the map preview"
+  },
+  "US-1.3-E2-01-intercept-slow.png": {
+    "action": "When the map data is loading slowly",
+    "expected": "The server is taking longer than expected to respond"
+  },
+  "US-1.3-E2-02-dashboard-loaded.png": {
+    "action": "The dashboard loads",
+    "expected": "The page structure appears while the map data is still being fetched"
+  },
+  "US-1.3-E2-03-loading-spinner.png": {
+    "action": "A loading indicator is shown while data loads",
+    "expected": "A spinner and 'Chargement...' text appear inside the map preview area"
+  },
+  "US-1.3-E3-01-intercept-malformed.png": {
+    "action": "When the map data cannot be loaded",
+    "expected": "The server returns an error response for the cluster data"
+  },
+  "US-1.3-E3-02-dashboard-loaded.png": {
+    "action": "The dashboard loads",
+    "expected": "The page loads successfully while the map section handles the error"
+  },
+  "US-1.3-E3-03-fallback.png": {
+    "action": "A fallback message with a link to the full map is shown",
+    "expected": "'Cliquer pour voir la carte' appears in place of the map preview, and clicking it still opens the full map"
+  }
+}

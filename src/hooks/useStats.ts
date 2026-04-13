@@ -52,11 +52,19 @@ export interface DetailedStats {
 }
 
 async function fetchDetailedStats(): Promise<DetailedStats> {
-  const [{ data: researchers }, { data: publications }, { data: scores }] = await Promise.all([
+  const [resResult, pubResult, scoreResult] = await Promise.all([
     supabase.from('researchers').select('keywords').eq('status', 'approved'),
     supabase.from('publications').select('year'),
     supabase.from('similarity_scores').select('score'),
   ])
+
+  if (resResult.error || pubResult.error || scoreResult.error) {
+    throw new Error(resResult.error?.message ?? pubResult.error?.message ?? scoreResult.error?.message ?? 'Failed to fetch stats')
+  }
+
+  const researchers = resResult.data
+  const publications = pubResult.data
+  const scores = scoreResult.data
 
   // Theme distribution: count by keyword
   const themeCount: Record<string, number> = {}

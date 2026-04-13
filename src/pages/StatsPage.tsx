@@ -1,12 +1,57 @@
+import { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { useDetailedStats } from '../hooks/useStats'
 import { LoadingSpinner } from '../components/common/LoadingSpinner'
 import { ErrorState } from '../components/common/ErrorState'
 import { EmptyState } from '../components/common/EmptyState'
 
+interface ChartTooltip {
+  x: number
+  y: number
+  label: string
+  value: number
+}
+
 export function StatsPage() {
   const { t } = useTranslation()
   const { data, isLoading, isError, refetch } = useDetailedStats()
+  const [barTooltip, setBarTooltip] = useState<ChartTooltip | null>(null)
+  const [lineTooltip, setLineTooltip] = useState<ChartTooltip | null>(null)
+  const [histTooltip, setHistTooltip] = useState<ChartTooltip | null>(null)
+
+  const handleBarHover = useCallback((e: React.MouseEvent<SVGRectElement>, label: string, value: number) => {
+    const rect = e.currentTarget.closest('.chart-container')?.getBoundingClientRect()
+    if (!rect) return
+    setBarTooltip({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top - 10,
+      label,
+      value,
+    })
+  }, [])
+
+  const handleLineHover = useCallback((e: React.MouseEvent<SVGCircleElement>, label: string, value: number) => {
+    const rect = e.currentTarget.closest('.chart-container')?.getBoundingClientRect()
+    if (!rect) return
+    setLineTooltip({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top - 10,
+      label,
+      value,
+    })
+  }, [])
+
+  const handleHistHover = useCallback((e: React.MouseEvent<SVGRectElement>, label: string, value: number) => {
+    const rect = e.currentTarget.closest('.chart-container')?.getBoundingClientRect()
+    if (!rect) return
+    setHistTooltip({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top - 10,
+      label,
+      value,
+    })
+  }, [])
 
   if (isLoading) return <LoadingSpinner />
   if (isError) return <ErrorState message={t('stats.error')} onRetry={() => void refetch()} retryLabel={t('stats.retry')} />
@@ -14,17 +59,31 @@ export function StatsPage() {
   const W = 500
   const H = 200
 
+  // Check for malformed data
+  const hasValidThemeData = data && Array.isArray(data.theme_distribution)
+  const hasValidTemporalData = data && Array.isArray(data.temporal_trends)
+  const hasValidHistogramData = data && Array.isArray(data.similarity_histogram)
+
   return (
     <div>
+      {/* Breadcrumb */}
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <Link to="/">{t('stats.breadcrumbDashboard')}</Link>
+        <span className="breadcrumb-sep">&gt;</span>
+        <span>{t('stats.breadcrumbStats')}</span>
+      </nav>
+
       <h1 className="page-title">{t('stats.title')}</h1>
 
       {/* Theme Distribution Bar Chart */}
       <div className="card">
         <h2 className="card-title">{t('stats.themeDistribution')}</h2>
-        {!data || data.theme_distribution.length === 0 ? (
+        {!hasValidThemeData ? (
+          <ErrorState message={t('stats.error')} onRetry={() => void refetch()} retryLabel={t('stats.retry')} />
+        ) : data.theme_distribution.length === 0 ? (
           <EmptyState message={t('stats.noData')} />
         ) : (
-          <div className="chart-container" role="img" aria-label={t('stats.themeDistribution')}>
+          <div className="chart-container" role="img" aria-label={t('stats.themeDistribution')} style={{ position: 'relative' }}>
             <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ overflow: 'visible' }}>
               {(() => {
                 const items = data.theme_distribution
@@ -36,9 +95,13 @@ export function StatsPage() {
                   const y = H - 24 - barH
                   return (
                     <g key={d.theme}>
-                      <rect x={x} y={y} width={barW} height={barH} fill="var(--pm-primary)" rx={2}>
-                        <title>{d.theme}: {d.count}</title>
-                      </rect>
+                      <rect
+                        x={x} y={y} width={barW} height={barH}
+                        fill="var(--pm-primary)" rx={2}
+                        style={{ cursor: 'pointer' }}
+                        onMouseMove={(e) => handleBarHover(e, d.theme, d.count)}
+                        onMouseLeave={() => setBarTooltip(null)}
+                      />
                       <text
                         x={x + barW / 2} y={H - 8}
                         textAnchor="middle"
@@ -46,7 +109,7 @@ export function StatsPage() {
                         fill="var(--pm-text-muted)"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
-                        {d.theme.length > 8 ? d.theme.slice(0, 8) + '…' : d.theme}
+                        {d.theme.length > 8 ? d.theme.slice(0, 8) + '\u2026' : d.theme}
                       </text>
                       <text
                         x={x + barW / 2} y={y - 4}
@@ -63,6 +126,24 @@ export function StatsPage() {
                 })
               })()}
             </svg>
+            {barTooltip && (
+              <div
+                className="popover"
+                style={{
+                  position: 'absolute',
+                  left: barTooltip.x,
+                  top: barTooltip.y,
+                  transform: 'translate(-50%, -100%)',
+                  padding: '6px 12px',
+                  minWidth: 'auto',
+                  whiteSpace: 'nowrap',
+                  pointerEvents: 'none',
+                  zIndex: 20,
+                }}
+              >
+                <strong>{barTooltip.label}</strong>: {barTooltip.value}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -70,10 +151,12 @@ export function StatsPage() {
       {/* Temporal Trends Line Chart */}
       <div className="card">
         <h2 className="card-title">{t('stats.temporalTrends')}</h2>
-        {!data || data.temporal_trends.length < 2 ? (
+        {!hasValidTemporalData ? (
+          <ErrorState message={t('stats.error')} onRetry={() => void refetch()} retryLabel={t('stats.retry')} />
+        ) : data.temporal_trends.length < 2 ? (
           <EmptyState message={t('stats.noData')} />
         ) : (
-          <div className="chart-container" role="img" aria-label={t('stats.temporalTrends')}>
+          <div className="chart-container" role="img" aria-label={t('stats.temporalTrends')} style={{ position: 'relative' }}>
             <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ overflow: 'visible' }}>
               {(() => {
                 const pts = data.temporal_trends
@@ -87,9 +170,13 @@ export function StatsPage() {
                     <path d={`${path} L${xs[xs.length-1]},${H-24} L${xs[0]},${H-24} Z`} fill="var(--pm-primary)" fillOpacity={0.1} />
                     {pts.map((d, i) => (
                       <g key={d.year}>
-                        <circle cx={xs[i]} cy={ys[i]} r={4} fill="var(--pm-primary)">
-                          <title>{d.year}: {d.count}</title>
-                        </circle>
+                        <circle
+                          cx={xs[i]} cy={ys[i]} r={4}
+                          fill="var(--pm-primary)"
+                          style={{ cursor: 'pointer' }}
+                          onMouseMove={(e) => handleLineHover(e, String(d.year), d.count)}
+                          onMouseLeave={() => setLineTooltip(null)}
+                        />
                         <text x={xs[i]} y={H - 8} textAnchor="middle" fontSize={9} fill="var(--pm-text-muted)">{d.year}</text>
                       </g>
                     ))}
@@ -97,6 +184,24 @@ export function StatsPage() {
                 )
               })()}
             </svg>
+            {lineTooltip && (
+              <div
+                className="popover"
+                style={{
+                  position: 'absolute',
+                  left: lineTooltip.x,
+                  top: lineTooltip.y,
+                  transform: 'translate(-50%, -100%)',
+                  padding: '6px 12px',
+                  minWidth: 'auto',
+                  whiteSpace: 'nowrap',
+                  pointerEvents: 'none',
+                  zIndex: 20,
+                }}
+              >
+                <strong>{lineTooltip.label}</strong>: {lineTooltip.value}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -104,10 +209,12 @@ export function StatsPage() {
       {/* Similarity Histogram */}
       <div className="card">
         <h2 className="card-title">{t('stats.similarityDistribution')}</h2>
-        {!data || data.similarity_histogram.every(b => b.count === 0) ? (
+        {!hasValidHistogramData ? (
+          <ErrorState message={t('stats.error')} onRetry={() => void refetch()} retryLabel={t('stats.retry')} />
+        ) : data.similarity_histogram.every(b => b.count === 0) ? (
           <EmptyState message={t('stats.needTwoResearchers')} />
         ) : (
-          <div className="chart-container" role="img" aria-label={t('stats.similarityDistribution')}>
+          <div className="chart-container" role="img" aria-label={t('stats.similarityDistribution')} style={{ position: 'relative' }}>
             <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ overflow: 'visible' }}>
               {(() => {
                 const items = data.similarity_histogram
@@ -119,9 +226,13 @@ export function StatsPage() {
                   const y = H - 24 - barH
                   return (
                     <g key={d.bucket}>
-                      <rect x={x} y={y} width={barW} height={barH} fill="var(--pm-success)" rx={2}>
-                        <title>{d.bucket}: {d.count}</title>
-                      </rect>
+                      <rect
+                        x={x} y={y} width={barW} height={barH}
+                        fill="var(--pm-success)" rx={2}
+                        style={{ cursor: d.count > 0 ? 'pointer' : 'default' }}
+                        onMouseMove={(e) => handleHistHover(e, d.bucket, d.count)}
+                        onMouseLeave={() => setHistTooltip(null)}
+                      />
                       <text x={x + barW / 2} y={H - 8} textAnchor="middle" fontSize={8} fill="var(--pm-text-muted)">
                         {d.bucket.split('-')[0]}
                       </text>
@@ -130,6 +241,24 @@ export function StatsPage() {
                 })
               })()}
             </svg>
+            {histTooltip && (
+              <div
+                className="popover"
+                style={{
+                  position: 'absolute',
+                  left: histTooltip.x,
+                  top: histTooltip.y,
+                  transform: 'translate(-50%, -100%)',
+                  padding: '6px 12px',
+                  minWidth: 'auto',
+                  whiteSpace: 'nowrap',
+                  pointerEvents: 'none',
+                  zIndex: 20,
+                }}
+              >
+                <strong>{histTooltip.label}</strong>: {histTooltip.value}
+              </div>
+            )}
           </div>
         )}
       </div>

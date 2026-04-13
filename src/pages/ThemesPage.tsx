@@ -32,16 +32,29 @@ export function ThemesPage() {
         <div className="card-grid">
           {clusters.map(cluster => {
             const isOpen = expandedId === cluster.id
+            const hasMembers = cluster.members.length > 0
             return (
-              <div key={cluster.id} className="cluster-card">
+              <div
+                key={cluster.id}
+                className="cluster-card"
+                style={{ borderLeft: `4px solid ${cluster.color}` }}
+              >
                 <div
                   className="cluster-card-header"
-                  onClick={() => setExpandedId(isOpen ? null : cluster.id)}
+                  onClick={() => {
+                    if (hasMembers) setExpandedId(isOpen ? null : cluster.id)
+                  }}
                   role="button"
                   tabIndex={0}
                   aria-expanded={isOpen}
                   aria-controls={`cluster-body-${cluster.id}`}
-                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedId(isOpen ? null : cluster.id) } }}
+                  onKeyDown={e => {
+                    if ((e.key === 'Enter' || e.key === ' ') && hasMembers) {
+                      e.preventDefault()
+                      setExpandedId(isOpen ? null : cluster.id)
+                    }
+                  }}
+                  style={!hasMembers ? { cursor: 'default' } : undefined}
                 >
                   <div className="cluster-color-dot" style={{ background: cluster.color }} />
                   <div style={{ flex: 1 }}>
@@ -55,7 +68,9 @@ export function ThemesPage() {
                       <span key={st} className="tag tag-gray">{st}</span>
                     ))}
                   </div>
-                  <span style={{ fontSize: 10, color: 'var(--pm-text-muted)' }}>{isOpen ? '▲' : '▼'}</span>
+                  {hasMembers && (
+                    <span style={{ fontSize: 10, color: 'var(--pm-text-muted)' }}>{isOpen ? '\u25B2' : '\u25BC'}</span>
+                  )}
                 </div>
 
                 {isOpen && (
@@ -65,22 +80,32 @@ export function ThemesPage() {
                         {t('themes.noMembers')}
                       </p>
                     ) : (
-                      <ul style={{ listStyle: 'none', paddingTop: 12 }}>
-                        {cluster.members.map(m => (
-                          <li key={m.id} style={{ padding: '4px 0' }}>
-                            <button
-                              className="btn-ghost"
-                              style={{ fontSize: 13, padding: '2px 0', color: 'var(--pm-primary)' }}
-                              onClick={() => navigate(`/researchers/${m.id}`)}
-                            >
-                              {m.full_name}
-                            </button>
-                            <span style={{ fontSize: 12, color: 'var(--pm-text-muted)', marginLeft: 6 }}>
-                              {m.lab}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <>
+                        <ul style={{ listStyle: 'none', paddingTop: 12 }}>
+                          {cluster.members.map(m => (
+                            <li key={m.id} style={{ padding: '4px 0' }}>
+                              <button
+                                className="btn-ghost"
+                                style={{ fontSize: 13, padding: '2px 0', color: 'var(--pm-primary)' }}
+                                onClick={() => navigate(`/researchers/${m.id}`)}
+                              >
+                                {m.full_name}
+                              </button>
+                              <span style={{ fontSize: 12, color: 'var(--pm-text-muted)', marginLeft: 6 }}>
+                                ({m.lab})
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div style={{ paddingTop: 8, borderTop: '1px solid var(--pm-border)', marginTop: 8 }}>
+                          <button
+                            className="btn btn-outline btn-sm"
+                            onClick={() => navigate(`/researchers?theme=${encodeURIComponent(cluster.name)}`)}
+                          >
+                            {t('themes.viewAllResearchers')}
+                          </button>
+                        </div>
+                      </>
                     )}
                   </div>
                 )}
