@@ -1,0 +1,207 @@
+{
+  "nav": {
+    "dashboard": "Tableau de Bord",
+    "researchers": "Chercheurs",
+    "map": "Carte",
+    "stats": "Statistiques",
+    "themes": "Themes",
+    "admin": "Admin",
+    "login": "Connexion",
+    "logout": "Deconnexion",
+    "myProfile": "Mon profil"
+  },
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "stats": {
+      "researchers": "Chercheurs",
+      "themes": "Themes",
+      "clusters": "Clusters",
+      "publications": "Publications"
+    },
+    "activity": {
+      "title": "Activite Recente",
+      "empty": "Aucune activite recente",
+      "error": "Erreur de chargement des activites",
+      "retry": "Reessayer"
+    },
+    "minimap": {
+      "title": "Carte Thematique",
+      "clickHint": "Cliquer pour ouvrir la carte complete",
+      "noData": "Carte non disponible",
+      "loading": "Chargement...",
+      "fallback": "Cliquer pour voir la carte"
+    },
+    "noData": "Aucune donnee disponible",
+    "retry": "Reessayer"
+  },
+  "researchers": {
+    "title": "Chercheurs",
+    "search": "Rechercher...",
+    "filterLab": "Tous les labos",
+    "filterTheme": "Tous les themes",
+    "noResults": "Aucun resultat. Ajustez vos filtres.",
+    "viewProfile": "Voir",
+    "addProfile": "Ajouter un profil",
+    "table": {
+      "name": "Nom",
+      "lab": "Laboratoire",
+      "themes": "Themes",
+      "publications": "Publications",
+      "actions": "Actions"
+    }
+  },
+  "profile": {
+    "edit": "Modifier",
+    "editLocked": "Vous ne pouvez modifier que votre propre profil.",
+    "viewOnMap": "Voir sur la carte",
+    "compare": "Comparer",
+    "noPublications": "Aucune publication enregistree.",
+    "noMapPosition": "Ce chercheur n'a pas encore de position sur la carte.",
+    "notFound": "Profil introuvable",
+    "backToList": "Retour a la liste",
+    "readMore": "Lire la suite",
+    "readLess": "Reduire",
+    "keywords": "Mots-cles",
+    "publications": "Publications",
+    "deletedProfile": "(profil supprime)"
+  },
+  "editProfile": {
+    "title": "Modifier le profil",
+    "addTitle": "Ajouter un profil",
+    "name": "Nom complet",
+    "lab": "Laboratoire",
+    "bio": "Biographie",
+    "keywords": "Mots-cles",
+    "keywordPlaceholder": "Appuyer sur Entree pour ajouter",
+    "duplicateKeyword": "Mot-cle deja present",
+    "publications": "Publications",
+    "addPublication": "+ Ajouter une publication",
+    "publicationTitle": "Titre",
+    "publicationCoauthors": "Co-auteurs",
+    "publicationVenue": "Revue/Conference",
+    "publicationYear": "Annee",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "approvalBanner": "Votre profil sera soumis a validation par un administrateur avant d'etre publie.",
+    "saveSuccess": "Profil enregistre avec succes.",
+    "saveError": "Erreur de sauvegarde, veuillez reessayer.",
+    "pendingWarning": "Vous avez deja une soumission en attente.",
+    "validationRequired": "Ce champ est requis."
+  },
+  "map": {
+    "title": "Carte Thematique",
+    "noData": "Aucun cluster disponible",
+    "error": "Chargement echoue",
+    "retry": "Reessayer",
+    "filterTheme": "Theme",
+    "filterLab": "Laboratoire",
+    "apply": "Appliquer",
+    "resetFilter": "Tous",
+    "legend": "Legende",
+    "ariaLabel": "Carte thematique des clusters de recherche"
+  },
+  "themes": {
+    "title": "Explorer les Themes",
+    "noData": "Aucun theme disponible",
+    "error": "Erreur de chargement des themes",
+    "retry": "Reessayer",
+    "viewOnMap": "Voir sur la carte",
+    "researchers_one": "{{count}} chercheur",
+    "researchers_other": "{{count}} chercheurs",
+    "noMembers": "Aucun membre dans ce cluster."
+  },
+  "stats": {
+    "title": "Statistiques Detaillees",
+    "themeDistribution": "Distribution des themes",
+    "temporalTrends": "Tendances temporelles",
+    "similarityDistribution": "Distribution des similarites",
+    "noData": "Pas assez de donnees pour generer ce graphique.",
+    "needTwoResearchers": "Au moins 2 chercheurs requis pour calculer la similarite.",
+    "error": "Erreur de chargement",
+    "retry": "Reessayer"
+  },
+  "login": {
+    "title": "Connexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "demoResearcher": "Demo Chercheur",
+    "demoAdmin": "Demo Admin",
+    "invalidCredentials": "Email ou mot de passe incorrect.",
+    "serviceUnavailable": "Service indisponible, reessayez plus tard.",
+    "sessionExpired": "Session expiree, veuillez vous reconnecter."
+  },
+  "admin": {
+    "title": "Administration",
+    "tabs": {
+      "users": "Utilisateurs",
+      "pending": "Profils en attente",
+      "import": "Import",
+      "settings": "Parametres",
+      "logs": "Logs"
+    },
+    "users": {
+      "invite": "Inviter un utilisateur",
+      "email": "Email",
+      "role": "Role",
+      "status": "Statut",
+      "actions": "Actions",
+      "modify": "Modifier",
+      "revoke": "Revoquer",
+      "selfRevoke": "Vous ne pouvez pas revoquer votre propre acces.",
+      "noUsers": "Aucun utilisateur.",
+      "inviteSuccess": "Invitation envoyee.",
+      "inviteError": "Invitation echouee, verifiez l'adresse email."
+    },
+    "pending": {
+      "approve": "Approuver",
+      "reject": "Rejeter",
+      "noPending": "Aucun profil en attente."
+    },
+    "settings": {
+      "language": "Langue",
+      "threshold": "Seuil de similarite",
+      "algorithm": "Algorithme NLP",
+      "save": "Sauvegarder les parametres",
+      "saveSuccess": "Parametres sauvegardes.",
+      "saveError": "Echec de la sauvegarde.",
+      "thresholdWarning": "Un seuil de 0.0 considerera tous les chercheurs comme proches.",
+      "unsavedChanges": "Modifications non sauvegardees, quitter quand meme ?"
+    },
+    "logs": {
+      "from": "Du",
+      "to": "Au",
+      "filter": "Filtrer",
+      "clearFilter": "Tout afficher",
+      "noLogs": "Aucun log pour cette periode.",
+      "error": "Chargement des logs echoue.",
+      "retry": "Reessayer",
+      "date": "Date/Heure",
+      "user": "Utilisateur",
+      "action": "Action",
+      "detail": "Detail"
+    },
+    "import": {
+      "dropzone": "Glisser un fichier CSV ou Excel ici, ou cliquer pour selectionner",
+      "scholarUrl": "URL Google Scholar",
+      "importBtn": "Importer",
+      "confirmBtn": "Importer {{count}} chercheurs",
+      "clear": "Effacer",
+      "invalidFormat": "Format invalide: colonnes attendues: Nom, Labo, Themes",
+      "invalidUrl": "URL invalide ou profil introuvable.",
+      "duplicateWarning": "Doublon detecte",
+      "viewLogs": "Voir les logs"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue.",
+    "retry": "Reessayer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "back": "Retour",
+    "noData": "Aucune donnee disponible.",
+    "adminBadge": "Admin"
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "researchers": "Researchers",
+    "map": "Map",
+    "stats": "Statistics",
+    "themes": "Themes",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "myProfile": "My profile"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "stats": {
+      "researchers": "Researchers",
+      "themes": "Themes",
+      "clusters": "Clusters",
+      "publications": "Publications"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "empty": "No recent activity",
+      "error": "Error loading activities",
+      "retry": "Retry"
+    },
+    "minimap": {
+      "title": "Thematic Map",
+      "clickHint": "Click to open the full map",
+      "noData": "Map not available",
+      "loading": "Loading...",
+      "fallback": "Click to view the map"
+    },
+    "noData": "No data available",
+    "retry": "Retry"
+  },
+  "researchers": {
+    "title": "Researchers",
+    "search": "Search...",
+    "filterLab": "All labs",
+    "filterTheme": "All themes",
+    "noResults": "No results. Adjust your filters.",
+    "viewProfile": "View",
+    "addProfile": "Add profile",
+    "table": {
+      "name": "Name",
+      "lab": "Lab",
+      "themes": "Themes",
+      "publications": "Publications",
+      "actions": "Actions"
+    }
+  },
+  "profile": {
+    "edit": "Edit",
+    "editLocked": "You can only edit your own profile.",
+    "viewOnMap": "View on map",
+    "compare": "Compare",
+    "noPublications": "No publications registered.",
+    "noMapPosition": "This researcher has no map position yet.",
+    "notFound": "Profile not found",
+    "backToList": "Back to list",
+    "readMore": "Read more",
+    "readLess": "Read less",
+    "keywords": "Keywords",
+    "publications": "Publications",
+    "deletedProfile": "(profile deleted)"
+  },
+  "editProfile": {
+    "title": "Edit profile",
+    "addTitle": "Add profile",
+    "name": "Full name",
+    "lab": "Lab",
+    "bio": "Biography",
+    "keywords": "Keywords",
+    "keywordPlaceholder": "Press Enter to add",
+    "duplicateKeyword": "Keyword already present",
+    "publications": "Publications",
+    "addPublication": "+ Add publication",
+    "publicationTitle": "Title",
+    "publicationCoauthors": "Co-authors",
+    "publicationVenue": "Journal/Conference",
+    "publicationYear": "Year",
+    "save": "Save",
+    "cancel": "Cancel",
+    "approvalBanner": "Your profile will be submitted for admin validation before being published.",
+    "saveSuccess": "Profile saved successfully.",
+    "saveError": "Save error, please try again.",
+    "pendingWarning": "You already have a pending submission.",
+    "validationRequired": "This field is required."
+  },
+  "map": {
+    "title": "Thematic Map",
+    "noData": "No clusters available",
+    "error": "Load failed",
+    "retry": "Retry",
+    "filterTheme": "Theme",
+    "filterLab": "Lab",
+    "apply": "Apply",
+    "resetFilter": "All",
+    "legend": "Legend",
+    "ariaLabel": "Thematic map of research clusters"
+  },
+  "themes": {
+    "title": "Explore Themes",
+    "noData": "No themes available",
+    "error": "Error loading themes",
+    "retry": "Retry",
+    "viewOnMap": "View on map",
+    "researchers_one": "{{count}} researcher",
+    "researchers_other": "{{count}} researchers",
+    "noMembers": "No members in this cluster."
+  },
+  "stats": {
+    "title": "Detailed Statistics",
+    "themeDistribution": "Theme distribution",
+    "temporalTrends": "Temporal trends",
+    "similarityDistribution": "Similarity distribution",
+    "noData": "Not enough data to generate this chart.",
+    "needTwoResearchers": "At least 2 researchers required to compute similarity.",
+    "error": "Load error",
+    "retry": "Retry"
+  },
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Log in",
+    "demoResearcher": "Demo Researcher",
+    "demoAdmin": "Demo Admin",
+    "invalidCredentials": "Incorrect email or password.",
+    "serviceUnavailable": "Service unavailable, please try again later.",
+    "sessionExpired": "Session expired, please log in again."
+  },
+  "admin": {
+    "title": "Administration",
+    "tabs": {
+      "users": "Users",
+      "pending": "Pending Profiles",
+      "import": "Import",
+      "settings": "Settings",
+      "logs": "Logs"
+    },
+    "users": {
+      "invite": "Invite user",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions",
+      "modify": "Edit",
+      "revoke": "Revoke",
+      "selfRevoke": "You cannot revoke your own access.",
+      "noUsers": "No users.",
+      "inviteSuccess": "Invitation sent.",
+      "inviteError": "Invitation failed, check the email address."
+    },
+    "pending": {
+      "approve": "Approve",
+      "reject": "Reject",
+      "noPending": "No pending profiles."
+    },
+    "settings": {
+      "language": "Language",
+      "threshold": "Similarity threshold",
+      "algorithm": "NLP algorithm",
+      "save": "Save settings",
+      "saveSuccess": "Settings saved.",
+      "saveError": "Save failed.",
+      "thresholdWarning": "A threshold of 0.0 will consider all researchers as similar.",
+      "unsavedChanges": "Unsaved changes, leave anyway?"
+    },
+    "logs": {
+      "from": "From",
+      "to": "To",
+      "filter": "Filter",
+      "clearFilter": "Show all",
+      "noLogs": "No logs for this period.",
+      "error": "Log loading failed.",
+      "retry": "Retry",
+      "date": "Date/Time",
+      "user": "User",
+      "action": "Action",
+      "detail": "Detail"
+    },
+    "import": {
+      "dropzone": "Drag a CSV or Excel file here, or click to select",
+      "scholarUrl": "Google Scholar URL",
+      "importBtn": "Import",
+      "confirmBtn": "Import {{count}} researchers",
+      "clear": "Clear",
+      "invalidFormat": "Invalid format: expected columns: Name, Lab, Themes",
+      "invalidUrl": "Invalid URL or profile not found.",
+      "duplicateWarning": "Duplicate detected",
+      "viewLogs": "View logs"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred.",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "noData": "No data available.",
+    "adminBadge": "Admin"
+  }
+}

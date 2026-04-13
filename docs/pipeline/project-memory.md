@@ -1,28 +1,20 @@
 # Project Memory — Process Mining Research Cartography
 
-## Concept
-Web app for mapping process mining research. Researchers enter themes, keywords, publications via structured forms. Auto-computes textual similarity (NLP) to reveal thematic proximity. Displays interactive cluster map. Bilingual FR/EN. Universal login: researchers edit own profiles (pending admin approval), admins get special panel.
+**Concept:** Bilingual (FR/EN) web app for mapping the process mining research landscape — researchers, themes, clusters, publications — with interactive SVG cartography, profile management, and admin tools. Inspired by processmining.org.
 
-## Status
-Step 2 complete. Project Kit generated. Ready for Step 3 (pre-implementation).
+**Architecture:** 11 screens + login system. Vite + React + TypeScript frontend, Supabase backend (PostgreSQL + Auth + Edge Functions), D3.js for map/charts, deployed on Vercel.
 
-## Sections (4 sections, 12 screens)
-1. **Dashboard** (2) — Main dashboard (stats, activity, mini-map) + Detailed stats (charts)
-2. **Chercheurs** (4) — List + Profile + Add/Edit form + Comparison
-3. **Carte Thematique** (2) — Interactive cluster map + Explore themes list
-4. **Administration** (4) — Users + Import + Settings + Logs + Pending profiles
+**Kit status:** Spec, plan, tasks, rules verified. 25 feature tests registered. 5 milestone use-case documents with happy paths and edge cases approved.
 
-## Milestones (5)
-- M1: Setup + Dashboard (US-1.1, 1.2, 1.3)
-- M2: Researchers & Profiles (US-2.1, 2.2, 2.4, 2.5)
-- M3: Thematic Map & Themes (US-3.1-3.4, US-1.4)
-- M4: Auth & Profile Management (US-5.1, 5.2, US-2.3)
-- M5: Administration (US-4.1-4.4)
+**Git remote:** GitHub — https://github.com/anthohunt/process-mining (pushOnEpic: true)
 
-## Kit Files
-spec.md, plan.md, tasks.md, rules.md, 5 use-case plans, 25 feature tests, 25 e2e scripts, registry.json
+**Deployment:** Vercel (account: anthonyjameshunt-4034, project: process-mining). Supabase resource: supabase-citrine-saddle (us-east-1, Free plan). 17 env vars synced to .env.local including VITE_-prefixed client vars.
 
-## Key Decisions
+**Skipped features:** None — Supabase provisioning completed in Step 3 (was previously deferred).
+
+**Roadmap:** 5 milestones approved. M1: Dashboard, M2: Researchers & Profiles, M3: Map & Themes + Stats, M4: Auth & Profile Mgmt, M5: Administration. All milestones user-testable. Phase 0 scaffolding bundled into M1.
+
+**Key Decisions:**
 - Bilingual FR/EN via i18next
 - Universal login (researchers + admins), not admin-only
 - Profile approval workflow (researcher submits, admin approves)
