@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Process Mining Research Cartography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #faf9f6;
+    color: #2d2a26;
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.3;
+  }
+
+  /* Header */
+  .header {
+    background: #fff;
+    border-bottom: 1px solid #e8e5e0;
+    padding: 40px 24px 36px;
+    text-align: center;
+  }
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .header h1 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #2d2a26;
+    margin-bottom: 12px;
+  }
+  .header .concept {
+    font-size: 0.95rem;
+    color: #6b6560;
+    max-width: 620px;
+    margin: 0 auto 18px;
+    font-style: italic;
+  }
+  .header .stats {
+    display: inline-flex;
+    gap: 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a7c59;
+  }
+  .header .stats span {
+    background: #eef5f0;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  /* Timeline container */
+  .timeline {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    position: relative;
+  }
+
+  /* Vertical line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 39px;
+    top: 48px;
+    bottom: 64px;
+    width: 3px;
+    background: linear-gradient(to bottom, #4a7c59 0%, #4a7c5944 100%);
+    border-radius: 2px;
+  }
+
+  @media (min-width: 640px) {
+    .timeline::before { left: 47px; }
+  }
+
+  /* Milestone card */
+  .milestone {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 80px;
+  }
+  @media (min-width: 640px) {
+    .milestone { padding-left: 96px; }
+  }
+
+  /* Circle on timeline */
+  .milestone-circle {
+    position: absolute;
+    left: 16px;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    background: #4a7c59;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(74, 124, 89, 0.35);
+    z-index: 2;
+  }
+  @media (min-width: 640px) {
+    .milestone-circle { left: 24px; }
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    padding: 28px 28px 24px;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .card-header h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2d2a26;
+  }
+  .story-count {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #4a7c59;
+    background: #eef5f0;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  /* Section tags */
+  .section-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b6560;
+    background: #f3f1ed;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  /* Demo outcome */
+  .demo-outcome {
+    background: #f8f6f1;
+    border-left: 3px solid #4a7c59;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 0.88rem;
+    color: #4a3f38;
+  }
+  .demo-outcome strong {
+    font-weight: 600;
+    color: #4a7c59;
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  /* Stories list */
+  .stories {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+  .stories li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ede8;
+    font-size: 0.88rem;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .stories li:last-child { border-bottom: none; }
+  .story-id {
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #4a7c59;
+    white-space: nowrap;
+    min-width: 52px;
+  }
+  .story-title {
+    font-weight: 600;
+    color: #2d2a26;
+  }
+  .story-detail {
+    color: #7a756f;
+    font-size: 0.84rem;
+  }
+
+  /* Dependencies */
+  .deps {
+    font-size: 0.8rem;
+    color: #9a948e;
+    margin-bottom: 12px;
+  }
+  .deps span {
+    font-weight: 600;
+    color: #6b6560;
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #edeae5;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #4a7c59;
+    border-radius: 3px;
+    transition: width 0.4s;
+  }
+  .progress-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #9a948e;
+    min-width: 28px;
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .header h1 { font-size: 1.4rem; }
+    .card { padding: 20px 18px 18px; }
+    .milestone { padding-left: 68px; }
+    .milestone-circle { width: 40px; height: 40px; font-size: 1rem; left: 12px; }
+    .timeline::before { left: 31px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <h1>Process Mining Research Cartography</h1>
+    <p class="concept">Application web de cartographie de recherche en process mining. Carte interactive de clusters thematiques, profils chercheurs, similarite NLP.</p>
+    <div class="stats">
+      <span>5 milestones</span>
+      <span>19 user stories</span>
+    </div>
+  </div>
+</header>
+
+<!-- Timeline -->
+<div class="timeline">
+
+  <!-- M1 -->
+  <div class="milestone">
+    <div class="milestone-circle">M1</div>
+    <div class="card">
+      <div class="card-header">
+        <h2>Setup + Dashboard</h2>
+        <span class="story-count">3 stories</span>
+      </div>
+      <div class="section-tags">
+        <span class="section-tag">Dashboard</span>
+      </div>
+      <div class="demo-outcome">
+        <strong>Demo outcome</strong>
+        L'utilisateur ouvre l'application, voit les statistiques globales (42 chercheurs, 8 themes, 5 clusters), le fil d'activite recente, et peut cliquer sur l'apercu de la carte pour naviguer.
+      </div>
+      <ul class="stories">
+        <li>
+          <span class="story-id">US-1.1</span>
+          <div><span class="story-title">Vue d'ensemble avec statistiques globales</span><br><span class="story-detail">4 cartes stats, mise a jour temps reel, cliquables</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-1.2</span>
+          <div><span class="story-title">Activite recente visible</span><br><span class="story-detail">5 dernieres activites avec avatar, nom, action, timestamp</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-1.3</span>
+          <div><span class="story-title">Mini-carte interactive</span><br><span class="story-detail">Apercu clusters, curseur pointer au survol, clic navigue vers carte</span></div>
+        </li>
+      </ul>
+      <div class="deps"><span>Dependencies:</span> None (first milestone)</div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <span class="progress-label">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2 -->
+  <div class="milestone">
+    <div class="milestone-circle">M2</div>
+    <div class="card">
+      <div class="card-header">
+        <h2>Researchers &amp; Profiles</h2>
+        <span class="story-count">4 stories</span>
+      </div>
+      <div class="section-tags">
+        <span class="section-tag">Chercheurs</span>
+      </div>
+      <div class="demo-outcome">
+        <strong>Demo outcome</strong>
+        L'utilisateur recherche un chercheur par labo ou theme, ouvre son profil complet, compare deux chercheurs cote-a-cote avec score de similarite, et navigue vers la carte depuis le profil.
+      </div>
+      <ul class="stories">
+        <li>
+          <span class="story-id">US-2.1</span>
+          <div><span class="story-title">Recherche et filtres sur la liste</span><br><span class="story-detail">Recherche textuelle, filtres labo/theme, combinables</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-2.2</span>
+          <div><span class="story-title">Profil complet du chercheur</span><br><span class="story-detail">Sidebar avatar/nom/labo/bio, mots-cles en tags, publications</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-2.4</span>
+          <div><span class="story-title">Comparaison cote-a-cote</span><br><span class="story-detail">Deux profils, gauge similarite, themes communs</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-2.5</span>
+          <div><span class="story-title">Navigation profil vers carte</span><br><span class="story-detail">Bouton "Voir sur la carte", carte centree sur le chercheur</span></div>
+        </li>
+      </ul>
+      <div class="deps"><span>Dependencies:</span> M1 (navigation framework)</div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <span class="progress-label">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M3 -->
+  <div class="milestone">
+    <div class="milestone-circle">M3</div>
+    <div class="card">
+      <div class="card-header">
+        <h2>Thematic Map &amp; Themes</h2>
+        <span class="story-count">5 stories</span>
+      </div>
+      <div class="section-tags">
+        <span class="section-tag">Carte Thematique</span>
+        <span class="section-tag">Dashboard (stats detaillees)</span>
+      </div>
+      <div class="demo-outcome">
+        <strong>Demo outcome</strong>
+        L'utilisateur explore la carte interactive avec clusters, zoome, filtre par theme, clique sur un chercheur pour voir son profil. Il peut aussi voir les themes en liste et consulter les statistiques detaillees.
+      </div>
+      <ul class="stories">
+        <li>
+          <span class="story-id">US-3.1</span>
+          <div><span class="story-title">Carte interactive</span><br><span class="story-detail">SVG clusters, panneau filtres, legende, zoom/pan</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-3.2</span>
+          <div><span class="story-title">Clic cluster pour membres</span><br><span class="story-detail">Infobulle avec membres, themes, liens profils</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-3.3</span>
+          <div><span class="story-title">Clic chercheur vers profil</span><br><span class="story-detail">Points cliquables, nom au survol</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-3.4</span>
+          <div><span class="story-title">Explorer themes en liste</span><br><span class="story-detail">Grille clusters extensibles, liens bidirectionnels carte/chercheurs</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-1.4</span>
+          <div><span class="story-title">Statistiques detaillees</span><br><span class="story-detail">Bar chart themes, line chart tendances, histogramme similarite</span></div>
+        </li>
+      </ul>
+      <div class="deps"><span>Dependencies:</span> M2 (profiles must exist for map links)</div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <span class="progress-label">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M4 -->
+  <div class="milestone">
+    <div class="milestone-circle">M4</div>
+    <div class="card">
+      <div class="card-header">
+        <h2>Auth &amp; Profile Management</h2>
+        <span class="story-count">3 stories</span>
+      </div>
+      <div class="section-tags">
+        <span class="section-tag">Authentification</span>
+        <span class="section-tag">Chercheurs (formulaire)</span>
+      </div>
+      <div class="demo-outcome">
+        <strong>Demo outcome</strong>
+        Un chercheur se connecte, modifie son propre profil via le formulaire structure. Son profil modifie est soumis a validation par un admin. Le bouton Modifier est desactive pour les autres profils.
+      </div>
+      <ul class="stories">
+        <li>
+          <span class="story-id">US-5.1</span>
+          <div><span class="story-title">Connexion utilisateur</span><br><span class="story-detail">Page login universelle, email/password, roles chercheur/admin</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-5.2</span>
+          <div><span class="story-title">Edition de profil par le chercheur</span><br><span class="story-detail">Modification propre profil, validation admin requise</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-2.3</span>
+          <div><span class="story-title">Formulaire ajout/modification</span><br><span class="story-detail">Champs nom, labo, mots-cles (tags), bio, publications, banniere approbation</span></div>
+        </li>
+      </ul>
+      <div class="deps"><span>Dependencies:</span> M2 (profiles), builds on researcher profiles</div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <span class="progress-label">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M5 -->
+  <div class="milestone">
+    <div class="milestone-circle">M5</div>
+    <div class="card">
+      <div class="card-header">
+        <h2>Administration</h2>
+        <span class="story-count">4 stories</span>
+      </div>
+      <div class="section-tags">
+        <span class="section-tag">Administration</span>
+      </div>
+      <div class="demo-outcome">
+        <strong>Demo outcome</strong>
+        Un admin se connecte, voit le panneau admin avec onglets. Il gere les utilisateurs, importe des chercheurs en masse via CSV, configure les seuils de similarite et l'algorithme NLP, consulte les logs d'audit, et approuve les profils en attente.
+      </div>
+      <ul class="stories">
+        <li>
+          <span class="story-id">US-4.1</span>
+          <div><span class="story-title">Gestion utilisateurs et roles</span><br><span class="story-detail">Tableau, badges role, invitations, approbation profils en attente</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-4.2</span>
+          <div><span class="story-title">Import en masse</span><br><span class="story-detail">Drag & drop CSV/Excel, Google Scholar URL, previsualisation, confirmation</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-4.3</span>
+          <div><span class="story-title">Configuration</span><br><span class="story-detail">Langue FR/EN, slider seuil similarite, dropdown NLP (TF-IDF/Word2Vec/BERT)</span></div>
+        </li>
+        <li>
+          <span class="story-id">US-4.4</span>
+          <div><span class="story-title">Journaux d'audit</span><br><span class="story-detail">Tableau date/user/action/detail, filtres date, actions colorees</span></div>
+        </li>
+      </ul>
+      <div class="deps"><span>Dependencies:</span> M4 (auth must exist)</div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        <span class="progress-label">0%</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /timeline -->
+
+</body>
+</html>

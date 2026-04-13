@@ -1,0 +1,54 @@
+{
+  "name": "Process Mining Academic",
+  "source": "https://www.processmining.org/",
+  "palette": {
+    "primary": "#0d6efd",
+    "primaryDark": "#0a58ca",
+    "secondary": "#6c757d",
+    "accent": "#0dcaf0",
+    "success": "#198754",
+    "warning": "#ffc107",
+    "danger": "#dc3545",
+    "background": "#ffffff",
+    "backgroundAlt": "#f8f9fa",
+    "surface": "#ffffff",
+    "heroBg": "#0c1b33",
+    "text": "#212529",
+    "textMuted": "#6c757d",
+    "textOnDark": "#ffffff",
+    "border": "#dee2e6"
+  },
+  "typography": {
+    "headingFont": "Poppins",
+    "bodyFont": "Poppins",
+    "headingWeight": "600",
+    "bodyWeight": "400",
+    "baseFontSize": "16px",
+    "lineHeight": "1.5",
+    "h1Size": "2.5rem",
+    "h2Size": "2rem",
+    "h3Size": "1.5rem",
+    "smallSize": "0.875rem"
+  },
+  "spacing": {
+    "unit": "8px",
+    "sectionPadding": "80px 0",
+    "cardPadding": "24px",
+    "containerMaxWidth": "1140px"
+  },
+  "effects": {
+    "borderRadius": "4px",
+    "borderRadiusLarge": "8px",
+    "cardShadow": "rgba(0, 0, 0, 0.15) 4px 4px 10px -5px",
+    "cardShadowHover": "rgba(0, 0, 0, 0.2) 6px 6px 14px -4px",
+    "transition": "all 0.2s ease-in-out"
+  },
+  "techniques": {
+    "framework": "Bootstrap 5 tokens",
+    "heroStyle": "Full-width dark background with image overlay, large white text",
+    "navStyle": "Dark transparent navbar over hero, solid white on scroll",
+    "gridLayout": "Card grid with icons for categories/industries",
+    "ctaStyle": "Solid blue buttons with white text, small radius",
+    "sectionStyle": "Alternating white and light gray backgrounds"
+  }
+}

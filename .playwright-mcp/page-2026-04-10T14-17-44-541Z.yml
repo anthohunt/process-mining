@@ -1,0 +1,173 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Process Mining Research Cartography" [level=1] [ref=e4]
+      - paragraph [ref=e5]: Application web de cartographie de recherche en process mining. Carte interactive de clusters thematiques, profils chercheurs, similarite NLP.
+      - generic [ref=e6]:
+        - generic [ref=e7]: 5 milestones
+        - generic [ref=e8]: 19 user stories
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: M1
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - heading "Setup + Dashboard" [level=2] [ref=e14]
+          - generic [ref=e15]: 3 stories
+        - generic [ref=e17]: Dashboard
+        - generic [ref=e18]:
+          - strong [ref=e19]: Demo outcome
+          - text: L'utilisateur ouvre l'application, voit les statistiques globales (42 chercheurs, 8 themes, 5 clusters), le fil d'activite recente, et peut cliquer sur l'apercu de la carte pour naviguer.
+        - list [ref=e20]:
+          - listitem [ref=e21]:
+            - generic [ref=e22]: US-1.1
+            - generic [ref=e23]:
+              - text: Vue d'ensemble avec statistiques globales
+              - text: 4 cartes stats, mise a jour temps reel, cliquables
+          - listitem [ref=e24]:
+            - generic [ref=e25]: US-1.2
+            - generic [ref=e26]:
+              - text: Activite recente visible
+              - text: 5 dernieres activites avec avatar, nom, action, timestamp
+          - listitem [ref=e27]:
+            - generic [ref=e28]: US-1.3
+            - generic [ref=e29]:
+              - text: Mini-carte interactive
+              - text: Apercu clusters, curseur pointer au survol, clic navigue vers carte
+        - generic [ref=e30]: "Dependencies: None (first milestone)"
+        - generic [ref=e33]: 0%
+    - generic [ref=e34]:
+      - generic [ref=e35]: M2
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - heading "Researchers & Profiles" [level=2] [ref=e38]
+          - generic [ref=e39]: 4 stories
+        - generic [ref=e41]: Chercheurs
+        - generic [ref=e42]:
+          - strong [ref=e43]: Demo outcome
+          - text: L'utilisateur recherche un chercheur par labo ou theme, ouvre son profil complet, compare deux chercheurs cote-a-cote avec score de similarite, et navigue vers la carte depuis le profil.
+        - list [ref=e44]:
+          - listitem [ref=e45]:
+            - generic [ref=e46]: US-2.1
+            - generic [ref=e47]:
+              - text: Recherche et filtres sur la liste
+              - text: Recherche textuelle, filtres labo/theme, combinables
+          - listitem [ref=e48]:
+            - generic [ref=e49]: US-2.2
+            - generic [ref=e50]:
+              - text: Profil complet du chercheur
+              - text: Sidebar avatar/nom/labo/bio, mots-cles en tags, publications
+          - listitem [ref=e51]:
+            - generic [ref=e52]: US-2.4
+            - generic [ref=e53]:
+              - text: Comparaison cote-a-cote
+              - text: Deux profils, gauge similarite, themes communs
+          - listitem [ref=e54]:
+            - generic [ref=e55]: US-2.5
+            - generic [ref=e56]:
+              - text: Navigation profil vers carte
+              - text: Bouton "Voir sur la carte", carte centree sur le chercheur
+        - generic [ref=e57]: "Dependencies: M1 (navigation framework)"
+        - generic [ref=e60]: 0%
+    - generic [ref=e61]:
+      - generic [ref=e62]: M3
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - heading "Thematic Map & Themes" [level=2] [ref=e65]
+          - generic [ref=e66]: 5 stories
+        - generic [ref=e67]:
+          - generic [ref=e68]: Carte Thematique
+          - generic [ref=e69]: Dashboard (stats detaillees)
+        - generic [ref=e70]:
+          - strong [ref=e71]: Demo outcome
+          - text: L'utilisateur explore la carte interactive avec clusters, zoome, filtre par theme, clique sur un chercheur pour voir son profil. Il peut aussi voir les themes en liste et consulter les statistiques detaillees.
+        - list [ref=e72]:
+          - listitem [ref=e73]:
+            - generic [ref=e74]: US-3.1
+            - generic [ref=e75]:
+              - text: Carte interactive
+              - text: SVG clusters, panneau filtres, legende, zoom/pan
+          - listitem [ref=e76]:
+            - generic [ref=e77]: US-3.2
+            - generic [ref=e78]:
+              - text: Clic cluster pour membres
+              - text: Infobulle avec membres, themes, liens profils
+          - listitem [ref=e79]:
+            - generic [ref=e80]: US-3.3
+            - generic [ref=e81]:
+              - text: Clic chercheur vers profil
+              - text: Points cliquables, nom au survol
+          - listitem [ref=e82]:
+            - generic [ref=e83]: US-3.4
+            - generic [ref=e84]:
+              - text: Explorer themes en liste
+              - text: Grille clusters extensibles, liens bidirectionnels carte/chercheurs
+          - listitem [ref=e85]:
+            - generic [ref=e86]: US-1.4
+            - generic [ref=e87]:
+              - text: Statistiques detaillees
+              - text: Bar chart themes, line chart tendances, histogramme similarite
+        - generic [ref=e88]: "Dependencies: M2 (profiles must exist for map links)"
+        - generic [ref=e91]: 0%
+    - generic [ref=e92]:
+      - generic [ref=e93]: M4
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - heading "Auth & Profile Management" [level=2] [ref=e96]
+          - generic [ref=e97]: 3 stories
+        - generic [ref=e98]:
+          - generic [ref=e99]: Authentification
+          - generic [ref=e100]: Chercheurs (formulaire)
+        - generic [ref=e101]:
+          - strong [ref=e102]: Demo outcome
+          - text: Un chercheur se connecte, modifie son propre profil via le formulaire structure. Son profil modifie est soumis a validation par un admin. Le bouton Modifier est desactive pour les autres profils.
+        - list [ref=e103]:
+          - listitem [ref=e104]:
+            - generic [ref=e105]: US-5.1
+            - generic [ref=e106]:
+              - text: Connexion utilisateur
+              - text: Page login universelle, email/password, roles chercheur/admin
+          - listitem [ref=e107]:
+            - generic [ref=e108]: US-5.2
+            - generic [ref=e109]:
+              - text: Edition de profil par le chercheur
+              - text: Modification propre profil, validation admin requise
+          - listitem [ref=e110]:
+            - generic [ref=e111]: US-2.3
+            - generic [ref=e112]:
+              - text: Formulaire ajout/modification
+              - text: Champs nom, labo, mots-cles (tags), bio, publications, banniere approbation
+        - generic [ref=e113]: "Dependencies: M2 (profiles), builds on researcher profiles"
+        - generic [ref=e116]: 0%
+    - generic [ref=e117]:
+      - generic [ref=e118]: M5
+      - generic [ref=e119]:
+        - generic [ref=e120]:
+          - heading "Administration" [level=2] [ref=e121]
+          - generic [ref=e122]: 4 stories
+        - generic [ref=e124]: Administration
+        - generic [ref=e125]:
+          - strong [ref=e126]: Demo outcome
+          - text: Un admin se connecte, voit le panneau admin avec onglets. Il gere les utilisateurs, importe des chercheurs en masse via CSV, configure les seuils de similarite et l'algorithme NLP, consulte les logs d'audit, et approuve les profils en attente.
+        - list [ref=e127]:
+          - listitem [ref=e128]:
+            - generic [ref=e129]: US-4.1
+            - generic [ref=e130]:
+              - text: Gestion utilisateurs et roles
+              - text: Tableau, badges role, invitations, approbation profils en attente
+          - listitem [ref=e131]:
+            - generic [ref=e132]: US-4.2
+            - generic [ref=e133]:
+              - text: Import en masse
+              - text: Drag & drop CSV/Excel, Google Scholar URL, previsualisation, confirmation
+          - listitem [ref=e134]:
+            - generic [ref=e135]: US-4.3
+            - generic [ref=e136]:
+              - text: Configuration
+              - text: Langue FR/EN, slider seuil similarite, dropdown NLP (TF-IDF/Word2Vec/BERT)
+          - listitem [ref=e137]:
+            - generic [ref=e138]: US-4.4
+            - generic [ref=e139]:
+              - text: Journaux d'audit
+              - text: Tableau date/user/action/detail, filtres date, actions colorees
+        - generic [ref=e140]: "Dependencies: M4 (auth must exist)"
+        - generic [ref=e143]: 0%

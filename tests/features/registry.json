@@ -1,0 +1,29 @@
+{
+  "features": [
+    { "id": "FT-001", "title": "Dashboard Stats Display", "file": "FT-001-dashboard-stats.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-002", "title": "Activity Feed", "file": "FT-002-activity-feed.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-003", "title": "Mini-Map Preview", "file": "FT-003-mini-map.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-004", "title": "Researcher Search & Filter", "file": "FT-004-researcher-search.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-005", "title": "Researcher Profile View", "file": "FT-005-researcher-profile.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-006", "title": "Side-by-Side Comparison", "file": "FT-006-comparison.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-007", "title": "Profile to Map Navigation", "file": "FT-007-profile-to-map.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-008", "title": "Interactive Cluster Map", "file": "FT-008-cluster-map.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-009", "title": "Cluster Click for Members", "file": "FT-009-cluster-members.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-010", "title": "Researcher Dot to Profile", "file": "FT-010-dot-to-profile.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-011", "title": "Theme List View", "file": "FT-011-theme-list.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-012", "title": "Detailed Statistics", "file": "FT-012-detailed-stats.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-013", "title": "User Login", "file": "FT-013-user-login.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-014", "title": "Profile Edit Button States", "file": "FT-014-edit-button-states.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-015", "title": "Profile Form Add/Edit", "file": "FT-015-profile-form.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-016", "title": "Profile Submission Approval Flow", "file": "FT-016-submission-approval.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-017", "title": "Admin User Management", "file": "FT-017-admin-users.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-018", "title": "Admin Bulk Import", "file": "FT-018-admin-import.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-019", "title": "Admin App Settings", "file": "FT-019-admin-settings.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-020", "title": "Admin Audit Logs", "file": "FT-020-admin-logs.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-021", "title": "Admin Pending Profiles", "file": "FT-021-admin-pending.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-022", "title": "Keyboard Navigation", "file": "FT-022-keyboard-nav.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-023", "title": "Focus Management", "file": "FT-023-focus-management.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-024", "title": "Escape Key Dismissal", "file": "FT-024-escape-dismiss.test.js", "testMode": "browser", "status": "draft" },
+    { "id": "FT-025", "title": "ARIA Labels", "file": "FT-025-aria-labels.test.js", "testMode": "browser", "status": "draft" }
+  ]
+}

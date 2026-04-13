@@ -1,0 +1,33 @@
+- generic [ref=e1]:
+  - link "Skip to content":
+    - /url: "#geist-skip-nav"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "Vercel logo":
+        - /url: /home
+        - button "Vercel Logo":
+          - img "Vercel Logo"
+      - navigation [ref=e5]:
+        - navigation
+    - main [ref=e10]:
+      - generic [ref=e12]:
+        - heading "Verification" [level=1] [ref=e70]
+        - generic [ref=e72]:
+          - paragraph [ref=e73]: If you have an account, we have sent a code to anthony.hunt@yahoo.fr. Enter it below.
+          - generic [ref=e74]:
+            - generic:
+              - generic:
+                - generic: "|"
+              - textbox "One-time password, we sent it to anthony.hunt@yahoo.fr" [active] [ref=e75]
+          - link "← Back" [ref=e77] [cursor=pointer]
+      - generic [ref=e66]:
+        - link "Terms" [ref=e67] [cursor=pointer]:
+          - /url: /legal/terms
+        - link "Privacy Policy" [ref=e68] [cursor=pointer]:
+          - /url: /legal/privacy-policy
+  - alert [ref=e69]
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - img

@@ -1,0 +1,37 @@
+[     211ms] [LOG] %c
+▲
+
+__  __                                     _            __
+\ \/ /___  __  __   _________ _____       (_)_  _______/ /_
+ \  / __ \/ / / /  / ___/ __ `/ __ \     / / / / / ___/ __/
+ / / /_/ / /_/ /  / /__/ /_/ / / / /    / / /_/ (__  ) /_
+/_/\____/\__,_/   \___/\__,_/_/ /_/  __/ /\__,_/____/\__/
+         __    _          __  __    /___/
+   _____/ /_  (_)___     / /_/ /_  (_)___  ____ ______
+  / ___/ __ \/ / __ \   / __/ __ \/ / __ \/ __ `/ ___/
+ (__  ) / / / / /_/ /  / /_/ / / / / / / / /_/ (__  )
+/____/_/ /_/_/ .___/   \__/_/ /_/_/_/ /_/\__, /____/
+            /_/                         /____/
+  
+
+Hello!
+
+- Open Source https://vercel.com/oss
+- Careers https://vercel.com/careers
+- Status https://vercel-status.com
+
+ font-family: "Geist Mono", monospace; white-space: pre; line-height: 1; @ https://vercel.com/_next/static/chunks/3vt9z9-00w7jo.js?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do:72
+[     868ms] [WARNING] Deprecated API for given entry type. @ https://vercel.com/_next/static/chunks/0835ycci1b4sv.js?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do:18
+[    9971ms] [WARNING] The resource https://vercel.com/_next/static/chunks/22i4bs7r9si84.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[    9971ms] [WARNING] The resource https://vercel.com/_next/static/chunks/4455ud_azstfi.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   18989ms] [WARNING] The resource https://vercel.com/_next/static/chunks/22i4bs7r9si84.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   18989ms] [WARNING] The resource https://vercel.com/_next/static/chunks/4455ud_azstfi.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   49496ms] [WARNING] The resource https://vercel.com/_next/static/chunks/22i4bs7r9si84.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   49496ms] [WARNING] The resource https://vercel.com/_next/static/chunks/4455ud_azstfi.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   54094ms] [WARNING] The resource https://vercel.com/_next/static/chunks/22i4bs7r9si84.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   54094ms] [WARNING] The resource https://vercel.com/_next/static/chunks/4455ud_azstfi.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   63979ms] [WARNING] The resource https://vercel.com/_next/static/chunks/22i4bs7r9si84.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   63979ms] [WARNING] The resource https://vercel.com/_next/static/chunks/4455ud_azstfi.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   71495ms] [WARNING] The resource https://vercel.com/_next/static/chunks/22i4bs7r9si84.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   71495ms] [WARNING] The resource https://vercel.com/_next/static/chunks/4455ud_azstfi.css?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://vercel.com/marketplace/supabase:0
+[   88537ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://vercel.com/api/v1/integrations/integration/supabase/configuration?teamId=team_8VtjIUxB2HgI7Hw8IT9V6sRg:0

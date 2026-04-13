@@ -1,0 +1,24 @@
+{
+  "language": "fr,en",
+  "gitRemoteUrl": null,
+  "pushOnEpic": false,
+  "deployment": {
+    "type": "vercel",
+    "account": "anthonyjameshunt-4034",
+    "existingProject": "process-mining-mockup",
+    "nodeVersion": "22.x",
+    "database": "supabase (deferred)"
+  },
+  "skippedFeatures": [
+    {
+      "feature": "Supabase provisioning",
+      "reason": "User on mobile via SSH — cannot complete browser-based Vercel Marketplace terms acceptance. Revisit when milestone requires persistence/auth.",
+      "affectedStories": [
+        "US-2.1", "US-2.2", "US-2.3", "US-2.4", "US-2.5",
+        "US-4.1", "US-4.2", "US-4.3", "US-4.4",
+        "US-5.1", "US-5.2"
+      ],
+      "revisitAt": "M2 (Researchers & Profiles) or M4 (Auth)"
+    }
+  ]
+}

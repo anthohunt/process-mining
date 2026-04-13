@@ -1,0 +1,21 @@
+[
+  { "id": "US-1.1", "story": "As a researcher, I can see global stats (researcher count, theme count, cluster count, publications) on the main dashboard", "module": "dashboard", "validated": true },
+  { "id": "US-1.2", "story": "As a researcher, I can see recent activity (new profiles, latest publications) to stay informed", "module": "dashboard", "validated": true },
+  { "id": "US-1.3", "story": "As a researcher, I can click the mini-map on the dashboard to navigate to the full thematic map", "module": "dashboard", "validated": true },
+  { "id": "US-1.4", "story": "As a researcher, I can view detailed statistics (theme distribution, similarity metrics, temporal trends)", "module": "dashboard", "validated": true },
+  { "id": "US-2.1", "story": "As a researcher, I can search and filter the researcher list by lab, theme, or keyword", "module": "chercheurs", "validated": true },
+  { "id": "US-2.2", "story": "As a researcher, I can view a full profile (info, themes, publications, map position)", "module": "chercheurs", "validated": true },
+  { "id": "US-2.3", "story": "As a logged-in researcher, I can add or edit my own profile via a structured form, pending admin approval", "module": "chercheurs", "validated": true },
+  { "id": "US-2.4", "story": "As a researcher, I can compare two researchers side-by-side with common themes and similarity score", "module": "chercheurs", "validated": true },
+  { "id": "US-2.5", "story": "As a researcher, I can navigate from a profile to that person's position on the thematic map", "module": "chercheurs", "validated": true },
+  { "id": "US-3.1", "story": "As a researcher, I can view the interactive cluster map with zoom, pan, and filter controls", "module": "carte-thematique", "validated": true },
+  { "id": "US-3.2", "story": "As a researcher, I can click a cluster on the map to see its member researchers and themes", "module": "carte-thematique", "validated": true },
+  { "id": "US-3.3", "story": "As a researcher, I can click a researcher dot on the map to navigate to their profile", "module": "carte-thematique", "validated": true },
+  { "id": "US-3.4", "story": "As a researcher, I can browse themes in a list view showing clusters, researcher counts, and cross-links to researcher list and map", "module": "carte-thematique", "validated": true },
+  { "id": "US-5.1", "story": "As a user, I can log in to access personal features (profile editing for researchers, admin panel for admins)", "module": "authentification", "validated": true },
+  { "id": "US-5.2", "story": "As a logged-in researcher, I can submit my profile which will be validated by an administrator before publication", "module": "authentification", "validated": true },
+  { "id": "US-4.1", "story": "As a logged-in admin, I can manage users (assign roles, send invitations, approve pending profiles)", "module": "administration", "validated": true },
+  { "id": "US-4.2", "story": "As a logged-in admin, I can import researchers in bulk via CSV/Excel or Google Scholar", "module": "administration", "validated": true },
+  { "id": "US-4.3", "story": "As a logged-in admin, I can configure app settings (language FR/EN, similarity thresholds, NLP algorithm)", "module": "administration", "validated": true },
+  { "id": "US-4.4", "story": "As a logged-in admin, I can view audit logs showing who modified what and when", "module": "administration", "validated": true }
+]

@@ -1,0 +1,30 @@
+[      63ms] [LOG] %c
+▲
+
+    ____                               _ __
+   / __ \________  ____ _____ ___     (_) /_
+  / / / / ___/ _ \/ __ `/ __ `__ \   / / __/
+ / /_/ / /  /  __/ /_/ / / / / / /  / / /__
+/_____/_/   \___/\__,_/_/ /_/ /_/  /_/\__( )
+   _____ __    _          _ __           |/
+  / ___// /_  (_)___     (_) /_
+  \__ \/ __ \/ / __ \   / / __/
+ ___/ / / / / / /_/ /  / / /_
+/____/_/ /_/_/ .___/  /_/\__/
+            /_/
+  
+
+Hello!
+
+- Open Source https://vercel.com/oss
+- Careers https://vercel.com/careers
+- Status https://vercel-status.com
+
+ font-family: "Geist Mono", monospace; white-space: pre; line-height: 1; @ https://vercel.com/_next/static/chunks/3vt9z9-00w7jo.js?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do:72
+[     495ms] [WARNING] Deprecated API for given entry type. @ https://vercel.com/_next/static/chunks/0835ycci1b4sv.js?dpl=dpl_8dq4wa4JiKbhrvU44kJJ1S2VD7do:18
+[    2691ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://o398706.ingest.us.sentry.io/api/5459134/envelope/?sentry_version=7&sentry_key=caa7db5fc1da4341810a6d56251a951c&sentry_client=sentry.javascript.nextjs%2F10.27.0:0
+[  133538ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://auth.supabase.io/auth/v1/token?grant_type=password:0
+[  150839ms] [ERROR] Connecting to 'https://analytics.google.com/g/collect?a=adblocker_check' violates the following Content Security Policy directive: "default-src 'self' https://api.supabase.com http://localhost:8000 https://auth.supabase.io ws://localhost:8000 wss://localhost:8000 https://*.supabase.co https://*.storage.supabase.co wss://*.supabase.co https://*.hcaptcha.com https://cdn-global.configcat.com https://configcat.supabase.com https://*.stripe.com https://*.stripe.network https://www.cloudflare.com https://*.vercel-insights.com https://api.github.com https://raw.githubusercontent.com https://frontend-assets.supabase.com https://*.usercentrics.eu https://ss.supabase.com https://maps.googleapis.com https://ph.supabase.com https://cdnjs.cloudflare.com wss://*.pusher.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io". Note that 'connect-src' was not explicitly set, so 'default-src' is used as a fallback. The action has been blocked. @ https://frontend-assets.supabase.com/studio/e95f1cc67c6a/_next/static/chunks/840a9b0595376d57.js?dpl=dpl_DkdKYQGKYcjimavSFuefgK13xGnv:12
+[  150839ms] [ERROR] Fetch API cannot load https://analytics.google.com/g/collect?a=adblocker_check. Refused to connect because it violates the document's Content Security Policy. @ https://frontend-assets.supabase.com/studio/e95f1cc67c6a/_next/static/chunks/840a9b0595376d57.js?dpl=dpl_DkdKYQGKYcjimavSFuefgK13xGnv:12
+[  295665ms] Uncaught (in promise) challenge-expired
+    at <anonymous> (https://frontend-assets.supabase.com/studio/e95f1cc67c6a/_next/static/chunks/9f2427d3829a18e0.js?dpl=dpl_DkdKYQGKYcjimavSFuefgK13xGnv:1:22072)

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Profile — Process Mining Academic</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #212529; padding: 40px; }
+  .swatch-card { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: rgba(0,0,0,0.15) 4px 4px 10px -5px; overflow: hidden; }
+
+  .header { background: #0c1b33; color: #fff; padding: 40px; }
+  .header h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 8px; }
+  .header p { opacity: 0.8; font-size: 0.875rem; }
+  .header .source { color: #0dcaf0; text-decoration: none; font-size: 0.8rem; }
+
+  .section { padding: 32px 40px; border-bottom: 1px solid #dee2e6; }
+  .section:last-child { border-bottom: none; }
+  .section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: #6c757d; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; }
+
+  /* Color palette */
+  .palette { display: flex; flex-wrap: wrap; gap: 16px; }
+  .color-swatch { text-align: center; }
+  .color-circle { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #dee2e6; margin-bottom: 6px; }
+  .color-label { font-size: 0.7rem; font-weight: 500; display: block; }
+  .color-hex { font-size: 0.65rem; color: #6c757d; }
+
+  /* Typography */
+  .font-sample { margin-bottom: 16px; }
+  .font-sample .label { font-size: 0.7rem; color: #6c757d; text-transform: uppercase; margin-bottom: 4px; }
+  .font-heading { font-size: 2rem; font-weight: 600; color: #212529; }
+  .font-body { font-size: 1rem; font-weight: 400; color: #212529; line-height: 1.5; }
+
+  /* Components */
+  .components { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+
+  .sample-btn { display: inline-block; padding: 10px 24px; border-radius: 4px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s ease-in-out; }
+  .btn-primary { background: #0d6efd; color: #fff; }
+  .btn-primary:hover { background: #0a58ca; }
+  .btn-outline { background: transparent; color: #0d6efd; border: 2px solid #0d6efd; }
+  .btn-outline:hover { background: #0d6efd; color: #fff; }
+  .btn-secondary { background: #6c757d; color: #fff; }
+
+  .sample-card { background: #fff; border-radius: 4px; box-shadow: rgba(0,0,0,0.15) 4px 4px 10px -5px; padding: 24px; width: 280px; transition: all 0.2s ease-in-out; }
+  .sample-card:hover { box-shadow: rgba(0,0,0,0.2) 6px 6px 14px -4px; }
+  .sample-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .sample-card p { font-size: 0.85rem; color: #6c757d; line-height: 1.5; margin-bottom: 16px; }
+  .sample-card .tag { display: inline-block; background: #f8f9fa; color: #0d6efd; font-size: 0.7rem; font-weight: 500; padding: 4px 10px; border-radius: 4px; margin-right: 6px; }
+
+  .sample-nav { background: #0c1b33; border-radius: 4px; padding: 12px 24px; display: flex; align-items: center; gap: 24px; width: 100%; }
+  .sample-nav .brand { color: #fff; font-weight: 600; font-size: 1rem; }
+  .sample-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .sample-nav a:hover { color: #fff; }
+
+  /* Spacing */
+  .spacing-demo { display: flex; gap: 12px; align-items: flex-end; }
+  .spacing-block { background: #0d6efd; opacity: 0.3; border-radius: 2px; }
+  .spacing-label { font-size: 0.65rem; color: #6c757d; text-align: center; margin-top: 4px; }
+
+  .buttons-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+
+  /* Hero preview */
+  .hero-preview { background: #0c1b33; border-radius: 4px; padding: 48px 32px; color: #fff; margin-bottom: 24px; width: 100%; }
+  .hero-preview .subtitle { color: #0d6efd; font-size: 0.85rem; font-weight: 500; margin-bottom: 8px; }
+  .hero-preview h2 { font-size: 1.75rem; font-weight: 600; line-height: 1.2; margin-bottom: 16px; }
+  .hero-preview p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+  <div class="swatch-card">
+    <div class="header">
+      <h1>Process Mining Academic</h1>
+      <p>Design profile extracted from processmining.org</p>
+      <a class="source" href="https://www.processmining.org/" target="_blank">Source: processmining.org</a>
+    </div>
+
+    <div class="section">
+      <h2>Color Palette</h2>
+      <div class="palette">
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #0d6efd;"></div>
+          <span class="color-label">Primary</span>
+          <span class="color-hex">#0d6efd</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #0a58ca;"></div>
+          <span class="color-label">Primary Dark</span>
+          <span class="color-hex">#0a58ca</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #6c757d;"></div>
+          <span class="color-label">Secondary</span>
+          <span class="color-hex">#6c757d</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #0dcaf0;"></div>
+          <span class="color-label">Accent</span>
+          <span class="color-hex">#0dcaf0</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #198754;"></div>
+          <span class="color-label">Success</span>
+          <span class="color-hex">#198754</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #0c1b33;"></div>
+          <span class="color-label">Hero BG</span>
+          <span class="color-hex">#0c1b33</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #ffffff; border-color: #dee2e6;"></div>
+          <span class="color-label">Background</span>
+          <span class="color-hex">#ffffff</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #f8f9fa;"></div>
+          <span class="color-label">BG Alt</span>
+          <span class="color-hex">#f8f9fa</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #212529;"></div>
+          <span class="color-label">Text</span>
+          <span class="color-hex">#212529</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle" style="background: #dee2e6;"></div>
+          <span class="color-label">Border</span>
+          <span class="color-hex">#dee2e6</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Typography — Poppins</h2>
+      <div class="font-sample">
+        <div class="label">Heading (600)</div>
+        <div class="font-heading">Research Cartography</div>
+      </div>
+      <div class="font-sample">
+        <div class="label">Body (400)</div>
+        <div class="font-body">Process mining bridges the gap between process science and data science. Researchers can explore thematic clusters, compare similarity scores, and discover hidden connections in their work.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Sample Components</h2>
+
+      <div class="hero-preview">
+        <div class="subtitle">Process Mining Research</div>
+        <h2>The bridge between<br>process science<br>and data science.</h2>
+        <p>Explore thematic clusters and discover connections between researchers.</p>
+        <button class="sample-btn btn-primary">Get Started</button>
+      </div>
+
+      <div class="sample-nav">
+        <span class="brand">ProcessMining</span>
+        <a href="#">Dashboard</a>
+        <a href="#">Researchers</a>
+        <a href="#">Thematic Map</a>
+        <a href="#">Admin</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Buttons</h2>
+      <div class="buttons-row">
+        <button class="sample-btn btn-primary">Primary Action</button>
+        <button class="sample-btn btn-outline">Secondary</button>
+        <button class="sample-btn btn-secondary">Tertiary</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Card Component</h2>
+      <div class="components">
+        <div class="sample-card">
+          <h3>Process Discovery</h3>
+          <p>Automatically discover process models from event logs to understand real execution flows.</p>
+          <span class="tag">NLP</span>
+          <span class="tag">Clustering</span>
+        </div>
+        <div class="sample-card">
+          <h3>Researcher Profile</h3>
+          <p>View thematic keywords, publications, and position on the interactive similarity map.</p>
+          <span class="tag">Similarity</span>
+          <span class="tag">Profile</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Design Tokens Summary</h2>
+      <table style="font-size: 0.8rem; width: 100%; border-collapse: collapse;">
+        <tr style="border-bottom: 1px solid #dee2e6;"><td style="padding: 8px; font-weight: 500;">Font</td><td style="padding: 8px;">Poppins (400, 500, 600, 700)</td></tr>
+        <tr style="border-bottom: 1px solid #dee2e6;"><td style="padding: 8px; font-weight: 500;">Base Size</td><td style="padding: 8px;">16px / 1.5 line-height</td></tr>
+        <tr style="border-bottom: 1px solid #dee2e6;"><td style="padding: 8px; font-weight: 500;">Border Radius</td><td style="padding: 8px;">4px (sharp, professional)</td></tr>
+        <tr style="border-bottom: 1px solid #dee2e6;"><td style="padding: 8px; font-weight: 500;">Card Shadow</td><td style="padding: 8px;">rgba(0,0,0,0.15) 4px 4px 10px -5px</td></tr>
+        <tr style="border-bottom: 1px solid #dee2e6;"><td style="padding: 8px; font-weight: 500;">Framework</td><td style="padding: 8px;">Bootstrap 5 tokens</td></tr>
+        <tr style="border-bottom: 1px solid #dee2e6;"><td style="padding: 8px; font-weight: 500;">Hero</td><td style="padding: 8px;">Dark navy (#0c1b33) with image overlay</td></tr>
+        <tr><td style="padding: 8px; font-weight: 500;">Sections</td><td style="padding: 8px;">Alternating white / light gray</td></tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

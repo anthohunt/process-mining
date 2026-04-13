@@ -1,0 +1,131 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: CartoPM
+      - navigation [ref=e6]:
+        - button "Dashboard" [ref=e7] [cursor=pointer]
+        - button "Chercheurs" [ref=e8] [cursor=pointer]
+        - button "Carte" [ref=e9] [cursor=pointer]
+        - button "Statistiques" [ref=e10] [cursor=pointer]
+        - button "Themes" [ref=e11] [cursor=pointer]
+      - generic [ref=e168] [cursor=pointer]:
+        - generic [ref=e169]: MD
+        - generic [ref=e170]: Marie Dupont
+      - button "FR / EN" [ref=e13] [cursor=pointer]
+    - generic [ref=e14]:
+      - heading "Tableau de Bord" [level=1] [ref=e15]
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: "42"
+          - generic [ref=e19]: Chercheurs
+        - generic [ref=e20]:
+          - generic [ref=e21]: "8"
+          - generic [ref=e22]: Themes
+        - generic [ref=e23]:
+          - generic [ref=e24]: "5"
+          - generic [ref=e25]: Clusters
+        - generic [ref=e26]:
+          - generic [ref=e27]: "156"
+          - generic [ref=e28]: Publications
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - heading "Activite Recente" [level=2] [ref=e31]
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - generic [ref=e34]: MD
+              - generic [ref=e35]:
+                - generic [ref=e36]:
+                  - strong [ref=e37]: Dr. Marie Dupont
+                  - text: a mis a jour son profil
+                - generic [ref=e38]: Il y a 2 heures
+            - generic [ref=e39]:
+              - generic [ref=e40]: AB
+              - generic [ref=e41]:
+                - generic [ref=e42]:
+                  - strong [ref=e43]: Prof. Ahmed Benali
+                  - text: a ajoute 2 publications
+                - generic [ref=e44]: Il y a 5 heures
+            - generic [ref=e45]:
+              - generic [ref=e46]: SL
+              - generic [ref=e47]:
+                - generic [ref=e48]:
+                  - strong [ref=e49]: Dr. Sophie Laurent
+                  - text: a rejoint la plateforme
+                - generic [ref=e50]: Hier
+            - generic [ref=e51]:
+              - generic [ref=e52]: JM
+              - generic [ref=e53]:
+                - generic [ref=e54]:
+                  - strong [ref=e55]: Prof. Jean Martin
+                  - text: a publie un nouvel article
+                - generic [ref=e56]: Il y a 2 jours
+        - generic [ref=e57]:
+          - heading "Apercu de la Carte Thematique" [level=2] [ref=e58]
+          - generic [ref=e59] [cursor=pointer]:
+            - img [ref=e60]
+            - generic [ref=e83]: Cliquer pour ouvrir la carte complete →
+    - text: ⚠
+  - generic [ref=e84]:
+    - heading "User Stories" [level=2] [ref=e85]
+    - generic [ref=e86]: Dashboard
+    - generic [ref=e87] [cursor=pointer]:
+      - generic [ref=e88]: US-1.1
+      - generic [ref=e89]: Vue d'ensemble avec statistiques globales
+    - generic [ref=e90] [cursor=pointer]:
+      - generic [ref=e91]: US-1.2
+      - generic [ref=e92]: Activite recente visible
+    - generic [ref=e93] [cursor=pointer]:
+      - generic [ref=e94]: US-1.3
+      - generic [ref=e95]: Mini-carte interactive sur le dashboard
+    - generic [ref=e96] [cursor=pointer]:
+      - generic [ref=e97]: US-1.4
+      - generic [ref=e98]: Statistiques detaillees
+    - generic [ref=e99]: Chercheurs
+    - generic [ref=e100] [cursor=pointer]:
+      - generic [ref=e101]: US-2.1
+      - generic [ref=e102]: Recherche et filtres sur la liste
+    - generic [ref=e103] [cursor=pointer]:
+      - generic [ref=e104]: US-2.2
+      - generic [ref=e105]: Profil complet du chercheur
+    - generic [ref=e106] [cursor=pointer]:
+      - generic [ref=e107]: US-2.3
+      - generic [ref=e108]: Formulaire d'ajout/modification
+    - generic [ref=e109] [cursor=pointer]:
+      - generic [ref=e110]: US-2.4
+      - generic [ref=e111]: Comparaison cote-a-cote
+    - generic [ref=e112] [cursor=pointer]:
+      - generic [ref=e113]: US-2.5
+      - generic [ref=e114]: Navigation profil vers carte
+    - generic [ref=e115]: Carte Thematique
+    - generic [ref=e116] [cursor=pointer]:
+      - generic [ref=e117]: US-3.1
+      - generic [ref=e118]: Carte interactive avec zoom et filtres
+    - generic [ref=e119] [cursor=pointer]:
+      - generic [ref=e120]: US-3.2
+      - generic [ref=e121]: Clic sur cluster pour voir les membres
+    - generic [ref=e122] [cursor=pointer]:
+      - generic [ref=e123]: US-3.3
+      - generic [ref=e124]: Clic chercheur vers profil
+    - generic [ref=e125] [cursor=pointer]:
+      - generic [ref=e126]: US-3.4
+      - generic [ref=e127]: Explorer les themes en liste
+    - generic [ref=e128]: Connexion & Profil
+    - generic [ref=e129] [cursor=pointer]:
+      - generic [ref=e130]: US-5.1
+      - generic [ref=e131]: Connexion utilisateur
+    - generic [ref=e132] [cursor=pointer]:
+      - generic [ref=e133]: US-5.2
+      - generic [ref=e134]: Edition de profil par le chercheur
+    - generic [ref=e135]: Administration
+    - generic [ref=e136] [cursor=pointer]:
+      - generic [ref=e137]: US-4.1
+      - generic [ref=e138]: Gestion des utilisateurs et roles
+    - generic [ref=e139] [cursor=pointer]:
+      - generic [ref=e140]: US-4.2
+      - generic [ref=e141]: Import en masse (CSV, Google Scholar)
+    - generic [ref=e142] [cursor=pointer]:
+      - generic [ref=e143]: US-4.3
+      - generic [ref=e144]: Configuration (langue, seuils, NLP)
+    - generic [ref=e145] [cursor=pointer]:
+      - generic [ref=e146]: US-4.4
+      - generic [ref=e147]: Journaux d'audit

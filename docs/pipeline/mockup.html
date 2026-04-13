@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process Mining Research Cartography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== LAYOUT ===== */
+html, body { height: 100%; font-family: 'Poppins', sans-serif; font-size: 16px; line-height: 1.5; color: #212529; background: #f8f9fa; }
+#app-wrapper { display: flex; height: 100vh; overflow: hidden; }
+#app-main { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
+#stories-panel { width: 340px; min-width: 340px; background: #faf9f6; border-left: 2px solid #d6d3cc; overflow-y: auto; font-family: 'DM Sans', sans-serif; color: #2d2a26; }
+
+/* ===== APP NAVBAR ===== */
+.app-navbar { background: #0c1b33; color: #fff; display: flex; align-items: center; padding: 0 24px; height: 56px; gap: 32px; flex-shrink: 0; }
+.app-navbar .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.5px; white-space: nowrap; }
+.app-navbar .brand span { color: #0dcaf0; }
+.app-navbar nav { display: flex; gap: 4px; }
+.app-navbar nav button { background: none; border: none; color: #ffffffb3; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease-in-out; }
+.app-navbar nav button:hover, .app-navbar nav button.active { background: rgba(255,255,255,0.12); color: #fff; }
+.app-navbar .lang-toggle { margin-left: auto; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: 'Poppins', sans-serif; font-size: 12px; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+
+/* ===== APP SCREENS ===== */
+.screen { display: none; flex: 1; overflow-y: auto; padding: 28px 32px; background: #fff; }
+.screen.active { display: block; }
+.screen h1 { font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #212529; }
+.screen h2 { font-size: 18px; font-weight: 600; margin-bottom: 14px; color: #212529; }
+.screen h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: #212529; }
+
+/* ===== STAT CARDS ===== */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+.stat-card { background: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; box-shadow: rgba(0,0,0,0.15) 4px 4px 10px -5px; }
+.stat-card .stat-number { font-size: 32px; font-weight: 700; color: #0d6efd; }
+.stat-card .stat-label { font-size: 13px; color: #6c757d; margin-top: 2px; }
+
+/* ===== CARDS / SURFACES ===== */
+.card { background: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; box-shadow: rgba(0,0,0,0.15) 4px 4px 10px -5px; margin-bottom: 16px; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+/* ===== TABLES ===== */
+.app-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.app-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #dee2e6; color: #6c757d; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.app-table td { padding: 10px 12px; border-bottom: 1px solid #dee2e6; }
+.app-table tr:hover { background: #f8f9fa; }
+.app-table tr { cursor: pointer; }
+
+/* ===== BUTTONS ===== */
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 4px; border: none; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease-in-out; }
+.btn-primary { background: #0d6efd; color: #fff; }
+.btn-primary:hover { background: #0a58ca; }
+.btn-secondary { background: #6c757d; color: #fff; }
+.btn-success { background: #198754; color: #fff; }
+.btn-outline { background: transparent; border: 1px solid #dee2e6; color: #212529; }
+.btn-outline:hover { background: #f8f9fa; }
+.btn-sm { padding: 4px 12px; font-size: 13px; }
+.btn-danger { background: #dc3545; color: #fff; }
+
+/* ===== FORMS ===== */
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; color: #212529; }
+.form-control { width: 100%; padding: 8px 12px; border: 1px solid #dee2e6; border-radius: 4px; font-family: 'Poppins', sans-serif; font-size: 14px; }
+.form-control:focus { outline: none; border-color: #0d6efd; box-shadow: 0 0 0 3px rgba(13,110,253,0.15); }
+textarea.form-control { min-height: 80px; resize: vertical; }
+select.form-control { appearance: auto; }
+
+/* ===== TAGS ===== */
+.tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; margin: 2px 4px 2px 0; }
+.tag-blue { background: #e7f1ff; color: #0d6efd; }
+.tag-green { background: #d1e7dd; color: #198754; }
+.tag-cyan { background: #cff4fc; color: #0a7d8c; }
+.tag-orange { background: #fff3cd; color: #997404; }
+.tag-red { background: #f8d7da; color: #842029; }
+
+/* ===== SEARCH BAR ===== */
+.search-bar { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+.search-bar .form-control { max-width: 280px; }
+.search-bar select.form-control { max-width: 180px; }
+
+/* ===== ACTIVITY LIST ===== */
+.activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+.activity-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.activity-text { font-size: 13px; }
+.activity-text strong { font-weight: 600; }
+.activity-time { font-size: 11px; color: #6c757d; }
+
+/* ===== MINI MAP ===== */
+.mini-map-container { border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.2s ease-in-out; position: relative; }
+.mini-map-container:hover { box-shadow: 0 0 0 3px rgba(13,110,253,0.25); }
+.mini-map-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(12,27,51,0.85)); color: #fff; padding: 12px 16px; font-size: 13px; font-weight: 500; }
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+/* ===== PROFILE LAYOUT ===== */
+.profile-layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
+.profile-sidebar { text-align: center; }
+.profile-avatar-lg { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 36px; font-weight: 700; margin: 0 auto 12px; }
+.profile-name { font-size: 20px; font-weight: 600; }
+.profile-lab { font-size: 14px; color: #6c757d; }
+
+/* ===== COMPARISON ===== */
+.comparison-layout { display: grid; grid-template-columns: 1fr 100px 1fr; gap: 16px; align-items: start; }
+.similarity-gauge { text-align: center; padding-top: 40px; }
+.gauge-circle { width: 80px; height: 80px; border-radius: 50%; border: 6px solid #0d6efd; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #0d6efd; margin: 0 auto 8px; }
+
+/* ===== MAP SCREEN ===== */
+.map-container { position: relative; background: #0c1b33; border-radius: 8px; overflow: hidden; height: 500px; }
+.map-filter-panel { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.95); border-radius: 8px; padding: 14px; width: 200px; font-size: 13px; box-shadow: rgba(0,0,0,0.15) 4px 4px 10px -5px; }
+.map-legend { position: absolute; bottom: 12px; right: 12px; background: rgba(255,255,255,0.95); border-radius: 8px; padding: 12px 16px; font-size: 12px; }
+.legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+/* ===== UPLOAD ZONE ===== */
+.upload-zone { border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center; color: #6c757d; margin-bottom: 20px; cursor: pointer; transition: all 0.2s ease-in-out; }
+.upload-zone:hover { border-color: #0d6efd; background: #f0f6ff; }
+
+/* ===== SLIDER ===== */
+.slider-container { display: flex; align-items: center; gap: 12px; }
+.slider-container input[type=range] { flex: 1; accent-color: #0d6efd; }
+.slider-value { font-weight: 600; min-width: 40px; text-align: center; }
+
+/* ===== SETTINGS SECTION ===== */
+.settings-section { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #dee2e6; }
+.radio-group { display: flex; gap: 20px; }
+.radio-group label { display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+
+/* ===== SVG CHARTS ===== */
+.chart-container { margin: 16px 0; }
+
+/* ===== HIGHLIGHT ANIMATION ===== */
+@keyframes pulseHighlight {
+  0%, 100% { outline: 3px solid rgba(13,110,253,0.3); outline-offset: 4px; }
+  50% { outline: 3px solid rgba(13,110,253,0.8); outline-offset: 4px; }
+}
+.highlight-pulse { animation: pulseHighlight 1s ease-in-out 3; border-radius: 8px; }
+
+/* ===== STORIES PANEL ===== */
+#stories-panel h2 { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: #2d2a26; padding: 18px 16px 12px; border-bottom: 1px solid #d6d3cc; }
+.story-section-title { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: #4a7c59; padding: 12px 16px 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+.story-item { padding: 10px 16px; border-bottom: 1px solid #e8e5df; cursor: pointer; transition: background 0.15s; }
+.story-item:hover { background: #f0ede7; }
+.story-item.active { background: #e6f0ea; border-left: 3px solid #4a7c59; }
+.story-id { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: #4a7c59; }
+.story-title { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #2d2a26; margin-top: 2px; }
+.story-detail { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #6b6560; margin-top: 4px; line-height: 1.45; display: none; }
+.story-item.active .story-detail { display: block; }
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb { font-size: 13px; color: #6c757d; margin-bottom: 16px; }
+.breadcrumb a { color: #0d6efd; text-decoration: none; cursor: pointer; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ===== CLUSTER CARD ===== */
+.cluster-card { border-left: 4px solid; padding: 16px; cursor: pointer; }
+.cluster-card .cluster-name { font-weight: 600; font-size: 15px; }
+.cluster-card .cluster-count { font-size: 13px; color: #6c757d; }
+.cluster-members { margin-top: 10px; font-size: 13px; display: none; }
+.cluster-card.expanded .cluster-members { display: block; }
+.cluster-member-link { color: #0d6efd; cursor: pointer; text-decoration: none; display: block; padding: 2px 0; }
+.cluster-member-link:hover { text-decoration: underline; }
+
+/* ===== MISC ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.badge-admin { background: #e7f1ff; color: #0d6efd; }
+.badge-researcher { background: #d1e7dd; color: #198754; }
+.badge-pending { background: #fff3cd; color: #997404; }
+.badge-active { background: #d1e7dd; color: #198754; }
+.text-muted { color: #6c757d; font-size: 13px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mt-12 { margin-top: 12px; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.gap-8 { gap: 8px; }
+
+/* ===== LOGIN BUTTON (navbar) ===== */
+.btn-login { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: #ffffffcc; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease-in-out; margin-left: 8px; }
+.btn-login:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+.btn-login.logged-in { background: #0d6efd; border-color: #0d6efd; color: #fff; font-weight: 600; font-size: 11px; padding: 3px 10px; border-radius: 10px; }
+
+/* ===== NAVBAR USER AREA ===== */
+.navbar-user-area { display: none; align-items: center; gap: 8px; margin-left: 8px; cursor: pointer; position: relative; }
+.navbar-user-area.visible { display: flex; }
+.navbar-avatar-sm { width: 28px; height: 28px; border-radius: 50%; background: #0d6efd; color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.navbar-user-name { color: #fff; font-size: 13px; font-weight: 500; white-space: nowrap; }
+.navbar-admin-badge { background: #ffc107; color: #212529; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 8px; }
+.navbar-user-dropdown { display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: #fff; border: 1px solid #dee2e6; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); min-width: 160px; z-index: 999; overflow: hidden; }
+.navbar-user-dropdown.open { display: block; }
+.navbar-user-dropdown a { display: block; padding: 10px 16px; font-size: 13px; color: #212529; text-decoration: none; cursor: pointer; font-family: 'Poppins', sans-serif; }
+.navbar-user-dropdown a:hover { background: #f8f9fa; }
+.navbar-user-dropdown a.logout-link { color: #dc3545; border-top: 1px solid #dee2e6; }
+
+/* ===== LOGIN STATE VISIBILITY ===== */
+.show-when-logged-in { display: none !important; }
+.show-when-admin { display: none !important; }
+.hide-when-logged-out { }
+body.logged-in .show-when-logged-in { display: flex !important; }
+body.logged-in .hide-when-logged-out-block { display: block !important; }
+body.logged-in.role-admin .show-when-admin { display: flex !important; }
+body.logged-in .btn-login { display: none !important; }
+body:not(.logged-in) .navbar-user-area { display: none !important; }
+
+/* ===== DEMO LOGIN BUTTONS ===== */
+.demo-login-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid #dee2e6; }
+.demo-login-section p { font-size: 12px; color: #6c757d; margin-bottom: 10px; }
+.btn-demo { width: 100%; padding: 10px; font-size: 14px; margin-top: 6px; border-radius: 4px; border: 1px solid #dee2e6; background: #f8f9fa; color: #212529; font-family: 'Poppins', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-demo:hover { background: #e9ecef; border-color: #adb5bd; }
+.btn-demo .demo-avatar { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: 600; flex-shrink: 0; }
+
+/* ===== NAV ADMIN TAB ===== */
+.nav-btn-admin { display: none; }
+body.logged-in.role-admin .nav-btn-admin { display: inline-flex; }
+
+/* ===== LOGIN SCREEN ===== */
+.login-wrapper { display: flex; align-items: center; justify-content: center; min-height: 70vh; }
+.login-card { background: #fff; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px; width: 100%; max-width: 420px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); text-align: center; }
+.login-card h1 { font-size: 22px; font-weight: 600; margin-bottom: 6px; color: #0c1b33; }
+.login-card .login-subtitle { font-size: 14px; color: #6c757d; margin-bottom: 28px; }
+.login-card .form-group { text-align: left; }
+.login-card .btn-primary { width: 100%; padding: 10px; font-size: 15px; margin-top: 8px; }
+.login-note { font-size: 12px; color: #6c757d; margin-top: 20px; font-style: italic; }
+
+/* ===== ADMIN PANEL (post-login) ===== */
+.admin-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn-logout { background: transparent; border: 1px solid #dc3545; color: #dc3545; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; padding: 6px 16px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.btn-logout:hover { background: #dc3545; color: #fff; }
+
+/* ===== APPROVAL BANNER ===== */
+.approval-banner { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #664d03; display: flex; align-items: center; gap: 8px; }
+.approval-banner::before { content: '\26A0'; font-size: 18px; }
+
+/* ===== PROFILE EDIT DISABLED ===== */
+.btn-disabled-lock { opacity: 0.55; cursor: not-allowed; position: relative; }
+.btn-disabled-lock .lock-icon { margin-right: 4px; }
+.edit-note { font-size: 11px; color: #6c757d; font-style: italic; margin-top: 4px; }
+
+/* ===== CROSS-NAV BUTTONS ===== */
+.btn-crossnav { background: transparent; border: 1px solid #0d6efd; color: #0d6efd; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 4px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+.btn-crossnav:hover { background: #0d6efd; color: #fff; }
+</style>
+</head>
+<body>
+<div id="app-wrapper">
+
+<!-- ============ APP MAIN ============ -->
+<div id="app-main">
+
+<!-- NAVBAR -->
+<div class="app-navbar">
+  <div class="brand">Carto<span>PM</span></div>
+  <nav>
+    <button class="nav-btn active" data-section="dashboard" onclick="showScreen('dashboard')">Dashboard</button>
+    <button class="nav-btn" data-section="researchers" onclick="showScreen('researchers')">Chercheurs</button>
+    <button class="nav-btn" data-section="map" onclick="showScreen('map')">Carte</button>
+    <button class="nav-btn" data-section="stats" onclick="showScreen('stats')">Statistiques</button>
+    <button class="nav-btn" data-section="themes" onclick="showScreen('themes')">Themes</button>
+    <button class="nav-btn nav-btn-admin" data-section="admin" onclick="showScreen('admin')">Admin</button>
+  </nav>
+  <button class="btn-login" id="navbar-login-btn" onclick="showScreen('login')">Connexion</button>
+  <div class="navbar-user-area" id="navbar-user-area" onclick="toggleUserDropdown(event)">
+    <div class="navbar-avatar-sm" id="navbar-avatar-sm">MD</div>
+    <span class="navbar-user-name" id="navbar-user-name">Marie Dupont</span>
+    <span class="navbar-admin-badge" id="navbar-admin-badge" style="display:none;">Admin</span>
+    <div class="navbar-user-dropdown" id="navbar-user-dropdown">
+      <a onclick="event.stopPropagation();showScreen('profile');">Mon profil</a>
+      <a class="logout-link" onclick="event.stopPropagation();logout();">Deconnexion</a>
+    </div>
+  </div>
+  <button class="lang-toggle" onclick="toggleLang()">FR / EN</button>
+</div>
+
+<!-- SCREEN: DASHBOARD -->
+<div id="screen-dashboard" class="screen active">
+  <h1>Tableau de Bord</h1>
+  <div class="stat-grid" id="stat-cards">
+    <div class="stat-card"><div class="stat-number">42</div><div class="stat-label">Chercheurs</div></div>
+    <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Themes</div></div>
+    <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">Clusters</div></div>
+    <div class="stat-card"><div class="stat-number">156</div><div class="stat-label">Publications</div></div>
+  </div>
+  <div class="two-col">
+    <div>
+      <h2>Activite Recente</h2>
+      <div class="card" id="recent-activity">
+        <div class="activity-item">
+          <div class="activity-avatar" style="background:#0d6efd;">MD</div>
+          <div><div class="activity-text"><strong>Dr. Marie Dupont</strong> a mis a jour son profil</div><div class="activity-time">Il y a 2 heures</div></div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar" style="background:#198754;">AB</div>
+          <div><div class="activity-text"><strong>Prof. Ahmed Benali</strong> a ajoute 2 publications</div><div class="activity-time">Il y a 5 heures</div></div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar" style="background:#dc3545;">SL</div>
+          <div><div class="activity-text"><strong>Dr. Sophie Laurent</strong> a rejoint la plateforme</div><div class="activity-time">Hier</div></div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar" style="background:#6c757d;">JM</div>
+          <div><div class="activity-text"><strong>Prof. Jean Martin</strong> a publie un nouvel article</div><div class="activity-time">Il y a 2 jours</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Apercu de la Carte Thematique</h2>
+      <div class="mini-map-container" id="mini-map" onclick="showScreen('map')" style="height:280px; background:#0c1b33;">
+        <svg id="mini-map-svg" width="100%" height="100%" viewBox="0 0 400 280"></svg>
+        <div class="mini-map-overlay">Cliquer pour ouvrir la carte complete &rarr;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: DETAILED STATS -->
+<div id="screen-stats" class="screen">
+  <div class="breadcrumb"><a onclick="showScreen('dashboard')">Dashboard</a> &rsaquo; Statistiques detaillees</div>
+  <h1>Statistiques Detaillees</h1>
+  <div class="two-col mb-24">
+    <div class="card">
+      <h3>Distribution des Themes</h3>
+      <div class="chart-container" id="theme-bar-chart">
+        <svg width="100%" height="220" viewBox="0 0 400 220" id="bar-chart-svg"></svg>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Tendances Temporelles</h3>
+      <div class="chart-container" id="trend-line-chart">
+        <svg width="100%" height="220" viewBox="0 0 400 220" id="line-chart-svg"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="card" id="similarity-histogram-card">
+    <h3>Distribution des Scores de Similarite</h3>
+    <div class="chart-container">
+      <svg width="100%" height="180" viewBox="0 0 600 180" id="histogram-svg"></svg>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: RESEARCHER LIST -->
+<div id="screen-researchers" class="screen">
+  <div class="flex-between mb-16">
+    <h1 style="margin-bottom:0">Chercheurs</h1>
+    <button class="btn btn-primary" id="add-profile-btn" onclick="handleAddProfile()">Se connecter pour ajouter votre profil</button>
+  </div>
+  <div class="search-bar" id="researcher-search">
+    <input type="text" class="form-control" placeholder="Rechercher un chercheur...">
+    <button class="btn-crossnav" onclick="showScreen('themes')">Explorer par theme &rarr;</button>
+    <select class="form-control" id="filter-lab">
+      <option value="">Tous les labos</option>
+      <option>LORIA</option>
+      <option>LIP6</option>
+      <option>LAAS-CNRS</option>
+      <option>IRIT</option>
+    </select>
+    <select class="form-control" id="filter-theme">
+      <option value="">Tous les themes</option>
+      <option>Process Discovery</option>
+      <option>Conformance Checking</option>
+      <option>Event Logs</option>
+      <option>Predictive Monitoring</option>
+    </select>
+  </div>
+  <table class="app-table" id="researcher-table">
+    <thead><tr><th>Nom</th><th>Laboratoire</th><th>Themes</th><th>Publications</th><th>Actions</th></tr></thead>
+    <tbody>
+      <tr onclick="showScreen('profile')"><td><strong>Dr. Marie Dupont</strong></td><td>LORIA</td><td><span class="tag tag-blue">Process Discovery</span><span class="tag tag-green">Conformance Checking</span></td><td>12</td><td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();showScreen('profile')">Voir</button></td></tr>
+      <tr onclick="showScreen('profile')"><td><strong>Prof. Ahmed Benali</strong></td><td>LIP6</td><td><span class="tag tag-cyan">Event Logs</span><span class="tag tag-orange">Data Quality</span></td><td>23</td><td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();showScreen('profile')">Voir</button></td></tr>
+      <tr onclick="showScreen('profile')"><td><strong>Dr. Sophie Laurent</strong></td><td>LAAS-CNRS</td><td><span class="tag tag-blue">Process Discovery</span><span class="tag tag-red">Predictive Monitoring</span></td><td>8</td><td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();showScreen('profile')">Voir</button></td></tr>
+      <tr onclick="showScreen('profile')"><td><strong>Prof. Jean Martin</strong></td><td>IRIT</td><td><span class="tag tag-green">Conformance Checking</span><span class="tag tag-cyan">Event Logs</span></td><td>31</td><td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();showScreen('profile')">Voir</button></td></tr>
+      <tr onclick="showScreen('profile')"><td><strong>Dr. Claire Moreau</strong></td><td>LORIA</td><td><span class="tag tag-orange">Data Quality</span><span class="tag tag-red">Predictive Monitoring</span></td><td>15</td><td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();showScreen('profile')">Voir</button></td></tr>
+      <tr onclick="showScreen('profile')"><td><strong>Dr. Lucas Petit</strong></td><td>LIP6</td><td><span class="tag tag-blue">Process Discovery</span><span class="tag tag-orange">Data Quality</span></td><td>9</td><td><button class="btn btn-sm btn-outline" onclick="event.stopPropagation();showScreen('profile')">Voir</button></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SCREEN: PROFILE -->
+<div id="screen-profile" class="screen">
+  <div class="breadcrumb"><a onclick="showScreen('researchers')">Chercheurs</a> &rsaquo; Profil</div>
+  <div class="flex-between mb-16">
+    <div></div>
+    <div style="display:flex;gap:8px;align-items:flex-end;">
+      <button class="btn btn-outline" onclick="showScreen('comparison')">Comparer</button>
+      <div id="profile-edit-area">
+        <!-- Hidden when logged out -->
+        <div id="profile-edit-loggedout" style="display:none;"></div>
+        <!-- Shown when logged in, own profile -->
+        <div id="profile-edit-own" style="display:none;">
+          <button class="btn btn-primary" onclick="showScreen('add-researcher')">Modifier</button>
+        </div>
+        <!-- Shown when logged in, other's profile -->
+        <div id="profile-edit-other" style="display:none;">
+          <button class="btn btn-primary btn-disabled-lock" title="Vous ne pouvez modifier que votre propre profil">&#128274; Modifier</button>
+          <div class="edit-note">Vous ne pouvez modifier que votre propre profil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="profile-layout">
+    <div class="profile-sidebar card">
+      <div class="profile-avatar-lg" style="background:linear-gradient(135deg,#0d6efd,#0dcaf0);">MD</div>
+      <div class="profile-name">Dr. Marie Dupont</div>
+      <div class="profile-lab">LORIA, Nancy</div>
+      <p class="text-muted mt-12" id="profile-bio">Specialiste en fouille de processus et conformance checking. Recherche axee sur l'extraction de modeles a partir de journaux d'evenements dans le domaine de la sante.</p>
+      <div class="mt-12">
+        <button class="btn btn-sm btn-primary" onclick="showScreen('map')" id="profile-map-link">Voir sur la carte</button>
+      </div>
+    </div>
+    <div>
+      <div class="card mb-16" id="profile-keywords">
+        <h3>Mots-cles</h3>
+        <div class="mt-12">
+          <span class="tag tag-blue">Process Discovery</span>
+          <span class="tag tag-green">Conformance Checking</span>
+          <span class="tag tag-cyan">Event Logs</span>
+          <span class="tag tag-orange">Healthcare</span>
+          <span class="tag tag-red">BPMN</span>
+        </div>
+      </div>
+      <div class="card" id="profile-publications">
+        <h3>Publications</h3>
+        <div style="margin-top:12px;">
+          <div style="padding:8px 0; border-bottom:1px solid #f0f0f0;">
+            <strong style="font-size:14px;">Automated Process Discovery in Hospital Information Systems</strong>
+            <div class="text-muted">M. Dupont, A. Benali — BPM 2024</div>
+          </div>
+          <div style="padding:8px 0; border-bottom:1px solid #f0f0f0;">
+            <strong style="font-size:14px;">Conformance Checking for Clinical Pathways</strong>
+            <div class="text-muted">M. Dupont, S. Laurent — CAiSE 2023</div>
+          </div>
+          <div style="padding:8px 0; border-bottom:1px solid #f0f0f0;">
+            <strong style="font-size:14px;">A Survey on Process Mining in Healthcare</strong>
+            <div class="text-muted">M. Dupont — Information Systems 2023</div>
+          </div>
+          <div style="padding:8px 0;">
+            <strong style="font-size:14px;">Event Log Quality Assessment Framework</strong>
+            <div class="text-muted">M. Dupont, J. Martin — ICPM 2022</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: ADD/EDIT RESEARCHER -->
+<div id="screen-add-researcher" class="screen">
+  <div class="breadcrumb"><a onclick="showScreen('researchers')">Chercheurs</a> &rsaquo; Ajouter / Modifier</div>
+  <h1>Ajouter mon Profil</h1>
+  <div class="approval-banner" id="approval-banner">Votre profil sera soumis a validation par un administrateur avant d'etre publie.</div>
+  <div class="card" style="max-width:680px;" id="researcher-form">
+    <div class="form-group">
+      <label>Nom complet</label>
+      <input type="text" class="form-control" placeholder="Dr. Marie Dupont" value="Dr. Marie Dupont">
+    </div>
+    <div class="form-group">
+      <label>Laboratoire</label>
+      <select class="form-control">
+        <option>LORIA</option><option>LIP6</option><option>LAAS-CNRS</option><option>IRIT</option>
+      </select>
+    </div>
+    <div class="form-group" id="form-keywords">
+      <label>Mots-cles</label>
+      <div style="display:flex; flex-wrap:wrap; gap:4px; padding:8px; border:1px solid #dee2e6; border-radius:4px; min-height:42px;">
+        <span class="tag tag-blue">Process Discovery <span style="cursor:pointer;margin-left:4px;">&times;</span></span>
+        <span class="tag tag-green">Conformance Checking <span style="cursor:pointer;margin-left:4px;">&times;</span></span>
+        <input type="text" placeholder="Ajouter un mot-cle..." style="border:none;outline:none;flex:1;min-width:120px;font-family:'Poppins',sans-serif;font-size:13px;">
+      </div>
+    </div>
+    <div class="form-group" id="form-bio">
+      <label>Biographie</label>
+      <textarea class="form-control" placeholder="Decrivez vos axes de recherche...">Specialiste en fouille de processus et conformance checking.</textarea>
+    </div>
+    <div class="form-group" id="form-publications">
+      <label>Publications</label>
+      <div class="card" style="background:#f8f9fa; box-shadow:none; padding:12px; margin-bottom:8px;">
+        <input type="text" class="form-control mb-16" placeholder="Titre" value="Automated Process Discovery in Hospital Information Systems" style="margin-bottom:8px;">
+        <input type="text" class="form-control mb-16" placeholder="Co-auteurs" value="M. Dupont, A. Benali" style="margin-bottom:8px;">
+        <input type="text" class="form-control" placeholder="Conference / Journal, Annee" value="BPM 2024">
+      </div>
+      <button class="btn btn-sm btn-outline">+ Ajouter une publication</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:20px;">
+      <button class="btn btn-primary">Enregistrer</button>
+      <button class="btn btn-outline" onclick="showScreen('researchers')">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: COMPARISON -->
+<div id="screen-comparison" class="screen">
+  <div class="breadcrumb"><a onclick="showScreen('researchers')">Chercheurs</a> &rsaquo; Comparaison</div>
+  <h1>Comparaison de Chercheurs</h1>
+  <div class="comparison-layout" id="comparison-view">
+    <div class="card">
+      <div style="text-align:center;">
+        <div class="profile-avatar-lg" style="background:linear-gradient(135deg,#0d6efd,#0dcaf0);margin:0 auto 8px;">MD</div>
+        <div class="profile-name">Dr. Marie Dupont</div>
+        <div class="profile-lab">LORIA</div>
+      </div>
+      <div class="mt-12">
+        <h3>Themes</h3>
+        <span class="tag tag-blue">Process Discovery</span>
+        <span class="tag tag-green" style="outline:2px solid #0d6efd;outline-offset:1px;">Conformance Checking</span>
+        <span class="tag tag-cyan" style="outline:2px solid #0d6efd;outline-offset:1px;">Event Logs</span>
+        <span class="tag tag-orange">Healthcare</span>
+        <span class="tag tag-red">BPMN</span>
+      </div>
+      <div class="mt-12">
+        <h3>Publications</h3>
+        <div class="text-muted">12 publications</div>
+      </div>
+    </div>
+    <div class="similarity-gauge">
+      <div class="gauge-circle" id="similarity-score">72%</div>
+      <div style="font-size:12px;color:#6c757d;font-weight:600;">SIMILARITE</div>
+      <div class="mt-12" style="font-size:11px;color:#6c757d;">2 themes communs</div>
+    </div>
+    <div class="card">
+      <div style="text-align:center;">
+        <div class="profile-avatar-lg" style="background:linear-gradient(135deg,#198754,#0dcaf0);margin:0 auto 8px;">JM</div>
+        <div class="profile-name">Prof. Jean Martin</div>
+        <div class="profile-lab">IRIT</div>
+      </div>
+      <div class="mt-12">
+        <h3>Themes</h3>
+        <span class="tag tag-green" style="outline:2px solid #0d6efd;outline-offset:1px;">Conformance Checking</span>
+        <span class="tag tag-cyan" style="outline:2px solid #0d6efd;outline-offset:1px;">Event Logs</span>
+        <span class="tag tag-blue">Petri Nets</span>
+        <span class="tag tag-orange">Process Enhancement</span>
+      </div>
+      <div class="mt-12">
+        <h3>Publications</h3>
+        <div class="text-muted">31 publications</div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-12" id="common-themes">
+    <h3>Themes Communs</h3>
+    <div class="mt-12">
+      <span class="tag tag-green">Conformance Checking</span>
+      <span class="tag tag-cyan">Event Logs</span>
+    </div>
+    <p class="text-muted mt-12">Ces deux chercheurs partagent des axes de recherche en conformance checking et analyse de journaux d'evenements, avec un score de similarite textuelle (TF-IDF) de 0.72.</p>
+  </div>
+</div>
+
+<!-- SCREEN: MAP -->
+<div id="screen-map" class="screen" style="padding:16px;">
+  <div class="map-container" id="interactive-map" style="position:relative;">
+    <svg id="map-svg" width="100%" height="100%" viewBox="0 0 800 500"></svg>
+    <div class="map-filter-panel" id="map-filters">
+      <h3 style="margin-bottom:10px;">Filtres</h3>
+      <div class="form-group">
+        <label style="font-size:12px;">Theme</label>
+        <select class="form-control" style="font-size:12px;padding:4px 8px;">
+          <option>Tous</option>
+          <option>Process Discovery</option>
+          <option>Conformance Checking</option>
+          <option>Event Logs</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label style="font-size:12px;">Laboratoire</label>
+        <select class="form-control" style="font-size:12px;padding:4px 8px;">
+          <option>Tous</option>
+          <option>LORIA</option>
+          <option>LIP6</option>
+          <option>LAAS-CNRS</option>
+        </select>
+      </div>
+      <button class="btn btn-sm btn-primary" style="width:100%;font-size:12px;">Appliquer</button>
+    </div>
+    <div class="map-legend" id="map-legend">
+      <div style="font-weight:600;margin-bottom:6px;">Clusters</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#0d6efd;"></div> Process Discovery</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#198754;"></div> Conformance Checking</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#dc3545;"></div> Predictive Monitoring</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ffc107;"></div> Data Quality</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6f42c1;"></div> Process Enhancement</div>
+    </div>
+    <button class="btn-crossnav" onclick="showScreen('themes')" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.95);font-size:12px;padding:6px 12px;border-radius:6px;">Vue en liste &rarr;</button>
+  </div>
+</div>
+
+<!-- SCREEN: EXPLORE THEMES -->
+<div id="screen-themes" class="screen">
+  <div class="flex-between mb-16">
+    <h1 style="margin-bottom:0">Explorer les Themes</h1>
+    <button class="btn-crossnav" onclick="showScreen('map')">Voir sur la carte &rarr;</button>
+  </div>
+  <div class="card-grid" id="theme-clusters">
+    <div class="card cluster-card" style="border-left-color:#0d6efd;" onclick="this.classList.toggle('expanded')">
+      <div class="cluster-name">Process Discovery</div>
+      <div class="cluster-count">14 chercheurs &middot; 3 sous-themes</div>
+      <div class="mt-12"><span class="tag tag-blue">Alpha Miner</span> <span class="tag tag-blue">Heuristic Miner</span> <span class="tag tag-blue">Inductive Miner</span></div>
+      <div class="cluster-members">
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Marie Dupont (LORIA)</div>
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Sophie Laurent (LAAS-CNRS)</div>
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Lucas Petit (LIP6)</div>
+        <div style="color:#6c757d;font-size:12px;margin-top:4px;">+ 11 autres chercheurs</div>
+        <div style="margin-top:6px;"><a class="cluster-member-link" onclick="event.stopPropagation();showScreen('researchers')" style="font-weight:500;">Voir tous les chercheurs &rarr;</a></div>
+      </div>
+    </div>
+    <div class="card cluster-card" style="border-left-color:#198754;" onclick="this.classList.toggle('expanded')">
+      <div class="cluster-name">Conformance Checking</div>
+      <div class="cluster-count">11 chercheurs &middot; 2 sous-themes</div>
+      <div class="mt-12"><span class="tag tag-green">Token Replay</span> <span class="tag tag-green">Alignments</span></div>
+      <div class="cluster-members">
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Marie Dupont (LORIA)</div>
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Prof. Jean Martin (IRIT)</div>
+        <div style="color:#6c757d;font-size:12px;margin-top:4px;">+ 9 autres chercheurs</div>
+        <div style="margin-top:6px;"><a class="cluster-member-link" onclick="event.stopPropagation();showScreen('researchers')" style="font-weight:500;">Voir tous les chercheurs &rarr;</a></div>
+      </div>
+    </div>
+    <div class="card cluster-card" style="border-left-color:#dc3545;" onclick="this.classList.toggle('expanded')">
+      <div class="cluster-name">Predictive Monitoring</div>
+      <div class="cluster-count">8 chercheurs &middot; 2 sous-themes</div>
+      <div class="mt-12"><span class="tag tag-red">Deep Learning</span> <span class="tag tag-red">Remaining Time</span></div>
+      <div class="cluster-members">
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Sophie Laurent (LAAS-CNRS)</div>
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Claire Moreau (LORIA)</div>
+        <div style="color:#6c757d;font-size:12px;margin-top:4px;">+ 6 autres chercheurs</div>
+        <div style="margin-top:6px;"><a class="cluster-member-link" onclick="event.stopPropagation();showScreen('researchers')" style="font-weight:500;">Voir tous les chercheurs &rarr;</a></div>
+      </div>
+    </div>
+    <div class="card cluster-card" style="border-left-color:#ffc107;" onclick="this.classList.toggle('expanded')">
+      <div class="cluster-name">Data Quality</div>
+      <div class="cluster-count">6 chercheurs &middot; 2 sous-themes</div>
+      <div class="mt-12"><span class="tag tag-orange">Noise Filtering</span> <span class="tag tag-orange">Completeness</span></div>
+      <div class="cluster-members">
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Prof. Ahmed Benali (LIP6)</div>
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Dr. Claire Moreau (LORIA)</div>
+        <div style="color:#6c757d;font-size:12px;margin-top:4px;">+ 4 autres chercheurs</div>
+        <div style="margin-top:6px;"><a class="cluster-member-link" onclick="event.stopPropagation();showScreen('researchers')" style="font-weight:500;">Voir tous les chercheurs &rarr;</a></div>
+      </div>
+    </div>
+    <div class="card cluster-card" style="border-left-color:#6f42c1;" onclick="this.classList.toggle('expanded')">
+      <div class="cluster-name">Process Enhancement</div>
+      <div class="cluster-count">5 chercheurs &middot; 2 sous-themes</div>
+      <div class="mt-12"><span class="tag" style="background:#ede7f6;color:#6f42c1;">Repair</span> <span class="tag" style="background:#ede7f6;color:#6f42c1;">Extension</span></div>
+      <div class="cluster-members">
+        <div class="cluster-member-link" onclick="event.stopPropagation();showScreen('profile')">Prof. Jean Martin (IRIT)</div>
+        <div style="color:#6c757d;font-size:12px;margin-top:4px;">+ 4 autres chercheurs</div>
+        <div style="margin-top:6px;"><a class="cluster-member-link" onclick="event.stopPropagation();showScreen('researchers')" style="font-weight:500;">Voir tous les chercheurs &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: LOGIN -->
+<div id="screen-login" class="screen">
+  <div class="login-wrapper">
+    <div id="login-form-container">
+      <div class="login-card">
+        <div style="font-size:32px;margin-bottom:12px;">&#128100;</div>
+        <h1>Connexion</h1>
+        <div class="login-subtitle">Connectez-vous pour gerer votre profil et acceder a vos donnees.</div>
+        <div class="form-group">
+          <label>Adresse email</label>
+          <input type="email" class="form-control" placeholder="votre.email@exemple.fr">
+        </div>
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input type="password" class="form-control" placeholder="••••••••">
+        </div>
+        <button class="btn btn-primary" onclick="loginAs('researcher')">Se connecter</button>
+        <div class="demo-login-section">
+          <p>Comptes de demonstration :</p>
+          <button class="btn-demo" onclick="loginAs('researcher')">
+            <span class="demo-avatar" style="background:linear-gradient(135deg,#0d6efd,#0dcaf0);">MD</span>
+            Demo: Connexion chercheur
+          </button>
+          <button class="btn-demo" onclick="loginAs('admin')">
+            <span class="demo-avatar" style="background:#dc3545;">A</span>
+            Demo: Connexion admin
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Admin panel removed from login screen — now a separate screen -->
+  </div>
+</div>
+
+<!-- SCREEN: ADMIN PANEL (unified) -->
+<div id="screen-admin" class="screen">
+  <h1>Administration</h1>
+  <div style="display:flex;gap:8px;margin-bottom:20px;" id="admin-subnav">
+    <button class="btn btn-sm btn-primary" onclick="showAdminTab('admin-users')">Utilisateurs</button>
+    <button class="btn btn-sm btn-outline" onclick="showAdminTab('admin-import')">Import</button>
+    <button class="btn btn-sm btn-outline" onclick="showAdminTab('admin-settings')">Parametres</button>
+    <button class="btn btn-sm btn-outline" onclick="showAdminTab('admin-logs')">Logs</button>
+    <button class="btn btn-sm btn-outline" onclick="showAdminTab('admin-pending')">Profils en attente</button>
+  </div>
+  <div id="admin-tab-admin-users">
+    <div class="flex-between mb-16">
+      <div></div>
+      <button class="btn btn-primary" id="invite-btn-admin">Inviter un utilisateur</button>
+    </div>
+    <table class="app-table">
+      <thead><tr><th>Nom</th><th>Email</th><th>Role</th><th>Statut</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dr. Marie Dupont</strong></td><td>m.dupont@loria.fr</td><td><span class="badge badge-admin">Admin</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+        <tr><td><strong>Prof. Ahmed Benali</strong></td><td>a.benali@lip6.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+        <tr><td><strong>Dr. Sophie Laurent</strong></td><td>s.laurent@laas.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+        <tr><td><strong>Prof. Jean Martin</strong></td><td>j.martin@irit.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+        <tr><td><strong>Dr. Claire Moreau</strong></td><td>c.moreau@loria.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-pending">En attente</span></td><td><button class="btn btn-sm btn-outline">Modifier</button> <button class="btn btn-sm btn-danger">Revoquer</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="admin-tab-admin-import" style="display:none;">
+    <div class="two-col">
+      <div>
+        <div class="upload-zone">
+          <div style="font-size:36px;margin-bottom:8px;">&#128228;</div>
+          <div style="font-weight:600;">Deposer un fichier CSV ou Excel</div>
+          <div class="text-muted">ou cliquer pour parcourir</div>
+        </div>
+        <div class="card">
+          <h3>Import Google Scholar</h3>
+          <div class="form-group mt-12">
+            <label>URL du profil Google Scholar</label>
+            <div style="display:flex;gap:8px;">
+              <input type="text" class="form-control" placeholder="https://scholar.google.com/citations?user=...">
+              <button class="btn btn-primary">Importer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Apercu des donnees</h3>
+          <table class="app-table mt-12" style="font-size:12px;">
+            <thead><tr><th>Nom</th><th>Labo</th><th>Themes</th></tr></thead>
+            <tbody>
+              <tr><td>Dr. Emile Rousseau</td><td>LIRMM</td><td>Process Mining, NLP</td></tr>
+              <tr><td>Dr. Nadia Hamidi</td><td>LORIA</td><td>Event Logs, IoT</td></tr>
+              <tr><td>Prof. Yves Blanc</td><td>LIG</td><td>Conformance, BPMN</td></tr>
+            </tbody>
+          </table>
+          <div class="mt-12" style="display:flex;gap:8px;">
+            <button class="btn btn-success btn-sm">Importer 3 chercheurs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="admin-tab-admin-settings" style="display:none;">
+    <div style="max-width:600px;">
+      <div class="settings-section">
+        <h2>Langue</h2>
+        <div class="radio-group mt-12">
+          <label><input type="radio" name="lang2" checked> Francais (FR)</label>
+          <label><input type="radio" name="lang2"> English (EN)</label>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h2>Seuil de Similarite</h2>
+        <p class="text-muted mb-16">Score minimum pour considerer deux chercheurs comme proches thematiquement.</p>
+        <div class="slider-container">
+          <span class="text-muted">0.0</span>
+          <input type="range" min="0" max="100" value="60">
+          <span class="text-muted">1.0</span>
+          <span class="slider-value">0.60</span>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h2>Algorithme NLP</h2>
+        <p class="text-muted mb-16">Methode de calcul de similarite textuelle entre les descriptions des chercheurs.</p>
+        <div class="form-group">
+          <select class="form-control" style="max-width:300px;">
+            <option>TF-IDF (Rapide, recommande)</option>
+            <option>Word2Vec (Semantique)</option>
+            <option>BERT (Contextuel, lent)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary">Sauvegarder les parametres</button>
+    </div>
+  </div>
+  <div id="admin-tab-admin-logs" style="display:none;">
+    <div class="search-bar">
+      <input type="date" class="form-control" style="max-width:180px;" value="2026-04-01">
+      <input type="date" class="form-control" style="max-width:180px;" value="2026-04-10">
+      <button class="btn btn-sm btn-primary">Filtrer</button>
+    </div>
+    <table class="app-table">
+      <thead><tr><th>Date/Heure</th><th>Utilisateur</th><th>Action</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>2026-04-10 14:32</td><td>Dr. Marie Dupont</td><td><span class="tag tag-blue">Modification</span></td><td>Profil mis a jour (mots-cles)</td></tr>
+        <tr><td>2026-04-10 11:15</td><td>Prof. Ahmed Benali</td><td><span class="tag tag-green">Ajout</span></td><td>2 nouvelles publications ajoutees</td></tr>
+        <tr><td>2026-04-09 16:45</td><td>Admin</td><td><span class="tag tag-orange">Import</span></td><td>Import CSV : 3 chercheurs ajoutes</td></tr>
+        <tr><td>2026-04-09 09:20</td><td>Dr. Sophie Laurent</td><td><span class="tag tag-green">Inscription</span></td><td>Nouveau compte cree</td></tr>
+        <tr><td>2026-04-08 17:30</td><td>Admin</td><td><span class="tag tag-red">Suppression</span></td><td>Invitation revoquee pour test@example.com</td></tr>
+        <tr><td>2026-04-08 10:00</td><td>Admin</td><td><span class="tag tag-blue">Configuration</span></td><td>Seuil de similarite modifie: 0.50 &rarr; 0.60</td></tr>
+        <tr><td>2026-04-07 14:10</td><td>Prof. Jean Martin</td><td><span class="tag tag-green">Ajout</span></td><td>Nouvelle publication ajoutee</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="admin-tab-admin-pending" style="display:none;">
+    <h2>Profils en attente de validation</h2>
+    <p class="text-muted mb-16">Ces chercheurs ont soumis leur profil et attendent une approbation avant publication.</p>
+    <table class="app-table" id="pending-profiles-table">
+      <thead><tr><th>Nom</th><th>Laboratoire</th><th>Themes</th><th>Date de soumission</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Dr. Emile Rousseau</strong></td>
+          <td>LIRMM</td>
+          <td><span class="tag tag-blue">Process Mining</span><span class="tag tag-cyan">NLP</span></td>
+          <td>2026-04-09</td>
+          <td><button class="btn btn-sm btn-success">Approuver</button> <button class="btn btn-sm btn-danger">Rejeter</button></td>
+        </tr>
+        <tr>
+          <td><strong>Dr. Nadia Hamidi</strong></td>
+          <td>LORIA</td>
+          <td><span class="tag tag-cyan">Event Logs</span><span class="tag tag-orange">IoT</span></td>
+          <td>2026-04-08</td>
+          <td><button class="btn btn-sm btn-success">Approuver</button> <button class="btn btn-sm btn-danger">Rejeter</button></td>
+        </tr>
+        <tr>
+          <td><strong>Prof. Yves Blanc</strong></td>
+          <td>LIG</td>
+          <td><span class="tag tag-green">Conformance</span><span class="tag tag-red">BPMN</span></td>
+          <td>2026-04-07</td>
+          <td><button class="btn btn-sm btn-success">Approuver</button> <button class="btn btn-sm btn-danger">Rejeter</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SCREEN: ADMIN USERS -->
+<div id="screen-admin-users" class="screen">
+  <h1>Gestion des Utilisateurs</h1>
+  <div class="flex-between mb-16">
+    <div style="display:flex;gap:8px;">
+      <button class="nav-btn btn btn-sm btn-primary" onclick="showScreen('admin-users')">Utilisateurs</button>
+      <button class="nav-btn btn btn-sm btn-outline" onclick="showScreen('admin-import')">Import</button>
+      <button class="nav-btn btn btn-sm btn-outline" onclick="showScreen('admin-settings')">Parametres</button>
+      <button class="nav-btn btn btn-sm btn-outline" onclick="showScreen('admin-logs')">Logs</button>
+    </div>
+    <button class="btn btn-primary" id="invite-btn">Inviter un utilisateur</button>
+  </div>
+  <table class="app-table" id="admin-user-table">
+    <thead><tr><th>Nom</th><th>Email</th><th>Role</th><th>Statut</th><th>Actions</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dr. Marie Dupont</strong></td><td>m.dupont@loria.fr</td><td><span class="badge badge-admin">Admin</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+      <tr><td><strong>Prof. Ahmed Benali</strong></td><td>a.benali@lip6.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+      <tr><td><strong>Dr. Sophie Laurent</strong></td><td>s.laurent@laas.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+      <tr><td><strong>Prof. Jean Martin</strong></td><td>j.martin@irit.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-active">Actif</span></td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+      <tr><td><strong>Dr. Claire Moreau</strong></td><td>c.moreau@loria.fr</td><td><span class="badge badge-researcher">Chercheur</span></td><td><span class="badge badge-pending">En attente</span></td><td><button class="btn btn-sm btn-outline">Modifier</button> <button class="btn btn-sm btn-danger">Revoquer</button></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SCREEN: ADMIN IMPORT -->
+<div id="screen-admin-import" class="screen">
+  <h1>Import en Masse</h1>
+  <div style="display:flex;gap:8px;margin-bottom:20px;">
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-users')">Utilisateurs</button>
+    <button class="btn btn-sm btn-primary" onclick="showScreen('admin-import')">Import</button>
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-settings')">Parametres</button>
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-logs')">Logs</button>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <div style="font-size:36px;margin-bottom:8px;">&#128228;</div>
+        <div style="font-weight:600;">Deposer un fichier CSV ou Excel</div>
+        <div class="text-muted">ou cliquer pour parcourir</div>
+      </div>
+      <div class="card" id="scholar-import">
+        <h3>Import Google Scholar</h3>
+        <div class="form-group mt-12">
+          <label>URL du profil Google Scholar</label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" class="form-control" placeholder="https://scholar.google.com/citations?user=...">
+            <button class="btn btn-primary">Importer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" id="import-preview">
+        <h3>Apercu des donnees</h3>
+        <table class="app-table mt-12" style="font-size:12px;">
+          <thead><tr><th>Nom</th><th>Labo</th><th>Themes</th></tr></thead>
+          <tbody>
+            <tr><td>Dr. Emile Rousseau</td><td>LIRMM</td><td>Process Mining, NLP</td></tr>
+            <tr><td>Dr. Nadia Hamidi</td><td>LORIA</td><td>Event Logs, IoT</td></tr>
+            <tr><td>Prof. Yves Blanc</td><td>LIG</td><td>Conformance, BPMN</td></tr>
+          </tbody>
+        </table>
+        <div class="mt-12" style="display:flex;gap:8px;">
+          <button class="btn btn-success btn-sm">Importer 3 chercheurs</button>
+          <button class="btn btn-outline btn-sm" onclick="showScreen('admin-logs')">Voir les logs</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: ADMIN SETTINGS -->
+<div id="screen-admin-settings" class="screen">
+  <h1>Parametres</h1>
+  <div style="display:flex;gap:8px;margin-bottom:20px;">
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-users')">Utilisateurs</button>
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-import')">Import</button>
+    <button class="btn btn-sm btn-primary" onclick="showScreen('admin-settings')">Parametres</button>
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-logs')">Logs</button>
+  </div>
+  <div style="max-width:600px;">
+    <div class="settings-section" id="settings-language">
+      <h2>Langue</h2>
+      <div class="radio-group mt-12">
+        <label><input type="radio" name="lang" checked> Francais (FR)</label>
+        <label><input type="radio" name="lang"> English (EN)</label>
+      </div>
+    </div>
+    <div class="settings-section" id="settings-similarity">
+      <h2>Seuil de Similarite</h2>
+      <p class="text-muted mb-16">Score minimum pour considerer deux chercheurs comme proches thematiquement.</p>
+      <div class="slider-container">
+        <span class="text-muted">0.0</span>
+        <input type="range" min="0" max="100" value="60">
+        <span class="text-muted">1.0</span>
+        <span class="slider-value">0.60</span>
+      </div>
+    </div>
+    <div class="settings-section" id="settings-nlp">
+      <h2>Algorithme NLP</h2>
+      <p class="text-muted mb-16">Methode de calcul de similarite textuelle entre les descriptions des chercheurs.</p>
+      <div class="form-group">
+        <select class="form-control" style="max-width:300px;">
+          <option>TF-IDF (Rapide, recommande)</option>
+          <option>Word2Vec (Semantique)</option>
+          <option>BERT (Contextuel, lent)</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary">Sauvegarder les parametres</button>
+  </div>
+</div>
+
+<!-- SCREEN: ADMIN LOGS -->
+<div id="screen-admin-logs" class="screen">
+  <h1>Historique / Logs</h1>
+  <div style="display:flex;gap:8px;margin-bottom:20px;">
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-users')">Utilisateurs</button>
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-import')">Import</button>
+    <button class="btn btn-sm btn-outline" onclick="showScreen('admin-settings')">Parametres</button>
+    <button class="btn btn-sm btn-primary" onclick="showScreen('admin-logs')">Logs</button>
+  </div>
+  <div class="search-bar" id="log-filters">
+    <input type="date" class="form-control" style="max-width:180px;" value="2026-04-01">
+    <input type="date" class="form-control" style="max-width:180px;" value="2026-04-10">
+    <button class="btn btn-sm btn-primary">Filtrer</button>
+  </div>
+  <table class="app-table" id="log-table">
+    <thead><tr><th>Date/Heure</th><th>Utilisateur</th><th>Action</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>2026-04-10 14:32</td><td>Dr. Marie Dupont</td><td><span class="tag tag-blue">Modification</span></td><td>Profil mis a jour (mots-cles)</td></tr>
+      <tr><td>2026-04-10 11:15</td><td>Prof. Ahmed Benali</td><td><span class="tag tag-green">Ajout</span></td><td>2 nouvelles publications ajoutees</td></tr>
+      <tr><td>2026-04-09 16:45</td><td>Admin</td><td><span class="tag tag-orange">Import</span></td><td>Import CSV : 3 chercheurs ajoutes</td></tr>
+      <tr><td>2026-04-09 09:20</td><td>Dr. Sophie Laurent</td><td><span class="tag tag-green">Inscription</span></td><td>Nouveau compte cree</td></tr>
+      <tr><td>2026-04-08 17:30</td><td>Admin</td><td><span class="tag tag-red">Suppression</span></td><td>Invitation revoquee pour test@example.com</td></tr>
+      <tr><td>2026-04-08 10:00</td><td>Admin</td><td><span class="tag tag-blue">Configuration</span></td><td>Seuil de similarite modifie: 0.50 → 0.60</td></tr>
+      <tr><td>2026-04-07 14:10</td><td>Prof. Jean Martin</td><td><span class="tag tag-green">Ajout</span></td><td>Nouvelle publication ajoutee</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /app-main -->
+
+<!-- ============ STORIES PANEL ============ -->
+<div id="stories-panel">
+  <h2>User Stories</h2>
+
+  <div class="story-section-title">Dashboard</div>
+  <div class="story-item" data-story="us-1.1" onclick="activateStory(this)">
+    <div class="story-id">US-1.1</div>
+    <div class="story-title">Vue d'ensemble avec statistiques globales</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux voir les statistiques globales (nombre de chercheurs, themes, clusters) sur le dashboard principal pour avoir un apercu rapide de la communaute.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Le dashboard affiche 4 cartes: Chercheurs, Themes, Clusters, Publications<br>
+      &bull; Les chiffres se mettent a jour en temps reel<br>
+      &bull; Chaque carte est cliquable et mene a la section correspondante
+    </div>
+  </div>
+  <div class="story-item" data-story="us-1.2" onclick="activateStory(this)">
+    <div class="story-id">US-1.2</div>
+    <div class="story-title">Activite recente visible</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux voir l'activite recente (nouveaux profils, dernieres publications) pour rester informe.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; La liste affiche les 5 dernieres activites avec avatar, nom, action, timestamp<br>
+      &bull; Les activites sont triees par date decroissante<br>
+      &bull; Cliquer sur un nom ouvre le profil du chercheur
+    </div>
+  </div>
+  <div class="story-item" data-story="us-1.3" onclick="activateStory(this)">
+    <div class="story-id">US-1.3</div>
+    <div class="story-title">Mini-carte interactive sur le dashboard</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux cliquer sur l'apercu de la carte pour naviguer vers la carte thematique complete.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; L'apercu affiche un apercu simplifie des clusters<br>
+      &bull; Au survol, l'apercu est mis en evidence avec un curseur pointer<br>
+      &bull; Au clic, navigation vers l'ecran Carte Thematique
+    </div>
+  </div>
+  <div class="story-item" data-story="us-1.4" onclick="activateStory(this)">
+    <div class="story-id">US-1.4</div>
+    <div class="story-title">Statistiques detaillees</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux voir des statistiques detaillees (distribution des themes, metriques de similarite, tendances temporelles).<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Graphique en barres pour la distribution des themes<br>
+      &bull; Graphique en ligne pour les tendances temporelles<br>
+      &bull; Histogramme des scores de similarite<br>
+      &bull; Les graphiques sont interactifs (survol avec tooltip)
+    </div>
+  </div>
+
+  <div class="story-section-title">Chercheurs</div>
+  <div class="story-item" data-story="us-2.1" onclick="activateStory(this)">
+    <div class="story-id">US-2.1</div>
+    <div class="story-title">Recherche et filtres sur la liste</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux rechercher et filtrer la liste des chercheurs par laboratoire, theme ou mot-cle pour trouver des collegues.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Champ de recherche textuelle avec resultats en temps reel<br>
+      &bull; Filtres par laboratoire (dropdown) et par theme (dropdown)<br>
+      &bull; Les filtres se combinent (ET logique)<br>
+      &bull; Nombre de resultats affiche
+    </div>
+  </div>
+  <div class="story-item" data-story="us-2.2" onclick="activateStory(this)">
+    <div class="story-id">US-2.2</div>
+    <div class="story-title">Profil complet du chercheur</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux voir un profil complet (infos, themes, publications, position sur la carte) pour comprendre les travaux d'une personne.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Sidebar gauche avec avatar, nom, labo, bio<br>
+      &bull; Zone droite avec mots-cles en tags et liste de publications<br>
+      &bull; Bouton "Voir sur la carte" mene a la carte<br>
+      &bull; Boutons Modifier et Comparer disponibles
+    </div>
+  </div>
+  <div class="story-item" data-story="us-2.3" onclick="activateStory(this)">
+    <div class="story-id">US-2.3</div>
+    <div class="story-title">Formulaire d'ajout/modification</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux ajouter ou modifier mon profil via un formulaire structure (nom, labo, mots-cles, bio, publications).<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Champs: Nom, Laboratoire (select), Mots-cles (tag input), Bio (textarea)<br>
+      &bull; Publications en blocs repetables (titre, co-auteurs, revue/conference)<br>
+      &bull; Validation des champs obligatoires<br>
+      &bull; Boutons Enregistrer et Annuler<br>
+      &bull; Bandeau jaune indiquant que le profil sera soumis a validation admin<br>
+      &bull; Le profil n'est publie qu'apres approbation par un administrateur
+    </div>
+  </div>
+  <div class="story-item" data-story="us-2.4" onclick="activateStory(this)">
+    <div class="story-id">US-2.4</div>
+    <div class="story-title">Comparaison cote-a-cote</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux comparer deux chercheurs cote a cote avec les themes communs et un score de similarite.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Deux profils en colonnes avec un gauge de similarite au centre<br>
+      &bull; Themes communs mis en evidence visuellement (contour)<br>
+      &bull; Score affiche en pourcentage dans un cercle<br>
+      &bull; Section recapitulative des themes partages
+    </div>
+  </div>
+  <div class="story-item" data-story="us-2.5" onclick="activateStory(this)">
+    <div class="story-id">US-2.5</div>
+    <div class="story-title">Navigation profil vers carte</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux naviguer du profil vers la position de la personne sur la carte thematique.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Bouton "Voir sur la carte" dans le profil<br>
+      &bull; La carte s'ouvre centree sur le chercheur selectionne<br>
+      &bull; Le point du chercheur est mis en evidence sur la carte
+    </div>
+  </div>
+
+  <div class="story-section-title">Carte Thematique</div>
+  <div class="story-item" data-story="us-3.1" onclick="activateStory(this)">
+    <div class="story-id">US-3.1</div>
+    <div class="story-title">Carte interactive avec zoom et filtres</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux voir la carte des clusters interactifs avec zoom, pan et controles de filtrage.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Carte SVG avec clusters colores et points chercheurs<br>
+      &bull; Panneau de filtres flottant (theme, labo)<br>
+      &bull; Legende des couleurs<br>
+      &bull; Zoom et pan fonctionnels
+    </div>
+  </div>
+  <div class="story-item" data-story="us-3.2" onclick="activateStory(this)">
+    <div class="story-id">US-3.2</div>
+    <div class="story-title">Clic sur cluster pour voir les membres</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux cliquer sur un cluster pour voir ses chercheurs et themes.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Au clic sur un cluster, une infobulle liste les membres<br>
+      &bull; Les themes du cluster sont affiches<br>
+      &bull; Chaque nom de chercheur est un lien vers son profil
+    </div>
+  </div>
+  <div class="story-item" data-story="us-3.3" onclick="activateStory(this)">
+    <div class="story-id">US-3.3</div>
+    <div class="story-title">Clic chercheur vers profil</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux cliquer sur un point de chercheur sur la carte pour naviguer vers son profil.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Chaque point de chercheur est cliquable<br>
+      &bull; Au survol, le nom du chercheur s'affiche<br>
+      &bull; Au clic, navigation vers la page de profil
+    </div>
+  </div>
+  <div class="story-item" data-story="us-3.4" onclick="activateStory(this)">
+    <div class="story-id">US-3.4</div>
+    <div class="story-title">Explorer les themes en liste</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur, je peux parcourir les themes en vue liste avec clusters, nombre de chercheurs et liens croises.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Grille de cartes par cluster avec nom, comptage, sous-themes<br>
+      &bull; Cartes extensibles au clic pour voir les membres<br>
+      &bull; Liens bidirectionnels vers les profils et la liste chercheurs<br>
+      &bull; Code couleur coherent avec la carte
+    </div>
+  </div>
+
+  <div class="story-section-title">Connexion &amp; Profil</div>
+  <div class="story-item" data-story="us-5.1" onclick="activateStory(this)">
+    <div class="story-id">US-5.1</div>
+    <div class="story-title">Connexion utilisateur</div>
+    <div class="story-detail">
+      <strong>En tant qu'</strong>utilisateur, je peux me connecter pour acceder a mes fonctionnalites personnelles (edition de profil pour les chercheurs, panneau d'administration pour les admins).<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Formulaire de connexion centre (email + mot de passe)<br>
+      &bull; Boutons de demo pour simuler la connexion en tant que chercheur ou admin<br>
+      &bull; Apres connexion, le bouton "Connexion" est remplace par le nom de l'utilisateur avec avatar<br>
+      &bull; Un onglet "Admin" apparait dans la navbar pour les administrateurs uniquement<br>
+      &bull; Menu deroulant avec "Mon profil" et "Deconnexion"
+    </div>
+  </div>
+  <div class="story-item" data-story="us-5.2" onclick="activateStory(this)">
+    <div class="story-id">US-5.2</div>
+    <div class="story-title">Edition de profil par le chercheur</div>
+    <div class="story-detail">
+      <strong>En tant que</strong> chercheur connecte, je peux modifier mon propre profil et mes modifications seront validees par un administrateur.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Le bouton "Modifier" est actif sur mon propre profil<br>
+      &bull; Le bouton "Modifier" est verrouille sur les profils d'autres chercheurs<br>
+      &bull; Le bouton "Modifier" est cache si non connecte<br>
+      &bull; Le formulaire d'ajout affiche un bandeau d'avertissement jaune<br>
+      &bull; Le profil soumis apparait dans "Profils en attente" cote admin
+    </div>
+  </div>
+
+  <div class="story-section-title">Administration</div>
+  <div class="story-item" data-story="us-4.1" onclick="activateStory(this)">
+    <div class="story-id">US-4.1</div>
+    <div class="story-title">Gestion des utilisateurs et roles</div>
+    <div class="story-detail">
+      <strong>En tant qu'</strong>admin connecte, je peux gerer les utilisateurs (attribuer les roles, approuver les profils en attente).<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Accessible uniquement apres connexion<br>
+      &bull; Tableau avec nom, email, role (badge), statut<br>
+      &bull; Onglet "Profils en attente" avec boutons Approuver/Rejeter<br>
+      &bull; Roles modifiables via dropdown<br>
+      &bull; Possibilite de revoquer un acces
+    </div>
+  </div>
+  <div class="story-item" data-story="us-4.2" onclick="activateStory(this)">
+    <div class="story-id">US-4.2</div>
+    <div class="story-title">Import en masse (CSV, Google Scholar)</div>
+    <div class="story-detail">
+      <strong>En tant qu'</strong>admin connecte, je peux importer des chercheurs en masse via upload CSV/Excel ou integration Google Scholar.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Zone de depot drag &amp; drop pour fichiers CSV/Excel<br>
+      &bull; Champ URL Google Scholar avec bouton Importer<br>
+      &bull; Tableau de previsualisation des donnees importees<br>
+      &bull; Bouton de confirmation avec comptage<br>
+      &bull; Lien vers les logs apres import
+    </div>
+  </div>
+  <div class="story-item" data-story="us-4.3" onclick="activateStory(this)">
+    <div class="story-id">US-4.3</div>
+    <div class="story-title">Configuration (langue, seuils, NLP)</div>
+    <div class="story-detail">
+      <strong>En tant qu'</strong>admin connecte, je peux configurer les parametres de l'app (langue FR/EN, seuils de similarite, choix d'algorithme NLP).<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Section Langue: boutons radio FR/EN<br>
+      &bull; Section Seuil: slider avec valeur affichee (0.0 - 1.0)<br>
+      &bull; Section NLP: dropdown (TF-IDF, Word2Vec, BERT)<br>
+      &bull; Bouton Sauvegarder
+    </div>
+  </div>
+  <div class="story-item" data-story="us-4.4" onclick="activateStory(this)">
+    <div class="story-id">US-4.4</div>
+    <div class="story-title">Journaux d'audit</div>
+    <div class="story-detail">
+      <strong>En tant qu'</strong>admin connecte, je peux voir les logs d'audit indiquant qui a modifie quoi et quand.<br><br>
+      <strong>Criteres d'acceptation :</strong><br>
+      &bull; Tableau avec colonnes: Date/Heure, Utilisateur, Action, Detail<br>
+      &bull; Filtres par plage de dates<br>
+      &bull; Actions codees par couleur (Ajout, Modification, Suppression, Import)<br>
+      &bull; Pagination pour les longs historiques
+    </div>
+  </div>
+</div><!-- /stories-panel -->
+
+</div><!-- /app-wrapper -->
+
+<script>
+// ===== SCREEN NAVIGATION =====
+const screenMap = {
+  'dashboard': 'screen-dashboard',
+  'stats': 'screen-stats',
+  'researchers': 'screen-researchers',
+  'profile': 'screen-profile',
+  'add-researcher': 'screen-add-researcher',
+  'comparison': 'screen-comparison',
+  'map': 'screen-map',
+  'themes': 'screen-themes',
+  'login': 'screen-login',
+  'admin': 'screen-admin',
+  'admin-users': 'screen-admin-users',
+  'admin-import': 'screen-admin-import',
+  'admin-settings': 'screen-admin-settings',
+  'admin-logs': 'screen-admin-logs'
+};
+
+// Map sections to navbar button data-section attributes
+const sectionToNav = {
+  'dashboard': 'dashboard',
+  'stats': 'stats',
+  'researchers': 'researchers',
+  'profile': 'researchers',
+  'add-researcher': 'researchers',
+  'comparison': 'researchers',
+  'map': 'map',
+  'themes': 'themes',
+  'login': 'login',
+  'admin': 'admin',
+  'admin-users': 'admin',
+  'admin-import': 'admin',
+  'admin-settings': 'admin',
+  'admin-logs': 'admin'
+};
+
+function showScreen(name) {
+  // Hide all screens
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  // Show target
+  var target = document.getElementById(screenMap[name]);
+  if (target) target.classList.add('active');
+  // Update navbar
+  var navSection = sectionToNav[name];
+  document.querySelectorAll('.app-navbar nav button').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-section') === navSection);
+  });
+  // Update profile edit button when navigating to profile
+  if (name === 'profile') {
+    updateProfileEditButton();
+  }
+  // Close user dropdown
+  closeUserDropdown();
+}
+
+// ===== LANGUAGE TOGGLE =====
+var currentLang = 'FR';
+function toggleLang() {
+  currentLang = currentLang === 'FR' ? 'EN' : 'FR';
+  document.querySelector('.lang-toggle').textContent = currentLang === 'FR' ? 'FR / EN' : 'EN / FR';
+}
+
+// ===== LOGIN STATE =====
+var loginState = { loggedIn: false, role: null, name: null, initials: null };
+
+function loginAs(role, skipNav) {
+  if (role === 'researcher') {
+    loginState = { loggedIn: true, role: 'researcher', name: 'Marie Dupont', initials: 'MD' };
+  } else if (role === 'admin') {
+    loginState = { loggedIn: true, role: 'admin', name: 'Admin', initials: 'A' };
+  }
+  updateUIForLogin();
+  if (!skipNav) showScreen('dashboard');
+}
+
+function logout(skipNav) {
+  loginState = { loggedIn: false, role: null, name: null, initials: null };
+  updateUIForLogin();
+  closeUserDropdown();
+  if (!skipNav) showScreen('dashboard');
+}
+
+function updateUIForLogin() {
+  var body = document.body;
+  var loginBtn = document.getElementById('navbar-login-btn');
+  var userArea = document.getElementById('navbar-user-area');
+  var avatarSm = document.getElementById('navbar-avatar-sm');
+  var userName = document.getElementById('navbar-user-name');
+  var adminBadge = document.getElementById('navbar-admin-badge');
+  var addProfileBtn = document.getElementById('add-profile-btn');
+
+  if (loginState.loggedIn) {
+    body.classList.add('logged-in');
+    if (loginState.role === 'admin') {
+      body.classList.add('role-admin');
+    } else {
+      body.classList.remove('role-admin');
+    }
+    loginBtn.style.display = 'none';
+    userArea.classList.add('visible');
+    avatarSm.textContent = loginState.initials;
+    if (loginState.role === 'admin') {
+      avatarSm.style.background = '#dc3545';
+    } else {
+      avatarSm.style.background = 'linear-gradient(135deg,#0d6efd,#0dcaf0)';
+    }
+    userName.textContent = loginState.name;
+    adminBadge.style.display = loginState.role === 'admin' ? 'inline-block' : 'none';
+    // Update add profile button
+    if (addProfileBtn) {
+      addProfileBtn.textContent = '+ Ajouter mon profil';
+    }
+  } else {
+    body.classList.remove('logged-in', 'role-admin');
+    loginBtn.style.display = '';
+    userArea.classList.remove('visible');
+    adminBadge.style.display = 'none';
+    // Update add profile button
+    if (addProfileBtn) {
+      addProfileBtn.textContent = 'Se connecter pour ajouter votre profil';
+    }
+  }
+  updateProfileEditButton();
+}
+
+function updateProfileEditButton() {
+  var loggedOutEl = document.getElementById('profile-edit-loggedout');
+  var ownEl = document.getElementById('profile-edit-own');
+  var otherEl = document.getElementById('profile-edit-other');
+  if (!loggedOutEl) return;
+
+  loggedOutEl.style.display = 'none';
+  ownEl.style.display = 'none';
+  otherEl.style.display = 'none';
+
+  if (!loginState.loggedIn) {
+    // Not logged in: hide edit button entirely
+    loggedOutEl.style.display = 'none';
+    ownEl.style.display = 'none';
+    otherEl.style.display = 'none';
+  } else if (loginState.role === 'researcher' || loginState.role === 'admin') {
+    // Currently viewing Marie Dupont's profile
+    // If logged in as Marie Dupont (researcher demo), show active edit
+    if (loginState.name === 'Marie Dupont') {
+      ownEl.style.display = 'block';
+    } else {
+      // Admin or other user viewing someone else's profile
+      otherEl.style.display = 'block';
+    }
+  }
+}
+
+function handleAddProfile() {
+  if (loginState.loggedIn) {
+    showScreen('add-researcher');
+  } else {
+    showScreen('login');
+  }
+}
+
+function toggleUserDropdown(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('navbar-user-dropdown');
+  dd.classList.toggle('open');
+}
+
+function closeUserDropdown() {
+  var dd = document.getElementById('navbar-user-dropdown');
+  if (dd) dd.classList.remove('open');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function() {
+  closeUserDropdown();
+});
+
+function showAdminTab(tabName) {
+  // Hide all admin tabs
+  var tabs = document.querySelectorAll('[id^="admin-tab-"]');
+  tabs.forEach(function(t) { t.style.display = 'none'; });
+  // Show selected tab
+  var target = document.getElementById('admin-tab-' + tabName);
+  if (target) target.style.display = '';
+  // Update sub-nav buttons
+  var btns = document.querySelectorAll('#admin-subnav .btn');
+  btns.forEach(function(b) { b.className = 'btn btn-sm btn-outline'; });
+  var allBtns = document.querySelectorAll('#admin-subnav .btn');
+  allBtns.forEach(function(b) {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf(tabName) !== -1) {
+      b.className = 'btn btn-sm btn-primary';
+    }
+  });
+}
+
+// ===== SLIDER VALUE =====
+(function() {
+  var slider = document.querySelector('input[type=range]');
+  var display = document.querySelector('.slider-value');
+  if (slider && display) {
+    slider.addEventListener('input', function() {
+      display.textContent = (this.value / 100).toFixed(2);
+    });
+  }
+})();
+
+// ===== SVG CHART RENDERING (NO innerHTML on SVG) =====
+function clearAndAppend(svgEl, fragment) {
+  svgEl.textContent = '';
+  svgEl.appendChild(fragment);
+}
+
+function buildSvgElement(tag, attrs, textContent) {
+  var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  if (attrs) {
+    for (var k in attrs) { el.setAttribute(k, attrs[k]); }
+  }
+  if (textContent !== undefined) { el.textContent = textContent; }
+  return el;
+}
+
+// Mini map
+function drawMiniMap() {
+  var svg = document.getElementById('mini-map-svg');
+  if (!svg) return;
+  var frag = document.createDocumentFragment();
+
+  var clusters = [
+    { cx: 100, cy: 100, r: 55, color: 'rgba(13,110,253,0.2)', stroke: '#0d6efd' },
+    { cx: 260, cy: 80, r: 45, color: 'rgba(25,135,84,0.2)', stroke: '#198754' },
+    { cx: 180, cy: 190, r: 50, color: 'rgba(220,53,69,0.2)', stroke: '#dc3545' },
+    { cx: 320, cy: 180, r: 40, color: 'rgba(255,193,7,0.2)', stroke: '#ffc107' },
+    { cx: 80, cy: 220, r: 35, color: 'rgba(111,66,193,0.2)', stroke: '#6f42c1' }
+  ];
+
+  clusters.forEach(function(c) {
+    frag.appendChild(buildSvgElement('circle', { cx: c.cx, cy: c.cy, r: c.r, fill: c.color, stroke: c.stroke, 'stroke-width': '1.5', 'stroke-dasharray': '4,3' }));
+  });
+
+  var dots = [
+    { x: 85, y: 90, c: '#0d6efd' }, { x: 115, y: 105, c: '#0d6efd' }, { x: 95, y: 120, c: '#0d6efd' },
+    { x: 130, y: 85, c: '#0d6efd' }, { x: 75, y: 110, c: '#0d6efd' },
+    { x: 250, y: 70, c: '#198754' }, { x: 275, y: 90, c: '#198754' }, { x: 260, y: 100, c: '#198754' },
+    { x: 240, y: 85, c: '#198754' },
+    { x: 170, y: 180, c: '#dc3545' }, { x: 195, y: 200, c: '#dc3545' }, { x: 185, y: 175, c: '#dc3545' },
+    { x: 310, y: 170, c: '#ffc107' }, { x: 330, y: 190, c: '#ffc107' }, { x: 320, y: 165, c: '#ffc107' },
+    { x: 75, y: 215, c: '#6f42c1' }, { x: 90, y: 230, c: '#6f42c1' }
+  ];
+
+  dots.forEach(function(d) {
+    frag.appendChild(buildSvgElement('circle', { cx: d.x, cy: d.y, r: '4', fill: d.c, opacity: '0.9' }));
+  });
+
+  clearAndAppend(svg, frag);
+}
+
+// Bar chart
+function drawBarChart() {
+  var svg = document.getElementById('bar-chart-svg');
+  if (!svg) return;
+  var frag = document.createDocumentFragment();
+
+  var data = [
+    { label: 'Proc. Disc.', value: 14, color: '#0d6efd' },
+    { label: 'Conf. Check.', value: 11, color: '#198754' },
+    { label: 'Pred. Mon.', value: 8, color: '#dc3545' },
+    { label: 'Data Qual.', value: 6, color: '#ffc107' },
+    { label: 'Proc. Enh.', value: 5, color: '#6f42c1' },
+    { label: 'Event Logs', value: 9, color: '#0dcaf0' },
+    { label: 'BPMN', value: 4, color: '#6c757d' },
+    { label: 'Petri Nets', value: 3, color: '#fd7e14' }
+  ];
+
+  var maxVal = 16;
+  var barW = 36;
+  var gap = 12;
+  var startX = 40;
+  var baseY = 195;
+  var chartH = 160;
+
+  // Y-axis
+  frag.appendChild(buildSvgElement('line', { x1: 35, y1: 25, x2: 35, y2: baseY, stroke: '#dee2e6', 'stroke-width': '1' }));
+  for (var i = 0; i <= 4; i++) {
+    var yy = baseY - (chartH / 4) * i;
+    frag.appendChild(buildSvgElement('line', { x1: 35, y1: yy, x2: 395, y2: yy, stroke: '#f0f0f0', 'stroke-width': '1' }));
+    frag.appendChild(buildSvgElement('text', { x: 28, y: yy + 4, 'text-anchor': 'end', 'font-size': '10', fill: '#6c757d', 'font-family': 'Poppins' }, String(Math.round(maxVal / 4 * i))));
+  }
+
+  data.forEach(function(d, idx) {
+    var x = startX + idx * (barW + gap);
+    var h = (d.value / maxVal) * chartH;
+    var y = baseY - h;
+    frag.appendChild(buildSvgElement('rect', { x: x, y: y, width: barW, height: h, fill: d.color, rx: '3' }));
+    frag.appendChild(buildSvgElement('text', { x: x + barW / 2, y: baseY + 14, 'text-anchor': 'middle', 'font-size': '9', fill: '#6c757d', 'font-family': 'Poppins' }, d.label));
+    frag.appendChild(buildSvgElement('text', { x: x + barW / 2, y: y - 4, 'text-anchor': 'middle', 'font-size': '10', fill: '#212529', 'font-weight': '600', 'font-family': 'Poppins' }, String(d.value)));
+  });
+
+  clearAndAppend(svg, frag);
+}
+
+// Line chart
+function drawLineChart() {
+  var svg = document.getElementById('line-chart-svg');
+  if (!svg) return;
+  var frag = document.createDocumentFragment();
+
+  var years = ['2020', '2021', '2022', '2023', '2024', '2025', '2026'];
+  var pubs =  [12, 18, 22, 28, 35, 42, 38];
+  var researchers = [8, 12, 18, 25, 32, 38, 42];
+
+  var maxVal = 50;
+  var chartW = 340;
+  var chartH = 160;
+  var startX = 45;
+  var baseY = 195;
+
+  // Grid
+  frag.appendChild(buildSvgElement('line', { x1: startX - 5, y1: 25, x2: startX - 5, y2: baseY, stroke: '#dee2e6', 'stroke-width': '1' }));
+  for (var i = 0; i <= 5; i++) {
+    var yy = baseY - (chartH / 5) * i;
+    frag.appendChild(buildSvgElement('line', { x1: startX - 5, y1: yy, x2: startX + chartW, y2: yy, stroke: '#f0f0f0', 'stroke-width': '1' }));
+    frag.appendChild(buildSvgElement('text', { x: startX - 10, y: yy + 4, 'text-anchor': 'end', 'font-size': '10', fill: '#6c757d', 'font-family': 'Poppins' }, String(Math.round(maxVal / 5 * i))));
+  }
+
+  function makePath(data, color) {
+    var points = data.map(function(v, idx) {
+      var x = startX + (idx / (data.length - 1)) * chartW;
+      var y = baseY - (v / maxVal) * chartH;
+      return x + ',' + y;
+    });
+    frag.appendChild(buildSvgElement('polyline', { points: points.join(' '), fill: 'none', stroke: color, 'stroke-width': '2.5', 'stroke-linejoin': 'round' }));
+    data.forEach(function(v, idx) {
+      var x = startX + (idx / (data.length - 1)) * chartW;
+      var y = baseY - (v / maxVal) * chartH;
+      frag.appendChild(buildSvgElement('circle', { cx: x, cy: y, r: '3.5', fill: color }));
+    });
+  }
+
+  makePath(pubs, '#0d6efd');
+  makePath(researchers, '#198754');
+
+  // X labels
+  years.forEach(function(yr, idx) {
+    var x = startX + (idx / (years.length - 1)) * chartW;
+    frag.appendChild(buildSvgElement('text', { x: x, y: baseY + 16, 'text-anchor': 'middle', 'font-size': '10', fill: '#6c757d', 'font-family': 'Poppins' }, yr));
+  });
+
+  // Legend
+  frag.appendChild(buildSvgElement('circle', { cx: 260, cy: 20, r: '5', fill: '#0d6efd' }));
+  frag.appendChild(buildSvgElement('text', { x: 270, y: 24, 'font-size': '11', fill: '#212529', 'font-family': 'Poppins' }, 'Publications'));
+  frag.appendChild(buildSvgElement('circle', { cx: 260, cy: 38, r: '5', fill: '#198754' }));
+  frag.appendChild(buildSvgElement('text', { x: 270, y: 42, 'font-size': '11', fill: '#212529', 'font-family': 'Poppins' }, 'Chercheurs'));
+
+  clearAndAppend(svg, frag);
+}
+
+// Histogram
+function drawHistogram() {
+  var svg = document.getElementById('histogram-svg');
+  if (!svg) return;
+  var frag = document.createDocumentFragment();
+
+  var bins = [
+    { label: '0.0-0.1', value: 5 }, { label: '0.1-0.2', value: 12 },
+    { label: '0.2-0.3', value: 25 }, { label: '0.3-0.4', value: 38 },
+    { label: '0.4-0.5', value: 52 }, { label: '0.5-0.6', value: 45 },
+    { label: '0.6-0.7', value: 35 }, { label: '0.7-0.8', value: 22 },
+    { label: '0.8-0.9', value: 10 }, { label: '0.9-1.0', value: 4 }
+  ];
+
+  var maxVal = 55;
+  var barW = 48;
+  var gap = 4;
+  var startX = 45;
+  var baseY = 155;
+  var chartH = 130;
+
+  frag.appendChild(buildSvgElement('line', { x1: startX - 5, y1: 15, x2: startX - 5, y2: baseY, stroke: '#dee2e6', 'stroke-width': '1' }));
+
+  bins.forEach(function(b, idx) {
+    var x = startX + idx * (barW + gap);
+    var h = (b.value / maxVal) * chartH;
+    var y = baseY - h;
+    var intensity = 0.3 + (b.value / maxVal) * 0.7;
+    frag.appendChild(buildSvgElement('rect', { x: x, y: y, width: barW, height: h, fill: 'rgba(13,110,253,' + intensity + ')', rx: '2' }));
+    frag.appendChild(buildSvgElement('text', { x: x + barW / 2, y: baseY + 14, 'text-anchor': 'middle', 'font-size': '9', fill: '#6c757d', 'font-family': 'Poppins' }, b.label));
+    frag.appendChild(buildSvgElement('text', { x: x + barW / 2, y: y - 3, 'text-anchor': 'middle', 'font-size': '9', fill: '#212529', 'font-weight': '500', 'font-family': 'Poppins' }, String(b.value)));
+  });
+
+  clearAndAppend(svg, frag);
+}
+
+// Full interactive map
+function drawFullMap() {
+  var svg = document.getElementById('map-svg');
+  if (!svg) return;
+  var frag = document.createDocumentFragment();
+
+  // Cluster blobs
+  var clusters = [
+    { cx: 180, cy: 150, rx: 110, ry: 90, color: 'rgba(13,110,253,0.12)', stroke: '#0d6efd' },
+    { cx: 500, cy: 120, rx: 95, ry: 75, color: 'rgba(25,135,84,0.12)', stroke: '#198754' },
+    { cx: 350, cy: 340, rx: 100, ry: 80, color: 'rgba(220,53,69,0.12)', stroke: '#dc3545' },
+    { cx: 620, cy: 300, rx: 80, ry: 65, color: 'rgba(255,193,7,0.12)', stroke: '#ffc107' },
+    { cx: 130, cy: 370, rx: 75, ry: 60, color: 'rgba(111,66,193,0.12)', stroke: '#6f42c1' }
+  ];
+
+  clusters.forEach(function(c) {
+    frag.appendChild(buildSvgElement('ellipse', { cx: c.cx, cy: c.cy, rx: c.rx, ry: c.ry, fill: c.color, stroke: c.stroke, 'stroke-width': '1.5', 'stroke-dasharray': '6,4' }));
+  });
+
+  // Cluster labels
+  var clusterLabels = [
+    { x: 180, y: 70, text: 'Process Discovery', color: '#0d6efd' },
+    { x: 500, y: 55, text: 'Conformance Checking', color: '#198754' },
+    { x: 350, y: 270, text: 'Predictive Monitoring', color: '#dc3545' },
+    { x: 620, y: 245, text: 'Data Quality', color: '#ffc107' },
+    { x: 130, y: 315, text: 'Process Enhancement', color: '#6f42c1' }
+  ];
+
+  clusterLabels.forEach(function(l) {
+    frag.appendChild(buildSvgElement('text', { x: l.x, y: l.y, 'text-anchor': 'middle', 'font-size': '12', 'font-weight': '600', fill: l.color, 'font-family': 'Poppins', opacity: '0.8' }, l.text));
+  });
+
+  // Researcher dots
+  var researchers = [
+    { x: 150, y: 130, name: 'M. Dupont', c: '#0d6efd' },
+    { x: 200, y: 155, name: 'S. Laurent', c: '#0d6efd' },
+    { x: 170, y: 170, name: 'L. Petit', c: '#0d6efd' },
+    { x: 130, y: 145, name: 'R. Faure', c: '#0d6efd' },
+    { x: 220, y: 135, name: 'T. Leroy', c: '#0d6efd' },
+    { x: 190, y: 115, name: 'N. Garcia', c: '#0d6efd' },
+    { x: 480, y: 110, name: 'J. Martin', c: '#198754' },
+    { x: 520, y: 130, name: 'E. Petit', c: '#198754' },
+    { x: 500, y: 145, name: 'V. Roux', c: '#198754' },
+    { x: 460, y: 125, name: 'H. Blanc', c: '#198754' },
+    { x: 330, y: 330, name: 'P. Morel', c: '#dc3545' },
+    { x: 360, y: 350, name: 'I. Roy', c: '#dc3545' },
+    { x: 380, y: 320, name: 'C. Duval', c: '#dc3545' },
+    { x: 610, y: 290, name: 'A. Benali', c: '#ffc107' },
+    { x: 640, y: 310, name: 'C. Moreau', c: '#ffc107' },
+    { x: 625, y: 325, name: 'F. Simon', c: '#ffc107' },
+    { x: 120, y: 365, name: 'D. Lefebvre', c: '#6f42c1' },
+    { x: 145, y: 385, name: 'M. Girard', c: '#6f42c1' }
+  ];
+
+  researchers.forEach(function(r) {
+    var g = buildSvgElement('g', { style: 'cursor:pointer', 'data-name': r.name });
+    g.appendChild(buildSvgElement('circle', { cx: r.x, cy: r.y, r: '7', fill: r.c, stroke: '#fff', 'stroke-width': '2', opacity: '0.9' }));
+    g.appendChild(buildSvgElement('text', { x: r.x, y: r.y - 12, 'text-anchor': 'middle', 'font-size': '10', fill: '#fff', 'font-family': 'Poppins', 'font-weight': '500', opacity: '0' }, r.name));
+    g.addEventListener('mouseenter', function() { this.querySelector('text').setAttribute('opacity', '1'); this.querySelector('circle').setAttribute('r', '9'); });
+    g.addEventListener('mouseleave', function() { this.querySelector('text').setAttribute('opacity', '0'); this.querySelector('circle').setAttribute('r', '7'); });
+    g.addEventListener('click', function() { showScreen('profile'); });
+    frag.appendChild(g);
+  });
+
+  // Connection lines (similarity links)
+  var links = [
+    { x1: 150, y1: 130, x2: 480, y2: 110 },
+    { x1: 200, y1: 155, x2: 330, y2: 330 },
+    { x1: 610, y1: 290, x2: 640, y2: 310 },
+    { x1: 170, y1: 170, x2: 120, y2: 365 }
+  ];
+  links.forEach(function(l) {
+    var line = buildSvgElement('line', { x1: l.x1, y1: l.y1, x2: l.x2, y2: l.y2, stroke: 'rgba(255,255,255,0.15)', 'stroke-width': '1', 'stroke-dasharray': '4,4' });
+    frag.insertBefore(line, frag.firstChild);
+  });
+
+  clearAndAppend(svg, frag);
+}
+
+// ===== STORY AUTOPLAY =====
+var storyHighlights = {
+  'us-1.1': { screen: 'dashboard', selectors: ['#stat-cards'] },
+  'us-1.2': { screen: 'dashboard', selectors: ['#recent-activity'] },
+  'us-1.3': { screen: 'dashboard', selectors: ['#mini-map'] },
+  'us-1.4': { screen: 'stats', selectors: ['#theme-bar-chart', '#trend-line-chart', '#similarity-histogram-card'] },
+  'us-2.1': { screen: 'researchers', selectors: ['#researcher-search', '#researcher-table'] },
+  'us-2.2': { screen: 'profile', selectors: ['#profile-bio', '#profile-keywords', '#profile-publications'] },
+  'us-2.3': { screen: 'add-researcher', selectors: ['#approval-banner', '#researcher-form'] },
+  'us-2.4': { screen: 'comparison', selectors: ['#comparison-view', '#similarity-score', '#common-themes'] },
+  'us-2.5': { screen: 'profile', selectors: ['#profile-map-link'] },
+  'us-3.1': { screen: 'map', selectors: ['#interactive-map', '#map-filters', '#map-legend'] },
+  'us-3.2': { screen: 'map', selectors: ['#interactive-map'] },
+  'us-3.3': { screen: 'map', selectors: ['#interactive-map'] },
+  'us-3.4': { screen: 'themes', selectors: ['#theme-clusters'] },
+  'us-4.1': { screen: 'admin', selectors: ['#admin-tab-admin-users'], onActivate: function() { if (!loginState.loggedIn || loginState.role !== 'admin') loginAs('admin', true); showScreen('admin'); showAdminTab('admin-users'); } },
+  'us-4.2': { screen: 'admin', selectors: ['#admin-tab-admin-import'], onActivate: function() { if (!loginState.loggedIn || loginState.role !== 'admin') loginAs('admin', true); showScreen('admin'); showAdminTab('admin-import'); } },
+  'us-4.3': { screen: 'admin', selectors: ['#admin-tab-admin-settings'], onActivate: function() { if (!loginState.loggedIn || loginState.role !== 'admin') loginAs('admin', true); showScreen('admin'); showAdminTab('admin-settings'); } },
+  'us-4.4': { screen: 'admin', selectors: ['#admin-tab-admin-logs'], onActivate: function() { if (!loginState.loggedIn || loginState.role !== 'admin') loginAs('admin', true); showScreen('admin'); showAdminTab('admin-logs'); } },
+  'us-5.1': { screen: 'login', selectors: ['#login-form-container'], onActivate: function() { if (loginState.loggedIn) { logout(true); showScreen('login'); } } },
+  'us-5.2': { screen: 'profile', selectors: ['#profile-edit-area'], onActivate: function() { if (!loginState.loggedIn) loginAs('researcher', true); showScreen('profile'); } }
+};
+
+function activateStory(el) {
+  // Toggle active state
+  var wasActive = el.classList.contains('active');
+  document.querySelectorAll('.story-item').forEach(function(s) { s.classList.remove('active'); });
+
+  // Clear all highlights
+  document.querySelectorAll('.highlight-pulse').forEach(function(h) { h.classList.remove('highlight-pulse'); });
+
+  if (wasActive) return;
+
+  el.classList.add('active');
+
+  var storyId = el.getAttribute('data-story');
+  var config = storyHighlights[storyId];
+  if (!config) return;
+
+  // Navigate to screen
+  showScreen(config.screen);
+
+  // Run onActivate callback if defined
+  if (config.onActivate) config.onActivate();
+
+  // Highlight elements with slight delay for screen transition
+  setTimeout(function() {
+    config.selectors.forEach(function(sel) {
+      var target = document.querySelector(sel);
+      if (target) {
+        target.classList.add('highlight-pulse');
+        // Scroll into view
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }, 100);
+
+  // Remove highlights after animation
+  setTimeout(function() {
+    document.querySelectorAll('.highlight-pulse').forEach(function(h) { h.classList.remove('highlight-pulse'); });
+  }, 3200);
+}
+
+// ===== INIT =====
+drawMiniMap();
+drawBarChart();
+drawLineChart();
+drawHistogram();
+drawFullMap();
+updateUIForLogin();
+</script>
+</body>
+</html>

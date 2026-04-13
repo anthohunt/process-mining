@@ -1,0 +1,574 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - navigation [ref=e2]:
+      - generic [ref=e3]:
+        - link "ProcessMining" [ref=e4] [cursor=pointer]:
+          - /url: home.html
+        - list [ref=e6]:
+          - listitem [ref=e7]:
+            - link "Introduction" [ref=e8] [cursor=pointer]:
+              - /url: introduction.html
+          - listitem [ref=e9]:
+            - link "Overview" [expanded] [ref=e10] [cursor=pointer]:
+              - /url: overview.html
+          - listitem [ref=e11]:
+            - link "Publications" [ref=e12] [cursor=pointer]:
+              - /url: publications.html
+          - listitem [ref=e13]:
+            - link "Courses" [ref=e14] [cursor=pointer]:
+              - /url: courses.html
+          - listitem [ref=e15]:
+            - link "Event Data" [ref=e16] [cursor=pointer]:
+              - /url: event-data.html
+          - listitem [ref=e17]:
+            - link "Software" [ref=e18] [cursor=pointer]:
+              - /url: software.html
+          - listitem [ref=e19]:
+            - link "Links" [ref=e20] [cursor=pointer]:
+              - /url: links.html
+  - main [ref=e21]:
+    - generic [ref=e25]:
+      - generic [ref=e26]: Process Mining
+      - generic [ref=e27]: The bridge between
+      - generic [ref=e28]: process science
+      - generic [ref=e29]: and data science.
+      - link "LEARN MORE" [ref=e30] [cursor=pointer]:
+        - /url: introduction.html
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]: Process mining is everywhere
+        - generic [ref=e34]: Various sectors of businesses are using Process mining to improve their efficiency and compliance.
+      - img [ref=e36]:
+        - generic [ref=e37]:
+          - generic "USA" [ref=e38] [cursor=pointer]
+          - generic "Mexico" [ref=e39]
+          - generic "Canada" [ref=e40] [cursor=pointer]
+        - generic [ref=e41]:
+          - generic "Belize" [ref=e42]
+          - generic "Costa Rica" [ref=e43]
+          - generic "El Salvador" [ref=e44]
+          - generic "Guatemala" [ref=e45]
+          - generic "Honduras" [ref=e46]
+          - generic "Nicaragua" [ref=e47]
+          - generic "Panama" [ref=e48]
+        - generic [ref=e49]:
+          - generic "Bahamas" [ref=e50]
+          - generic "Cuba" [ref=e51]
+          - generic "Dominican Republic" [ref=e52]
+          - generic "Jamaica" [ref=e53]
+          - generic "Haiti" [ref=e54]
+        - generic [ref=e55]:
+          - generic "Brazil" [ref=e56] [cursor=pointer]
+          - generic "Colombia" [ref=e57]
+          - generic "Ecuador" [ref=e58]
+          - generic "French Guiana" [ref=e59]
+          - generic "Guyana" [ref=e60]
+          - generic "Peru" [ref=e61]
+          - generic "Suriname" [ref=e62]
+          - generic "Trinidad and Tobago" [ref=e63]
+          - generic "Venezuela" [ref=e64]
+        - generic [ref=e65]:
+          - generic "Argentina" [ref=e66]
+          - generic "Bolivia" [ref=e67]
+          - generic "Chile" [ref=e68]
+          - generic "Falkland Islands" [ref=e69]
+          - generic "Paraguay" [ref=e70]
+          - generic "Uruguay" [ref=e71]
+        - generic [ref=e72]:
+          - generic "Austria" [ref=e73] [cursor=pointer]
+          - generic "Cyprus" [ref=e74]
+          - generic "France" [ref=e75] [cursor=pointer]
+          - generic "Greenland" [ref=e76]
+          - generic "Ireland" [ref=e77] [cursor=pointer]
+          - generic "Netherlands" [ref=e78] [cursor=pointer]
+          - generic "Portugal" [ref=e79] [cursor=pointer]
+          - generic "Sweden" [ref=e80] [cursor=pointer]
+          - generic "United Kingdom" [ref=e81] [cursor=pointer]
+          - generic "Belgium" [ref=e82] [cursor=pointer]
+          - generic "Denmark" [ref=e83] [cursor=pointer]
+          - generic "Finland" [ref=e84] [cursor=pointer]
+          - generic "Germany" [ref=e85] [cursor=pointer]
+          - generic "Greece" [ref=e86] [cursor=pointer]
+          - generic "Iceland" [ref=e87]
+          - generic "Italy" [ref=e88] [cursor=pointer]
+          - generic "Luxembourg" [ref=e89]
+          - generic "Norway" [ref=e90]
+          - generic "Spain" [ref=e91] [cursor=pointer]
+          - generic "Svalbard and Jan Mayen" [ref=e92]
+          - generic "Switzerland" [ref=e93] [cursor=pointer]
+        - generic [ref=e94]:
+          - generic "Albania" [ref=e95]
+          - generic "Belarus" [ref=e96]
+          - generic "Bulgaria" [ref=e97]
+          - generic "Czech Republic" [ref=e98] [cursor=pointer]
+          - generic "Hungary" [ref=e99]
+          - generic "Latvia" [ref=e100] [cursor=pointer]
+          - generic "Macedonia" [ref=e101]
+          - generic "Montenegro" [ref=e102]
+          - generic "Romania" [ref=e103]
+          - generic "Serbia" [ref=e104]
+          - generic "Slovenia" [ref=e105]
+          - generic "Urkraine" [ref=e106]
+          - generic "Armenia" [ref=e107]
+          - generic "Bosnia and Herzegovina" [ref=e108]
+          - generic "Croatia" [ref=e109]
+          - generic "Estonia" [ref=e110]
+          - generic "Kosovo" [ref=e111]
+          - generic "Lithuania" [ref=e112]
+          - generic "Moldova" [ref=e113]
+          - generic "Poland" [ref=e114] [cursor=pointer]
+          - generic "Slovakia" [ref=e115] [cursor=pointer]
+          - generic "Turkey" [ref=e116]
+        - generic [ref=e117]:
+          - generic "Iraq" [ref=e118]
+          - generic "Jordan" [ref=e119]
+          - generic "Lebanon" [ref=e120]
+          - generic "Egypt" [ref=e121]
+          - generic "Israel" [ref=e122] [cursor=pointer]
+          - generic "Kuwait" [ref=e123]
+          - generic "Oman" [ref=e124]
+          - generic "West Bank" [ref=e125]
+          - generic "Qatar" [ref=e126]
+          - generic "Saudi Arabia" [ref=e127]
+          - generic "United Arab Emirates" [ref=e128]
+          - generic "Yemen" [ref=e129]
+          - generic "Syrian Arab Republic" [ref=e130]
+          - generic "Iran" [ref=e131]
+        - generic [ref=e132]:
+          - generic "Algeria" [ref=e133]
+          - generic "Benin" [ref=e134]
+          - generic "Burkina Faso" [ref=e135]
+          - generic "Central African Republic" [ref=e136]
+          - generic "Chad" [ref=e137]
+          - generic "Djibouti" [ref=e138]
+          - generic "Eritrea" [ref=e139]
+          - generic "Ethiopia" [ref=e140]
+          - generic "The Gambia" [ref=e141]
+          - generic "Ghana" [ref=e142]
+          - generic "Guinea-Bissau" [ref=e143]
+          - generic "Côte d’Ivoire" [ref=e144]
+          - generic "Liberia" [ref=e145]
+          - generic "Libya" [ref=e146]
+          - generic "Mali" [ref=e147]
+          - generic "Mauritania" [ref=e148]
+          - generic "Morocco" [ref=e149]
+          - generic "Niger" [ref=e150]
+          - generic "Nigeria" [ref=e151]
+          - generic "Senegal" [ref=e152]
+          - generic "Sierra Leone" [ref=e153]
+          - generic "Togo" [ref=e154]
+          - generic "Tunisia" [ref=e155]
+          - generic "South Sudan" [ref=e156]
+          - generic "Sudan" [ref=e157]
+          - generic "Guinea" [ref=e158]
+        - generic [ref=e159]:
+          - generic "Angola" [ref=e160]
+          - generic "Botswana" [ref=e161]
+          - generic "Burundi" [ref=e162]
+          - generic "Cameroon" [ref=e163]
+          - generic "Democratic Republic of the Congo" [ref=e164]
+          - generic "Republic of Congo" [ref=e165]
+          - generic "Equatorial Guinea" [ref=e166]
+          - generic "Gabon" [ref=e167]
+          - generic "Kenya" [ref=e168]
+          - generic "Lesotho" [ref=e169]
+          - generic "Madagascar" [ref=e170]
+          - generic "Malawi" [ref=e171]
+          - generic "Mozambique" [ref=e172]
+          - generic "Namibia" [ref=e173]
+          - generic "Rwanda" [ref=e174]
+          - generic "Somalia" [ref=e175]
+          - generic "South Africa" [ref=e176] [cursor=pointer]
+          - generic "Swaziland" [ref=e177]
+          - generic "Tanzania" [ref=e178]
+          - generic "Uganda" [ref=e179]
+          - generic "Zambia" [ref=e180]
+          - generic "Zimbabwe" [ref=e181]
+        - generic [ref=e182]:
+          - generic "Afghanistan" [ref=e183]
+          - generic "Azerbaijan" [ref=e184]
+          - generic "Bhutan" [ref=e185]
+          - generic "China" [ref=e186] [cursor=pointer]
+          - generic "Japan" [ref=e187] [cursor=pointer]
+          - generic "Kazakhstan" [ref=e188]
+          - generic "Kyrgystan" [ref=e189]
+          - generic "Mongolia" [ref=e190]
+          - generic "Nepal" [ref=e191]
+          - generic "Pakistan" [ref=e192]
+          - generic "Georgia" [ref=e193]
+          - generic "Taiwan" [ref=e194]
+          - generic "Tajikistan" [ref=e195]
+          - generic "Turkmenistan" [ref=e196]
+          - generic "Uzbekistan" [ref=e197]
+          - generic [ref=e198] [cursor=pointer]:
+            - generic "Russia" [ref=e199]
+            - generic "Russia" [ref=e200]
+          - generic "North Korea" [ref=e201]
+          - generic "South Korea" [ref=e202] [cursor=pointer]
+        - generic [ref=e203]:
+          - generic "Australia" [ref=e204] [cursor=pointer]
+          - generic "Bangladesh" [ref=e205]
+          - generic "Brunei Darussalam" [ref=e206]
+          - generic "Fiji" [ref=e207]
+          - generic "Indonesia" [ref=e208] [cursor=pointer]
+          - generic "India" [ref=e209] [cursor=pointer]
+          - generic "Cambodia" [ref=e210]
+          - generic "Lao People's Democratic Republic" [ref=e211]
+          - generic "Sri Lanka" [ref=e212]
+          - generic "Myanmar" [ref=e213]
+          - generic "Malaysia" [ref=e214] [cursor=pointer]
+          - generic "New Caledonia" [ref=e215]
+          - generic "New Zealand" [ref=e216]
+          - generic "Papua New Guinea" [ref=e217]
+          - generic "Philippines" [ref=e218]
+          - generic "Puerto Rico" [ref=e219]
+          - generic "Solomon Islands" [ref=e220]
+          - generic "French Southern and Antarctic Lands" [ref=e221]
+          - generic "Thailand" [ref=e222]
+          - generic "Timor-Leste" [ref=e223]
+          - generic "Vietname" [ref=e224]
+          - generic "Vanuatu" [ref=e225]
+      - generic [ref=e226]:
+        - generic [ref=e228]:
+          - img "Consulting application" [ref=e229]
+          - generic [ref=e230]:
+            - heading "Consulting" [level=6] [ref=e231]
+            - link "Case study" [ref=e233] [cursor=pointer]:
+              - /url: story/consulting.html
+        - generic [ref=e235]:
+          - img "E-commerce application" [ref=e236]
+          - generic [ref=e237]:
+            - heading "E-commerce" [level=6] [ref=e238]
+            - link "Case study" [ref=e240] [cursor=pointer]:
+              - /url: story/ecommerce.html
+        - generic [ref=e242]:
+          - img "Education application" [ref=e243]
+          - generic [ref=e244]:
+            - heading "Education" [level=6] [ref=e245]
+            - link "Case study" [ref=e247] [cursor=pointer]:
+              - /url: story/education.html
+        - generic [ref=e249]:
+          - img "Energy application" [ref=e250]
+          - generic [ref=e251]:
+            - heading "Energy" [level=6] [ref=e252]
+            - link "Case study" [ref=e254] [cursor=pointer]:
+              - /url: story/energy.html
+        - generic [ref=e256]:
+          - img "Entertainment application" [ref=e257]
+          - generic [ref=e258]:
+            - heading "Entertainment" [level=6] [ref=e259]
+            - link "Case study" [ref=e261] [cursor=pointer]:
+              - /url: story/entertainment.html
+        - generic [ref=e263]:
+          - img "Fashion application" [ref=e264]
+          - generic [ref=e265]:
+            - heading "Fashion" [level=6] [ref=e266]
+            - link "Case study" [ref=e268] [cursor=pointer]:
+              - /url: story/fashion.html
+        - generic [ref=e270]:
+          - img "Finance application" [ref=e271]
+          - generic [ref=e272]:
+            - heading "Finance" [level=6] [ref=e273]
+            - link "Case study" [ref=e275] [cursor=pointer]:
+              - /url: story/finance.html
+        - generic [ref=e277]:
+          - img "Food application" [ref=e278]
+          - generic [ref=e279]:
+            - heading "Food" [level=6] [ref=e280]
+            - link "Case study" [ref=e282] [cursor=pointer]:
+              - /url: story/food.html
+        - generic [ref=e284]:
+          - img "Government application" [ref=e285]
+          - generic [ref=e286]:
+            - heading "Government" [level=6] [ref=e287]
+            - link "Case study" [ref=e289] [cursor=pointer]:
+              - /url: story/gov.html
+        - generic [ref=e291]:
+          - img "Health application" [ref=e292]
+          - generic [ref=e293]:
+            - heading "Healthcare" [level=6] [ref=e294]
+            - link "Case study" [ref=e296] [cursor=pointer]:
+              - /url: story/healthcare.html
+        - generic [ref=e298]:
+          - img "Insurance application" [ref=e299]
+          - generic [ref=e300]:
+            - heading "Insurance" [level=6] [ref=e301]
+            - link "Case study" [ref=e303] [cursor=pointer]:
+              - /url: story/insurance.html
+        - generic [ref=e305]:
+          - img "IT application" [ref=e306]
+          - generic [ref=e307]:
+            - heading "IT systems" [level=6] [ref=e308]
+            - link "Case study" [ref=e310] [cursor=pointer]:
+              - /url: story/it.html
+        - generic [ref=e312]:
+          - img "Production application" [ref=e313]
+          - generic [ref=e314]:
+            - heading "Production" [level=6] [ref=e315]
+            - link "Case study" [ref=e317] [cursor=pointer]:
+              - /url: story/production.html
+        - generic [ref=e319]:
+          - img "Sport application" [ref=e320]
+          - generic [ref=e321]:
+            - heading "Sport" [level=6] [ref=e322]
+            - link "Case study" [ref=e324] [cursor=pointer]:
+              - /url: story/sport.html
+        - generic [ref=e326]:
+          - img "Telecom application" [ref=e327]
+          - generic [ref=e328]:
+            - heading "Telecom" [level=6] [ref=e329]
+            - link "Case study" [ref=e331] [cursor=pointer]:
+              - /url: story/telecom.html
+        - generic [ref=e333]:
+          - img "Transportation application" [ref=e334]
+          - generic [ref=e335]:
+            - heading "Transportation" [level=6] [ref=e336]
+            - link "Case study" [ref=e338] [cursor=pointer]:
+              - /url: story/transport.html
+    - generic [ref=e339]:
+      - generic [ref=e340]: Turning data into insights and actions
+      - generic [ref=e341]:
+        - generic [ref=e344]:
+          - heading "Process Discovery" [level=2] [ref=e345]
+          - paragraph [ref=e346]: What is the process that people follow?
+          - link "SEE MORE" [ref=e348] [cursor=pointer]:
+            - /url: process-discovery.html
+        - generic [ref=e351]:
+          - heading "Conformance Checking" [level=2] [ref=e352]
+          - paragraph [ref=e353]: Do people really follow the expected process?
+          - link "SEE MORE" [ref=e355] [cursor=pointer]:
+            - /url: conformance.html
+        - generic [ref=e358]:
+          - heading "Performance Analysis" [level=2] [ref=e359]
+          - paragraph [ref=e360]: Is there any bottleneck in my process?
+          - link "SEE MORE" [ref=e362] [cursor=pointer]:
+            - /url: performance.html
+    - generic [ref=e363]:
+      - generic [ref=e364]: Software
+      - generic [ref=e365]: Today, there are over 50 commercial process-mining vendors and thousands of organizations successfully applying process mining.
+      - link "SEE MORE" [ref=e366] [cursor=pointer]:
+        - /url: software.html
+      - generic [ref=e367]:
+        - link "Abbyy Timeline" [ref=e369] [cursor=pointer]:
+          - /url: https://www.abbyy.com/timeline/
+          - img "Abbyy Timeline" [ref=e370]
+        - link "Appian" [ref=e372] [cursor=pointer]:
+          - /url: https://appian.com/products/platform/overview
+          - img "Appian" [ref=e373]
+        - link "Apromore" [ref=e375] [cursor=pointer]:
+          - /url: https://apromore.com/
+          - img "Apromore" [ref=e376]
+        - link "Aris Process Mining" [ref=e378] [cursor=pointer]:
+          - /url: https://aris.com/process-mining/
+          - img "Aris Process Mining" [ref=e379]
+        - link "Arkturus" [ref=e381] [cursor=pointer]:
+          - /url: https://www.arkturus.co/business-xray
+          - img "Arkturus" [ref=e382]
+        - link "Automation Anywhere" [ref=e384] [cursor=pointer]:
+          - /url: https://www.automationanywhere.com/products/process-discovery
+          - img "Automation Anywhere" [ref=e385]
+        - link "BefhaLab" [ref=e387] [cursor=pointer]:
+          - /url: https://BehfaLab.com/en/
+          - img "BefhaLab" [ref=e388]
+        - link "BupaR" [ref=e390] [cursor=pointer]:
+          - /url: https://www.bupar.net/
+          - img "BupaR" [ref=e391]
+        - link "BusinessOptix" [ref=e393] [cursor=pointer]:
+          - /url: https://www.businessoptix.com/software/process-mining
+          - img "BusinessOptix" [ref=e394]
+        - link "Celonis" [ref=e396] [cursor=pointer]:
+          - /url: https://www.celonis.com/
+          - img "Celonis" [ref=e397]
+        - link "Cyclone" [ref=e399] [cursor=pointer]:
+          - /url: https://en.cyclone-robotics.com/
+          - img "Cyclone" [ref=e400]
+        - link "Datricks" [ref=e402] [cursor=pointer]:
+          - /url: https://datricks.com/
+          - img "Datricks" [ref=e403]
+        - link "DCR Solutions" [ref=e405] [cursor=pointer]:
+          - /url: https://dcrsolutions.net/
+          - img "DCR Solutions" [ref=e406]
+        - link "Decisions" [ref=e408] [cursor=pointer]:
+          - /url: https://decisions.com/no-code-platform/process-mining/
+          - img "Decisions" [ref=e409]
+        - link "Fluxicon" [ref=e411] [cursor=pointer]:
+          - /url: https://fluxicon.com/disco/
+          - img "Fluxicon" [ref=e412]
+        - link "Hyland" [ref=e414] [cursor=pointer]:
+          - /url: https://www.hyland.com/en/products/onbase
+          - img "Hyland" [ref=e415]
+        - link "IBM Process Mining" [ref=e417] [cursor=pointer]:
+          - /url: https://www.ibm.com/products/process-mining
+          - img "IBM Process Mining" [ref=e418]
+        - link "iGrafx" [ref=e420] [cursor=pointer]:
+          - /url: https://www.igrafx.com/products/process-mining/
+          - img "iGrafx" [ref=e421]
+        - link "Infoventure" [ref=e423] [cursor=pointer]:
+          - /url: https://infoventure.dk/process-suite/
+          - img "Infoventure" [ref=e424]
+        - link "Inverbis" [ref=e426] [cursor=pointer]:
+          - /url: https://web.inverbisanalytics.com/
+          - img "Inverbis" [ref=e427]
+        - link "Konekti" [ref=e429] [cursor=pointer]:
+          - /url: https://getkonekti.io/
+          - img "Konekti" [ref=e430]
+        - link "Mavim" [ref=e432] [cursor=pointer]:
+          - /url: https://www.mavim.com/ProcessVerse
+          - img "Mavim" [ref=e433]
+        - link "Mehrwerk" [ref=e435] [cursor=pointer]:
+          - /url: https://mpmx.com/
+          - img "Mehrwerk" [ref=e436]
+        - link "microsoft" [ref=e438] [cursor=pointer]:
+          - /url: https://www.microsoft.com/en-us/power-platform/products/power-automate#tabs-pill-bar-ocb9d4_tab4
+          - img "microsoft" [ref=e439]
+        - link "mindzie" [ref=e441] [cursor=pointer]:
+          - /url: https://mindzie.com/
+          - img "mindzie" [ref=e442]
+        - link "nintex" [ref=e444] [cursor=pointer]:
+          - /url: https://www.nintex.com/
+          - img "nintex" [ref=e445]
+        - link "ninetex" [ref=e447] [cursor=pointer]:
+          - /url: https://noreja.com/
+          - img "ninetex" [ref=e448]
+        - link "oniq" [ref=e450] [cursor=pointer]:
+          - /url: https://www.oniq.com/
+          - img "oniq" [ref=e451]
+        - link "Pega" [ref=e453] [cursor=pointer]:
+          - /url: https://www.pega.com/products/platform/process-mining
+          - img "Pega" [ref=e454]
+        - link "Perceptif" [ref=e456] [cursor=pointer]:
+          - /url: https://www.perceptif.ai/
+          - img "Perceptif" [ref=e457]
+        - link "PM4Py" [ref=e459] [cursor=pointer]:
+          - /url: https://processintelligence.solutions/pm4py
+          - img "PM4Py" [ref=e460]
+        - link "process.science" [ref=e462] [cursor=pointer]:
+          - /url: https://www.process-science.com/
+          - img "process.science" [ref=e463]
+        - link "Processifier" [ref=e465] [cursor=pointer]:
+          - /url: https://www.processifier.com/
+          - img "Processifier" [ref=e466]
+        - link "Processmaker" [ref=e468] [cursor=pointer]:
+          - /url: https://www.processmaker.com/
+          - img "Processmaker" [ref=e469]
+        - link "ProcessMind" [ref=e471] [cursor=pointer]:
+          - /url: https://processmind.com/
+          - img "ProcessMind" [ref=e472]
+        - link "ProM (TU/e)" [ref=e474] [cursor=pointer]:
+          - /url: https://promtools.org/
+          - img "ProM (TU/e)" [ref=e475]
+        - link "Promease" [ref=e477] [cursor=pointer]:
+          - /url: https://promease.ru/en/promease
+          - img "Promease" [ref=e478]
+        - link "Proxverse" [ref=e480] [cursor=pointer]:
+          - /url: https://www.proxverse.com/
+          - img "Proxverse" [ref=e481]
+        - link "Puzzledata" [ref=e483] [cursor=pointer]:
+          - /url: https://www.puzzledata.com/
+          - img "Puzzledata" [ref=e484]
+        - link "QAD/Livejourney" [ref=e486] [cursor=pointer]:
+          - /url: https://livejourney.com/process-mining/
+          - img "QAD/Livejourney" [ref=e487]
+        - link "QPR" [ref=e489] [cursor=pointer]:
+          - /url: https://www.qpr.com/products/qpr-processanalyzer
+          - img "QPR" [ref=e490]
+        - link "Signavio" [ref=e492] [cursor=pointer]:
+          - /url: https://www.signavio.com/
+          - img "Signavio" [ref=e493]
+        - link "ServiceNow" [ref=e495] [cursor=pointer]:
+          - /url: https://www.servicenow.com/products/process-mining.html
+          - img "ServiceNow" [ref=e496]
+        - link "skan" [ref=e498] [cursor=pointer]:
+          - /url: https://www.skan.ai/
+          - img "skan" [ref=e499]
+        - generic [ref=e500]:
+          - link "soroco":
+            - /url: https://soroco.com/
+            - img "soroco"
+        - generic [ref=e501]:
+          - link "stereologic":
+            - /url: https://www.stereologic.com/process-mining.html
+            - img "stereologic"
+        - generic [ref=e502]:
+          - link "Tungsten Automation":
+            - /url: https://www.tungstenautomation.com/products/insight
+            - img "Tungsten Automation"
+        - generic [ref=e503]:
+          - link "UI Path":
+            - /url: https://www.uipath.com/product/process-mining
+            - img "UI Path"
+        - generic [ref=e504]:
+          - link "ultimatesuite":
+            - /url: https://www.ultimatesuite.com/
+            - img "ultimatesuite"
+        - generic [ref=e505]:
+          - link "upflux":
+            - /url: https://upflux.net/
+            - img "upflux"
+        - generic [ref=e506]:
+          - link "worksoft":
+            - /url: https://www.worksoft.com/
+            - img "worksoft"
+    - generic [ref=e508]:
+      - generic [ref=e509]:
+        - button "Slide 1" [ref=e510] [cursor=pointer]
+        - button "Slide 2" [ref=e511] [cursor=pointer]
+        - button "Slide 3" [ref=e512] [cursor=pointer]
+        - button "Slide 4" [ref=e513] [cursor=pointer]
+        - button "Slide 5" [ref=e514] [cursor=pointer]
+      - generic [ref=e515]:
+        - generic:
+          - img "Business Process Management Conference 2022"
+          - generic [ref=e516]:
+            - heading "Business Process Management Conference 2022" [level=5] [ref=e517]
+            - paragraph [ref=e518]: BPM 2022 is the 20th conference in a series that provides the most prestigious forum for researchers and practitioners in the field of Business Process Management. It will be held in Münster, Germany, from Sept. 11 to 16, 2022!
+            - link "SEE MORE" [ref=e519] [cursor=pointer]:
+              - /url: https://bpm2022.uni-muenster.de/
+      - button "Previous" [ref=e520] [cursor=pointer]:
+        - generic [ref=e522]: Previous
+      - button "Next" [ref=e523] [cursor=pointer]:
+        - generic [ref=e525]: Next
+    - generic [ref=e526]:
+      - generic [ref=e527]:
+        - generic [ref=e528]: Adoption in the industry
+        - generic [ref=e529]: Process Mining helps organisations to increase operational process efficiency to achieve not only economic but also ecological benefits.
+      - generic [ref=e530]:
+        - generic [ref=e533]:
+          - generic [ref=e534]: Uber
+          - heading "$20M efficiency gains through handling time improvements" [level=2] [ref=e535]:
+            - strong [ref=e536]: $20M
+            - text: efficiency gains through handling time improvements
+        - generic [ref=e539]:
+          - generic [ref=e540]: Schlumberger
+          - heading "$40M saved in SAP migration costs" [level=2] [ref=e541]:
+            - strong [ref=e542]: $40M
+            - text: saved in SAP migration costs
+        - generic [ref=e545]:
+          - generic [ref=e546]: COMCAST
+          - heading "$85M improvement in asset utilization captured" [level=2] [ref=e547]:
+            - strong [ref=e548]: $85M
+            - text: improvement in asset utilization captured
+    - generic [ref=e550]:
+      - generic [ref=e551]: Get started with Process Mining
+      - generic [ref=e552]: "Follow the Coursera MOOC \"Process Mining: Data science in Action\" to learn more about process mining techniques."
+      - link "JOIN NOW" [ref=e554] [cursor=pointer]:
+        - /url: https://www.coursera.org/learn/process-mining
+  - contentinfo [ref=e555]:
+    - generic [ref=e556]:
+      - link "© Process and Data Science Group - RWTH Aachen University" [ref=e558] [cursor=pointer]:
+        - /url: https://www.pads.rwth-aachen.de/go/id/pnbx/?lidx=1
+        - generic [ref=e559]: © Process and Data Science Group - RWTH Aachen University
+      - link "Introduction" [ref=e561] [cursor=pointer]:
+        - /url: introduction.html
+      - link "Overview" [ref=e563] [cursor=pointer]:
+        - /url: overview.html
+      - link "Publications" [ref=e565] [cursor=pointer]:
+        - /url: publications.html
+      - link "Courses" [ref=e567] [cursor=pointer]:
+        - /url: courses.html
+      - link "Event Data" [ref=e569] [cursor=pointer]:
+        - /url: event-data.html
+      - link "Software" [ref=e571] [cursor=pointer]:
+        - /url: software.html
+      - link "Links" [ref=e573] [cursor=pointer]:
+        - /url: links.html

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture Map — Process Mining Research Cartography</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #faf9f6; font-family: 'DM Sans', sans-serif; overflow: hidden; height: 100vh; }
+
+  #header {
+    background: #2d2a26; color: #faf9f6; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Space Grotesk', sans-serif; z-index: 10; position: relative;
+  }
+  #header h1 { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+  #header .subtitle { font-size: 13px; color: #a09d98; font-family: 'DM Sans', sans-serif; }
+
+  #canvas-container {
+    width: 100%; height: calc(100vh - 52px); position: relative; overflow: hidden; cursor: grab;
+  }
+  #canvas-container.grabbing { cursor: grabbing; }
+
+  #canvas {
+    position: absolute; top: 0; left: 0; transform-origin: 0 0;
+  }
+
+  svg text { font-family: 'DM Sans', sans-serif; }
+
+  #controls {
+    position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column;
+    gap: 6px; z-index: 20;
+  }
+  #controls button {
+    width: 38px; height: 38px; border: 2px solid #2d2a26; border-radius: 8px;
+    background: #fff; color: #2d2a26; font-size: 18px; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; transition: all 0.15s;
+  }
+  #controls button:hover { background: #2d2a26; color: #faf9f6; }
+
+  #legend {
+    position: fixed; bottom: 24px; left: 24px; background: #fff; border: 2px solid #e0ddd8;
+    border-radius: 10px; padding: 14px 18px; z-index: 20; font-size: 12px;
+  }
+  #legend h3 {
+    font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600;
+    color: #2d2a26; margin-bottom: 8px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .legend-line { width: 28px; height: 0; border-top: 2px solid; }
+  .legend-line.nav { border-color: #6b8f71; }
+  .legend-line.data { border-color: #c4956a; border-top-style: dashed; }
+  .legend-dot { width: 14px; height: 14px; border-radius: 4px; border: 2px solid; }
+  .legend-dot.section { background: #4a7c59; border-color: #4a7c59; }
+  .legend-dot.screen { background: #fff; border-color: #2d2a26; }
+  .legend-dot.hub { background: #2d2a26; border-color: #2d2a26; }
+
+  #loading {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-family: 'Space Grotesk', sans-serif; font-size: 16px; color: #2d2a26;
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div>
+    <h1>Architecture Map</h1>
+    <div class="subtitle">Process Mining Research Cartography — Step 1</div>
+  </div>
+  <div class="subtitle">4 sections &middot; 11 screens</div>
+</div>
+
+<div id="canvas-container">
+  <div id="canvas"></div>
+</div>
+
+<div id="controls">
+  <button id="zoom-in" title="Zoom in">+</button>
+  <button id="zoom-out" title="Zoom out">&minus;</button>
+  <button id="zoom-fit" title="Fit to screen">&#8644;</button>
+</div>
+
+<div id="legend">
+  <h3>Legende</h3>
+  <div class="legend-item"><div class="legend-dot hub"></div> Navigation Hub</div>
+  <div class="legend-item"><div class="legend-dot section"></div> Section</div>
+  <div class="legend-item"><div class="legend-dot screen"></div> Ecran</div>
+  <div class="legend-item"><div class="legend-line nav"></div> Navigation</div>
+  <div class="legend-item"><div class="legend-line data"></div> Lien croise</div>
+</div>
+
+<div id="loading">Loading ELK layout engine...</div>
+
+<script src="https://cdn.jsdelivr.net/npm/elkjs@0.9.3/lib/elk.bundled.js"></script>
+<script>
+const COLORS = {
+  bg: '#faf9f6', section: '#4a7c59', hub: '#2d2a26',
+  screenBorder: '#2d2a26', screenBg: '#ffffff',
+  navArrow: '#6b8f71', crossArrow: '#c4956a',
+  textDark: '#2d2a26', textLight: '#faf9f6',
+  sectionBg: '#eef3ef'
+};
+
+// Screen metadata: id -> { title, desc }
+const SCREEN_META = {
+  'dash-main':     { title: 'Dashboard principal',     desc: 'Stats globales, activite recente, apercu carte' },
+  'dash-stats':    { title: 'Statistiques detaillees',  desc: 'Repartition par theme, metriques similarite, tendances' },
+  'ch-list':       { title: 'Liste chercheurs',         desc: 'Recherche, filtres par labo/theme/mot-cle' },
+  'ch-profile':    { title: 'Fiche profil',             desc: 'Infos, thematiques, publications, position sur carte' },
+  'ch-form':       { title: 'Ajout / Edition',          desc: 'Formulaire structure: nom, labo, mots-cles, bio' },
+  'ch-compare':    { title: 'Comparaison',              desc: 'Cote-a-cote: themes communs, score similarite' },
+  'carte-map':     { title: 'Carte interactive',        desc: 'Clusters thematiques, zoom, filtres, clic -> profil' },
+  'carte-explore': { title: 'Explorer les themes',      desc: 'Liste des clusters, chercheurs par groupe, liens' },
+  'admin-users':   { title: 'Gestion utilisateurs',     desc: 'Liste, roles (admin/chercheur), invitations' },
+  'admin-import':  { title: 'Import en masse',          desc: 'CSV/Excel, import Google Scholar, validation' },
+  'admin-settings':{ title: 'Parametres',               desc: 'Langue FR/EN, seuils similarite, algorithme NLP' },
+  'admin-logs':    { title: 'Logs / Historique',         desc: 'Qui a modifie quoi, imports effectues, audit trail' }
+};
+
+const SW = 190; // screen width
+const SH = 62;  // screen height
+
+const graph = {
+  id: 'root',
+  layoutOptions: {
+    'elk.algorithm': 'layered',
+    'elk.direction': 'DOWN',
+    'elk.edgeRouting': 'ORTHOGONAL',
+    'elk.spacing.nodeNode': '60',
+    'elk.layered.spacing.nodeNodeBetweenLayers': '70',
+    'elk.layered.spacing.edgeNodeBetweenLayers': '30',
+    'elk.spacing.componentComponent': '60',
+    'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP'
+  },
+  children: [
+    { id: 'home', width: 220, height: 50, labels: [{ text: "Page d'accueil" }], nodeType: 'home' },
+    { id: 'navbar', width: 240, height: 50, labels: [{ text: 'Barre de Navigation' }], nodeType: 'hub' },
+
+    // Dashboard
+    {
+      id: 'section-dashboard',
+      labels: [{ text: 'Dashboard' }], nodeType: 'section',
+      layoutOptions: {
+        'elk.algorithm': 'layered', 'elk.direction': 'DOWN',
+        'elk.spacing.nodeNode': '30', 'elk.layered.spacing.nodeNodeBetweenLayers': '35',
+        'elk.padding': '[top=55,left=20,bottom=20,right=20]'
+      },
+      children: [
+        { id: 'dash-main', width: SW, height: SH, labels: [{ text: 'Dashboard principal' }], nodeType: 'screen' },
+        { id: 'dash-stats', width: SW, height: SH, labels: [{ text: 'Statistiques detaillees' }], nodeType: 'screen' }
+      ],
+      edges: [
+        { id: 'e-dash-1', sources: ['dash-main'], targets: ['dash-stats'] }
+      ]
+    },
+
+    // Chercheurs
+    {
+      id: 'section-chercheurs',
+      labels: [{ text: 'Chercheurs' }], nodeType: 'section',
+      layoutOptions: {
+        'elk.algorithm': 'layered', 'elk.direction': 'DOWN',
+        'elk.spacing.nodeNode': '25', 'elk.layered.spacing.nodeNodeBetweenLayers': '35',
+        'elk.padding': '[top=55,left=20,bottom=20,right=20]'
+      },
+      children: [
+        { id: 'ch-list', width: SW, height: SH, labels: [{ text: 'Liste chercheurs' }], nodeType: 'screen' },
+        { id: 'ch-profile', width: SW, height: SH, labels: [{ text: 'Fiche profil' }], nodeType: 'screen' },
+        { id: 'ch-form', width: SW, height: SH, labels: [{ text: 'Ajout / Edition' }], nodeType: 'screen' },
+        { id: 'ch-compare', width: SW, height: SH, labels: [{ text: 'Comparaison' }], nodeType: 'screen' }
+      ],
+      edges: [
+        { id: 'e-ch-1', sources: ['ch-list'], targets: ['ch-profile'] },
+        { id: 'e-ch-2', sources: ['ch-list'], targets: ['ch-form'] },
+        { id: 'e-ch-3', sources: ['ch-profile'], targets: ['ch-compare'] },
+        { id: 'e-ch-4', sources: ['ch-profile'], targets: ['ch-form'] }
+      ]
+    },
+
+    // Carte thematique
+    {
+      id: 'section-carte',
+      labels: [{ text: 'Carte Thematique' }], nodeType: 'section',
+      layoutOptions: {
+        'elk.algorithm': 'layered', 'elk.direction': 'DOWN',
+        'elk.spacing.nodeNode': '30', 'elk.layered.spacing.nodeNodeBetweenLayers': '35',
+        'elk.padding': '[top=55,left=20,bottom=20,right=20]'
+      },
+      children: [
+        { id: 'carte-map', width: SW, height: SH, labels: [{ text: 'Carte interactive' }], nodeType: 'screen' },
+        { id: 'carte-explore', width: SW, height: SH, labels: [{ text: 'Explorer les themes' }], nodeType: 'screen' }
+      ],
+      edges: [
+        { id: 'e-carte-1', sources: ['carte-map'], targets: ['carte-explore'] },
+        { id: 'e-carte-2', sources: ['carte-explore'], targets: ['carte-map'] }
+      ]
+    },
+
+    // Admin
+    {
+      id: 'section-admin',
+      labels: [{ text: 'Administration' }], nodeType: 'section',
+      layoutOptions: {
+        'elk.algorithm': 'layered', 'elk.direction': 'DOWN',
+        'elk.spacing.nodeNode': '25', 'elk.layered.spacing.nodeNodeBetweenLayers': '35',
+        'elk.padding': '[top=55,left=20,bottom=20,right=20]'
+      },
+      children: [
+        { id: 'admin-users', width: SW, height: SH, labels: [{ text: 'Gestion utilisateurs' }], nodeType: 'screen' },
+        { id: 'admin-import', width: SW, height: SH, labels: [{ text: 'Import en masse' }], nodeType: 'screen' },
+        { id: 'admin-settings', width: SW, height: SH, labels: [{ text: 'Parametres' }], nodeType: 'screen' },
+        { id: 'admin-logs', width: SW, height: SH, labels: [{ text: 'Logs / Historique' }], nodeType: 'screen' }
+      ],
+      edges: [
+        { id: 'e-admin-1', sources: ['admin-users'], targets: ['admin-logs'] },
+        { id: 'e-admin-2', sources: ['admin-import'], targets: ['admin-logs'] }
+      ]
+    }
+  ],
+  edges: [
+    { id: 'e-home-nav', sources: ['home'], targets: ['navbar'] },
+    { id: 'e-nav-dash', sources: ['navbar'], targets: ['section-dashboard'] },
+    { id: 'e-nav-ch', sources: ['navbar'], targets: ['section-chercheurs'] },
+    { id: 'e-nav-carte', sources: ['navbar'], targets: ['section-carte'] },
+    { id: 'e-nav-admin', sources: ['navbar'], targets: ['section-admin'] },
+    // Cross-links
+    { id: 'e-cross-carte-ch', sources: ['section-carte'], targets: ['section-chercheurs'], edgeType: 'cross' },
+    { id: 'e-cross-ch-carte', sources: ['section-chercheurs'], targets: ['section-carte'], edgeType: 'cross' },
+    { id: 'e-cross-dash-carte', sources: ['section-dashboard'], targets: ['section-carte'], edgeType: 'cross' },
+    { id: 'e-cross-explore-ch', sources: ['section-carte'], targets: ['section-chercheurs'], edgeType: 'cross' }
+  ]
+};
+
+const elk = new ELK();
+
+elk.layout(graph).then(layouted => {
+  document.getElementById('loading').style.display = 'none';
+  const svg = renderSVG(layouted);
+  document.getElementById('canvas').innerHTML = svg;
+  setupInteractions(layouted);
+}).catch(err => {
+  document.getElementById('loading').textContent = 'Layout error: ' + err.message;
+  console.error(err);
+});
+
+function renderSVG(root) {
+  const pad = 60;
+  const w = root.width + pad * 2;
+  const h = root.height + pad * 2;
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
+  s += `<defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2d2a26" flood-opacity="0.08"/>
+    </filter>
+  </defs>`;
+  s += `<rect width="${w}" height="${h}" fill="${COLORS.bg}"/>`;
+  s += `<g transform="translate(${pad},${pad})">`;
+  s += renderNodes(root.children, 0, 0);
+  s += renderEdges(root.edges, 0, 0);
+  s += '</g></svg>';
+  return s;
+}
+
+function wrapText(text, maxChars) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (const word of words) {
+    if ((line + ' ' + word).trim().length > maxChars && line.length > 0) {
+      lines.push(line.trim());
+      line = word;
+    } else {
+      line = (line + ' ' + word).trim();
+    }
+  }
+  if (line) lines.push(line.trim());
+  return lines;
+}
+
+function renderNodes(nodes, offsetX, offsetY) {
+  let s = '';
+  if (!nodes) return s;
+
+  for (const node of nodes) {
+    const x = node.x;
+    const y = node.y;
+    const w = node.width;
+    const h = node.height;
+    const label = node.labels && node.labels[0] ? node.labels[0].text : '';
+    const type = node.nodeType || 'screen';
+
+    if (type === 'hub') {
+      s += `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${COLORS.hub}" stroke="${COLORS.hub}" stroke-width="2" filter="url(#shadow)"/>`;
+      s += `<text x="${x + w/2}" y="${y + h/2 + 5}" text-anchor="middle" fill="${COLORS.textLight}" font-size="14" font-weight="600" font-family="Space Grotesk, sans-serif">${label}</text>`;
+    } else if (type === 'home') {
+      s += `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${COLORS.hub}" stroke="${COLORS.hub}" stroke-width="2" filter="url(#shadow)"/>`;
+      s += `<text x="${x + w/2}" y="${y + h/2 + 5}" text-anchor="middle" fill="${COLORS.textLight}" font-size="14" font-weight="600" font-family="Space Grotesk, sans-serif">${label}</text>`;
+    } else if (type === 'section') {
+      // Section container with shadow
+      s += `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="${COLORS.sectionBg}" stroke="${COLORS.section}" stroke-width="2" filter="url(#shadow)"/>`;
+      // Header bar 42px
+      const hH = 42;
+      s += `<rect x="${x}" y="${y}" width="${w}" height="${hH}" rx="12" fill="${COLORS.section}"/>`;
+      s += `<rect x="${x}" y="${y + hH - 12}" width="${w}" height="12" fill="${COLORS.section}"/>`;
+      s += `<text x="${x + w/2}" y="${y + hH/2 + 6}" text-anchor="middle" fill="${COLORS.textLight}" font-size="15" font-weight="700" font-family="Space Grotesk, sans-serif">${label}</text>`;
+
+      if (node.children) s += renderNodes(node.children, x, y);
+      if (node.edges) s += renderEdges(node.edges, x, y);
+    } else if (type === 'screen') {
+      const absX = offsetX + x;
+      const absY = offsetY + y;
+      const meta = SCREEN_META[node.id];
+      const title = meta ? meta.title : label;
+      const desc = meta ? meta.desc : '';
+
+      // Card with shadow
+      s += `<rect x="${absX}" y="${absY}" width="${w}" height="${h}" rx="8" fill="${COLORS.screenBg}" stroke="${COLORS.screenBorder}" stroke-width="1.5" filter="url(#shadow)"/>`;
+      // Small green header bar
+      s += `<rect x="${absX}" y="${absY}" width="${w}" height="16" rx="8" fill="${COLORS.section}"/>`;
+      s += `<rect x="${absX}" y="${absY + 10}" width="${w}" height="6" fill="${COLORS.section}"/>`;
+      // Title
+      s += `<text x="${absX + w/2}" y="${absY + 30}" text-anchor="middle" fill="${COLORS.textDark}" font-size="12" font-weight="600" font-family="Space Grotesk, sans-serif">${title}</text>`;
+      // Description lines
+      if (desc) {
+        const lines = wrapText(desc, 30);
+        for (let i = 0; i < lines.length; i++) {
+          s += `<text x="${absX + w/2}" y="${absY + 44 + i * 13}" text-anchor="middle" fill="#7a7670" font-size="10" font-weight="400">${lines[i]}</text>`;
+        }
+      }
+    }
+  }
+  return s;
+}
+
+function renderEdges(edges, offsetX, offsetY) {
+  let s = '';
+  if (!edges) return s;
+
+  for (const edge of edges) {
+    if (!edge.sections) continue;
+    const isCross = edge.edgeType === 'cross';
+    const color = isCross ? COLORS.crossArrow : COLORS.navArrow;
+    const dashStyle = isCross ? ' stroke-dasharray="8,4"' : '';
+
+    for (const section of edge.sections) {
+      let points = [];
+      if (section.startPoint) points.push(section.startPoint);
+      if (section.bendPoints) points.push(...section.bendPoints);
+      if (section.endPoint) points.push(section.endPoint);
+      if (points.length < 2) continue;
+
+      points = points.map(p => ({ x: p.x + offsetX, y: p.y + offsetY }));
+
+      let d = `M ${points[0].x} ${points[0].y}`;
+      for (let i = 1; i < points.length; i++) {
+        d += ` L ${points[i].x} ${points[i].y}`;
+      }
+
+      s += `<path d="${d}" fill="none" stroke="${color}" stroke-width="2"${dashStyle}/>`;
+
+      // Arrowhead
+      const last = points[points.length - 1];
+      const prev = points[points.length - 2];
+      const angle = Math.atan2(last.y - prev.y, last.x - prev.x);
+      const aLen = 10;
+      const aW = Math.PI / 7;
+      s += `<polygon points="${last.x},${last.y} ${last.x - aLen * Math.cos(angle - aW)},${last.y - aLen * Math.sin(angle - aW)} ${last.x - aLen * Math.cos(angle + aW)},${last.y - aLen * Math.sin(angle + aW)}" fill="${color}"/>`;
+    }
+  }
+  return s;
+}
+
+function setupInteractions(layouted) {
+  const container = document.getElementById('canvas-container');
+  const canvas = document.getElementById('canvas');
+  let scale = 1, panX = 0, panY = 0;
+  let dragging = false, startX = 0, startY = 0;
+
+  function fitToScreen() {
+    const pad = 60;
+    const totalW = layouted.width + pad * 2;
+    const totalH = layouted.height + pad * 2;
+    const cw = container.clientWidth;
+    const ch = container.clientHeight;
+    scale = Math.min(cw / totalW, ch / totalH, 1.5) * 0.9;
+    panX = (cw - totalW * scale) / 2;
+    panY = (ch - totalH * scale) / 2;
+    applyTransform();
+  }
+
+  function applyTransform() {
+    canvas.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+  }
+
+  document.getElementById('zoom-in').addEventListener('click', () => { scale *= 1.2; applyTransform(); });
+  document.getElementById('zoom-out').addEventListener('click', () => { scale /= 1.2; applyTransform(); });
+  document.getElementById('zoom-fit').addEventListener('click', fitToScreen);
+
+  container.addEventListener('wheel', e => {
+    e.preventDefault();
+    const factor = e.deltaY > 0 ? 0.9 : 1.1;
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    panX = mx - (mx - panX) * factor;
+    panY = my - (my - panY) * factor;
+    scale *= factor;
+    applyTransform();
+  }, { passive: false });
+
+  container.addEventListener('mousedown', e => { dragging = true; startX = e.clientX - panX; startY = e.clientY - panY; container.classList.add('grabbing'); });
+  window.addEventListener('mousemove', e => { if (!dragging) return; panX = e.clientX - startX; panY = e.clientY - startY; applyTransform(); });
+  window.addEventListener('mouseup', () => { dragging = false; container.classList.remove('grabbing'); });
+
+  fitToScreen();
+}
+</script>
+</body>
+</html>
