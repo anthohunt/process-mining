@@ -1002,7 +1002,8 @@ select.form-control {
   margin-bottom: 24px;
 }
 
-.admin-tab {
+.admin-tab,
+.admin-tab-btn {
   padding: 8px 20px;
   border: none;
   background: none;
@@ -1016,14 +1017,41 @@ select.form-control {
   transition: var(--pm-transition);
 }
 
-.admin-tab:hover {
+.admin-tab:hover,
+.admin-tab-btn:hover {
   color: var(--pm-text);
 }
 
-.admin-tab.active {
+.admin-tab.active,
+.admin-tab-btn.active {
   color: var(--pm-primary);
   border-bottom-color: var(--pm-primary);
 }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  padding: 16px;
+}
+
+.modal-card {
+  background: var(--pm-surface);
+  border-radius: var(--pm-radius-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  padding: 28px;
+  max-width: 440px;
+  width: 100%;
+}
+
+/* ===== EXTRA BADGES ===== */
+.badge-active { background: #d1e7dd; color: var(--pm-success); }
+.badge-revoked { background: #f8d7da; color: #842029; }
 
 /* ===== UPLOAD ZONE ===== */
 .upload-zone {
@@ -1037,7 +1065,7 @@ select.form-control {
   transition: var(--pm-transition);
 }
 
-.upload-zone:hover, .upload-zone.dragover {
+.upload-zone:hover, .upload-zone.dragover, .upload-zone--active {
   border-color: var(--pm-primary);
   background: #f0f6ff;
 }

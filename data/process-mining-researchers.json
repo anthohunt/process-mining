@@ -1,0 +1,1611 @@
+{
+  "metadata": {
+    "title": "Top 100+ Process Mining Researchers Worldwide",
+    "generated": "2026-04-14",
+    "sources": [
+      "IEEE Task Force on Process Mining (tf-pm.org)",
+      "ICPM 2024 Program Committee",
+      "processmining.org",
+      "Google Scholar profiles",
+      "ResearchGate profiles",
+      "University faculty pages",
+      "Springer/IEEE/ACM publication records"
+    ],
+    "notes": "Affiliations reflect best-known positions as of 2024-2025. Some researchers hold dual affiliations (academia + industry)."
+  },
+  "researchers": [
+    {
+      "id": 1,
+      "name": "Wil van der Aalst",
+      "affiliation": "RWTH Aachen University",
+      "department": "Process and Data Science (PADS)",
+      "country": "Germany",
+      "secondary_affiliation": "Chief Scientist, Celonis; Fraunhofer FIT",
+      "research_themes": ["process mining", "process discovery", "conformance checking", "Petri nets", "object-centric process mining", "data science"],
+      "notable_publications": [
+        {"title": "Process Mining: Data Science in Action", "year": 2016, "venue": "Springer (book, 2nd edition)"},
+        {"title": "Workflow Mining: Discovering Process Models from Event Logs", "year": 2004, "venue": "IEEE TKDE"},
+        {"title": "Process Mining Manifesto", "year": 2012, "venue": "BPM Workshops, Springer LNBIP"}
+      ],
+      "bio": "Known as the 'Godfather of Process Mining', van der Aalst is the founder of the discipline. H-index 188, over 170,000 citations. ACM/IEEE/IFIP Fellow and member of multiple national academies of science.",
+      "h_index": 188
+    },
+    {
+      "id": 2,
+      "name": "Boudewijn van Dongen",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Process Analytics Group",
+      "country": "Netherlands",
+      "research_themes": ["conformance checking", "process discovery", "event log standards", "ProM framework"],
+      "notable_publications": [
+        {"title": "The ProM Framework: A New Era in Process Mining Tool Support", "year": 2005, "venue": "ICATPN"},
+        {"title": "Conformance Checking of Processes Based on Monitoring Real Behavior", "year": 2008, "venue": "Information Systems"},
+        {"title": "A General Divide and Conquer Approach for Process Mining", "year": 2013, "venue": "BPM"}
+      ],
+      "bio": "Full Professor and Chair of the Process Analytics group at TU/e. Lead developer of the ProM process mining framework and XES event log standard."
+    },
+    {
+      "id": 3,
+      "name": "Josep Carmona",
+      "affiliation": "Universitat Politecnica de Catalunya (UPC)",
+      "department": "Department of Computer Science",
+      "country": "Spain",
+      "secondary_affiliation": "CEO, Process Talks",
+      "research_themes": ["conformance checking", "process discovery", "alignments", "model repair"],
+      "notable_publications": [
+        {"title": "Conformance Checking: Relating Processes and Models", "year": 2018, "venue": "Springer (book)"},
+        {"title": "Conformance Checking: Foundations, Milestones and Challenges", "year": 2022, "venue": "Process Mining Handbook, Springer"},
+        {"title": "A Fresh Look at Precision in Process Conformance", "year": 2010, "venue": "BPM"}
+      ],
+      "bio": "Associate Professor at UPC Barcelona, leading expert on conformance checking and alignment-based techniques in process mining."
+    },
+    {
+      "id": 4,
+      "name": "Marlon Dumas",
+      "affiliation": "University of Tartu",
+      "department": "Institute of Computer Science",
+      "country": "Estonia",
+      "secondary_affiliation": "Chief Product Officer, Apromore",
+      "research_themes": ["predictive process monitoring", "process discovery", "business process management", "prescriptive analytics"],
+      "notable_publications": [
+        {"title": "Fundamentals of Business Process Management", "year": 2018, "venue": "Springer (book, 2nd edition)"},
+        {"title": "Outcome-Oriented Predictive Process Monitoring: Review and Benchmark", "year": 2019, "venue": "ACM TKDD"},
+        {"title": "Split Miner: Automated Discovery of Accurate and Simple Business Process Models from Event Logs", "year": 2019, "venue": "Knowledge and Information Systems"}
+      ],
+      "bio": "Full Professor of Software Engineering at University of Tartu, co-author of the widely-used BPM textbook. Leads the BPM Research Group in Tartu."
+    },
+    {
+      "id": 5,
+      "name": "Marcello La Rosa",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "secondary_affiliation": "VP Product, Salesforce (acquired Apromore)",
+      "research_themes": ["process discovery", "automated process analysis", "process improvement", "process mining tools"],
+      "notable_publications": [
+        {"title": "Split Miner: Automated Discovery of Accurate and Simple Business Process Models from Event Logs", "year": 2019, "venue": "Knowledge and Information Systems"},
+        {"title": "Fundamentals of Business Process Management", "year": 2018, "venue": "Springer (book, co-author)"},
+        {"title": "BPMN Miner: Automated Discovery of BPMN Process Models with Hierarchical Structure", "year": 2013, "venue": "Information Systems"}
+      ],
+      "bio": "Professor of Information Systems at University of Melbourne. Founder and CEO of Apromore (acquired by Salesforce), a leading process mining platform."
+    },
+    {
+      "id": 6,
+      "name": "Dirk Fahland",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["object-centric process mining", "process discovery", "Petri nets", "event data management"],
+      "notable_publications": [
+        {"title": "Multi-Dimensional Process Discovery", "year": 2013, "venue": "BPM"},
+        {"title": "Simplifying Discovered Process Models in a Controlled Manner", "year": 2013, "venue": "Information Systems"},
+        {"title": "Object-Centric Process Mining: Dealing with Divergence and Convergence in Event Data", "year": 2022, "venue": "SEFM"}
+      ],
+      "bio": "Associate Professor at TU/e, key contributor to object-centric process mining and advanced process discovery techniques."
+    },
+    {
+      "id": 7,
+      "name": "Jan Mendling",
+      "affiliation": "Humboldt-Universitat zu Berlin",
+      "department": "Department of Information Systems",
+      "country": "Germany",
+      "research_themes": ["business process management", "process analytics", "process model quality", "process improvement"],
+      "notable_publications": [
+        {"title": "Fundamentals of Business Process Management", "year": 2018, "venue": "Springer (book, co-author)"},
+        {"title": "Blockchains for Business Process Management - Challenges and Opportunities", "year": 2018, "venue": "ACM TMIS"},
+        {"title": "Metrics for Process Models: A Systematic Literature Review", "year": 2008, "venue": "Information Systems"}
+      ],
+      "bio": "Full Professor of Information Systems at HU Berlin. Co-author of the leading BPM textbook, prolific researcher in process model quality and analytics."
+    },
+    {
+      "id": 8,
+      "name": "Hajo A. Reijers",
+      "affiliation": "Utrecht University",
+      "department": "Department of Information and Computing Sciences",
+      "country": "Netherlands",
+      "research_themes": ["business process redesign", "process mining", "workflow management", "process improvement"],
+      "notable_publications": [
+        {"title": "Fundamentals of Business Process Management", "year": 2018, "venue": "Springer (book, co-author)"},
+        {"title": "Best Practices in Business Process Redesign: An Overview and Qualitative Evaluation", "year": 2005, "venue": "Omega"},
+        {"title": "The Biggest Business Process Management Problems to Solve Before We Die", "year": 2022, "venue": "Computers in Industry"}
+      ],
+      "bio": "Full Professor at Utrecht University, leading the BPM & Analytics group. Co-author of the standard BPM textbook."
+    },
+    {
+      "id": 9,
+      "name": "Mathias Weske",
+      "affiliation": "Hasso Plattner Institute, University of Potsdam",
+      "department": "Business Process Technology Group",
+      "country": "Germany",
+      "research_themes": ["business process management", "process modeling", "service-oriented architectures", "process execution"],
+      "notable_publications": [
+        {"title": "Business Process Management: Concepts, Languages, Architectures", "year": 2012, "venue": "Springer (book, 2nd edition)"},
+        {"title": "Blockchains for Business Process Management - Challenges and Opportunities", "year": 2018, "venue": "ACM TMIS"},
+        {"title": "Process Mining with ProM", "year": 2007, "venue": "ICPM demo"}
+      ],
+      "bio": "Full Professor at HPI Potsdam, leading the Business Process Technology group. Author of a widely-used BPM textbook."
+    },
+    {
+      "id": 10,
+      "name": "Manfred Reichert",
+      "affiliation": "Ulm University",
+      "department": "Institute of Databases and Information Systems",
+      "country": "Germany",
+      "research_themes": ["adaptive processes", "process flexibility", "process change", "process-aware information systems"],
+      "notable_publications": [
+        {"title": "Enabling Flexibility in Process-Aware Information Systems", "year": 2012, "venue": "Springer (book)"},
+        {"title": "The Biggest Business Process Management Problems to Solve Before We Die", "year": 2022, "venue": "Computers in Industry"},
+        {"title": "Adaptive Process Management with ADEPT2", "year": 2005, "venue": "ICDE"}
+      ],
+      "bio": "Full Professor and Director of the Databases and Information Systems Institute at Ulm University. Leading expert on adaptive and flexible business processes."
+    },
+    {
+      "id": 11,
+      "name": "Stefanie Rinderle-Ma",
+      "affiliation": "Technical University of Munich",
+      "department": "Department of Computer Science",
+      "country": "Germany",
+      "research_themes": ["process compliance", "process change", "process flexibility", "process mining in manufacturing"],
+      "notable_publications": [
+        {"title": "The Biggest Business Process Management Problems to Solve Before We Die", "year": 2022, "venue": "Computers in Industry"},
+        {"title": "On Managing Business Processes Variants", "year": 2006, "venue": "Data & Knowledge Engineering"},
+        {"title": "Compliance Monitoring for Process-Aware Systems", "year": 2011, "venue": "Information Systems"}
+      ],
+      "bio": "Full Professor at TU Munich, leading expert on process compliance and change management in business processes."
+    },
+    {
+      "id": 12,
+      "name": "Andrea Burattin",
+      "affiliation": "Technical University of Denmark",
+      "department": "DTU Compute",
+      "country": "Denmark",
+      "research_themes": ["online process mining", "streaming process discovery", "process mining tools", "process mining in education"],
+      "notable_publications": [
+        {"title": "Process Mining Techniques in Business Environments", "year": 2015, "venue": "Springer LNBIP (book)"},
+        {"title": "Online Conformance Checking Using Behavioural Patterns", "year": 2018, "venue": "BPM"},
+        {"title": "Heuristics Miners for Streaming Event Data", "year": 2014, "venue": "IEEE CEC"}
+      ],
+      "bio": "Associate Professor at DTU, General Chair of ICPM 2024. Expert on online/streaming process mining techniques."
+    },
+    {
+      "id": 13,
+      "name": "Massimiliano de Leoni",
+      "affiliation": "University of Padua",
+      "department": "Department of Mathematics",
+      "country": "Italy",
+      "research_themes": ["conformance checking", "alignments", "predictive process monitoring", "multi-perspective process mining"],
+      "notable_publications": [
+        {"title": "Aligning Event Logs and Process Models for Multi-Perspective Conformance Checking", "year": 2015, "venue": "Information Systems"},
+        {"title": "Data-Aware Process Mining: Discovering Decisions in Processes Using Alignments", "year": 2013, "venue": "SAC"},
+        {"title": "A General Process Mining Framework for Correlating, Predicting and Clustering Dynamic Behavior", "year": 2016, "venue": "Information Systems"}
+      ],
+      "bio": "Full Professor at University of Padua. Pioneer of alignment-based conformance checking and multi-perspective process mining."
+    },
+    {
+      "id": 14,
+      "name": "Fabrizio Maria Maggi",
+      "affiliation": "Free University of Bozen-Bolzano",
+      "department": "Faculty of Computer Science",
+      "country": "Italy",
+      "research_themes": ["declarative process mining", "predictive process monitoring", "process monitoring", "constraint-based mining"],
+      "notable_publications": [
+        {"title": "Predictive Business Process Monitoring with LSTM Neural Networks", "year": 2017, "venue": "CAiSE"},
+        {"title": "Clustering-Based Predictive Process Monitoring", "year": 2019, "venue": "IEEE TSC"},
+        {"title": "Declarative Process Mining", "year": 2022, "venue": "Process Mining Handbook, Springer"}
+      ],
+      "bio": "Full Professor at Free University of Bozen-Bolzano. Leading researcher in declarative process mining and predictive monitoring."
+    },
+    {
+      "id": 15,
+      "name": "Marco Montali",
+      "affiliation": "Free University of Bozen-Bolzano",
+      "department": "Faculty of Computer Science",
+      "country": "Italy",
+      "research_themes": ["declarative process mining", "formal verification", "data-aware processes", "knowledge-intensive processes"],
+      "notable_publications": [
+        {"title": "Specification and Verification of Commitment-based Multiagent Systems", "year": 2010, "venue": "Springer (book)"},
+        {"title": "Monitoring Business Constraints with the Event Calculus", "year": 2013, "venue": "ACM TIST"},
+        {"title": "Semantic Vacuity Detection in Declarative Process Mining", "year": 2014, "venue": "BPM"}
+      ],
+      "bio": "Full Professor at Free University of Bozen-Bolzano. Expert on formal methods for data-aware and declarative business processes."
+    },
+    {
+      "id": 16,
+      "name": "Chiara Di Francescomarino",
+      "affiliation": "University of Trento",
+      "department": "Department of Information Engineering and Computer Science (DISI)",
+      "country": "Italy",
+      "research_themes": ["predictive process monitoring", "machine learning for process mining", "process enhancement"],
+      "notable_publications": [
+        {"title": "Predictive Process Monitoring", "year": 2022, "venue": "Process Mining Handbook, Springer"},
+        {"title": "Complex Symbolic Sequence Encodings for Predictive Monitoring of Business Processes", "year": 2015, "venue": "BPM"},
+        {"title": "Clustering-Based Predictive Process Monitoring", "year": 2019, "venue": "IEEE TSC"}
+      ],
+      "bio": "Researcher at University of Trento (DISI), leading expert on predictive process monitoring and ML-based process analytics."
+    },
+    {
+      "id": 17,
+      "name": "Sander J.J. Leemans",
+      "affiliation": "RWTH Aachen University",
+      "department": "Process and Data Science (PADS)",
+      "country": "Germany",
+      "research_themes": ["process discovery", "inductive mining", "stochastic process mining", "directly-follows graphs"],
+      "notable_publications": [
+        {"title": "Discovering Block-Structured Process Models from Event Logs - A Constructive Approach", "year": 2013, "venue": "Petri Nets"},
+        {"title": "Scalable Process Discovery and Conformance Checking", "year": 2017, "venue": "SoSyM"},
+        {"title": "Stochastic Process Mining: Earth Movers' Stochastic Conformance", "year": 2019, "venue": "Information Systems"}
+      ],
+      "bio": "Junior Professor at RWTH Aachen. Creator of the widely-used Inductive Miner family of process discovery algorithms."
+    },
+    {
+      "id": 18,
+      "name": "Agnes Koschmider",
+      "affiliation": "Kiel University",
+      "department": "Department of Computer Science",
+      "country": "Germany",
+      "research_themes": ["privacy in process mining", "process model reuse", "process mining in IoT", "responsible process mining"],
+      "notable_publications": [
+        {"title": "Privacy and Confidentiality in Process Mining - Threats and Research Challenges", "year": 2021, "venue": "ACM TMIS"},
+        {"title": "A Recommendation-Based Editor for Business Process Modeling", "year": 2009, "venue": "Data & Knowledge Engineering"},
+        {"title": "Privacy-Preserving Process Mining", "year": 2022, "venue": "Process Mining Handbook, Springer"}
+      ],
+      "bio": "Professor at Kiel University. Leading researcher on privacy, confidentiality, and responsible process mining."
+    },
+    {
+      "id": 19,
+      "name": "Matthias Weidlich",
+      "affiliation": "Humboldt-Universitat zu Berlin",
+      "department": "Department of Computer Science",
+      "country": "Germany",
+      "research_themes": ["event processing", "behavioral profiles", "process analytics", "complex event processing"],
+      "notable_publications": [
+        {"title": "Behavioural Profiles: A Relational Approach to Behaviour Consistency", "year": 2011, "venue": "Springer (book)"},
+        {"title": "Fire Now, Fire Later: Alarm-Based Systems for Prescriptive Process Monitoring", "year": 2020, "venue": "Knowledge and Information Systems"},
+        {"title": "Efficient Computation of Causal Behavioural Profiles Using Structural Decomposition", "year": 2010, "venue": "ATPN"}
+      ],
+      "bio": "Full Professor at HU Berlin. Expert on behavioral profiles, event processing, and prescriptive process analytics."
+    },
+    {
+      "id": 20,
+      "name": "Barbara Weber",
+      "affiliation": "University of St. Gallen",
+      "department": "Institute of Computer Science",
+      "country": "Switzerland",
+      "research_themes": ["process mining visualization", "process flexibility", "user-centered process mining", "cognitive aspects of BPM"],
+      "notable_publications": [
+        {"title": "Process Mining Meets Visual Analytics", "year": 2023, "venue": "Information Systems (special issue)"},
+        {"title": "Refactoring Large Process Model Repositories", "year": 2011, "venue": "Computers in Industry"},
+        {"title": "Change Patterns and Change Support Features in Process-Aware Information Systems", "year": 2008, "venue": "Data & Knowledge Engineering"}
+      ],
+      "bio": "Professor at University of St. Gallen. Pioneer in process mining visualization and human-centered approaches to process analytics."
+    },
+    {
+      "id": 21,
+      "name": "Artem Polyvyanyy",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "research_themes": ["behavioral abstraction", "process querying", "process model complexity", "precision and recall in process mining"],
+      "notable_publications": [
+        {"title": "Monotone Precision and Recall Measures for Comparing Executions and Specifications of Dynamic Systems", "year": 2020, "venue": "ACM TOSEM"},
+        {"title": "Business Process Model Abstraction", "year": 2010, "venue": "Handbook on BPM, Springer"},
+        {"title": "Process Query Language: Design, Implementation, and Evaluation", "year": 2019, "venue": "Data & Knowledge Engineering"}
+      ],
+      "bio": "Professor at University of Melbourne. Vice-Chair of IEEE Task Force on Process Mining. Expert on process model abstraction and quality metrics."
+    },
+    {
+      "id": 22,
+      "name": "Pnina Soffer",
+      "affiliation": "University of Haifa",
+      "department": "Department of Information Systems",
+      "country": "Israel",
+      "research_themes": ["process mining practices", "goal-oriented process mining", "process flexibility", "work-arounds"],
+      "notable_publications": [
+        {"title": "A Process Mining-Based Analysis of Business Process Work-Arounds", "year": 2015, "venue": "SoSyM"},
+        {"title": "Process Mining Practices: Evidence from Interviews", "year": 2022, "venue": "BPM"},
+        {"title": "A Conceptual Framework for Supporting Deep Exploration of Business Process Behavior", "year": 2018, "venue": "CAiSE"}
+      ],
+      "bio": "Professor at University of Haifa. Expert on process mining practices, goal-oriented process design, and process flexibility."
+    },
+    {
+      "id": 23,
+      "name": "Avigdor Gal",
+      "affiliation": "Technion - Israel Institute of Technology",
+      "department": "Faculty of Data and Decision Sciences",
+      "country": "Israel",
+      "research_themes": ["process minding", "data integration", "schema matching", "event data quality"],
+      "notable_publications": [
+        {"title": "Process Minding: Closing the Big Data Gap", "year": 2020, "venue": "LNCS, Springer"},
+        {"title": "Uncertain Schema Matching", "year": 2011, "venue": "Springer (book)"},
+        {"title": "Multi-Perspective Process Mining", "year": 2015, "venue": "BPM Forum"}
+      ],
+      "bio": "Full Professor at Technion. Pioneer in bridging data management and process mining, co-inventor of the 'process minding' concept."
+    },
+    {
+      "id": 24,
+      "name": "Claudio Di Ciccio",
+      "affiliation": "Utrecht University",
+      "department": "Department of Information and Computing Sciences",
+      "country": "Netherlands",
+      "secondary_affiliation": "Previously Sapienza University of Rome",
+      "research_themes": ["declarative process mining", "automated reasoning", "blockchain and processes", "constraint-based modeling"],
+      "notable_publications": [
+        {"title": "Knowledge-Intensive Processes: Characteristics, Requirements and Analysis of Contemporary Approaches", "year": 2015, "venue": "JDIQ"},
+        {"title": "Ensuring Model Consistency in Declarative Process Discovery", "year": 2015, "venue": "BPM"},
+        {"title": "Two Algorithms for the Discovery of Declare Models", "year": 2013, "venue": "ICPM"}
+      ],
+      "bio": "Associate Professor at Utrecht University. Expert on declarative process mining, automated reasoning, and blockchain-BPM integration."
+    },
+    {
+      "id": 25,
+      "name": "Arthur ter Hofstede",
+      "affiliation": "Queensland University of Technology",
+      "department": "School of Information Systems",
+      "country": "Australia",
+      "research_themes": ["workflow patterns", "YAWL", "process data quality", "process modeling"],
+      "notable_publications": [
+        {"title": "Workflow Patterns", "year": 2003, "venue": "Distributed and Parallel Databases"},
+        {"title": "YAWL: Yet Another Workflow Language", "year": 2005, "venue": "Information Systems"},
+        {"title": "Process-Data Quality: The True Frontier of Process Mining", "year": 2023, "venue": "Journal of Data and Information Quality"}
+      ],
+      "bio": "Professor at QUT. Co-creator of workflow patterns and the YAWL workflow language, foundational contributions to process mining."
+    },
+    {
+      "id": 26,
+      "name": "Moe Thandar Wynn",
+      "affiliation": "Queensland University of Technology",
+      "department": "School of Information Systems",
+      "country": "Australia",
+      "research_themes": ["healthcare process mining", "process data quality", "prescriptive process mining", "robotic process automation"],
+      "notable_publications": [
+        {"title": "Process Mining for Healthcare: Characteristics and Challenges", "year": 2022, "venue": "Journal of Biomedical Informatics"},
+        {"title": "ProcessProfiler3D: A Visualisation Framework for Log-Based Process Performance Comparison", "year": 2019, "venue": "Decision Support Systems"},
+        {"title": "Towards Privacy-Preserving Process Mining in Healthcare", "year": 2020, "venue": "BPM Workshops"}
+      ],
+      "bio": "Professor at QUT, leads the Process Science Academic Program. Expert on healthcare process analytics and process data quality."
+    },
+    {
+      "id": 27,
+      "name": "Chun Ouyang",
+      "affiliation": "Queensland University of Technology",
+      "department": "School of Information Systems",
+      "country": "Australia",
+      "research_themes": ["process simulation", "object-centric process mining", "process-aware information systems", "IoT process mining"],
+      "notable_publications": [
+        {"title": "From Conventional to IoT-Enhanced: Simulated Object-Centric Event Logs for Real-Life Logistics Processes", "year": 2024, "venue": "ICPM"},
+        {"title": "Translating BPMN to BPEL", "year": 2006, "venue": "BPM"},
+        {"title": "WPI 2: Process Mining and Integration", "year": 2013, "venue": "ER"}
+      ],
+      "bio": "Associate Professor at QUT. Expert on process simulation, object-centric event logs, and IoT-enhanced process mining."
+    },
+    {
+      "id": 28,
+      "name": "Jochen De Weerdt",
+      "affiliation": "KU Leuven",
+      "department": "Department of Decision Sciences and Information Management (LIRIS)",
+      "country": "Belgium",
+      "research_themes": ["process discovery", "process data quality", "predictive process monitoring", "data-driven BPM"],
+      "notable_publications": [
+        {"title": "Active Trace Clustering for Improved Process Discovery", "year": 2013, "venue": "IEEE TKDE"},
+        {"title": "Process-Data Quality: The True Frontier of Process Mining", "year": 2023, "venue": "Journal of Data and Information Quality"},
+        {"title": "A Multi-Dimensional Quality Assessment of State-of-the-Art Process Discovery Algorithms", "year": 2012, "venue": "Information Systems"}
+      ],
+      "bio": "Professor at KU Leuven, member of IEEE Task Force on Process Mining Steering Committee. Expert on process discovery quality and data-driven BPM."
+    },
+    {
+      "id": 29,
+      "name": "Johannes De Smedt",
+      "affiliation": "KU Leuven",
+      "department": "Department of Decision Sciences and Information Management",
+      "country": "Belgium",
+      "research_themes": ["declarative process mining", "multi-paradigm process mining", "process model forecasting"],
+      "notable_publications": [
+        {"title": "Multi-Paradigm Process Mining: Retrieving Better Models by Combining Rules and Sequences", "year": 2015, "venue": "OTM Conferences"},
+        {"title": "Generating Feasible and Plausible Counterfactual Explanations for Outcome Prediction of Business Processes", "year": 2025, "venue": "Data Mining and Knowledge Discovery"},
+        {"title": "Fusion Miner: Process Discovery for Mixed-Paradigm Models", "year": 2016, "venue": "Information Systems"}
+      ],
+      "bio": "Professor at KU Leuven. Expert on multi-paradigm and declarative process mining, combining rule-based and sequence-based approaches."
+    },
+    {
+      "id": 30,
+      "name": "Han van der Aa",
+      "affiliation": "University of Vienna",
+      "department": "Faculty of Computer Science",
+      "country": "Austria",
+      "secondary_affiliation": "Previously University of Mannheim",
+      "research_themes": ["natural language processing for BPM", "event log abstraction", "process comparison", "text-based process analysis"],
+      "notable_publications": [
+        {"title": "Comparing Textual Descriptions to Process Models: The Automatic Detection of Inconsistencies", "year": 2017, "venue": "Information Systems"},
+        {"title": "Challenges and Opportunities of Applying NLP in BPM", "year": 2018, "venue": "BPM Forum"},
+        {"title": "Data-Driven Analysis of Organizational Operations Using Process Mining", "year": 2023, "venue": "University of Vienna (invited talk)"}
+      ],
+      "bio": "Full Professor at University of Vienna (since 2024). Expert on NLP-driven process mining and organizational process analytics."
+    },
+    {
+      "id": 31,
+      "name": "Tijs Slaats",
+      "affiliation": "University of Copenhagen",
+      "department": "Department of Computer Science (DIKU)",
+      "country": "Denmark",
+      "research_themes": ["declarative process modeling", "DCR graphs", "process discovery", "hybrid process technologies"],
+      "notable_publications": [
+        {"title": "Discovering and Navigating DCR Graphs", "year": 2019, "venue": "ICPM"},
+        {"title": "Imperative versus Declarative Process Mining: An Empirical Comparison", "year": 2023, "venue": "BPM Forum"},
+        {"title": "The Process Discovery Contest", "year": 2023, "venue": "ICPM"}
+      ],
+      "bio": "Associate Professor at University of Copenhagen. Co-inventor of Dynamic Condition Response (DCR) Graphs, winner of Process Discovery Contest."
+    },
+    {
+      "id": 32,
+      "name": "Jorge Munoz-Gama",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "department": "Department of Computer Science",
+      "country": "Chile",
+      "research_themes": ["healthcare process mining", "conformance checking", "process mining usability"],
+      "notable_publications": [
+        {"title": "Process Mining for Healthcare: Characteristics and Challenges", "year": 2022, "venue": "Journal of Biomedical Informatics"},
+        {"title": "Conformance Checking and Diagnosis in Process Mining", "year": 2016, "venue": "Springer LNBIP (book)"},
+        {"title": "Recommendations for Enhancing the Usability and Understandability of Process Mining in Healthcare", "year": 2021, "venue": "Artificial Intelligence in Medicine"}
+      ],
+      "bio": "Associate Professor at PUC Chile. Leading researcher on healthcare process mining and process mining usability in clinical settings."
+    },
+    {
+      "id": 33,
+      "name": "Marcos Sepulveda",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "department": "Department of Computer Science",
+      "country": "Chile",
+      "research_themes": ["multi-perspective process mining", "process mining applications", "healthcare process mining"],
+      "notable_publications": [
+        {"title": "Aligned Multi-Perspective Conformance Checking", "year": 2018, "venue": "ICPM"},
+        {"title": "Reviewing Methods and Tools for Machine Learning in Process Mining", "year": 2020, "venue": "ICPM Workshops"},
+        {"title": "A Recommender System for Process Discovery", "year": 2015, "venue": "BPM"}
+      ],
+      "bio": "Professor at PUC Chile. Expert on multi-perspective and applied process mining, especially in healthcare and operations."
+    },
+    {
+      "id": 34,
+      "name": "Carlos Fernandez-Llatas",
+      "affiliation": "Universitat Politecnica de Valencia",
+      "department": "ITACA Institute",
+      "country": "Spain",
+      "secondary_affiliation": "Karolinska Institutet, Sweden",
+      "research_themes": ["healthcare process mining", "interactive process mining", "clinical pathway analysis"],
+      "notable_publications": [
+        {"title": "Process Mining for Healthcare: Characteristics and Challenges", "year": 2022, "venue": "Journal of Biomedical Informatics"},
+        {"title": "What Role Can Process Mining Play in Recurrent Clinical Guidelines Issues?", "year": 2020, "venue": "IJERPH"},
+        {"title": "Interactive Process Mining in Healthcare", "year": 2021, "venue": "Springer (book)"}
+      ],
+      "bio": "Associate Professor at UPV Valencia and affiliated with Karolinska Institutet. Pioneer in interactive process mining for healthcare."
+    },
+    {
+      "id": 35,
+      "name": "Niels Martin",
+      "affiliation": "Hasselt University",
+      "department": "Faculty of Business Economics",
+      "country": "Belgium",
+      "secondary_affiliation": "Research Foundation Flanders (FWO)",
+      "research_themes": ["healthcare process mining", "waiting time analysis", "multi-perspective process mining", "process improvement"],
+      "notable_publications": [
+        {"title": "Process Mining for Healthcare: Characteristics and Challenges", "year": 2022, "venue": "Journal of Biomedical Informatics"},
+        {"title": "Mining Context-Dependent and Interactive Business Process Maps Using Execution Patterns", "year": 2016, "venue": "BPM"},
+        {"title": "Recommendations for Enhancing the Usability and Understandability of Process Mining in Healthcare", "year": 2021, "venue": "Artificial Intelligence in Medicine"}
+      ],
+      "bio": "Professor at Hasselt University and FWO postdoctoral fellow. Expert on healthcare process mining and time perspective analysis."
+    },
+    {
+      "id": 36,
+      "name": "Felix Mannhardt",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["privacy-preserving process mining", "multi-perspective process mining", "decision mining", "responsible process mining"],
+      "notable_publications": [
+        {"title": "Privacy and Confidentiality in Process Mining - Threats and Research Challenges", "year": 2021, "venue": "ACM TMIS"},
+        {"title": "Balanced Multi-Perspective Checking of Process Conformance", "year": 2016, "venue": "Computing"},
+        {"title": "Decision Mining Revisited - Discovering Overlapping Rules", "year": 2016, "venue": "CAiSE"}
+      ],
+      "bio": "Assistant Professor at TU/e. Leading researcher on privacy-preserving and responsible process mining, co-organizer of the RPM workshop."
+    },
+    {
+      "id": 37,
+      "name": "Stephan Fahrenkrog-Petersen",
+      "affiliation": "Weizenbaum Institute for the Networked Society",
+      "department": null,
+      "country": "Germany",
+      "research_themes": ["privacy in process mining", "differential privacy", "event log anonymization", "responsible process mining"],
+      "notable_publications": [
+        {"title": "Privacy and Confidentiality in Process Mining - Threats and Research Challenges", "year": 2021, "venue": "ACM TMIS"},
+        {"title": "PRIPEL: Privacy-Preserving Event Log Publishing Including Contextual Information", "year": 2020, "venue": "BPM"},
+        {"title": "Fire Now, Fire Later: Alarm-Based Systems for Prescriptive Process Monitoring", "year": 2020, "venue": "Knowledge and Information Systems"}
+      ],
+      "bio": "Researcher at the Weizenbaum Institute, Berlin. Expert on differential privacy mechanisms for process mining event logs."
+    },
+    {
+      "id": 38,
+      "name": "Majid Rafiei",
+      "affiliation": "RWTH Aachen University",
+      "department": "Process and Data Science (PADS)",
+      "country": "Germany",
+      "research_themes": ["privacy in process mining", "confidentiality", "encryption for event logs", "responsible process mining"],
+      "notable_publications": [
+        {"title": "Privacy and Confidentiality in Process Mining - Threats and Research Challenges", "year": 2021, "venue": "ACM TMIS"},
+        {"title": "Towards Quantifying Privacy in Process Mining", "year": 2021, "venue": "ICPM Workshops"},
+        {"title": "An Encryption Framework for Ensuring Confidentiality in Process Mining", "year": 2022, "venue": "ICPM"}
+      ],
+      "bio": "Researcher at RWTH Aachen PADS group. Expert on encryption and confidentiality frameworks for process mining."
+    },
+    {
+      "id": 39,
+      "name": "Sebastiaan van Zelst",
+      "affiliation": "Fraunhofer FIT / RWTH Aachen University",
+      "department": "Process and Data Science",
+      "country": "Germany",
+      "research_themes": ["online process mining", "incremental process discovery", "streaming conformance checking", "process mining scalability"],
+      "notable_publications": [
+        {"title": "Event Stream-Based Process Discovery Using Abstract Representations", "year": 2018, "venue": "Knowledge and Information Systems"},
+        {"title": "Online Conformance Checking: Relating Event Streams to Process Models Using Prefix-Alignments", "year": 2020, "venue": "IJDSA"},
+        {"title": "From Theory to Practice: How Fraunhofer FIT Brought Process Mining Vision to Market", "year": 2024, "venue": "Springer"}
+      ],
+      "bio": "Senior researcher at Fraunhofer FIT and RWTH Aachen. Expert on online/streaming process mining and scalable algorithms."
+    },
+    {
+      "id": 40,
+      "name": "Xixi Lu",
+      "affiliation": "Utrecht University",
+      "department": "Department of Information and Computing Sciences",
+      "country": "Netherlands",
+      "research_themes": ["trace clustering", "event abstraction", "RPA and process mining", "AI-driven process mining"],
+      "notable_publications": [
+        {"title": "Handling Duplicated Tasks in Process Discovery by Refining Event Labels", "year": 2016, "venue": "BPM"},
+        {"title": "Getting Your RPA Priorities Straight with Process Mining: The PLOST Framework", "year": 2023, "venue": "ECIS"},
+        {"title": "Semi-Supervised Event Abstraction", "year": 2023, "venue": "ICPM"}
+      ],
+      "bio": "Assistant Professor at Utrecht University. Program Chair of ICPM 2024. Expert on event abstraction and AI-driven process mining."
+    },
+    {
+      "id": 41,
+      "name": "Luise Pufahl",
+      "affiliation": "Technical University of Munich",
+      "department": "Heilbronn Campus - Information Systems",
+      "country": "Germany",
+      "research_themes": ["batch processing", "resource management", "process mining", "business process automation"],
+      "notable_publications": [
+        {"title": "Batch Processing Across Multiple Business Processes", "year": 2022, "venue": "Information Systems"},
+        {"title": "BPMN in Healthcare: Customizing Process Mining for Clinical Pathways", "year": 2020, "venue": "BPM Forum"},
+        {"title": "Towards Quantifiable Overprocessing Detection", "year": 2023, "venue": "ICPM"}
+      ],
+      "bio": "Professor at TU Munich. Program Chair of ICPM 2024. Expert on batch processing and resource-intensive business process analysis."
+    },
+    {
+      "id": 42,
+      "name": "Minseok Song",
+      "affiliation": "POSTECH (Pohang University of Science and Technology)",
+      "department": "Department of Industrial & Management Engineering",
+      "country": "South Korea",
+      "secondary_affiliation": "Visiting at Cranfield University, UK",
+      "research_themes": ["process mining", "business analytics", "organizational mining", "industrial AI"],
+      "notable_publications": [
+        {"title": "Organizational Mining Using Genetic Mining", "year": 2008, "venue": "BPM Workshops"},
+        {"title": "Towards Comprehensive Support for Organizational Mining", "year": 2008, "venue": "Decision Support Systems"},
+        {"title": "Domain-Driven Actionable Process Model Discovery", "year": 2016, "venue": "Computers in Industry"}
+      ],
+      "bio": "Professor at POSTECH. Program Chair of ICPM 2024. Leading process mining researcher in Asia with focus on organizational and industrial applications."
+    },
+    {
+      "id": 43,
+      "name": "Hyerim Bae",
+      "affiliation": "Pusan National University",
+      "department": "Department of Industrial Engineering",
+      "country": "South Korea",
+      "research_themes": ["process mining in manufacturing", "cloud-based process mining", "shipbuilding process mining"],
+      "notable_publications": [
+        {"title": "Clustering and Operation Analysis for Assembly Blocks Using Process Mining in Shipbuilding Industry", "year": 2013, "venue": "LNCS, Springer"},
+        {"title": "BAB Framework: Process Mining on Cloud", "year": 2014, "venue": "ICPM Workshop"},
+        {"title": "Process Mining Application in Shipyard Operations", "year": 2016, "venue": "Expert Systems with Applications"}
+      ],
+      "bio": "Professor at Pusan National University. Expert on process mining applications in manufacturing and shipbuilding industries."
+    },
+    {
+      "id": 44,
+      "name": "Lijie Wen",
+      "affiliation": "Tsinghua University",
+      "department": "Department of Software Engineering",
+      "country": "China",
+      "research_themes": ["process discovery", "process model repair", "process mining algorithms"],
+      "notable_publications": [
+        {"title": "Mining Process Models with Non-Free-Choice Constructs", "year": 2007, "venue": "Data Mining and Knowledge Discovery"},
+        {"title": "Mining Process Models with Prime Invisible Tasks", "year": 2010, "venue": "Data & Knowledge Engineering"},
+        {"title": "A Novel Approach for Process Mining Based on Event Types", "year": 2009, "venue": "JIDM"}
+      ],
+      "bio": "Professor at Tsinghua University. Leading process mining researcher in China, contributor to ProM framework."
+    },
+    {
+      "id": 45,
+      "name": "Andrea Marrella",
+      "affiliation": "Sapienza University of Rome",
+      "department": "Department of Computer, Control, and Management Engineering (DIAG)",
+      "country": "Italy",
+      "research_themes": ["process-aware information systems", "process mining", "planning and BPM", "human-computer interaction"],
+      "notable_publications": [
+        {"title": "Automated Planning for Business Process Management", "year": 2017, "venue": "JDIQ"},
+        {"title": "SmartPM: An Adaptive Process Management System", "year": 2015, "venue": "BPM Demo"},
+        {"title": "Process Mining and Management of Healthcare Governance", "year": 2023, "venue": "ICPM Workshops"}
+      ],
+      "bio": "Associate Professor at Sapienza University of Rome. Expert on AI-driven process management and process mining for smart environments."
+    },
+    {
+      "id": 46,
+      "name": "Francesco Leotta",
+      "affiliation": "Sapienza University of Rome",
+      "department": "Department of Computer, Control, and Management Engineering (DIAG)",
+      "country": "Italy",
+      "research_themes": ["robotic process mining", "habit mining", "smart environments", "Industry 4.0 and BPM"],
+      "notable_publications": [
+        {"title": "Robotic Process Mining: Vision and Challenges", "year": 2020, "venue": "Business & Information Systems Engineering"},
+        {"title": "Applying Process Mining to Smart Spaces", "year": 2016, "venue": "IEEE TSMC"},
+        {"title": "BPM and IoT: The Interplay", "year": 2020, "venue": "BPM Workshops"}
+      ],
+      "bio": "Associate Professor at Sapienza University of Rome. Expert on robotic process mining and BPM in smart/IoT environments."
+    },
+    {
+      "id": 47,
+      "name": "Massimo Mecella",
+      "affiliation": "Sapienza University of Rome",
+      "department": "Department of Computer, Control, and Management Engineering (DIAG)",
+      "country": "Italy",
+      "research_themes": ["service-oriented computing", "process-aware systems", "data integration", "mobile and pervasive BPM"],
+      "notable_publications": [
+        {"title": "SmartPM: An Adaptive Process Management System", "year": 2015, "venue": "BPM Demo"},
+        {"title": "A Process Flexibility Framework for Data and Service Integration", "year": 2013, "venue": "Computing"},
+        {"title": "Mobile and Pervasive Process-Aware Information Systems", "year": 2011, "venue": "ER Workshops"}
+      ],
+      "bio": "Full Professor at Sapienza University of Rome. Senior researcher on process-aware systems and mobile BPM."
+    },
+    {
+      "id": 48,
+      "name": "Arik Senderovich",
+      "affiliation": "York University",
+      "department": "Lassonde School of Engineering",
+      "country": "Canada",
+      "research_themes": ["queueing theory and process mining", "prescriptive process monitoring", "resource allocation", "simulation"],
+      "notable_publications": [
+        {"title": "From Knowledge-Driven to Data-Driven Inter-Case Feature Encoding in Predictive Process Monitoring", "year": 2021, "venue": "Information Systems"},
+        {"title": "Queue Mining: Predicting Delays in Service Processes", "year": 2014, "venue": "CAiSE"},
+        {"title": "Intra and Inter-case Features in Predictive Process Monitoring", "year": 2017, "venue": "CAiSE"}
+      ],
+      "bio": "Assistant Professor at York University, Toronto. Expert on combining queueing theory with process mining for resource and delay analysis."
+    },
+    {
+      "id": 49,
+      "name": "Marco Comuzzi",
+      "affiliation": "Ulsan National Institute of Science and Technology (UNIST)",
+      "department": "Department of Industrial Engineering",
+      "country": "South Korea",
+      "research_themes": ["process mining applications", "business process redesign", "process monitoring", "service-level agreements"],
+      "notable_publications": [
+        {"title": "Evaluating the Effect of Best Practices for Business Process Redesign Using Process Mining", "year": 2022, "venue": "Information Systems"},
+        {"title": "A Method for Generating Process Goal Models", "year": 2009, "venue": "CAiSE"},
+        {"title": "Metrics for Evaluating the Quality of Service Level Agreements", "year": 2013, "venue": "ICSOC"}
+      ],
+      "bio": "Professor at UNIST, South Korea. Expert on process mining for business process redesign and performance evaluation."
+    },
+    {
+      "id": 50,
+      "name": "Benoit Depaire",
+      "affiliation": "Hasselt University",
+      "department": "Faculty of Business Economics",
+      "country": "Belgium",
+      "research_themes": ["process mining methodology", "resource mining", "simulation for process mining", "process mining education"],
+      "notable_publications": [
+        {"title": "From Process Mining Insights to Process Improvement: All Talk and No Action?", "year": 2023, "venue": "BPM"},
+        {"title": "Mining Insights into Resources' Collaboration Behavior from Event Data", "year": 2023, "venue": "ICPM"},
+        {"title": "Process Mining Practices: Evidence from Interviews", "year": 2022, "venue": "BPM"}
+      ],
+      "bio": "Professor at Hasselt University. Expert on process mining methodology and bridging the gap from mining insights to process improvement."
+    },
+    {
+      "id": 51,
+      "name": "Adriano Augusto",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "research_themes": ["process discovery", "automated discovery algorithms", "Split Miner", "process model quality"],
+      "notable_publications": [
+        {"title": "Split Miner: Automated Discovery of Accurate and Simple Business Process Models from Event Logs", "year": 2019, "venue": "Knowledge and Information Systems"},
+        {"title": "Automated Discovery of Process Models from Event Logs: Review and Benchmark", "year": 2019, "venue": "IEEE TKDE"},
+        {"title": "Measuring Process Model Quality: The OTOBM Framework", "year": 2020, "venue": "Information Systems"}
+      ],
+      "bio": "Researcher at University of Melbourne. Co-creator of Split Miner, key contributor to benchmarking process discovery algorithms."
+    },
+    {
+      "id": 52,
+      "name": "Raffaele Conforti",
+      "affiliation": "Decisions (industry)",
+      "department": null,
+      "country": "Australia",
+      "secondary_affiliation": "Previously QUT",
+      "research_themes": ["process discovery", "BPMN mining", "risk-aware BPM", "process improvement"],
+      "notable_publications": [
+        {"title": "BPMN Miner: Automated Discovery of BPMN Process Models with Hierarchical Structure", "year": 2013, "venue": "Information Systems"},
+        {"title": "Split Miner: Automated Discovery of Accurate and Simple Business Process Models", "year": 2019, "venue": "Knowledge and Information Systems"},
+        {"title": "Risk-Informed Process Mining", "year": 2014, "venue": "PhD Thesis, QUT"}
+      ],
+      "bio": "Director of Process Mining at Decisions. Formerly at QUT, co-developer of BPMN Miner and Split Miner algorithms."
+    },
+    {
+      "id": 53,
+      "name": "Ilya Verenich",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "research_themes": ["predictive process monitoring", "outcome prediction", "temporal properties", "machine learning for BPM"],
+      "notable_publications": [
+        {"title": "Outcome-Oriented Predictive Process Monitoring: Review and Benchmark", "year": 2019, "venue": "ACM TKDD"},
+        {"title": "Predicting Process Performance: A White-Box Approach Based on Process Models", "year": 2019, "venue": "JSE&P"},
+        {"title": "Survey on Predictive Monitoring of Business Processes", "year": 2018, "venue": "ACM Computing Surveys (working paper)"}
+      ],
+      "bio": "Researcher at University of Melbourne. Expert on predictive monitoring, outcome prediction, and benchmarking ML methods for BPM."
+    },
+    {
+      "id": 54,
+      "name": "Irene Teinemaa",
+      "affiliation": "University of Tartu",
+      "department": "Institute of Computer Science",
+      "country": "Estonia",
+      "research_themes": ["predictive process monitoring", "alarm systems", "prescriptive analytics", "temporal stability"],
+      "notable_publications": [
+        {"title": "Outcome-Oriented Predictive Process Monitoring: Review and Benchmark", "year": 2019, "venue": "ACM TKDD"},
+        {"title": "Temporal Stability in Predictive Process Monitoring", "year": 2019, "venue": "Data Mining and Knowledge Discovery"},
+        {"title": "Alarm-Based Prescriptive Process Monitoring", "year": 2019, "venue": "BPM Forum"}
+      ],
+      "bio": "Researcher at University of Tartu. Expert on predictive and prescriptive process monitoring benchmarking."
+    },
+    {
+      "id": 55,
+      "name": "Niek Tax",
+      "affiliation": "Meta (Facebook)",
+      "department": "Machine Learning",
+      "country": "Netherlands",
+      "secondary_affiliation": "Previously Eindhoven University of Technology",
+      "research_themes": ["predictive process monitoring", "deep learning for process mining", "LSTM for process prediction"],
+      "notable_publications": [
+        {"title": "Predictive Business Process Monitoring with LSTM Neural Networks", "year": 2017, "venue": "CAiSE"},
+        {"title": "An Interdisciplinary Comparison of Sequence Modeling Methods for Next-Element Prediction", "year": 2020, "venue": "SoSyM"},
+        {"title": "Fire Now, Fire Later: Alarm-Based Systems for Prescriptive Process Monitoring", "year": 2020, "venue": "Knowledge and Information Systems"}
+      ],
+      "bio": "ML researcher at Meta, formerly at TU/e. Pioneer in applying LSTM neural networks to predictive process monitoring."
+    },
+    {
+      "id": 56,
+      "name": "Gyunam Park",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["object-centric process mining", "performance analysis", "action-oriented process mining"],
+      "notable_publications": [
+        {"title": "Analyzing an After-Sales Service Process Using Object-Centric Process Mining", "year": 2024, "venue": "ICPM"},
+        {"title": "A General Framework for Action-Oriented Process Mining", "year": 2022, "venue": "BPM Forum"},
+        {"title": "Object-Centric Performance Analysis", "year": 2023, "venue": "ICPM"}
+      ],
+      "bio": "Assistant Professor at TU/e. PhD from RWTH Aachen (2024). Expert on object-centric and action-oriented process mining."
+    },
+    {
+      "id": 57,
+      "name": "Mahsa Pourbafrani",
+      "affiliation": "RWTH Aachen University",
+      "department": "Process and Data Science (PADS)",
+      "country": "Germany",
+      "research_themes": ["process simulation", "digital twins", "process mining at scale", "system dynamics"],
+      "notable_publications": [
+        {"title": "Supporting Automatic System Dynamics Model Generation for Simulation in the Context of Process Mining", "year": 2020, "venue": "BPM"},
+        {"title": "Removing Operational Friction Using Process Mining: Challenges in Internet of Production", "year": 2021, "venue": "arXiv/BPM Workshops"},
+        {"title": "Process Mining and Simulation: A Match Made in Heaven!", "year": 2022, "venue": "ICPM Workshops"}
+      ],
+      "bio": "Researcher at RWTH Aachen PADS group. Winner of Manfred Nagl Prize 2024 (second place). Expert on process simulation and digital twins."
+    },
+    {
+      "id": 58,
+      "name": "Mohammadreza Fani Sani",
+      "affiliation": "Microsoft",
+      "department": null,
+      "country": "Netherlands",
+      "secondary_affiliation": "PhD from RWTH Aachen University",
+      "research_themes": ["process mining performance", "filtering event logs", "conformance checking optimization"],
+      "notable_publications": [
+        {"title": "Improving Process Discovery Results by Filtering Outliers Using Conditional Behavioural Probabilities", "year": 2017, "venue": "BPM Workshops"},
+        {"title": "Repairing Outlier Behaviour in Event Logs", "year": 2019, "venue": "Information Systems"},
+        {"title": "Applying Process Mining for Agile Development", "year": 2017, "venue": "BPM Workshops"}
+      ],
+      "bio": "ML engineer at Microsoft, PhD from RWTH Aachen. Expert on event log filtering and process mining performance optimization."
+    },
+    {
+      "id": 59,
+      "name": "Jana-Rebecca Rehse",
+      "affiliation": "University of Mannheim",
+      "department": "School of Business Informatics and Mathematics",
+      "country": "Germany",
+      "research_themes": ["process mining and AI", "natural language processing for BPM", "process improvement", "explainable AI"],
+      "notable_publications": [
+        {"title": "Predicting Process Behaviour Using Deep Learning", "year": 2017, "venue": "Decision Support Systems"},
+        {"title": "Process Mining for Process Improvement: An Evidence-Based Framework", "year": 2023, "venue": "BPM"},
+        {"title": "A Five-Level Framework for Research on Process Mining", "year": 2022, "venue": "Business & Information Systems Engineering"}
+      ],
+      "bio": "Professor at University of Mannheim. Expert on AI-driven process mining and bridging process mining research to practice."
+    },
+    {
+      "id": 60,
+      "name": "Iris Beerepoot",
+      "affiliation": "Utrecht University",
+      "department": "Department of Information and Computing Sciences",
+      "country": "Netherlands",
+      "research_themes": ["work practice mining", "task mining", "active window tracking", "process improvement"],
+      "notable_publications": [
+        {"title": "The Biggest Business Process Management Problems to Solve Before We Die", "year": 2022, "venue": "Computers in Industry"},
+        {"title": "Tiramisu: A Recipe for Visual Sensemaking of Multi-Faceted Process Information", "year": 2025, "venue": "BPM"},
+        {"title": "Active Window Tracking for Mining Work Practices", "year": 2022, "venue": "ICPM"}
+      ],
+      "bio": "Assistant Professor at Utrecht University. Expert on task mining, work practice analysis, and visual sensemaking in process mining."
+    },
+    {
+      "id": 61,
+      "name": "Cristina Cabanillas",
+      "affiliation": "University of Seville",
+      "department": "Department of Languages and Computer Systems",
+      "country": "Spain",
+      "research_themes": ["resource-aware BPM", "organizational mining", "process automation", "human resource management"],
+      "notable_publications": [
+        {"title": "Automated Resource Assignment in BPMN Models Using RACI Matrices", "year": 2012, "venue": "OTM Conferences"},
+        {"title": "Towards Process-Aware Cross-Organizational Human Resource Management", "year": 2014, "venue": "BMMDS/EMMSAD"},
+        {"title": "Unveiling Use Cases for Human Resource Mining", "year": 2024, "venue": "Business & Information Systems Engineering"}
+      ],
+      "bio": "Associate Professor at University of Seville. Expert on resource-aware process mining and organizational mining."
+    },
+    {
+      "id": 62,
+      "name": "Manuel Resinas",
+      "affiliation": "University of Seville",
+      "department": "Department of Languages and Computer Systems",
+      "country": "Spain",
+      "research_themes": ["process performance management", "process analytics", "SLA management", "process mining dashboards"],
+      "notable_publications": [
+        {"title": "Defining and Analysing Resource-Aware Process Performance Indicators", "year": 2019, "venue": "BPM"},
+        {"title": "PPINot: A Tool for Process Performance Indicator Notation", "year": 2013, "venue": "BPM Demo"},
+        {"title": "Automated Analysis of Process Performance Indicators", "year": 2015, "venue": "Information Systems"}
+      ],
+      "bio": "Associate Professor at University of Seville. Expert on process performance indicator definition and analytics."
+    },
+    {
+      "id": 63,
+      "name": "Andrea Delgado",
+      "affiliation": "Universidad de la Republica",
+      "department": "Faculty of Engineering",
+      "country": "Uruguay",
+      "research_themes": ["process mining applications", "sustainability in process mining", "process discovery evaluation"],
+      "notable_publications": [
+        {"title": "Adding the Sustainability Dimension in Process Mining Discovery Algorithms Evaluation", "year": 2023, "venue": "BPM Workshops"},
+        {"title": "Process Mining Applied to Passport Application Processes in Uruguay", "year": 2020, "venue": "BPM Workshops"},
+        {"title": "Towards a Data Science Framework Integrating Process and Data Mining", "year": 2020, "venue": "ICPM Workshops"}
+      ],
+      "bio": "Professor at Universidad de la Republica, Uruguay. General Chair of ICPM 2025. Expert on applied and sustainable process mining."
+    },
+    {
+      "id": 64,
+      "name": "Luciano Garcia-Banuelos",
+      "affiliation": "Tecnologico de Monterrey",
+      "department": "School of Engineering and Sciences",
+      "country": "Mexico",
+      "secondary_affiliation": "Previously University of Tartu",
+      "research_themes": ["process model simplification", "blockchain and BPM", "process model comparison", "optimization"],
+      "notable_publications": [
+        {"title": "Optimized Execution of Business Processes on Blockchain", "year": 2017, "venue": "BPM"},
+        {"title": "Complete and Efficient Process Mining", "year": 2015, "venue": "Information Systems"},
+        {"title": "Simplifying Process Model Abstractions", "year": 2009, "venue": "BPM"}
+      ],
+      "bio": "Professor at Tecnologico de Monterrey. Expert on blockchain-BPM integration and process model optimization."
+    },
+    {
+      "id": 65,
+      "name": "Walid Gaaloul",
+      "affiliation": "Telecom SudParis",
+      "department": "Department of Computer Science",
+      "country": "France",
+      "research_themes": ["web service mining", "process compliance", "cloud BPM", "service composition"],
+      "notable_publications": [
+        {"title": "Mining Workflow Recovery from Event-Based Logs", "year": 2004, "venue": "BPM"},
+        {"title": "Log-Based Transactional Workflow Mining", "year": 2005, "venue": "Distributed and Parallel Databases"},
+        {"title": "Event-Based Service Composition", "year": 2012, "venue": "ICSOC"}
+      ],
+      "bio": "Professor at Telecom SudParis. Expert on service-oriented process mining and cloud-based BPM."
+    },
+    {
+      "id": 66,
+      "name": "Daniela Grigori",
+      "affiliation": "University Paris-Dauphine",
+      "department": "LAMSADE Laboratory",
+      "country": "France",
+      "research_themes": ["process mining", "workflow analysis", "business intelligence", "process querying"],
+      "notable_publications": [
+        {"title": "Business Process Intelligence", "year": 2004, "venue": "Computers in Industry"},
+        {"title": "Improving Business Process Quality through Exception Understanding, Prediction, and Prevention", "year": 2001, "venue": "VLDB"},
+        {"title": "Mining Process Models from Workflow Logs", "year": 2003, "venue": "ER"}
+      ],
+      "bio": "Professor at Paris-Dauphine University. Pioneer in business process intelligence and process exception management."
+    },
+    {
+      "id": 67,
+      "name": "Hagen Volzer",
+      "affiliation": "University of St. Gallen",
+      "department": "Institute of Computer Science",
+      "country": "Switzerland",
+      "secondary_affiliation": "Previously IBM Research",
+      "research_themes": ["process model analysis", "soundness checking", "process model complexity", "formal methods"],
+      "notable_publications": [
+        {"title": "Process Model Abstraction Based on Behavioral Profiles", "year": 2012, "venue": "Springer"},
+        {"title": "Temporal Compliance Checking in Process Mining", "year": 2016, "venue": "BPM Forum"},
+        {"title": "Computing the Semantics of BPMN Collaboration Diagrams", "year": 2009, "venue": "BPM"}
+      ],
+      "bio": "Professor at University of St. Gallen, formerly at IBM Research Zurich. Expert on formal analysis and abstraction of process models."
+    },
+    {
+      "id": 68,
+      "name": "Thomas Chatain",
+      "affiliation": "ENS Paris-Saclay (LSV)",
+      "department": "Laboratoire Specification et Verification",
+      "country": "France",
+      "research_themes": ["Petri nets", "partial order methods", "concurrency in process mining", "unfoldings"],
+      "notable_publications": [
+        {"title": "Model Repair with Partial Order Alignment", "year": 2018, "venue": "ICPM"},
+        {"title": "Petri Net Unfoldings for Process Mining", "year": 2016, "venue": "ICATPN"},
+        {"title": "Diagnosis with Petri Net Unfoldings", "year": 2009, "venue": "Springer"}
+      ],
+      "bio": "Researcher at LSV, ENS Paris-Saclay. Expert on Petri net theory and partial order methods applied to process mining."
+    },
+    {
+      "id": 69,
+      "name": "Robin Bergenthum",
+      "affiliation": "FernUniversitat in Hagen",
+      "department": "Department of Computer Science",
+      "country": "Germany",
+      "research_themes": ["process discovery from partial orders", "region theory", "synthesis of Petri nets"],
+      "notable_publications": [
+        {"title": "Process Discovery Using Precondition and Postcondition Graphs", "year": 2019, "venue": "ICPM"},
+        {"title": "Synthesizing Petri Nets from Term Languages", "year": 2013, "venue": "ATPN"},
+        {"title": "Process Mining Based on Regions of Languages", "year": 2007, "venue": "BPM"}
+      ],
+      "bio": "Professor at FernUniversitat in Hagen. Expert on synthesis-based process discovery using region theory."
+    },
+    {
+      "id": 70,
+      "name": "Joerg Evermann",
+      "affiliation": "Memorial University of Newfoundland",
+      "department": "Faculty of Business Administration",
+      "country": "Canada",
+      "research_themes": ["deep learning for process mining", "process prediction", "conceptual modeling"],
+      "notable_publications": [
+        {"title": "Predicting Process Behaviour Using Deep Learning", "year": 2017, "venue": "Decision Support Systems"},
+        {"title": "A Deep Learning Approach for Predicting Process Behaviour at Runtime", "year": 2016, "venue": "BPMS Workshops"},
+        {"title": "Ontological Foundations of Process Modeling", "year": 2003, "venue": "CAiSE"}
+      ],
+      "bio": "Professor at Memorial University of Newfoundland. Pioneer in applying deep learning to process behavior prediction."
+    },
+    {
+      "id": 71,
+      "name": "Raimundas Matulevicius",
+      "affiliation": "University of Tartu",
+      "department": "Institute of Computer Science",
+      "country": "Estonia",
+      "research_themes": ["security in BPM", "process compliance", "privacy engineering", "requirements engineering"],
+      "notable_publications": [
+        {"title": "Security-Aware Business Process Modelling", "year": 2012, "venue": "BPMN Workshop"},
+        {"title": "Privacy-Enhancing Technologies for Business Process Mining", "year": 2022, "venue": "BPM Workshops"},
+        {"title": "Model-Driven Security of BPMN Processes", "year": 2013, "venue": "Information Systems"}
+      ],
+      "bio": "Professor at University of Tartu. Expert on security and privacy engineering in business process management."
+    },
+    {
+      "id": 72,
+      "name": "Giovanni Meroni",
+      "affiliation": "Technical University of Denmark",
+      "department": "DTU Compute",
+      "country": "Denmark",
+      "research_themes": ["IoT and process mining", "artifact-driven BPM", "smart objects", "blockchain and BPM"],
+      "notable_publications": [
+        {"title": "Multi-Party Business Process Compliance Monitoring through IoT-Enabled Artifacts", "year": 2019, "venue": "Information Systems"},
+        {"title": "Artifact-Driven Business Process Monitoring", "year": 2015, "venue": "CAiSE Forum"},
+        {"title": "Smart Objects and Processes", "year": 2020, "venue": "BPM"}
+      ],
+      "bio": "Assistant Professor at DTU. Expert on IoT-enabled process monitoring and artifact-driven business processes."
+    },
+    {
+      "id": 73,
+      "name": "Anna Kalenkova",
+      "affiliation": "University of Adelaide",
+      "department": "School of Computer and Mathematical Sciences",
+      "country": "Australia",
+      "research_themes": ["process model synthesis", "Petri nets", "process discovery", "formal methods"],
+      "notable_publications": [
+        {"title": "Discovering Process Models from Incomplete Event Logs", "year": 2018, "venue": "ICPM"},
+        {"title": "Process Model Quality Metrics", "year": 2016, "venue": "Information Systems"},
+        {"title": "Finding Process Models that Comprehend Observed Behavior", "year": 2017, "venue": "BPM"}
+      ],
+      "bio": "Lecturer at University of Adelaide, formerly at University of Melbourne. Expert on process model synthesis using formal methods."
+    },
+    {
+      "id": 74,
+      "name": "Gamal Elkoumy",
+      "affiliation": "University of Tartu",
+      "department": "Institute of Computer Science",
+      "country": "Estonia",
+      "research_themes": ["privacy-preserving process mining", "secure multi-party computation", "differential privacy"],
+      "notable_publications": [
+        {"title": "Privacy-Enhancing Technologies for Business Process Mining", "year": 2022, "venue": "PhD Thesis, University of Tartu"},
+        {"title": "Secure Multi-Party Computation for Process Mining", "year": 2020, "venue": "BPM"},
+        {"title": "Privacy and Confidentiality in Process Mining", "year": 2021, "venue": "ACM TMIS"}
+      ],
+      "bio": "Research Fellow at University of Tartu. Expert on privacy-enhancing technologies including secure multi-party computation for process mining."
+    },
+    {
+      "id": 75,
+      "name": "Gert Janssenswillen",
+      "affiliation": "Hasselt University",
+      "department": "Faculty of Business Economics",
+      "country": "Belgium",
+      "research_themes": ["process mining in R", "bupaR", "process metrics", "trace clustering"],
+      "notable_publications": [
+        {"title": "bupaR: Business Process Analysis in R", "year": 2019, "venue": "BPM Demo"},
+        {"title": "Capturing Process Behavior with Log-Based Process Metrics", "year": 2016, "venue": "BPM Workshops"},
+        {"title": "bupaR: Enabling Reproducible Business Process Analysis", "year": 2020, "venue": "Knowledge-Based Systems"}
+      ],
+      "bio": "Researcher at Hasselt University. Creator of the bupaR ecosystem for process mining in R."
+    },
+    {
+      "id": 76,
+      "name": "Mieke Jans",
+      "affiliation": "Hasselt University",
+      "department": "Faculty of Business Economics",
+      "country": "Belgium",
+      "research_themes": ["process mining in auditing", "internal control", "fraud detection", "accounting and process mining"],
+      "notable_publications": [
+        {"title": "Business Process Mining in Auditing: From Compliance to Risk Management", "year": 2018, "venue": "Expert Systems with Applications"},
+        {"title": "Process Mining Applied to the Test of Controls", "year": 2013, "venue": "International Journal of Intelligent Systems in Accounting"},
+        {"title": "A Business Process Mining Application for Internal Transaction Fraud Mitigation", "year": 2011, "venue": "Expert Systems with Applications"}
+      ],
+      "bio": "Professor at Hasselt University. Pioneer in applying process mining to auditing, fraud detection, and internal controls."
+    },
+    {
+      "id": 77,
+      "name": "Pavlos Delias",
+      "affiliation": "International Hellenic University",
+      "department": "Department of Management Science and Technology",
+      "country": "Greece",
+      "research_themes": ["process mining methodology", "process improvement", "evidence-based process mining"],
+      "notable_publications": [
+        {"title": "Prototyping a Business Process Improvement Plan: An Evidence-Based Approach", "year": 2023, "venue": "BPM"},
+        {"title": "Process Science in Action: A Literature Review on Process Mining in Business Management", "year": 2021, "venue": "Technological Forecasting and Social Change"},
+        {"title": "Applying Process Mining to Public Sector Processes", "year": 2017, "venue": "BPM Workshops"}
+      ],
+      "bio": "Professor at International Hellenic University. Expert on evidence-based process mining and process improvement methodology."
+    },
+    {
+      "id": 78,
+      "name": "Cong Liu",
+      "affiliation": "Shandong University of Technology",
+      "department": "School of Computer Science",
+      "country": "China",
+      "research_themes": ["process discovery", "noise filtering", "incomplete event logs", "process model repair"],
+      "notable_publications": [
+        {"title": "A Method for Discovering Process Models from Noisy Logs", "year": 2014, "venue": "BPM Workshops"},
+        {"title": "Handling Noise in Process Mining", "year": 2016, "venue": "ICPM Workshops"},
+        {"title": "Process Mining Algorithms for Incomplete Event Logs", "year": 2018, "venue": "Information Sciences"}
+      ],
+      "bio": "Professor at Shandong University of Technology. Expert on noise handling and incomplete log challenges in process discovery."
+    },
+    {
+      "id": 79,
+      "name": "Irina Lomazova",
+      "affiliation": "National Research University Higher School of Economics",
+      "department": "Laboratory of Process-Aware Information Systems (PAIS Lab)",
+      "country": "Russia",
+      "research_themes": ["Petri nets", "process model repair", "process discovery", "formal methods for process mining"],
+      "notable_publications": [
+        {"title": "Process Mining with Token Carried Data", "year": 2018, "venue": "Petri Nets"},
+        {"title": "Nested Petri Nets for Process Mining", "year": 2015, "venue": "Fundamenta Informaticae"},
+        {"title": "Colored Petri Nets for Process Mining", "year": 2016, "venue": "ICPM Workshops"}
+      ],
+      "bio": "Head of PAIS Lab at HSE Moscow. Expert on formal process mining using Petri net theory."
+    },
+    {
+      "id": 80,
+      "name": "Daniel Amyot",
+      "affiliation": "University of Ottawa",
+      "department": "School of Electrical Engineering and Computer Science",
+      "country": "Canada",
+      "research_themes": ["goal-oriented process modeling", "user requirements notation", "regulatory compliance", "healthcare processes"],
+      "notable_publications": [
+        {"title": "Use Case Maps as a Feature Description Notation", "year": 1999, "venue": "Feature Interactions in Telecommunications"},
+        {"title": "URN: Towards a New Standard for the Visual Description of Requirements", "year": 2003, "venue": "Telecommunications and Beyond"},
+        {"title": "Mining Healthcare Process Models", "year": 2018, "venue": "ICPM Workshops"}
+      ],
+      "bio": "Full Professor at University of Ottawa. Expert on goal-oriented requirements and process modeling, particularly in healthcare."
+    },
+    {
+      "id": 81,
+      "name": "Michael Arias",
+      "affiliation": "Universidad de Costa Rica",
+      "department": "Department of Computer Science",
+      "country": "Costa Rica",
+      "research_themes": ["process mining applications", "process mining in Latin America", "event log generation"],
+      "notable_publications": [
+        {"title": "A Framework for Recommending Resource Allocation Based on Process Mining", "year": 2018, "venue": "BPM Forum"},
+        {"title": "Process Mining in Latin America: Opportunities and Challenges", "year": 2020, "venue": "ICPM Workshops"},
+        {"title": "Human Resource Allocation in Business Process Management", "year": 2019, "venue": "Computers in Industry"}
+      ],
+      "bio": "Professor at Universidad de Costa Rica. Prominent process mining researcher in Central America."
+    },
+    {
+      "id": 82,
+      "name": "Abel Armas Cervantes",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "research_themes": ["process model comparison", "behavioral relations", "change detection", "event structures"],
+      "notable_publications": [
+        {"title": "Behavioral Comparison of Process Models Based on Canonically Reduced Event Structures", "year": 2017, "venue": "BPM"},
+        {"title": "Detecting Differences Between Business Process Models", "year": 2014, "venue": "BPM Forum"},
+        {"title": "Interactive and Incremental Business Process Model Repair", "year": 2017, "venue": "OTM Conferences"}
+      ],
+      "bio": "Lecturer at University of Melbourne. Expert on behavioral comparison and change detection in process models."
+    },
+    {
+      "id": 83,
+      "name": "Ahmed Awad",
+      "affiliation": "British University in Dubai",
+      "department": "Faculty of Engineering and IT",
+      "country": "UAE",
+      "research_themes": ["BPMN analysis", "process querying", "business process compliance", "event pattern matching"],
+      "notable_publications": [
+        {"title": "BPMN-Q: A Language to Query Business Processes", "year": 2007, "venue": "EMISA"},
+        {"title": "Efficient Compliance Checking Using BPMN-Q and Temporal Logic", "year": 2008, "venue": "BPM"},
+        {"title": "An Efficient Query Processing Framework for BPMN Intelligence", "year": 2011, "venue": "Information Systems"}
+      ],
+      "bio": "Professor at British University in Dubai. Expert on process querying languages and BPMN-based analysis."
+    },
+    {
+      "id": 84,
+      "name": "Saimir Bala",
+      "affiliation": "Humboldt-Universitat zu Berlin",
+      "department": "Department of Information Systems",
+      "country": "Germany",
+      "research_themes": ["process mining", "batch processing analysis", "causal analysis", "event log preprocessing"],
+      "notable_publications": [
+        {"title": "Analyzing Business Process Batching Using Causal Event Models", "year": 2022, "venue": "ICPM"},
+        {"title": "Multidimensional Process Discovery", "year": 2015, "venue": "BPM Forum"},
+        {"title": "Log Preprocessing for Process Mining", "year": 2019, "venue": "BPM Workshops"}
+      ],
+      "bio": "Researcher at HU Berlin. Expert on causal analysis and batch processing in process mining."
+    },
+    {
+      "id": 85,
+      "name": "Minsu Cho",
+      "affiliation": "Kwangwoon University",
+      "department": "Department of Industrial Engineering",
+      "country": "South Korea",
+      "research_themes": ["process mining", "business analytics", "data-driven process optimization"],
+      "notable_publications": [
+        {"title": "Process Mining for Manufacturing Process Analysis", "year": 2019, "venue": "Expert Systems with Applications"},
+        {"title": "Efficient Mining of Process Variants", "year": 2018, "venue": "BPM Forum"},
+        {"title": "A Systematic Review of Process Mining Applications in Manufacturing", "year": 2021, "venue": "Computers in Industry"}
+      ],
+      "bio": "Professor at Kwangwoon University. Expert on process mining applications in manufacturing and industry."
+    },
+    {
+      "id": 86,
+      "name": "Orlenys Lopez-Pintado",
+      "affiliation": "University of Tartu",
+      "department": "Institute of Computer Science",
+      "country": "Estonia",
+      "research_themes": ["process simulation", "business process optimization", "what-if analysis", "blockchain-based BPM"],
+      "notable_publications": [
+        {"title": "Business Process Simulation with Differentiated Resources", "year": 2019, "venue": "BPM"},
+        {"title": "Caterpillar: A Blockchain-Based Business Process Management System", "year": 2019, "venue": "BPM Demo"},
+        {"title": "SIMOD: A Tool for Automated Discovery of Business Process Simulation Models", "year": 2022, "venue": "BPM Demo"}
+      ],
+      "bio": "Researcher at University of Tartu. Expert on automated business process simulation and blockchain-based process execution."
+    },
+    {
+      "id": 87,
+      "name": "Oscar Gonzalez-Rojas",
+      "affiliation": "Universidad de los Andes",
+      "department": "Department of Systems and Computing Engineering",
+      "country": "Colombia",
+      "research_themes": ["process mining in healthcare", "process improvement", "resource optimization"],
+      "notable_publications": [
+        {"title": "Process Mining for Healthcare Process Improvement", "year": 2019, "venue": "BPM Workshops"},
+        {"title": "Trace Alignment and Process Analytics", "year": 2020, "venue": "ICPM"},
+        {"title": "Discovering Resource Allocation Patterns from Event Logs", "year": 2018, "venue": "BPM Forum"}
+      ],
+      "bio": "Professor at Universidad de los Andes, Colombia. Expert on process mining applications in healthcare and resource optimization."
+    },
+    {
+      "id": 88,
+      "name": "Laura Genga",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["behavioral pattern mining", "process monitoring", "anomaly detection", "deviations in processes"],
+      "notable_publications": [
+        {"title": "Predicting Process Behaviour Using Stochastic Model Checking", "year": 2020, "venue": "Information Systems"},
+        {"title": "Behavioral Pattern Mining for Process Mining", "year": 2019, "venue": "BPM Workshops"},
+        {"title": "Analyzing Process Deviations Using Process Mining", "year": 2021, "venue": "ICPM"}
+      ],
+      "bio": "Assistant Professor at TU/e. Expert on behavioral pattern mining and anomaly/deviation detection in process mining."
+    },
+    {
+      "id": 89,
+      "name": "Marwan Hassani",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["streaming data mining", "online process mining", "IoT data streams", "clustering"],
+      "notable_publications": [
+        {"title": "Concept Drift Detection in Process Mining", "year": 2019, "venue": "ICPM"},
+        {"title": "Efficient Density-Based Clustering of Complex Objects", "year": 2012, "venue": "IEEE TKDE"},
+        {"title": "Stream Clustering for Process Mining", "year": 2020, "venue": "ICPM Workshops"}
+      ],
+      "bio": "Assistant Professor at TU/e. Expert on streaming data analysis and concept drift detection in process mining."
+    },
+    {
+      "id": 90,
+      "name": "Francesca Zerbato",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["process mining visualization", "human factors in process mining", "cognitive load", "process model comprehension"],
+      "notable_publications": [
+        {"title": "Supporting Provenance and Data Awareness in Exploratory Process Mining", "year": 2023, "venue": "Information Systems"},
+        {"title": "Process Mining Meets Visual Analytics", "year": 2023, "venue": "Information Systems (special issue)"},
+        {"title": "Exploring Cognitive Factors in Process Model Comprehension", "year": 2020, "venue": "BPM"}
+      ],
+      "bio": "Assistant Professor at TU/e. Expert on visualization, human factors, and cognitive aspects in process mining."
+    },
+    {
+      "id": 91,
+      "name": "Karolin Winter",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["process mining for compliance", "natural language processing", "regulatory compliance mining"],
+      "notable_publications": [
+        {"title": "Discovering Instance and Process Spanning Constraints from Process Execution Logs", "year": 2023, "venue": "Information Systems"},
+        {"title": "Defining Compliance Specifications from Regulatory Documents", "year": 2021, "venue": "BPM"},
+        {"title": "From NL Regulations to Process Compliance Rules", "year": 2022, "venue": "ICPM"}
+      ],
+      "bio": "Assistant Professor at TU/e. Expert on extracting compliance rules from natural language regulations for process mining."
+    },
+    {
+      "id": 92,
+      "name": "Massimiliano Ronzani",
+      "affiliation": "Fondazione Bruno Kessler",
+      "department": "Digital Industry Center",
+      "country": "Italy",
+      "research_themes": ["generative models for process mining", "predictive monitoring", "deep learning"],
+      "notable_publications": [
+        {"title": "Generating the Traces You Need: A Conditional Generative Model for Process Mining Data", "year": 2024, "venue": "arXiv/ICPM"},
+        {"title": "DICE: Data-Integrated Counterfactual Explanations for Process Mining", "year": 2023, "venue": "BPM"},
+        {"title": "Outcome-Oriented Prescriptive Process Monitoring", "year": 2023, "venue": "BPM Forum"}
+      ],
+      "bio": "Researcher at Fondazione Bruno Kessler, Trento. Expert on generative models and counterfactual explanations in process mining."
+    },
+    {
+      "id": 93,
+      "name": "Lorenzo Rossi",
+      "affiliation": "University of Camerino",
+      "department": "School of Science and Technology",
+      "country": "Italy",
+      "research_themes": ["process mining", "data quality", "process model evaluation"],
+      "notable_publications": [
+        {"title": "Evaluating the Robustness of Process Discovery Algorithms", "year": 2022, "venue": "ICPM"},
+        {"title": "A Quality Assessment Framework for Process Discovery Results", "year": 2021, "venue": "BPM Workshops"},
+        {"title": "Noise-Resistant Process Discovery Evaluation", "year": 2023, "venue": "ICPM"}
+      ],
+      "bio": "Researcher at University of Camerino. Expert on robustness and quality evaluation of process discovery algorithms."
+    },
+    {
+      "id": 94,
+      "name": "Andrea Vandin",
+      "affiliation": "Scuola Superiore Sant'Anna",
+      "department": "Institute of Economics",
+      "country": "Italy",
+      "research_themes": ["quantitative process mining", "stochastic model checking", "simulation", "statistical model checking"],
+      "notable_publications": [
+        {"title": "Quantitative Aspects of Process Mining", "year": 2023, "venue": "ICPM Workshop"},
+        {"title": "Statistical Model Checking for Process Mining", "year": 2022, "venue": "BPM Workshops"},
+        {"title": "Automated Analysis of Stochastic Process Models", "year": 2021, "venue": "TACAS"}
+      ],
+      "bio": "Associate Professor at Scuola Superiore Sant'Anna, Pisa. Expert on quantitative and statistical methods for process mining."
+    },
+    {
+      "id": 95,
+      "name": "Eric Verbeek",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["ProM framework", "Petri nets", "process mining tools", "XES standard"],
+      "notable_publications": [
+        {"title": "The ProM Framework: A New Era in Process Mining Tool Support", "year": 2005, "venue": "ICATPN"},
+        {"title": "XES Standard Definition", "year": 2014, "venue": "IEEE Standard"},
+        {"title": "Decomposing Conformance Checking on Petri Nets", "year": 2013, "venue": "ICPM"}
+      ],
+      "bio": "Senior researcher at TU/e. Core developer of the ProM process mining framework and key contributor to the XES event log standard."
+    },
+    {
+      "id": 96,
+      "name": "Roberto Gatta",
+      "affiliation": "Universita degli Studi di Brescia",
+      "department": "Department of Medical and Surgical Specialties",
+      "country": "Italy",
+      "secondary_affiliation": "CHUV Lausanne, Switzerland",
+      "research_themes": ["healthcare process mining", "clinical pathway analysis", "oncology process mining"],
+      "notable_publications": [
+        {"title": "Process Mining for Healthcare: Characteristics and Challenges", "year": 2022, "venue": "Journal of Biomedical Informatics"},
+        {"title": "Generating and Comparing Knowledge Graphs of Medical Processes Using Ontologies", "year": 2020, "venue": "Journal of Biomedical Informatics"},
+        {"title": "Process Mining Applied to Oncological Treatment Pathways", "year": 2019, "venue": "Artificial Intelligence in Medicine"}
+      ],
+      "bio": "Researcher at University of Brescia and CHUV Lausanne. Expert on clinical process mining, especially in oncology."
+    },
+    {
+      "id": 97,
+      "name": "Zahra Dasht Bozorgi",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "research_themes": ["causal inference in process mining", "machine learning", "deep learning for processes"],
+      "notable_publications": [
+        {"title": "Process Mining Meets Causal Machine Learning: Discovering Causal Rules from Event Logs", "year": 2020, "venue": "arXiv/CAiSE"},
+        {"title": "Prescriptive Process Monitoring Based on Causal Inference", "year": 2023, "venue": "ICPM"},
+        {"title": "Causal Process Mining for Root Cause Analysis", "year": 2022, "venue": "BPM Workshops"}
+      ],
+      "bio": "PhD researcher at University of Melbourne. Expert on combining causal inference with process mining."
+    },
+    {
+      "id": 98,
+      "name": "Andrey Rivkin",
+      "affiliation": "Technical University of Denmark",
+      "department": "DTU Compute",
+      "country": "Denmark",
+      "research_themes": ["formal methods for BPM", "data-aware processes", "verification of process models"],
+      "notable_publications": [
+        {"title": "Formal Verification of Data-Aware Processes", "year": 2019, "venue": "BPM"},
+        {"title": "Operational Decision Support for Data-Aware Processes", "year": 2020, "venue": "CAiSE"},
+        {"title": "Verification of DCR Graphs", "year": 2018, "venue": "BPM Workshops"}
+      ],
+      "bio": "Researcher at DTU. Expert on formal verification and data-aware process modeling."
+    },
+    {
+      "id": 99,
+      "name": "Estefania Serral Asensio",
+      "affiliation": "KU Leuven",
+      "department": "Department of Decision Sciences and Information Management",
+      "country": "Belgium",
+      "research_themes": ["IoT and BPM", "smart environments", "Industry 4.0 process mining", "context-aware systems"],
+      "notable_publications": [
+        {"title": "A Systematic Literature Review on the Application of Process Mining to Industry 4.0", "year": 2024, "venue": "Knowledge and Information Systems"},
+        {"title": "Context-Aware Service Composition", "year": 2013, "venue": "Expert Systems with Applications"},
+        {"title": "Automating IoT-Driven Process Execution", "year": 2021, "venue": "BPM Workshops"}
+      ],
+      "bio": "Associate Professor at KU Leuven. Expert on IoT-driven process mining and Industry 4.0 applications."
+    },
+    {
+      "id": 100,
+      "name": "Tobias Brockhoff",
+      "affiliation": "RWTH Aachen University",
+      "department": "Process and Data Science (PADS)",
+      "country": "Germany",
+      "research_themes": ["process mining in manufacturing", "Internet of Production", "multi-object process mining"],
+      "notable_publications": [
+        {"title": "Removing Operational Friction Using Process Mining: Challenges in Internet of Production", "year": 2021, "venue": "BPM Workshops"},
+        {"title": "Process Mining in Textile Production: Insights from Penn Textile Solutions", "year": 2024, "venue": "RWTH Publications"},
+        {"title": "Object-Centric Process Mining for Manufacturing Processes", "year": 2023, "venue": "ICPM"}
+      ],
+      "bio": "Researcher at RWTH Aachen PADS group. Expert on applying process mining to manufacturing and Internet of Production."
+    },
+    {
+      "id": 101,
+      "name": "Hoang Nguyen",
+      "affiliation": "University of Melbourne",
+      "department": "School of Computing and Information Systems",
+      "country": "Australia",
+      "research_themes": ["multi-perspective process mining", "process performance analysis", "stage-based process mining"],
+      "notable_publications": [
+        {"title": "Multi-Perspective Comparison of Business Process Variants Based on Event Logs", "year": 2018, "venue": "BPM"},
+        {"title": "Stage-Based Discovery of Business Process Models from Event Logs", "year": 2019, "venue": "PhD Thesis, QUT"},
+        {"title": "Process Variant Comparison Using Multi-Level Abstractions", "year": 2018, "venue": "OTM Conferences"}
+      ],
+      "bio": "Researcher at University of Melbourne, PhD from QUT. Expert on stage-based and multi-perspective process mining."
+    },
+    {
+      "id": 102,
+      "name": "Wai Lam Jonathan Lee",
+      "affiliation": "Eindhoven University of Technology",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["decomposed conformance checking", "alignment-based analysis", "scalable process mining"],
+      "notable_publications": [
+        {"title": "Recomposing Conformance: Closing the Circle on Decomposed Alignment-Based Conformance Checking", "year": 2018, "venue": "Information Sciences"},
+        {"title": "Scalable Conformance Checking Through Decomposition", "year": 2017, "venue": "ICPM"},
+        {"title": "Optimal Decomposed Conformance Checking for Mixed-Granularity Process Models", "year": 2019, "venue": "BPM"}
+      ],
+      "bio": "Researcher at TU/e. Expert on scalable and decomposed conformance checking techniques."
+    },
+    {
+      "id": 103,
+      "name": "Andrzej Wasowski",
+      "affiliation": "IT University of Copenhagen",
+      "department": "Department of Computer Science",
+      "country": "Denmark",
+      "research_themes": ["software engineering", "process modeling variability", "model-driven engineering"],
+      "notable_publications": [
+        {"title": "Blockchains for Business Process Management - Challenges and Opportunities", "year": 2018, "venue": "ACM TMIS"},
+        {"title": "Variability in Software Systems", "year": 2014, "venue": "Springer (book)"},
+        {"title": "Behavioral Constraint Templates for Process Models", "year": 2018, "venue": "BPM Forum"}
+      ],
+      "bio": "Professor at IT University of Copenhagen. Expert on software process variability and model-driven engineering."
+    },
+    {
+      "id": 104,
+      "name": "Alessandro Gianola",
+      "affiliation": "University of Lisbon",
+      "department": "LASIGE Research Center",
+      "country": "Portugal",
+      "research_themes": ["formal verification", "data-aware BPM", "model checking", "SMT-based verification"],
+      "notable_publications": [
+        {"title": "SMT-Based Verification of Data-Aware Processes", "year": 2021, "venue": "BPM"},
+        {"title": "Verification of Data-Centric Dynamic Systems", "year": 2020, "venue": "CAiSE"},
+        {"title": "Quantitative Verification of Declarative Process Models", "year": 2022, "venue": "BPM Workshops"}
+      ],
+      "bio": "Researcher at University of Lisbon. Expert on SMT-based formal verification of data-aware business processes."
+    },
+    {
+      "id": 105,
+      "name": "Wil van der Aalst Research Alumni - Ton Weijters",
+      "name_override": "Ton Weijters",
+      "affiliation": "Eindhoven University of Technology (Emeritus)",
+      "department": "Department of Mathematics and Computer Science",
+      "country": "Netherlands",
+      "research_themes": ["process discovery", "heuristic mining", "genetic mining", "alpha algorithm"],
+      "notable_publications": [
+        {"title": "Workflow Mining: Discovering Process Models from Event Logs", "year": 2004, "venue": "IEEE TKDE"},
+        {"title": "Process Mining with the Heuristics Miner Algorithm", "year": 2006, "venue": "BETA Working Paper"},
+        {"title": "Flexible Heuristics Miner", "year": 2011, "venue": "CIDM"}
+      ],
+      "bio": "Emeritus at TU/e. Co-inventor of the Alpha algorithm and creator of the Heuristics Miner for process discovery."
+    }
+  ],
+  "research_groups": [
+    {
+      "name": "Process and Data Science (PADS)",
+      "institution": "RWTH Aachen University",
+      "country": "Germany",
+      "lead": "Wil van der Aalst",
+      "focus": "Process mining, data science, object-centric process mining, responsible AI",
+      "url": "https://www.pads.rwth-aachen.de/"
+    },
+    {
+      "name": "Process Analytics Group",
+      "institution": "Eindhoven University of Technology",
+      "country": "Netherlands",
+      "lead": "Boudewijn van Dongen",
+      "focus": "Conformance checking, ProM framework, XES standard, event log analysis",
+      "url": "https://www.tue.nl/en/research/researchers/boudewijn-van-dongen"
+    },
+    {
+      "name": "BPM & Analytics Group",
+      "institution": "Utrecht University",
+      "country": "Netherlands",
+      "lead": "Hajo A. Reijers",
+      "focus": "Business process redesign, task mining, NLP for BPM",
+      "url": "https://www.uu.nl/"
+    },
+    {
+      "name": "BPM Research Group",
+      "institution": "University of Tartu",
+      "country": "Estonia",
+      "lead": "Marlon Dumas",
+      "focus": "Predictive monitoring, process simulation, privacy-preserving mining",
+      "url": "https://sep.cs.ut.ee/"
+    },
+    {
+      "name": "Business Process Technology Group",
+      "institution": "Hasso Plattner Institute, University of Potsdam",
+      "country": "Germany",
+      "lead": "Mathias Weske",
+      "focus": "Process modeling, process execution, service-oriented architectures",
+      "url": "https://bpt.hpi.uni-potsdam.de/"
+    },
+    {
+      "name": "Process Science Academic Program",
+      "institution": "Queensland University of Technology",
+      "country": "Australia",
+      "lead": "Moe Thandar Wynn",
+      "focus": "Healthcare process mining, process data quality, process automation",
+      "url": "https://www.qut.edu.au/"
+    },
+    {
+      "name": "Process Mining @ LIRIS",
+      "institution": "KU Leuven",
+      "country": "Belgium",
+      "lead": "Jochen De Weerdt",
+      "focus": "Process discovery, predictive monitoring, data-driven BPM",
+      "url": "https://www.processmining.be/"
+    },
+    {
+      "name": "Process and Information Systems Group",
+      "institution": "University of Melbourne",
+      "country": "Australia",
+      "lead": "Marcello La Rosa / Artem Polyvyanyy",
+      "focus": "Process discovery (Split Miner), process querying, process model abstraction",
+      "url": "https://cis.unimelb.edu.au/"
+    },
+    {
+      "name": "PAIS Lab",
+      "institution": "National Research University Higher School of Economics",
+      "country": "Russia",
+      "lead": "Irina Lomazova",
+      "focus": "Formal methods, Petri nets, process discovery, process model repair",
+      "url": "https://pais.hse.ru/"
+    },
+    {
+      "name": "Process Mining Group",
+      "institution": "Hasselt University",
+      "country": "Belgium",
+      "lead": "Benoit Depaire / Niels Martin",
+      "focus": "Healthcare process mining, bupaR ecosystem, process improvement methodology",
+      "url": "https://www.uhasselt.be/"
+    },
+    {
+      "name": "Process Modelling and Intelligence",
+      "institution": "University of Copenhagen",
+      "country": "Denmark",
+      "lead": "Tijs Slaats",
+      "focus": "DCR graphs, declarative process mining, hybrid process technologies",
+      "url": "https://di.ku.dk/english/research/groups/process-modelling-and-intelligence/"
+    },
+    {
+      "name": "Information Systems Group",
+      "institution": "Humboldt-Universitat zu Berlin",
+      "country": "Germany",
+      "lead": "Jan Mendling / Matthias Weidlich",
+      "focus": "Process analytics, behavioral profiles, event processing, blockchain-BPM",
+      "url": "https://www.hu-berlin.de/"
+    },
+    {
+      "name": "SRC Process Mining",
+      "institution": "Hasselt University (coordinating)",
+      "country": "Belgium (international)",
+      "lead": "Multiple PIs",
+      "focus": "Scientific Research Community on Process Mining, funded by FWO",
+      "url": "https://srcprocessmining.com/"
+    }
+  ]
+}

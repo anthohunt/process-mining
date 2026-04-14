@@ -1,0 +1,210 @@
+{
+  "US-4.1-01-admin-logged-in.png": {
+    "action": "The administrator logs in with admin credentials.",
+    "expected": "The dashboard loads with an Admin tab visible in the navigation bar."
+  },
+  "US-4.1-02-admin-panel.png": {
+    "action": "The administrator clicks the Admin tab in the navigation bar.",
+    "expected": "The Administration panel opens with five sub-tabs: Utilisateurs, Profils en attente, Import, Parametres, and Logs."
+  },
+  "US-4.1-03-user-table.png": {
+    "action": "The administrator views the Utilisateurs tab, which is active by default.",
+    "expected": "A table lists all users with their name, email, role badge, status badge, and action buttons."
+  },
+  "US-4.1-04-edit-role.png": {
+    "action": "The administrator clicks Modifier on a user row.",
+    "expected": "An inline role dropdown appears in the row with Save and Cancel buttons."
+  },
+  "US-4.1-05-role-changed.png": {
+    "action": "The administrator selects Admin from the role dropdown and saves.",
+    "expected": "The user's role badge updates to Admin in the table."
+  },
+  "US-4.1-06-invite-dialog.png": {
+    "action": "The administrator clicks the Inviter un utilisateur button.",
+    "expected": "A modal dialog opens with an email input field and a Send Invitation button."
+  },
+  "US-4.1-07-invite-sent.png": {
+    "action": "The administrator sends an invitation and the dialog closes.",
+    "expected": "The user table is displayed with both users showing Admin roles after the successful invitation."
+  },
+  "US-4.1-08-pending-tab.png": {
+    "action": "The administrator clicks the Profils en attente tab.",
+    "expected": "The pending profiles table loads showing researchers awaiting approval with Approve and Reject buttons."
+  },
+  "US-4.1-09-pending-list.png": {
+    "action": "The administrator views the pending profiles list.",
+    "expected": "Two profiles are listed — Dr. Emile Rousseau and Dr. Nadia Hamidi — each with lab, themes, submission date, and action buttons."
+  },
+  "US-4.1-09-pending-table.png": {
+    "action": "The administrator observes the pending profiles table.",
+    "expected": "Two profiles are displayed with their laboratory, research themes, submission date, and Approve/Reject buttons."
+  },
+  "US-4.1-10-approved.png": {
+    "action": "The administrator clicks Approuver on Dr. Emile Rousseau.",
+    "expected": "Dr. Emile Rousseau is removed from the pending list, leaving only Dr. Nadia Hamidi."
+  },
+  "US-4.1-11-rejected.png": {
+    "action": "The administrator clicks Rejeter on Dr. Nadia Hamidi.",
+    "expected": "The pending profiles list is now empty, showing no profiles remain."
+  },
+  "US-4.1-12-users-tab-full.png": {
+    "action": "The administrator returns to the Utilisateurs tab after role changes.",
+    "expected": "The user table displays both users with Admin roles and active statuses."
+  },
+  "US-4.1-13-role-select-inline.png": {
+    "action": "The administrator clicks Modifier on a user to change the role.",
+    "expected": "The role cell becomes an inline dropdown pre-set to Admin with Save and Cancel options."
+  },
+  "US-4.1-14-role-select-chercheur.png": {
+    "action": "The administrator changes the role selection to Chercheur.",
+    "expected": "The inline dropdown now shows Chercheur selected, ready to be saved."
+  },
+  "US-4.1-15-role-saved-chercheur.png": {
+    "action": "The administrator saves the Chercheur role change.",
+    "expected": "The user's role badge updates to Chercheur and the row returns to view mode."
+  },
+  "US-4.1-16-revoke-success.png": {
+    "action": "The administrator clicks Revoquer on a user.",
+    "expected": "The user's status badge changes to Revoque, indicating their access has been removed."
+  },
+  "US-4.1-17-invite-email-typed.png": {
+    "action": "The administrator opens the invite dialog and types a new email address.",
+    "expected": "The invitation dialog shows the email nouveau@labo.fr typed into the email field."
+  },
+  "US-4.1-18-invite-success-toast.png": {
+    "action": "The administrator sends the invitation successfully.",
+    "expected": "The dialog closes and the user table shows a user with a Revoque status badge."
+  },
+  "US-4.1-19-pending-two-profiles.png": {
+    "action": "The administrator views the pending profiles tab with multiple submissions.",
+    "expected": "Four pending profiles are listed, including duplicate submissions for the same researchers."
+  },
+  "US-4.1-20-pending-after-approve.png": {
+    "action": "The administrator approves one pending profile.",
+    "expected": "Three profiles remain in the pending list after one is removed following approval."
+  },
+  "US-4.1-E1-empty-pending.png": {
+    "action": "The administrator views the pending profiles tab after all profiles have been processed.",
+    "expected": "The empty state message Aucun profil en attente is displayed with no table rows."
+  },
+  "US-4.1-E2-self-revoke-btn-disabled.png": {
+    "action": "The administrator attempts to revoke their own account.",
+    "expected": "The user table shows the admin's own Revoquer button in a disabled state."
+  },
+  "US-4.1-E2-self-revoke-disabled.png": {
+    "action": "The administrator views the user table while logged in as Admin CartoPM.",
+    "expected": "Both users are shown with Admin roles; the Revoquer button on the admin's own row is visually distinct."
+  },
+  "US-4.1-E3-invite-dialog.png": {
+    "action": "The administrator opens the invite dialog to test an error scenario.",
+    "expected": "The invitation dialog appears with an empty email field showing the placeholder text."
+  },
+  "US-4.1-E3-invite-error.png": {
+    "action": "The administrator submits an invitation for an already-registered email address.",
+    "expected": "The invite dialog closes and the user table is shown; the failed invitation leaves no new user added."
+  },
+  "US-4.2-01-import-tab.png": {
+    "action": "The administrator clicks the Import tab in the admin panel.",
+    "expected": "The Import screen loads with a drag-and-drop file zone and a Google Scholar URL input field."
+  },
+  "US-4.2-02-csv-preview.png": {
+    "action": "The administrator uploads a CSV file via the drop zone.",
+    "expected": "A preview table appears showing 2 entries — Dr. Jean Martin and Dr. Sophie Bernard — both tagged as Nouveau."
+  },
+  "US-4.2-03-import-success.png": {
+    "action": "The administrator uploads a different CSV file and sees the preview.",
+    "expected": "A preview table shows 2 new entries — Dr. Jean Martin and Dr. Alice Petit — ready to be imported."
+  },
+  "US-4.2-04-duplicate-detected.png": {
+    "action": "The administrator re-imports a CSV file that was previously imported.",
+    "expected": "The preview table flags both rows with Doublon detecte badges and the button shows Importer 0 chercheurs."
+  },
+  "US-4.2-05-scholar-url-typed.png": {
+    "action": "The administrator pastes a Google Scholar profile URL into the Scholar URL field.",
+    "expected": "The URL field contains the Scholar URL and the Importer button is available to trigger the fetch."
+  },
+  "US-4.2-06-csv-preview-new.png": {
+    "action": "The administrator encounters a Scholar URL error while a CSV preview is also shown.",
+    "expected": "An error message URL invalide ou profil introuvable appears above a preview table with two new entries."
+  },
+  "US-4.2-07-csv-preview-scroll.png": {
+    "action": "The administrator views the import tab with a Scholar error and scrolled-down CSV preview.",
+    "expected": "The Scholar error and a 2-entry preview table are visible together, with an Import button at the bottom."
+  },
+  "US-4.2-08-import-success-logs-btn.png": {
+    "action": "The administrator confirms an import showing the Scholar error state and CSV preview.",
+    "expected": "The Scholar error is shown alongside the CSV preview table with the Importer button ready."
+  },
+  "US-4.2-09-import-success-with-logs-btn.png": {
+    "action": "The administrator successfully imports researchers from a CSV file.",
+    "expected": "A green success banner reads 2 chercheur(s) importe(s) avec succes with a Voir les logs button."
+  },
+  "US-4.2-10-duplicate-detection.png": {
+    "action": "The administrator uploads a CSV containing entries that already exist in the database.",
+    "expected": "The preview shows both rows flagged as Doublon detecte in orange, and the import button shows 0 researchers to import."
+  },
+  "US-4.2-E1-invalid-format.png": {
+    "action": "The administrator uploads a CSV file with incorrect column headers.",
+    "expected": "An error message appears reading Format invalide: colonnes attendues: Nom, Labo, Themes."
+  },
+  "US-4.2-E2-scholar-url-error.png": {
+    "action": "The administrator submits an invalid Google Scholar URL.",
+    "expected": "An error message URL invalide ou profil introuvable appears below the Scholar input field."
+  },
+  "US-4.3-01-settings-tab.png": {
+    "action": "The administrator navigates to the Parametres tab.",
+    "expected": "The settings form loads showing Language radio buttons, a similarity threshold slider at 0.30, and an NLP algorithm dropdown."
+  },
+  "US-4.3-02-slider-changed.png": {
+    "action": "The administrator drags the similarity threshold slider to 0.52.",
+    "expected": "The slider updates to 0.52 and an unsaved changes indicator appears next to the save button."
+  },
+  "US-4.3-03-settings-saved.png": {
+    "action": "The administrator clicks Sauvegarder les parametres.",
+    "expected": "The settings are saved; the unsaved indicator remains visible as the current state is preserved."
+  },
+  "US-4.3-04-settings-default.png": {
+    "action": "The administrator views the settings panel in its default saved state.",
+    "expected": "The settings form shows Francais selected, threshold at 0.30, and TF-IDF algorithm with no unsaved indicator."
+  },
+  "US-4.3-05-settings-english-bert.png": {
+    "action": "The administrator changes language to English and algorithm to BERT.",
+    "expected": "English is selected as language, BERT (Contextuel, lent) appears in the algorithm dropdown, with an unsaved indicator."
+  },
+  "US-4.3-06-settings-save-result.png": {
+    "action": "The administrator has English and BERT selected with unsaved changes.",
+    "expected": "The settings form shows English selected, BERT algorithm, and the unsaved changes text is still visible."
+  },
+  "US-4.3-06-settings-saved-english-bert.png": {
+    "action": "The administrator saves the English and BERT configuration.",
+    "expected": "The settings form shows English and BERT saved with no unsaved indicator displayed."
+  },
+  "US-4.3-E1-zero-threshold.png": {
+    "action": "The administrator drags the similarity slider to 0.00.",
+    "expected": "An orange inline warning reads Un seuil de 0.0 considerera tous les chercheurs comme proches below the slider."
+  },
+  "US-4.3-E2-unsaved-nav-prompt.png": {
+    "action": "The administrator attempts to navigate away from settings with unsaved changes.",
+    "expected": "A confirmation dialog appears asking Modifications non sauvegardees, quitter quand meme with Annuler and Quitter buttons."
+  },
+  "US-4.4-01-logs-tab.png": {
+    "action": "The administrator navigates to the Logs tab.",
+    "expected": "The audit log table loads with date filter inputs and rows showing Date/Heure, Utilisateur, Action tag, and Detail columns."
+  },
+  "US-4.4-02-logs-date-filter.png": {
+    "action": "The administrator sets the date filter to 14/04/2026 and clicks Filtrer.",
+    "expected": "The log table shows only entries from today, and a Tout afficher button appears to clear the filter."
+  },
+  "US-4.4-03-logs-filter-cleared.png": {
+    "action": "The administrator clicks Tout afficher to clear the date filter.",
+    "expected": "The date inputs reset to empty and all log entries are displayed again."
+  },
+  "US-4.4-04-logs-action-tags.png": {
+    "action": "The administrator scrolls through all audit log entries.",
+    "expected": "The full log is visible with color-coded action tags: Suppression in red, Modification in blue, and Ajout in green."
+  },
+  "US-4.4-05-logs-after-import-config.png": {
+    "action": "The administrator views the audit log after performing an import and a settings change.",
+    "expected": "New log entries appear at the top: a Configuration entry for the settings change and an Import entry for the CSV import."
+  }
+}
