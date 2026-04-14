@@ -1,36 +1,20 @@
 # Project Memory — Process Mining Research Cartography
 
-**Concept:** Bilingual (FR/EN) web app for mapping the process mining research landscape — researchers, themes, clusters, publications — with interactive SVG cartography, profile management, and admin tools. Inspired by processmining.org.
+**Concept:** Bilingual (FR/EN) web app mapping the process mining research landscape — researchers, themes, clusters, publications — with interactive SVG cartography, profile management, and admin tools.
 
-**Architecture:** 11 screens + login system. Vite + React + TypeScript frontend, Supabase backend (PostgreSQL + Auth + Edge Functions), D3.js for map/charts, deployed on Vercel.
+**Architecture:** 11 screens + login. Vite + React 18 + TypeScript, Supabase backend (PostgreSQL + Auth + Edge Functions), D3.js for map/charts, deployed on Vercel. Code-split via React.lazy (18 chunks).
 
-**M1 complete** (commit 87ddd14). Full scaffold + Dashboard with StatGrid, ActivityFeed, MiniMap. 44 exploration screenshots, 18 passing Playwright regression tests. 7-table Supabase schema deployed with seed data.
+**Git remote:** https://github.com/anthohunt/process-mining
+**Deployment:** Vercel (process-mining.vercel.app). Supabase: supabase-citrine-saddle (us-east-1, Free).
 
-**M2 complete** (commit 25129c5, deployed). Researcher list with search/filter (AND logic), profile view (sidebar, keywords, publications, breadcrumb), side-by-side comparison (Jaccard gauge, common themes highlighting), profile-to-map navigation (SVG viewBox centering). 61 exploration screenshots, 22 Playwright specs. Auditor caught 2 HIGH bugs (map centering not implemented, similarity error path unreachable) — both fixed in Round 2.
+**Milestones:** M1 (Dashboard), M2 (Researchers & Profiles), M3 (Thematic Map & Stats), M4 (Auth & Profile Management), M5 (Administration). All deployed.
 
-**Git remote:** GitHub — https://github.com/anthohunt/process-mining (pushOnEpic: true)
+**Step 5 — Hardening:** 1 round. 51 issues found (6C/17H/17M/11L), 22 fixed. Key fixes: code splitting, keyboard-accessible SVG map, focus traps on modals, PrivateRoute auth guard, app_metadata role check, d3 tree-shaking, scoped data fetching, WCAG contrast, RFC-4180 CSV parser, double-click guard, auth listener cleanup. 90/90 E2E tests passing.
 
-**Deployment:** Vercel (account: anthonyjameshunt-4034, project: process-mining). Supabase resource: supabase-citrine-saddle (us-east-1, Free plan). 17 env vars synced to .env.local.
+**Step 6 — Reconciliation:** 14 unchanged, 10 modified, 0 new, 0 removed stories. All 24 user stories (20 feature + 4 a11y) delivered. M5 admin stories lack E2E tests.
 
-**M3 complete** (deployed). Interactive D3 cluster map with zoom/pan, filter panel (theme+lab), legend, cluster popovers with lazy member loading (truncated at 10), researcher dots with hover tooltips and disambiguation for overlaps, theme list with expandable cards and cross-navigation, detailed statistics with bar/line/histogram D3 charts and breadcrumb. 26 Playwright specs all passing.
+**Key decisions:** Supabase for auth/DB/API. D3.js for conceptual map (not geographic). Universal login (researchers + admins). Profile approval workflow. Admin role in app_metadata. Demo mode with hardcoded credentials.
 
-**M4 complete** (commit 4b56e35, deployed). Login flow with demo buttons (researcher/admin), "Mon profil" navigates to own researcher profile via useOwnResearcherId hook, global 401 fetch interceptor for session expiry redirect. Profile edit button states (own=enabled, other=locked+note, anonymous=hidden), rejection banner. Full edit profile form: name/lab/bio/keywords tag input (Enter-to-add, x-to-remove, duplicate rejection)/publications dynamic blocks with Supabase upsert. 60 exploration screenshots, 23 Playwright test cases.
+**Deferred:** 17 medium + 11 low issues from hardening (CSP headers, rate limiting, skip-link, chart SR access, responsive reflow, npm CVEs in undici).
 
-**Next:** M5 — Administration (US-4.1, US-4.2, US-4.3, US-4.4). User management, bulk import, settings, audit logs.
-
-**Roadmap:** M1-M4 done, M5 remaining.
-
-**Known issues from M1:**
-- fetchStats() returns 0 via ?? 0 instead of throwing — StatGrid error/retry unreachable under API abort
-- formatRelativeTime() is FR-only — needs i18n wiring
-- Supabase-js quirk: HTTP 500 parsed as data, HTTP 400 with PostgREST body triggers isError correctly
-- Chromium CORS strips content-range unless access-control-expose-headers set in mocked responses
-
-**Key Decisions:**
-- Bilingual FR/EN via i18next
-- Universal login (researchers + admins), not admin-only
-- Profile approval workflow (researcher submits, admin approves)
-- Researchers can only edit own profile
-- Supabase for auth/DB/API, Vite + React + TypeScript
-- D3.js for cluster map and charts
-- Design inspired by processmining.org (Poppins, blue primary, dark navy hero)
+**Data:** 105 real researchers, 5 clusters, 7 Supabase tables with seed data.

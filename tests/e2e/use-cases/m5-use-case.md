@@ -19,6 +19,15 @@
 | 10 | Click "Approuver" on Dr. Emile Rousseau | Profile approved, removed from pending list | `US-4.1-10-approved.png` |
 | 11 | Click "Rejeter" on Dr. Nadia Hamidi | Profile rejected, removed from pending list | `US-4.1-11-rejected.png` |
 
+### Focus Trap on Invite Dialog (Step 5 Hardening)
+
+| Step | Action | Expected Result | Screenshot |
+|------|--------|----------------|------------|
+| 1 | Click "Inviter un utilisateur" to open dialog | Dialog opens | `US-4.1-FT-01-dialog-open.png` |
+| 2 | Observe focus | Focus has moved to first input inside dialog | `US-4.1-FT-02-focus-first.png` |
+| 3 | Press Tab repeatedly | Focus cycles within dialog (does not escape to background) | `US-4.1-FT-03-tab-trap.png` |
+| 4 | Press Escape | Dialog closes, focus returns to invite button | `US-4.1-FT-04-escape-close.png` |
+
 ### Edge Case E1: No Pending Profiles
 **Mockup reference:** `screen-admin` — `admin-tab-admin-pending` empty.
 

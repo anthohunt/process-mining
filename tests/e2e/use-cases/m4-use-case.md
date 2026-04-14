@@ -27,6 +27,22 @@
 | 3 | Observe the navbar | "Admin" tab visible in navbar, "Admin" badge next to user name | `US-5.1-12-admin-tab.png` |
 | 4 | Click "Admin" tab | Navigates to `/admin` (admin panel) | `US-5.1-13-admin-panel.png` |
 
+### Keyboard Focus Management (Step 5 Hardening)
+
+| Step | Action | Expected Result | Screenshot |
+|------|--------|----------------|------------|
+| 1 | Log in and click user area to open dropdown | Dropdown opens | `US-5.1-KB-01-dropdown-open.png` |
+| 2 | Observe focus | Focus has moved to first menu item ("Mon profil") | `US-5.1-KB-02-focus-first-item.png` |
+| 3 | Press Tab | Focus cycles to next menu item ("Deconnexion") | `US-5.1-KB-03-tab-cycle.png` |
+| 4 | Press Escape | Dropdown closes, focus returns to user area button | `US-5.1-KB-04-escape-close.png` |
+
+### Route Guard (Step 5 Hardening)
+
+| Step | Action | Expected Result | Screenshot |
+|------|--------|----------------|------------|
+| 1 | Without logging in, navigate directly to `/admin` | Route guard activates | `US-5.1-RG-01-navigate-admin.png` |
+| 2 | Observe the page | Redirected to `/login` | `US-5.1-RG-02-redirected.png` |
+
 ### Edge Case E1: Invalid Credentials
 **Mockup reference:** `screen-login` — error below form.
 

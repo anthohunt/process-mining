@@ -16,6 +16,15 @@
 | 7 | Select "Process Discovery" in the theme filter and click "Appliquer" | Only the Process Discovery cluster and its researchers remain visible | `US-3.1-07-filter-applied.png` |
 | 8 | Click "Vue en liste" cross-nav button (top-right) | Navigates to `/themes` | `US-3.1-08-crossnav-list.png` |
 
+### Keyboard Accessibility (Step 5 Hardening)
+
+| Step | Action | Expected Result | Screenshot |
+|------|--------|----------------|------------|
+| 1 | Navigate to `/map` and press Tab repeatedly | Focus moves through cluster circles and researcher dots | `US-3.1-KB-01-tab-clusters.png` |
+| 2 | Focus a cluster circle and press Enter | Cluster popover opens, focus moves into popover | `US-3.1-KB-02-enter-cluster.png` |
+| 3 | Press Escape on the open popover | Popover closes, focus returns to cluster circle | `US-3.1-KB-03-escape-popover.png` |
+| 4 | Focus a researcher dot and press Space | Navigates to researcher profile | `US-3.1-KB-04-space-dot.png` |
+
 ### Edge Case E1: No Clusters
 **Mockup reference:** `screen-map` — empty map.
 

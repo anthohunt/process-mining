@@ -1,9 +1,9 @@
 # Pipeline Status
 
-- **Current step:** 4
-- **Sub-step:** M5 complete, all milestones done
+- **Current step:** 6
+- **Sub-step:** Phase 2 complete — AI docs updated
 - **Last updated:** 2026-04-14
-- **Summary:** M5 complete — Administration panel with user management, bulk import, settings, audit logs. All 5 milestones built, audited, and deployed. 105 real researchers seeded.
+- **Summary:** Reconciliation complete. 14 unchanged, 10 modified, 0 new, 0 removed stories. All 24 stories implemented. 90 E2E tests (M1-M4). M5 admin stories have no E2E tests.
 
 ## Milestones
 - [x] M1 — Setup + Dashboard (US-1.1, US-1.2, US-1.3) — committed 87ddd14
