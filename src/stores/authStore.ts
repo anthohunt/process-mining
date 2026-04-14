@@ -10,7 +10,7 @@ interface AuthState {
   setSession: (session: Session | null) => void
   signIn: (email: string, password: string) => Promise<{ error: string | null }>
   signOut: () => Promise<void>
-  initialize: () => Promise<void>
+  initialize: () => Promise<() => void>
   handleSessionExpiry: () => void
 }
 

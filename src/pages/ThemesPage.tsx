@@ -5,6 +5,7 @@ import { useClusters } from '../hooks/useClusters'
 import { LoadingSpinner } from '../components/common/LoadingSpinner'
 import { ErrorState } from '../components/common/ErrorState'
 import { EmptyState } from '../components/common/EmptyState'
+import { ClusterThumbnail } from '../components/themes/ClusterThumbnail'
 
 export function ThemesPage() {
   const { t } = useTranslation()
@@ -37,7 +38,10 @@ export function ThemesPage() {
               <div
                 key={cluster.id}
                 className="cluster-card"
-                style={{ borderLeft: `4px solid ${cluster.color}` }}
+                style={{
+                  borderLeft: `4px solid ${cluster.color}`,
+                  background: 'linear-gradient(135deg, rgba(12,27,51,0.04) 0%, rgba(12,27,51,0) 60%)',
+                }}
               >
                 <div
                   className="cluster-card-header"
@@ -54,22 +58,34 @@ export function ThemesPage() {
                       setExpandedId(isOpen ? null : cluster.id)
                     }
                   }}
-                  style={!hasMembers ? { cursor: 'default' } : undefined}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 14,
+                    cursor: hasMembers ? 'pointer' : 'default',
+                  }}
                 >
-                  <div className="cluster-color-dot" style={{ background: cluster.color }} />
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 600, fontSize: 15 }}>{cluster.name}</div>
-                    <div style={{ fontSize: 12, color: 'var(--pm-text-muted)' }}>
+                  <div style={{
+                    background: '#0c1b33',
+                    borderRadius: 10,
+                    padding: 4,
+                    boxShadow: `0 4px 16px ${cluster.color}30`,
+                  }}>
+                    <ClusterThumbnail color={cluster.color} memberCount={cluster.researcher_count} size={92} />
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontWeight: 600, fontSize: 16, color: cluster.color, marginBottom: 2 }}>{cluster.name}</div>
+                    <div style={{ fontSize: 12, color: 'var(--pm-text-muted)', marginBottom: 8 }}>
                       {t('themes.researchers_other', { count: cluster.researcher_count })}
                     </div>
-                  </div>
-                  <div>
-                    {cluster.sub_themes.slice(0, 2).map(st => (
-                      <span key={st} className="tag tag-gray">{st}</span>
-                    ))}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                      {cluster.sub_themes.slice(0, 3).map(st => (
+                        <span key={st} className="tag tag-gray" style={{ fontSize: 10 }}>{st}</span>
+                      ))}
+                    </div>
                   </div>
                   {hasMembers && (
-                    <span style={{ fontSize: 10, color: 'var(--pm-text-muted)' }}>{isOpen ? '\u25B2' : '\u25BC'}</span>
+                    <span style={{ fontSize: 12, color: 'var(--pm-text-muted)' }}>{isOpen ? '\u25B2' : '\u25BC'}</span>
                   )}
                 </div>
 
