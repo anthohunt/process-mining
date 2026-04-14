@@ -26,11 +26,31 @@ export async function parseCsvFile(file: File): Promise<ParsedImportRow[]> {
     throw new Error('invalid_format')
   }
 
+  function parseCsvLine(line: string): string[] {
+    const cols: string[] = []
+    let cur = ''
+    let inQuote = false
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i]
+      if (ch === '"') {
+        if (inQuote && line[i + 1] === '"') { cur += '"'; i++ }
+        else inQuote = !inQuote
+      } else if (ch === ',' && !inQuote) {
+        cols.push(cur.trim())
+        cur = ''
+      } else {
+        cur += ch
+      }
+    }
+    cols.push(cur.trim())
+    return cols
+  }
+
   const rows: ImportRow[] = []
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim()
     if (!line) continue
-    const cols = line.split(',').map(c => c.trim().replace(/^"|"$/g, ''))
+    const cols = parseCsvLine(line)
     rows.push({
       nom: cols[nomIdx] ?? '',
       labo: cols[laboIdx] ?? '',

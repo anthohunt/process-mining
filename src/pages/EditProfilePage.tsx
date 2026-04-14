@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
@@ -58,6 +58,7 @@ export function EditProfilePage() {
   const [kwInput, setKwInput] = useState('')
   const [kwDuplicate, setKwDuplicate] = useState(false)
   const [publications, setPublications] = useState<PubDraft[]>([])
+  const savingRef = useRef(false)
   const [isSaving, setIsSaving] = useState(false)
   const [nameError, setNameError] = useState(false)
   const [pendingWarning, setPendingWarning] = useState(false)
@@ -134,6 +135,8 @@ export function EditProfilePage() {
       setNameError(true)
       return
     }
+    if (savingRef.current) return
+    savingRef.current = true
     setNameError(false)
     setPendingWarning(false)
     setIsSaving(true)
@@ -204,6 +207,7 @@ export function EditProfilePage() {
         addToast('error', t('editProfile.saveError'))
       }
     } finally {
+      savingRef.current = false
       setIsSaving(false)
     }
   }

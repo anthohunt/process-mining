@@ -1,7 +1,7 @@
 /* ===== DESIGN TOKENS (from design-profile.json) ===== */
 :root {
   /* Colors */
-  --pm-primary: #0d6efd;
+  --pm-primary: #0b5ed7;
   --pm-primary-dark: #0a58ca;
   --pm-secondary: #6c757d;
   --pm-accent: #0dcaf0;
@@ -13,7 +13,7 @@
   --pm-surface: #ffffff;
   --pm-hero-bg: #0c1b33;
   --pm-text: #212529;
-  --pm-text-muted: #6c757d;
+  --pm-text-muted: #595f68;
   --pm-text-on-dark: #ffffff;
   --pm-border: #dee2e6;
 
@@ -492,8 +492,8 @@ html, body {
 
 .tag-blue { background: #e7f1ff; color: var(--pm-primary); }
 .tag-green { background: #d1e7dd; color: var(--pm-success); }
-.tag-cyan { background: #cff4fc; color: #0a7d8c; }
-.tag-orange { background: #fff3cd; color: #997404; }
+.tag-cyan { background: #cff4fc; color: #055f6a; }
+.tag-orange { background: #fff3cd; color: #7a5c00; }
 .tag-red { background: #f8d7da; color: #842029; }
 .tag-gray { background: #e9ecef; color: #495057; }
 
@@ -509,7 +509,7 @@ html, body {
 
 .badge-admin { background: #e7f1ff; color: var(--pm-primary); }
 .badge-researcher { background: #d1e7dd; color: var(--pm-success); }
-.badge-pending { background: #fff3cd; color: #997404; }
+.badge-pending { background: #fff3cd; color: #7a5c00; }
 .badge-approved { background: #d1e7dd; color: var(--pm-success); }
 .badge-rejected { background: #f8d7da; color: #842029; }
 

@@ -30,6 +30,7 @@ export function UserDropdown() {
   const [open, setOpen] = useState(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const btnRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const { data: ownResearcherId } = useOwnResearcherId(user?.id)
 
@@ -48,12 +49,31 @@ export function UserDropdown() {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  // Close on Escape
+  // Focus first menu item on open
+  useEffect(() => {
+    if (open && menuRef.current) {
+      const first = menuRef.current.querySelector<HTMLElement>('[role="menuitem"]')
+      first?.focus()
+    }
+  }, [open])
+
+  // Close on Escape; trap Tab within menu
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && open) {
+      if (!open) return
+      if (e.key === 'Escape') {
         setOpen(false)
         btnRef.current?.focus()
+      } else if (e.key === 'Tab' && menuRef.current) {
+        const items = Array.from(menuRef.current.querySelectorAll<HTMLElement>('[role="menuitem"]'))
+        if (items.length === 0) return
+        const first = items[0]
+        const last = items[items.length - 1]
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus() }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus() }
+        }
       }
     }
     document.addEventListener('keydown', handler)
@@ -91,7 +111,7 @@ export function UserDropdown() {
       </button>
 
       {open && (
-        <div className="dropdown-menu" role="menu" aria-label="Menu utilisateur">
+        <div className="dropdown-menu" role="menu" aria-label="Menu utilisateur" ref={menuRef}>
           <button
             className="dropdown-item"
             role="menuitem"

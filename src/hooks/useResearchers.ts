@@ -67,15 +67,18 @@ async function fetchResearcherList(q: string, lab: string, theme: string): Promi
     )
   }
 
-  // Get publication counts
-  const { data: pubData } = await supabase
-    .from('publications')
-    .select('researcher_id')
-
+  // Get publication counts scoped to displayed researchers only
+  const filteredIds = results.map(r => r.id)
   const pubCounts: Record<string, number> = {}
-  pubData?.forEach(p => {
-    pubCounts[p.researcher_id] = (pubCounts[p.researcher_id] ?? 0) + 1
-  })
+  if (filteredIds.length > 0) {
+    const { data: pubData } = await supabase
+      .from('publications')
+      .select('researcher_id')
+      .in('researcher_id', filteredIds)
+    pubData?.forEach(p => {
+      pubCounts[p.researcher_id] = (pubCounts[p.researcher_id] ?? 0) + 1
+    })
+  }
 
   return results.map(r => ({
     ...r,

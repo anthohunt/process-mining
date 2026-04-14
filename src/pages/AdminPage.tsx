@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { useFocusTrap } from '../hooks/useFocusTrap'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../stores/authStore'
@@ -21,10 +22,24 @@ export function AdminPage() {
   const [unsavedSettings, setUnsavedSettings] = useState(false)
   const [showUnsavedDialog, setShowUnsavedDialog] = useState(false)
   const [pendingTab, setPendingTab] = useState<TabId | null>(null)
+  const toastTimersRef = useRef<ReturnType<typeof setTimeout>[]>([])
+  const dialogRef = useFocusTrap(showUnsavedDialog)
+
+  useEffect(() => {
+    return () => { toastTimersRef.current.forEach(clearTimeout) }
+  }, [])
 
   const addToast = useCallback((msg: ToastMsg) => {
     setToasts(prev => [...prev, { ...msg }])
-    setTimeout(() => setToasts(prev => prev.slice(1)), 4000)
+    const id = setTimeout(() => setToasts(prev => prev.slice(1)), 4000)
+    toastTimersRef.current.push(id)
+  }, [])
+
+  const cancelTabSwitchWithEscape = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setPendingTab(null)
+      setShowUnsavedDialog(false)
+    }
   }, [])
 
   if (!isAdmin) {
@@ -135,8 +150,9 @@ export function AdminPage() {
           role="dialog"
           aria-modal="true"
           aria-label="Modifications non sauvegardées"
+          onKeyDown={cancelTabSwitchWithEscape}
         >
-          <div className="modal-card">
+          <div className="modal-card" ref={dialogRef}>
             <h3 style={{ marginTop: 0 }}>Modifications non sauvegardées</h3>
             <p style={{ color: 'var(--pm-text-muted)' }}>
               {t('admin.settings.unsavedChanges')}

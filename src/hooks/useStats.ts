@@ -55,7 +55,7 @@ async function fetchDetailedStats(): Promise<DetailedStats> {
   const [resResult, pubResult, scoreResult] = await Promise.all([
     supabase.from('researchers').select('keywords').eq('status', 'approved'),
     supabase.from('publications').select('year'),
-    supabase.from('similarity_scores').select('score'),
+    supabase.from('similarity_scores').select('score').limit(10000),
   ])
 
   if (resResult.error || pubResult.error || scoreResult.error) {

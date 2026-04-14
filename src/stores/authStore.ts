@@ -49,12 +49,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     get().setSession(session)
     set({ isLoading: false })
 
-    supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN') {
         get().setSession(session)
       } else if (event === 'SIGNED_OUT') {
         set({ user: null, session: null, isAdmin: false })
       }
     })
+    return () => subscription.unsubscribe()
   },
 }))

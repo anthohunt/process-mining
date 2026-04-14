@@ -26,7 +26,7 @@ export function AppNavbar() {
   }
 
   return (
-    <nav className="app-navbar" aria-label="Navigation principale">
+    <header className="app-navbar">
       <a
         href="/"
         className="brand"
@@ -71,6 +71,6 @@ export function AppNavbar() {
           </button>
         )}
       </div>
-    </nav>
+    </header>
   )
 }

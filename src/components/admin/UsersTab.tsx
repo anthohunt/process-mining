@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+import { useFocusTrap } from '../../hooks/useFocusTrap'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../../stores/authStore'
 import { useAdminUsers, useUpdateUserRole, useRevokeUser, useInviteUser } from '../../hooks/useAdminUsers'
@@ -26,6 +27,16 @@ export function UsersTab({ onToast }: Props) {
   const [showInviteDialog, setShowInviteDialog] = useState(false)
   const [inviteEmail, setInviteEmail] = useState('')
   const [selfRevokeWarning, setSelfRevokeWarning] = useState(false)
+  const inviteDialogRef = useFocusTrap(showInviteDialog)
+
+  const closeInviteDialog = useCallback(() => {
+    setShowInviteDialog(false)
+    setInviteEmail('')
+  }, [])
+
+  const handleInviteDialogKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') closeInviteDialog()
+  }, [closeInviteDialog])
 
   if (isLoading) return <LoadingSpinner />
   if (isError) return (
@@ -212,9 +223,10 @@ export function UsersTab({ onToast }: Props) {
           role="dialog"
           aria-modal="true"
           aria-label={t('admin.users.invite')}
-          onClick={e => { if (e.target === e.currentTarget) setShowInviteDialog(false) }}
+          onKeyDown={handleInviteDialogKeyDown}
+          onClick={e => { if (e.target === e.currentTarget) closeInviteDialog() }}
         >
-          <div className="modal-card" id="invite-dialog">
+          <div className="modal-card" id="invite-dialog" ref={inviteDialogRef}>
             <h3 style={{ marginTop: 0 }}>{t('admin.users.invite')}</h3>
             <div className="form-group">
               <label className="form-label" htmlFor="invite-email">{t('admin.users.email')}</label>
@@ -232,7 +244,7 @@ export function UsersTab({ onToast }: Props) {
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 16 }}>
               <button
                 className="btn btn-ghost btn-sm"
-                onClick={() => { setShowInviteDialog(false); setInviteEmail('') }}
+                onClick={closeInviteDialog}
               >
                 {t('common.cancel')}
               </button>
