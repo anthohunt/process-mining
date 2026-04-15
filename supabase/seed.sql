@@ -1,4 +1,12 @@
--- Seed data for CartoPM development
+-- Seed data for CartoPM — LOCAL DEVELOPMENT ONLY.
+-- This file lives in supabase/seed.sql (Supabase CLI convention) and runs ONLY
+-- when a developer resets the local DB (`supabase db reset`). It is NOT applied
+-- to staging/production by the normal migration flow.
+--
+-- The synthetic identities below (Marie Dupont, Jean Martin, Sophie Leclerc,
+-- Ahmed Benali, Claire Fontaine) are fixtures, not real people — never ship them
+-- to production. If you see them on a deployed environment, run
+-- `scripts/cleanup-prod-seed.sql` from the Supabase SQL editor to purge them.
 
 -- Clusters
 INSERT INTO clusters (id, name, color, sub_themes) VALUES
