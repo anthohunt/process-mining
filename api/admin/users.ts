@@ -19,7 +19,7 @@ async function verifyAdmin(req: VercelRequest): Promise<void> {
   )
   const { data: { user }, error } = await supabase.auth.getUser(token)
   if (error || !user) throw new Error('Unauthorized')
-  const role = user.app_metadata?.role
+  const role = user.app_metadata?.role ?? user.user_metadata?.role
   if (role !== 'admin') throw new Error('Forbidden')
 }
 
@@ -58,6 +58,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (action === 'update_role' && role) {
       const { error } = await admin.auth.admin.updateUserById(userId, {
         user_metadata: { role },
+        app_metadata: { role },
       })
       if (error) return res.status(500).json({ error: error.message })
       return res.json({ ok: true })
