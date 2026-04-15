@@ -57,7 +57,7 @@ export function StatsPage() {
   if (isError) return <ErrorState message={t('stats.error')} onRetry={() => void refetch()} retryLabel={t('stats.retry')} />
 
   const W = 500
-  const H = 200
+  const H = 240
 
   // Check for malformed data
   const hasValidThemeData = data && Array.isArray(data.theme_distribution)
@@ -90,9 +90,12 @@ export function StatsPage() {
                 const maxVal = Math.max(...items.map(d => d.count), 1)
                 const barW = Math.floor((W - 40) / items.length) - 4
                 return items.map((d, i) => {
-                  const barH = Math.max(4, ((d.count / maxVal) * (H - 40)))
+                  const barH = Math.max(4, ((d.count / maxVal) * (H - 80)))
                   const x = 20 + i * (barW + 4)
-                  const y = H - 24 - barH
+                  const y = H - 64 - barH
+                  const label = d.theme.length > 18 ? d.theme.slice(0, 18) + '\u2026' : d.theme
+                  const tx = x + barW / 2
+                  const ty = H - 56
                   return (
                     <g key={d.theme}>
                       <rect
@@ -101,15 +104,18 @@ export function StatsPage() {
                         style={{ cursor: 'pointer' }}
                         onMouseMove={(e) => handleBarHover(e, d.theme, d.count)}
                         onMouseLeave={() => setBarTooltip(null)}
-                      />
+                      >
+                        <title>{d.theme}: {d.count}</title>
+                      </rect>
                       <text
-                        x={x + barW / 2} y={H - 8}
-                        textAnchor="middle"
+                        x={tx} y={ty}
+                        textAnchor="end"
                         fontSize={9}
                         fill="var(--pm-text-muted)"
+                        transform={`rotate(-35, ${tx}, ${ty})`}
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
-                        {d.theme.length > 8 ? d.theme.slice(0, 8) + '\u2026' : d.theme}
+                        {label}
                       </text>
                       <text
                         x={x + barW / 2} y={y - 4}
@@ -117,7 +123,7 @@ export function StatsPage() {
                         fontSize={10}
                         fill="var(--pm-text)"
                         fontWeight={600}
-                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                        style={{ fontFamily: 'Poppins, sans-serif', pointerEvents: 'none' }}
                       >
                         {d.count}
                       </text>
@@ -162,12 +168,13 @@ export function StatsPage() {
                 const pts = data.temporal_trends
                 const maxVal = Math.max(...pts.map(d => d.count), 1)
                 const xs = pts.map((_, i) => 30 + i * ((W - 60) / (pts.length - 1)))
-                const ys = pts.map(d => H - 24 - ((d.count / maxVal) * (H - 40)))
+                const ys = pts.map(d => H - 48 - ((d.count / maxVal) * (H - 80)))
                 const path = xs.map((x, i) => `${i === 0 ? 'M' : 'L'}${x},${ys[i]}`).join(' ')
+                const tickStep = Math.max(1, Math.ceil(pts.length / 8))
                 return (
                   <>
                     <polyline points={xs.map((x, i) => `${x},${ys[i]}`).join(' ')} fill="none" stroke="var(--pm-primary)" strokeWidth={2} />
-                    <path d={`${path} L${xs[xs.length-1]},${H-24} L${xs[0]},${H-24} Z`} fill="var(--pm-primary)" fillOpacity={0.1} />
+                    <path d={`${path} L${xs[xs.length-1]},${H-48} L${xs[0]},${H-48} Z`} fill="var(--pm-primary)" fillOpacity={0.1} />
                     {pts.map((d, i) => (
                       <g key={d.year}>
                         <circle
@@ -176,8 +183,12 @@ export function StatsPage() {
                           style={{ cursor: 'pointer' }}
                           onMouseMove={(e) => handleLineHover(e, String(d.year), d.count)}
                           onMouseLeave={() => setLineTooltip(null)}
-                        />
-                        <text x={xs[i]} y={H - 8} textAnchor="middle" fontSize={9} fill="var(--pm-text-muted)">{d.year}</text>
+                        >
+                          <title>{d.year}: {d.count}</title>
+                        </circle>
+                        {(i % tickStep === 0 || i === pts.length - 1) && (
+                          <text x={xs[i]} y={H - 28} textAnchor="middle" fontSize={10} fill="var(--pm-text-muted)">{d.year}</text>
+                        )}
                       </g>
                     ))}
                   </>
@@ -221,9 +232,9 @@ export function StatsPage() {
                 const maxVal = Math.max(...items.map(d => d.count), 1)
                 const barW = Math.floor((W - 40) / items.length) - 2
                 return items.map((d, i) => {
-                  const barH = Math.max(d.count > 0 ? 4 : 0, (d.count / maxVal) * (H - 40))
+                  const barH = Math.max(d.count > 0 ? 4 : 0, (d.count / maxVal) * (H - 60))
                   const x = 20 + i * (barW + 2)
-                  const y = H - 24 - barH
+                  const y = H - 44 - barH
                   return (
                     <g key={d.bucket}>
                       <rect
@@ -232,8 +243,15 @@ export function StatsPage() {
                         style={{ cursor: d.count > 0 ? 'pointer' : 'default' }}
                         onMouseMove={(e) => handleHistHover(e, d.bucket, d.count)}
                         onMouseLeave={() => setHistTooltip(null)}
-                      />
-                      <text x={x + barW / 2} y={H - 8} textAnchor="middle" fontSize={8} fill="var(--pm-text-muted)">
+                      >
+                        <title>{d.bucket}: {d.count}</title>
+                      </rect>
+                      {d.count > 0 && (
+                        <text x={x + barW / 2} y={y - 4} textAnchor="middle" fontSize={9} fill="var(--pm-text)" fontWeight={600}>
+                          {d.count}
+                        </text>
+                      )}
+                      <text x={x + barW / 2} y={H - 24} textAnchor="middle" fontSize={9} fill="var(--pm-text-muted)">
                         {d.bucket.split('-')[0]}
                       </text>
                     </g>
