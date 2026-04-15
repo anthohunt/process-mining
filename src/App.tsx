@@ -5,6 +5,7 @@ import { LoadingSpinner } from './components/common/LoadingSpinner'
 import { useAuthStore } from './stores/authStore'
 import './i18n'
 
+
 const DashboardPage = lazy(() => import('./pages/DashboardPage').then(m => ({ default: m.DashboardPage })))
 const StatsPage = lazy(() => import('./pages/StatsPage').then(m => ({ default: m.StatsPage })))
 const ResearchersPage = lazy(() => import('./pages/ResearchersPage').then(m => ({ default: m.ResearchersPage })))
@@ -24,26 +25,11 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { initialize, handleSessionExpiry, user } = useAuthStore()
+  const { initialize } = useAuthStore()
 
   useEffect(() => {
     void initialize()
   }, [initialize])
-
-  // Global fetch interceptor for 401 responses
-  useEffect(() => {
-    const originalFetch = window.fetch
-    window.fetch = async (...args) => {
-      const response = await originalFetch(...args)
-      if (response.status === 401 && useAuthStore.getState().user) {
-        useAuthStore.getState().handleSessionExpiry()
-      }
-      return response
-    }
-    return () => {
-      window.fetch = originalFetch
-    }
-  }, [handleSessionExpiry, user])
 
   return (
     <Suspense fallback={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}><LoadingSpinner /></div>}>

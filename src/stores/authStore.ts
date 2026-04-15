@@ -14,6 +14,8 @@ interface AuthState {
   handleSessionExpiry: () => void
 }
 
+let explicitSignOut = false
+
 export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   session: null,
@@ -33,13 +35,18 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   signOut: async () => {
-    await supabase.auth.signOut()
-    set({ user: null, session: null, isAdmin: false })
+    explicitSignOut = true
+    try {
+      await supabase.auth.signOut()
+    } finally {
+      set({ user: null, session: null, isAdmin: false })
+      explicitSignOut = false
+    }
   },
 
   handleSessionExpiry: () => {
     set({ user: null, session: null, isAdmin: false })
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && window.location.pathname !== '/login') {
       window.location.href = '/login?expired=1'
     }
   },
@@ -50,10 +57,16 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     set({ isLoading: false })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN') {
+      if (event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN' || event === 'USER_UPDATED') {
         get().setSession(session)
       } else if (event === 'SIGNED_OUT') {
+        const hadUser = !!get().user
         set({ user: null, session: null, isAdmin: false })
+        // Involuntary sign-out (refresh token invalid/expired) — redirect with notice.
+        // Explicit user sign-outs let PrivateRoute handle the redirect silently.
+        if (hadUser && !explicitSignOut && typeof window !== 'undefined' && window.location.pathname !== '/login') {
+          window.location.href = '/login?expired=1'
+        }
       }
     })
     return () => subscription.unsubscribe()
