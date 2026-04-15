@@ -118,3 +118,58 @@ Compiled from Step 5 quality hardening artifacts (Round 1).
 | M10 | SVG charts opaque to screen readers | Complex fix (data tables for each chart) |
 | M12 | No skip-to-content link | Quality-of-life a11y improvement |
 | L8 | Demo credentials in client JS | Expected for demo mode; document in runbook |
+
+---
+
+## D3 → Three.js Map Rewrite (commits e7141f9, a71d4bf)
+
+**Decision:** Replaced the D3 SVG cluster map on MapPage with a Three.js WebGL floating-nebula visualization. Also upgraded the dashboard MiniMap from SVG to Three.js, and added a Three.js `ClusterThumbnail` to each ThemesPage card.
+**Why:** Post-M5 user request for visual polish. Three.js enables a 3D starfield scene, glowing nebula spheres per cluster, particle dots per researcher, animated autoRotate, camera fly-to on cluster click, and pulsing opacity — none of which are feasible in D3 SVG without significant complexity.
+**Tradeoffs:**
+- SVG-based keyboard Tab navigation through clusters/dots (added in R1 hardening) was lost — Three.js Mesh objects are not DOM elements and cannot receive focus via Tab.
+- Individual researcher dot `aria-label` attributes (R1 hardening) were also removed with the SVG.
+- Three.js adds ~508KB to the dashboard bundle (co-bundled with useClusters). Deferred to lazy-load MiniMap in a future round.
+- OrbitControls zoom/pan replaces D3 zoom/pan (behavior equivalent for mouse users).
+- Larger bundle on map page (Three.js vs. tree-shaken D3 named imports from R1).
+
+---
+
+## R2 Hardening Fixes (commit d787255)
+
+Applied after the Three.js rewrite. Production audit of the deployed site at commit a71d4bf.
+
+**C2 — WebGL context loss (Stability):** Added `useWebGLContextLoss` hook to MapPage and MiniMap. Listens for `webglcontextlost` event on the renderer's canvas and sets a React state flag. When lost, renders an overlay with a "Recharger la carte" / "Recharger" button that calls `window.location.reload()`. Prevents a silent black canvas with no user affordance.
+
+**C3 — fr.json breadcrumb (A11y/i18n):** `fr.json` line 128 had `"breadcrumbDashboard": "Dashboard"` (literal English in French locale). Changed to `"Tableau de bord"`. Straightforward correctness fix.
+
+**H1 — Three.js bundle size (Perf):** Three.js is split into a dedicated `vendor-three` chunk (508KB) via `manualChunks` in vite.config.ts, AND `MiniMap` is lazy-loaded with `React.lazy()` + `Suspense` in `src/pages/DashboardPage.tsx`. The dashboard chunk is now 5.00KB (down from ~513KB co-bundled) and `MiniMap-*.js` is 3.82KB in its own chunk. Three.js is only fetched when the mini-map actually mounts.
+
+**H2 — Mobile 320px filter panel (Stability):** Added CSS media query `@media (max-width: 767px)` to `.map-filter-panel` to stack it above the Three.js canvas instead of overlapping it. Previously the panel covered the entire canvas at 320px.
+
+**H3 — Fixed 500px map height (Stability):** `.map-container` changed from `height: 500px` to `height: min(70vh, 800px)`. Prevents postage-stamp appearance at 4K and dead space at 1920px.
+
+**H4 — UsersTab i18n (A11y/i18n):** Wrapped 6+ hardcoded French strings in `t()`: Nom column header, role/status badge labels, invite button label, success/error toasts. Added corresponding keys to `fr.json` and `en.json`. These strings were introduced in M5 with hardcoded French when the component was built quickly.
+
+**H5 — ImportTab i18n (A11y/i18n):** Wrapped hardcoded French strings in `t()`: Scholar label, error message, preview table header, Statut/Nouveau column values, success toast. Same root cause as H4.
+
+**H6 — PendingTab i18n (A11y/i18n):** Wrapped 5 `<th>` table headers and 2 toast messages in `t()`. Same root cause as H4.
+
+**H7 — ProfilePage i18n (A11y/i18n):** Wrapped 4 hardcoded strings in `t()` at lines 55, 73, 108, 207: 404 detail text, "Erreur" breadcrumb, rejection banner text, "Aucun mot-clé." empty state.
+
+**H8 — Security headers (Security):** Added `headers` block to `vercel.json` applying to `source: "/(.*)"`: CSP (with `'unsafe-inline'` on script/style for Vite inline injections, Supabase WebSocket origins, Google Fonts origins), X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin, Permissions-Policy blocking camera/microphone/geolocation. Existing `/assets/(.*)` Cache-Control entry preserved.
+
+**H9 — Import API validation (Security):** Added per-row validation to `api/admin/import.ts`: hard cap at 500 rows (returns 400), `name` required 1–200 chars, `lab` optional ≤200 chars, `keywords` optional array ≤50 items each ≤50 chars, `status` must be `active`/`pending`/`rejected` if present. Returns all violations before any insert. Used manual validation (no zod — not in project deps).
+
+**H10 — @vercel/node CVEs (Security):** Verified `@vercel/node` is already at 5.7.5 (latest). `npm audit --production` returns 0 vulnerabilities. The 6 high CVEs from the audit (minimatch ReDoS, path-to-regexp ReDoS, undici CRLF/smuggling/DoS) are resolved in this version. No code change required.
+
+**M1 — Asset cache headers (Perf):** Added `Cache-Control: public, max-age=31536000, immutable` to `/assets/(.*)` in `vercel.json`. Hashed filenames from Vite make this safe.
+
+**M2 — Invalid UUID → 404 (Stability):** `ProfilePage` now validates the `:id` param against a UUID regex before querying Supabase. Invalid UUIDs render a 404 state instead of silently redirecting to `/`.
+
+**M3 — SettingsTab hardcoded string (A11y/i18n):** `SettingsTab.tsx` line 209 had `"Modifications non sauvegardées"` hardcoded despite the i18n key existing. Replaced with `t('admin.settings.unsavedChanges')`.
+
+---
+
+## C1 Outstanding — Credentials Rotation (User Action Required)
+
+`.env.local` on disk contains real credentials: Postgres password, Supabase service role key, JWT secret, OIDC token. These must be rotated by the user via the Supabase dashboard and Vercel environment variable settings. Agent actions cannot perform this rotation. Production should use Vercel env vars exclusively — `.env.local` should never contain production secrets. This was classified CRITICAL in the R2 audit and remains unresolved pending user action.

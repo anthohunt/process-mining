@@ -3,27 +3,25 @@
 ## US-3.1: Interactive Cluster Map
 
 ### Happy Path
-**Mockup reference:** `screen-map` — `map-container` with SVG, `map-filter-panel`, `map-legend`.
+**Mockup reference:** `screen-map` — `map-container` with Three.js WebGL nebula, `map-filter-panel`, `map-legend`.
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
-| 1 | Navigate to `/map` | Map screen loads with dark background container | `US-3.1-01-map-loaded.png` |
-| 2 | Observe the SVG area | Colored cluster regions and researcher dots visible | `US-3.1-02-clusters-visible.png` |
+| 1 | Navigate to `/map` | Map screen loads with dark starfield background and glowing nebula clusters | `US-3.1-01-map-loaded.png` |
+| 2 | Observe the Three.js canvas | Colored nebula spheres (one per cluster) with particle researcher dots visible, camera auto-rotates | `US-3.1-02-clusters-visible.png` |
 | 3 | Observe the filter panel | Floating panel at top-left with Theme dropdown, Lab dropdown, and "Appliquer" button | `US-3.1-03-filter-panel.png` |
 | 4 | Observe the legend | Bottom-right legend lists cluster colors with theme names | `US-3.1-04-legend.png` |
-| 5 | Scroll to zoom in on the map | Map zooms in, clusters and dots get larger | `US-3.1-05-zoom-in.png` |
-| 6 | Click and drag to pan | Map viewport pans to show different area | `US-3.1-06-pan.png` |
+| 5 | Scroll to zoom in on the map | Camera zooms in (OrbitControls), clusters get larger | `US-3.1-05-zoom-in.png` |
+| 6 | Click and drag to orbit | Camera orbits the scene | `US-3.1-06-pan.png` |
 | 7 | Select "Process Discovery" in the theme filter and click "Appliquer" | Only the Process Discovery cluster and its researchers remain visible | `US-3.1-07-filter-applied.png` |
 | 8 | Click "Vue en liste" cross-nav button (top-right) | Navigates to `/themes` | `US-3.1-08-crossnav-list.png` |
 
-### Keyboard Accessibility (Step 5 Hardening)
+### Keyboard Accessibility (Note: Three.js Map)
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
-| 1 | Navigate to `/map` and press Tab repeatedly | Focus moves through cluster circles and researcher dots | `US-3.1-KB-01-tab-clusters.png` |
-| 2 | Focus a cluster circle and press Enter | Cluster popover opens, focus moves into popover | `US-3.1-KB-02-enter-cluster.png` |
-| 3 | Press Escape on the open popover | Popover closes, focus returns to cluster circle | `US-3.1-KB-03-escape-popover.png` |
-| 4 | Focus a researcher dot and press Space | Navigates to researcher profile | `US-3.1-KB-04-space-dot.png` |
+| 1 | Navigate to `/map` and press Tab | Focus moves to the filter panel dropdowns and "Appliquer" button — Three.js canvas elements are not Tab-focusable | `US-3.1-KB-01-tab-filters.png` |
+| 2 | With map side panel open, press Escape | Side panel closes and camera resets | `US-3.1-KB-02-escape-panel.png` |
 
 ### Edge Case E1: No Clusters
 **Mockup reference:** `screen-map` — empty map.
@@ -57,14 +55,14 @@
 ## US-3.2: Cluster Click for Members
 
 ### Happy Path
-**Mockup reference:** `screen-map` — cluster region click opens popover with member list.
+**Mockup reference:** `screen-map` — cluster nebula click opens side panel with member list.
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
 | 1 | Navigate to `/map` | Map loads with clusters | `US-3.2-01-map-loaded.png` |
-| 2 | Click on the "Process Discovery" cluster region | A popover appears listing member researchers | `US-3.2-02-popover-open.png` |
-| 3 | Observe the popover content | Theme tags shown (Alpha Miner, Heuristic Miner, etc.) and researcher names as links | `US-3.2-03-popover-content.png` |
-| 4 | Click a researcher name in the popover (e.g., "Dr. Marie Dupont") | Navigates to that researcher's profile | `US-3.2-04-navigate-profile.png` |
+| 2 | Click on the "Process Discovery" cluster nebula | Camera flies to cluster; a side panel slides in from the right listing member researchers | `US-3.2-02-popover-open.png` |
+| 3 | Observe the side panel content | Cluster name, sub-theme tags, and researcher names as buttons visible | `US-3.2-03-popover-content.png` |
+| 4 | Click a researcher name in the side panel (e.g., "Dr. Marie Dupont") | Navigates to that researcher's profile | `US-3.2-04-navigate-profile.png` |
 
 ### Edge Case E1: Cluster with 50+ Members
 **Mockup reference:** `screen-map` — truncated popover.
@@ -97,13 +95,13 @@
 ## US-3.3: Researcher Dot to Profile
 
 ### Happy Path
-**Mockup reference:** `screen-map` — SVG researcher dots, hover tooltip, click navigation.
+**Mockup reference:** `screen-map` — Three.js researcher particle dots, hover tooltip, click navigation.
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
-| 1 | Navigate to `/map` | Map loads with researcher dots | `US-3.3-01-map-loaded.png` |
-| 2 | Hover over a researcher dot | Tooltip shows the researcher's name, cursor changes to pointer | `US-3.3-02-hover-tooltip.png` |
-| 3 | Click the researcher dot | Navigates to that researcher's profile page | `US-3.3-03-navigate-profile.png` |
+| 1 | Navigate to `/map` | Map loads with researcher particle dots inside nebula clusters | `US-3.3-01-map-loaded.png` |
+| 2 | Hover over a researcher particle | Tooltip shows researcher's name and lab, cursor changes to pointer, particle scales up | `US-3.3-02-hover-tooltip.png` |
+| 3 | Click the researcher particle | Navigates to that researcher's profile page (after Supabase validation) | `US-3.3-03-navigate-profile.png` |
 
 ### Edge Case E1: Overlapping Dots
 **Mockup reference:** `screen-map` — disambiguation popover.
@@ -136,13 +134,13 @@
 ## US-3.4: Theme List View
 
 ### Happy Path
-**Mockup reference:** `screen-themes` — `theme-clusters` grid of expandable `cluster-card` elements.
+**Mockup reference:** `screen-themes` — `theme-clusters` grid of expandable `cluster-card` elements with Three.js nebula thumbnails.
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
 | 1 | Navigate to `/themes` | Theme explorer loads with heading "Explorer les Themes" | `US-3.4-01-themes-loaded.png` |
-| 2 | Observe the cluster card grid | Cards for Process Discovery, Conformance Checking, Predictive Monitoring, Data Quality, Process Enhancement | `US-3.4-02-card-grid.png` |
-| 3 | Observe a single card | Shows cluster name, researcher count, sub-theme tags, color-coded left border | `US-3.4-03-card-detail.png` |
+| 2 | Observe the cluster card grid | Cards for Process Discovery, Conformance Checking, Predictive Monitoring, Data Quality, Process Enhancement; each card has a Three.js nebula thumbnail | `US-3.4-02-card-grid.png` |
+| 3 | Observe a single card | Shows cluster name, researcher count, sub-theme tags, color-coded left border, and auto-rotating nebula thumbnail | `US-3.4-03-card-detail.png` |
 | 4 | Click on "Process Discovery" card | Card expands to show member researcher names as clickable links | `US-3.4-04-expanded.png` |
 | 5 | Click a researcher name (e.g., "Dr. Marie Dupont (LORIA)") | Navigates to that researcher's profile | `US-3.4-05-navigate-profile.png` |
 | 6 | Click "Voir tous les chercheurs" link in expanded card | Navigates to `/researchers` (filtered by that theme) | `US-3.4-06-crossnav-researchers.png` |

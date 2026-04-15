@@ -1,7 +1,7 @@
 # Final Specification — Process Mining Research Cartography
 
-> Ground truth of what the app actually does, as of 2026-04-14.
-> Original spec: `docs/pipeline/spec.md`. This file reflects all modifications from Steps 4-5.
+> Ground truth of what the app actually does, as of 2026-04-15.
+> Original spec: `docs/pipeline/spec.md`. This file reflects all modifications from Steps 4-5 including Three.js map rewrite and Step 5 Round 2 hardening.
 
 ## Product Vision
 
@@ -25,8 +25,8 @@ CartoPM is a web application that maps process mining research. Researchers ente
 - **Comparison** — Side-by-side profiles with similarity gauge circle + common themes section
 
 ### Section 3: Carte Thematique (2 screens)
-- **Interactive Map** — SVG cluster map with zoom/pan, floating filter panel, color legend, researcher dots (keyboard-accessible)
-- **Explore Themes** — Grid of expandable cluster cards with member lists and cross-links
+- **Interactive Map** — Three.js WebGL nebula visualization with OrbitControls (zoom/pan/autoRotate), floating filter panel, color legend, researcher particle dots, cluster side panel
+- **Explore Themes** — Grid of expandable cluster cards with Three.js nebula thumbnail per card, member lists, and cross-links
 
 ### Section 4: Administration (4 screens, admin-only, route-guarded)
 - **User Management** — Table with roles/badges, invite button (focus-trapped dialog), modify/revoke actions
@@ -72,18 +72,24 @@ CartoPM is a web application that maps process mining research. Researchers ente
 
 ---
 
-### US-1.3 — Mini-Map Preview [UNCHANGED]
+### US-1.3 — Mini-Map Preview [MODIFIED]
 **As a** researcher, **I can** click the mini-map on the dashboard to navigate to the full thematic map.
 
+**What changed from original spec:** Visualization upgraded from SVG to Three.js WebGL (commit a71d4bf). The mini-map now renders a floating-nebula scene with per-cluster nebula spheres, particle dots, a slowly orbiting camera, and pulsing opacity. Click-to-navigate, loading, and error states are unchanged. A `useWebGLContextLoss` hook shows a "Reload" button if WebGL context is lost (R2 fix C2).
+
 #### Acceptance Criteria
-- **AC-1:** GIVEN the dashboard loads, WHEN cluster data is available, THEN a simplified SVG preview of the cluster map renders in the mini-map area.
+- **AC-1:** GIVEN the dashboard loads, WHEN cluster data is available, THEN a Three.js WebGL nebula preview renders in the mini-map area showing colored cluster spheres and particle dots.
 - **AC-2:** GIVEN the mini-map is displayed, WHEN the user hovers over it, THEN a pointer cursor appears and the container gets a blue outline highlight.
-- **AC-3:** GIVEN the mini-map is displayed, WHEN the user clicks it, THEN they navigate to the full map view.
+- **AC-3:** GIVEN the mini-map is displayed, WHEN the user clicks it (or presses Enter/Space), THEN they navigate to the full map view.
+- **AC-4 (NEW):** GIVEN WebGL context is lost, WHEN detected, THEN an overlay shows "Contexte WebGL perdu" with a "Recharger" button.
 
 #### Edge Cases
 - **US-1.3-E1:** GIVEN no clusters exist, WHEN the dashboard loads, THEN the mini-map shows a placeholder with "Carte non disponible" text.
 - **US-1.3-E2:** GIVEN the cluster API is slow (>3s), WHEN the dashboard loads, THEN the mini-map shows a loading spinner until data arrives.
-- **US-1.3-E3:** GIVEN the SVG rendering fails, WHEN an error is caught, THEN a static fallback image is shown with "Cliquer pour voir la carte."
+- **US-1.3-E3:** GIVEN the cluster API returns an error, WHEN the component renders, THEN a fallback message "Cliquer pour voir la carte" is shown.
+
+#### Step 5 Hardening Notes
+- **R2/C2:** `useWebGLContextLoss` added — detects `webglcontextlost` event and shows reload prompt.
 
 ---
 
@@ -185,65 +191,81 @@ CartoPM is a web application that maps process mining research. Researchers ente
 ---
 
 ### US-3.1 — Interactive Cluster Map [MODIFIED]
-**As a** researcher, **I can** view the interactive cluster map with zoom, pan, filter controls, and full keyboard accessibility.
+**As a** researcher, **I can** view the interactive cluster map with zoom, pan, filter controls, and mouse/touch interaction.
 
-**What changed from original spec:** Cluster regions and researcher dots are now keyboard-accessible (tabIndex, Enter/Space activation, aria-labels). d3 imported via named imports for tree-shaking. Page is code-split via React.lazy().
+**What changed from original spec:** D3 SVG map fully replaced with Three.js WebGL nebula visualization (commit e7141f9). The scene shows a dark starfield, Fibonacci-sphere-positioned nebula clusters (glowing translucent spheres), particle dots per researcher, animated autoRotate via OrbitControls (zoom min 5 / max 60), a slide-in side panel on cluster click with lazy member fetch, hover tooltip over particles, and a camera fly-to animation. The floating filter panel, color legend, and cross-nav button are retained. The SVG-based keyboard Tab navigation through clusters/dots was removed with the D3 rewrite — Three.js Mesh objects are not DOM-focusable. Escape closes the side panel.
+
+**Step 5 R2 hardening (d787255):** C2 — `useWebGLContextLoss` hook shows "Recharger la carte" overlay on context loss. H2 — CSS media query stacks filter panel above canvas at <768px. H3 — map-container height changed to `min(70vh, 800px)`.
 
 #### Acceptance Criteria
-- **AC-1:** GIVEN the map screen loads, WHEN cluster data is available, THEN an SVG renders colored cluster regions and researcher dots.
-- **AC-2:** GIVEN the map is displayed, WHEN the user scrolls or pinches, THEN the map zooms in/out.
-- **AC-3:** GIVEN the map is displayed, WHEN the user clicks and drags, THEN the map pans.
+- **AC-1:** GIVEN the map screen loads, WHEN cluster data is available, THEN a Three.js WebGL scene renders colored nebula clusters and particle researcher dots on a dark starfield background.
+- **AC-2:** GIVEN the map is displayed, WHEN the user scrolls or pinches, THEN the map zooms in/out (capped at min 5 / max 60 distance).
+- **AC-3:** GIVEN the map is displayed, WHEN the user clicks and drags, THEN the camera orbits.
 - **AC-4:** GIVEN the filter panel is displayed, WHEN the user selects a theme or lab and clicks "Appliquer," THEN only matching clusters/researchers are shown.
 - **AC-5:** GIVEN the map is displayed, WHEN the legend is visible, THEN each cluster color is labeled with its theme name.
-- **AC-6 (NEW):** GIVEN the map is displayed, WHEN the user Tabs to a cluster circle, THEN it receives focus and can be activated with Enter or Space.
-- **AC-7 (NEW):** GIVEN the map is displayed, WHEN the user Tabs to a researcher dot, THEN it receives focus with an `aria-label` of the researcher's name and can be activated with Enter or Space.
+- **AC-6 (NEW):** GIVEN WebGL context is lost, WHEN detected, THEN an overlay shows "Le contexte WebGL a ete perdu" with a "Recharger la carte" button.
+- **AC-7 (NEW):** GIVEN a cluster nebula is clicked, WHEN the side panel opens, THEN the camera flies to the cluster and the side panel slides in listing the cluster's members.
+- **AC-8 (NEW):** GIVEN the side panel is open, WHEN Escape is pressed, THEN the panel closes and the camera resets.
 
 #### Edge Cases
 - **US-3.1-E1:** GIVEN no clusters exist, WHEN the map loads, THEN an empty state "Aucun cluster disponible" is shown centered in the map area.
-- **US-3.1-E2:** GIVEN the user zooms to maximum level, WHEN they attempt to zoom further, THEN zoom is capped and the view does not change.
+- **US-3.1-E2:** GIVEN the user zooms to maximum level, WHEN they attempt to zoom further, THEN zoom is capped at distance 60.
 - **US-3.1-E3:** GIVEN the cluster data API times out, WHEN the map loads, THEN a centered error "Chargement echoue" with retry button appears over the dark background.
+
+#### Step 5 Hardening Notes
+- **R1/C2, R1/H4:** Code-split via React.lazy and named d3 imports — superseded by Three.js rewrite.
+- **R2/C2:** WebGL context loss handling added.
+- **R2/H2:** Filter panel responsive at 320px.
+- **R2/H3:** Responsive map height.
 
 ---
 
 ### US-3.2 — Cluster Click for Members [MODIFIED]
-**As a** researcher, **I can** click or keyboard-activate a cluster on the map to see its member researchers and themes.
+**As a** researcher, **I can** click a cluster on the map to see its member researchers and themes in a side panel.
 
-**What changed from original spec:** Popover now receives focus on open, has Escape key dismiss, and returns focus to trigger on close.
+**What changed from original spec:** D3 popover replaced by a full-width `<aside>` side panel (commit e7141f9). Cluster click triggers a camera fly-to animation and slides in the panel from the right. Members are lazy-fetched from Supabase. Sub-theme tags are displayed. Each member is a clickable button navigating to their profile. Escape closes the panel. The panel has `role="dialog"` and `aria-label` with the cluster name, but no focus trap.
 
 #### Acceptance Criteria
-- **AC-1:** GIVEN the map is displayed, WHEN the user clicks a cluster region (or presses Enter/Space when focused), THEN a popover appears listing the cluster's member researchers.
-- **AC-2:** GIVEN the popover is displayed, WHEN themes are associated, THEN they are shown as tags in the popover.
-- **AC-3:** GIVEN the popover lists researchers, WHEN the user clicks a name, THEN they navigate to that researcher's profile.
-- **AC-4 (NEW):** GIVEN the popover opens, WHEN it renders, THEN focus moves into the popover container.
-- **AC-5 (NEW):** GIVEN the popover is open, WHEN the user presses Escape, THEN the popover closes and focus returns to the triggering cluster element.
+- **AC-1:** GIVEN the map is displayed, WHEN the user clicks a cluster nebula, THEN a side panel slides in listing the cluster's name, sub-theme tags, and member researchers. The camera flies to the cluster.
+- **AC-2:** GIVEN the side panel is displayed, WHEN themes are associated, THEN they are shown as styled tags with the cluster's color accent.
+- **AC-3:** GIVEN the side panel lists researchers, WHEN the user clicks a name, THEN they navigate to that researcher's profile.
+- **AC-4 (NEW):** GIVEN the side panel is open, WHEN the user presses Escape, THEN the panel closes and the camera resets to default position.
+- **AC-5 (NEW):** GIVEN the side panel opens, WHEN members are loading, THEN a loading spinner is shown in the member list area.
 
 #### Edge Cases
-- **US-3.2-E1:** GIVEN a cluster has 50+ members, WHEN the popover opens, THEN it shows the first 10 with a "et N autres" link that scrolls or expands.
-- **US-3.2-E2:** GIVEN the user clicks outside the popover, WHEN it is open, THEN it closes.
-- **US-3.2-E3:** GIVEN the cluster data is loading, WHEN the user clicks, THEN a loading spinner appears inside the popover.
+- **US-3.2-E1:** GIVEN the member fetch API fails, WHEN the side panel opens, THEN the fallback member list from the initial cluster data is shown.
+- **US-3.2-E2:** GIVEN the user clicks elsewhere on the map, WHEN the side panel is open, THEN it remains open (close requires the back button or Escape).
+- **US-3.2-E3:** GIVEN the cluster data is loading, WHEN the user clicks, THEN a loading spinner appears inside the side panel member area.
+
+#### Step 5 Hardening Notes
+- **R1/C5:** D3 popover focus management (auto-focus, Escape, focus restore) — superseded by side panel in Three.js rewrite. Side panel lacks focus trap.
 
 ---
 
 ### US-3.3 — Researcher Dot to Profile [MODIFIED]
-**As a** researcher, **I can** click or keyboard-activate a researcher dot on the map to navigate to their profile.
+**As a** researcher, **I can** click a researcher particle on the Three.js map to navigate to their profile.
 
-**What changed from original spec:** Dots now have tabIndex={0}, onKeyDown for Enter/Space, and aria-label with researcher name.
+**What changed from original spec:** Researcher dots are now Three.js `Mesh` objects in 3D space (commit e7141f9). Hover detection uses mouse raycasting; tooltip shows name and lab in a fixed overlay div. Click calls `navigateToProfile()` with Supabase validation before navigate. Keyboard Tab activation and individual dot aria-labels are no longer implemented (3D Mesh objects are not DOM elements). The map container has `role="img"` with a general aria-label.
 
 #### Acceptance Criteria
-- **AC-1:** GIVEN the map is displayed, WHEN the user hovers over a researcher dot, THEN the researcher's name appears as a tooltip.
-- **AC-2:** GIVEN the map is displayed, WHEN the user clicks a researcher dot (or presses Enter/Space when focused), THEN they navigate to that researcher's profile page.
-- **AC-3:** GIVEN the dots are displayed, WHEN hovered, THEN the cursor changes to pointer.
-- **AC-4 (NEW):** GIVEN the map is displayed, WHEN a researcher dot receives keyboard focus, THEN it is announced by screen readers with the researcher's name via aria-label.
+- **AC-1:** GIVEN the map is displayed, WHEN the user hovers over a researcher particle, THEN a tooltip shows the researcher's name and lab, and the cursor changes to pointer.
+- **AC-2:** GIVEN the map is displayed, WHEN the user clicks a researcher particle, THEN they navigate to that researcher's profile page (after Supabase validation).
+- **AC-3:** GIVEN the particle is hovered, WHEN the cursor enters, THEN the particle scales up and emissive intensity increases as a visual affordance.
 
 #### Edge Cases
-- **US-3.3-E1:** GIVEN two dots overlap (same position), WHEN the user clicks, THEN a disambiguation popover lists both names so the user can choose.
-- **US-3.3-E2:** GIVEN the profile data for a dot fails to load, WHEN clicked, THEN a toast "Profil indisponible" appears.
-- **US-3.3-E3:** GIVEN the map is zoomed out fully, WHEN dots are very small, THEN they maintain a minimum clickable size (24x24px touch target).
+- **US-3.3-E1:** GIVEN the profile validation query fails when clicking a particle, THEN a toast "Profil indisponible" appears.
+- **US-3.3-E2:** GIVEN a researcher navigated here from a profile via "Voir sur la carte", WHEN the map loads, THEN that researcher's particle is rendered larger (radius 0.28 vs 0.18) with higher emissive intensity and the camera flies to their cluster.
+- **US-3.3-E3:** GIVEN the researcher is not found in any cluster, WHEN the map loads from a profile link, THEN a toast "Ce chercheur n'a pas encore de position sur la carte" appears.
+
+#### Step 5 Hardening Notes
+- **R1/C3:** SVG dot tabIndex, onKeyDown, aria-label — removed with D3 rewrite. Three.js particles are not keyboard-navigable.
 
 ---
 
-### US-3.4 — Theme List View [UNCHANGED]
-**As a** researcher, **I can** browse themes in a list view showing clusters, researcher counts, and cross-links.
+### US-3.4 — Theme List View [MODIFIED]
+**As a** researcher, **I can** browse themes in a list view showing clusters, researcher counts, cross-links, and visual cluster thumbnails.
+
+**What changed from original spec:** Each cluster card now includes a `ClusterThumbnail` component — a small Three.js nebula rendered in an `aria-hidden` canvas that auto-rotates (commit a71d4bf). Card layout, expand/collapse, member links, and cross-nav are unchanged. No R2 fixes targeted this story.
 
 #### Acceptance Criteria
 - **AC-1:** GIVEN the themes screen loads, WHEN cluster data is available, THEN a grid of cluster cards displays, each with name, researcher count, and sub-theme tags.
@@ -298,7 +320,7 @@ CartoPM is a web application that maps process mining research. Researchers ente
 ### US-4.1 — User Management [MODIFIED]
 **As a** logged-in admin, **I can** manage users (assign roles, send invitations, approve pending profiles).
 
-**What changed from original spec:** Invite dialog has focus trap (Tab cycles within, focus moves to first element on open, restores on close). Admin role check uses `app_metadata` (server-side only) instead of `user_metadata` (user-writable).
+**What changed from original spec:** Invite dialog has focus trap (Tab cycles within, focus moves to first element on open, restores on close). Admin role check uses `app_metadata` (server-side only) instead of `user_metadata` (user-writable). Step 5 R2: UsersTab i18n — 6+ hardcoded French strings wrapped in `t()` (H4).
 
 #### Acceptance Criteria
 - **AC-1:** GIVEN an admin navigates to the admin panel, WHEN the Users tab loads, THEN a table displays all users with name, email, role badge, status badge, and action buttons.
@@ -319,7 +341,7 @@ CartoPM is a web application that maps process mining research. Researchers ente
 ### US-4.2 — Bulk Import [MODIFIED]
 **As a** logged-in admin, **I can** import researchers in bulk via CSV/Excel or Google Scholar.
 
-**What changed from original spec:** CSV parser now uses RFC-4180 compliant parsing that handles quoted fields and commas within values.
+**What changed from original spec:** CSV parser now uses RFC-4180 compliant parsing that handles quoted fields and commas within values. Step 5 R2: ImportTab i18n — hardcoded strings wrapped in `t()` (H5). Import API field validation — row cap 500, name/lab length limits, keywords array cap ≤50 items, status enum whitelist (H9).
 
 #### Acceptance Criteria
 - **AC-1:** GIVEN the import tab is displayed, WHEN the admin drags a CSV/Excel file onto the upload zone, THEN the file is parsed and a preview table is populated. The parser handles quoted fields per RFC 4180.
@@ -368,15 +390,15 @@ CartoPM is a web application that maps process mining research. Researchers ente
 ## Accessibility Stories
 
 ### US-A11Y-001 — Keyboard Navigation [MODIFIED]
-**As a** user who navigates with keyboard only, **I can** use Tab/Shift+Tab to move between all interactive elements in logical order, including SVG map elements.
+**As a** user who navigates with keyboard only, **I can** use Tab/Shift+Tab to move between all interactive elements in logical order.
 
-**What changed:** SVG map elements (researcher dots, cluster circles) now have tabIndex={0} and keyboard handlers.
+**What changed:** SVG map keyboard support (R1) was added then removed by the Three.js rewrite. Standard DOM elements (filters, legend, ThemesPage cards) remain keyboard-accessible. Escape closes the map side panel.
 
 #### Acceptance Criteria
 - **AC-1:** GIVEN any screen is displayed, WHEN the user presses Tab, THEN focus moves to the next interactive element in DOM order.
 - **AC-2:** GIVEN any screen is displayed, WHEN the user presses Shift+Tab, THEN focus moves to the previous interactive element.
 - **AC-3:** GIVEN a focused button or link, WHEN the user presses Enter or Space, THEN the element is activated.
-- **AC-4 (NEW):** GIVEN the map screen is displayed, WHEN the user Tabs, THEN focus moves through cluster circles and researcher dots in the SVG.
+- **AC-4 (NOTE):** Tab navigation through Three.js map cluster nebulae and researcher particles is not implemented. Keyboard users can access the filter panel, legend, and cross-nav buttons on the map page.
 
 ---
 
@@ -408,7 +430,7 @@ CartoPM is a web application that maps process mining research. Researchers ente
 ### US-A11Y-004 — ARIA Labels [MODIFIED]
 **As a** user relying on a screen reader, **I can** understand all interactive elements through proper ARIA labels and roles.
 
-**What changed:** Duplicate nav landmark fixed (outer nav -> header). Color contrast improved for tags, badges, muted text, and primary buttons to meet WCAG 4.5:1.
+**What changed:** Duplicate nav landmark fixed (outer nav -> header). Color contrast improved for tags, badges, muted text, and primary buttons to meet WCAG 4.5:1. Step 5 R2: fr.json "breadcrumbDashboard" corrected to "Tableau de bord" (C3); PendingTab i18n — 5 table headers + 2 toasts (H6); ProfilePage i18n — 4 hardcoded strings (H7); SettingsTab hardcoded string replaced with `t()` (M3).
 
 #### Acceptance Criteria
 - **AC-1:** GIVEN any interactive element (button, link, input), WHEN read by a screen reader, THEN it has a descriptive `aria-label` or visible label text.

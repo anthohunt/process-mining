@@ -90,12 +90,12 @@
 ## US-1.3: Mini-Map Preview
 
 ### Happy Path
-**Mockup reference:** `screen-dashboard` — `mini-map-container` with SVG and overlay text.
+**Mockup reference:** `screen-dashboard` — `mini-map-container` with Three.js WebGL nebula and overlay text.
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
 | 1 | Navigate to `/` | Dashboard loads | `US-1.3-01-dashboard-loaded.png` |
-| 2 | Observe the mini-map area | SVG preview of clusters visible with overlay "Cliquer pour ouvrir la carte complete" | `US-1.3-02-mini-map-visible.png` |
+| 2 | Observe the mini-map area | Three.js nebula preview of clusters visible (glowing spheres on dark background) with overlay "Cliquer pour ouvrir la carte complete" | `US-1.3-02-mini-map-visible.png` |
 | 3 | Hover over the mini-map | Cursor changes to pointer, blue outline appears around the container | `US-1.3-03-hover-effect.png` |
 | 4 | Click the mini-map | Navigates to `/map` (full thematic map screen) | `US-1.3-04-navigated-to-map.png` |
 
@@ -117,11 +117,11 @@
 | 2 | Navigate to `/` | Dashboard loads | `US-1.3-E2-02-dashboard-loaded.png` |
 | 3 | Observe mini-map area immediately | Loading spinner visible | `US-1.3-E2-03-loading-spinner.png` |
 
-### Edge Case E3: SVG Rendering Error
+### Edge Case E3: API Error / WebGL Unavailable
 **Mockup reference:** `screen-dashboard` — mini-map fallback.
 
 | Step | Action | Expected Result | Screenshot |
 |------|--------|----------------|------------|
 | 1 | Intercept `/api/clusters` with malformed JSON: `page.route('**/api/clusters', r => r.fulfill({ status: 200, body: '{malformed}' }))` | Returns invalid data | `US-1.3-E3-01-intercept-malformed.png` |
 | 2 | Navigate to `/` | Dashboard loads | `US-1.3-E3-02-dashboard-loaded.png` |
-| 3 | Observe mini-map area | Static fallback image or message "Cliquer pour voir la carte" | `US-1.3-E3-03-fallback.png` |
+| 3 | Observe mini-map area | Fallback message "Cliquer pour voir la carte" visible | `US-1.3-E3-03-fallback.png` |
