@@ -58,12 +58,17 @@
     "noPublications": "Aucune publication enregistree.",
     "noMapPosition": "Ce chercheur n'a pas encore de position sur la carte.",
     "notFound": "Profil introuvable",
+    "notFoundDetail": "Ce profil n'existe pas ou a ete supprime.",
     "backToList": "Retour a la liste",
     "readMore": "Lire la suite",
     "readLess": "Reduire",
     "keywords": "Mots-cles",
+    "noKeywords": "Aucun mot-cle.",
     "publications": "Publications",
-    "deletedProfile": "(profil supprime)"
+    "deletedProfile": "(profil supprime)",
+    "errorBreadcrumb": "Erreur",
+    "rejectionBanner": "Votre profil a ete rejete.",
+    "rejectionReason": "Raison"
   },
   "editProfile": {
     "title": "Modifier le profil",
@@ -125,7 +130,7 @@
     "needTwoResearchers": "Au moins 2 chercheurs requis pour calculer la similarite.",
     "error": "Erreur de chargement",
     "retry": "Reessayer",
-    "breadcrumbDashboard": "Dashboard",
+    "breadcrumbDashboard": "Tableau de bord",
     "breadcrumbStats": "Statistiques detaillees"
   },
   "login": {
@@ -159,12 +164,29 @@
       "selfRevoke": "Vous ne pouvez pas revoquer votre propre acces.",
       "noUsers": "Aucun utilisateur.",
       "inviteSuccess": "Invitation envoyee.",
-      "inviteError": "Invitation echouee, verifiez l'adresse email."
+      "inviteError": "Invitation echouee, verifiez l'adresse email.",
+      "nameHeader": "Nom",
+      "roleAdmin": "Admin",
+      "roleResearcher": "Chercheur",
+      "statusActive": "Actif",
+      "statusRevoked": "Revoque",
+      "newRoleLabel": "Nouveau role",
+      "saveRole": "Sauvegarder",
+      "sendInvite": "Envoyer l'invitation",
+      "roleUpdated": "Role mis a jour.",
+      "revokeSuccess": "Acces revoqu\u00e9."
     },
     "pending": {
       "approve": "Approuver",
       "reject": "Rejeter",
-      "noPending": "Aucun profil en attente."
+      "noPending": "Aucun profil en attente.",
+      "colName": "Nom",
+      "colLab": "Laboratoire",
+      "colThemes": "Themes",
+      "colSubmitted": "Soumis le",
+      "colActions": "Actions",
+      "approveSuccess": "Profil approuve.",
+      "rejectSuccess": "Profil rejete."
     },
     "settings": {
       "language": "Langue",
@@ -174,7 +196,8 @@
       "saveSuccess": "Parametres sauvegardes.",
       "saveError": "Echec de la sauvegarde.",
       "thresholdWarning": "Un seuil de 0.0 considerera tous les chercheurs comme proches.",
-      "unsavedChanges": "Modifications non sauvegardees, quitter quand meme ?"
+      "unsavedChanges": "Modifications non sauvegardees, quitter quand meme ?",
+      "unsavedLabel": "Modifications non sauvegardees"
     },
     "logs": {
       "from": "Du",
@@ -192,13 +215,20 @@
     "import": {
       "dropzone": "Glisser un fichier CSV ou Excel ici, ou cliquer pour selectionner",
       "scholarUrl": "URL Google Scholar",
+      "scholarSubLabel": "— Import via Google Scholar — necessite une configuration serveur supplementaire",
       "importBtn": "Importer",
       "confirmBtn": "Importer {{count}} chercheurs",
       "clear": "Effacer",
       "invalidFormat": "Format invalide: colonnes attendues: Nom, Labo, Themes",
       "invalidUrl": "URL invalide ou profil introuvable.",
+      "scholarNotConfigured": "L'import Google Scholar n'est pas encore configure. Utilisez l'import CSV.",
       "duplicateWarning": "Doublon detecte",
-      "viewLogs": "Voir les logs"
+      "viewLogs": "Voir les logs",
+      "previewHeader": "Apercu — {{count}} entree(s)",
+      "colStatut": "Statut",
+      "statusNew": "Nouveau",
+      "importSuccess": "{{count}} chercheur(s) importe(s) avec succes.",
+      "importSuccessToast": "{{count}} chercheur(s) importe(s)."
     }
   },
   "common": {

@@ -206,7 +206,7 @@ export function SettingsTab({ onToast, onUnsavedChange }: Props) {
 
       {isDirty && (
         <span style={{ marginLeft: 12, fontSize: 13, color: 'var(--pm-text-muted)' }}>
-          Modifications non sauvegardées
+          {t('admin.settings.unsavedLabel')}
         </span>
       )}
     </div>

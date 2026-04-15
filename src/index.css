@@ -746,7 +746,8 @@ select.form-control {
   background: var(--pm-hero-bg);
   border-radius: var(--pm-radius-lg);
   overflow: hidden;
-  height: 500px;
+  height: min(70vh, 800px);
+  min-height: 400px;
 }
 
 .map-filter-panel {
@@ -760,6 +761,21 @@ select.form-control {
   font-size: 13px;
   box-shadow: var(--pm-shadow);
   z-index: 10;
+}
+
+@media (max-width: 767px) {
+  .map-filter-panel {
+    position: static;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    order: -1;
+  }
+
+  .map-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .map-legend {

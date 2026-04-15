@@ -66,7 +66,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
     } catch (err) {
       const msg = (err as Error).message
       if (msg === 'scholar_not_configured') {
-        setScholarError("L'import Google Scholar n'est pas encore configuré. Utilisez l'import CSV.")
+        setScholarError(t('admin.import.scholarNotConfigured'))
       } else {
         setScholarError(t('admin.import.invalidUrl'))
       }
@@ -79,7 +79,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
       const result = await importRows.mutateAsync(preview)
       setImportSuccess(result.count)
       setPreview(null)
-      onToast({ type: 'success', message: `${result.count} chercheur(s) import\u00e9(s).` })
+      onToast({ type: 'success', message: t('admin.import.importSuccessToast', { count: result.count }) })
     } catch {
       onToast({ type: 'error', message: t('common.error') })
     }
@@ -135,7 +135,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
         <label className="form-label" htmlFor="scholar-url">
           {t('admin.import.scholarUrl')}
           <span style={{ marginLeft: 8, fontSize: 12, color: 'var(--pm-text-muted)', fontWeight: 400 }}>
-            — Import via Google Scholar — nécessite une configuration serveur supplémentaire
+            {t('admin.import.scholarSubLabel')}
           </span>
         </label>
         <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
@@ -170,7 +170,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
         <div style={{ marginTop: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <h3 style={{ margin: 0, fontSize: 15 }}>
-              {`Aperçu — ${preview.length} entrée(s)`}
+              {t('admin.import.previewHeader', { count: preview.length })}
               {preview.some(r => r.isDuplicate) && (
                 <span className="tag tag-orange" style={{ marginLeft: 8 }}>
                   {preview.filter(r => r.isDuplicate).length} doublon(s)
@@ -188,7 +188,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
                   <th>Nom</th>
                   <th>Labo</th>
                   <th>Themes</th>
-                  <th>Statut</th>
+                  <th>{t('admin.import.colStatut')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -201,7 +201,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
                       {row.isDuplicate ? (
                         <span className="tag tag-orange">{t('admin.import.duplicateWarning')}</span>
                       ) : (
-                        <span className="tag tag-green">Nouveau</span>
+                        <span className="tag tag-green">{t('admin.import.statusNew')}</span>
                       )}
                     </td>
                   </tr>
@@ -234,7 +234,7 @@ export function ImportTab({ onToast, onNavigateToLogs }: Props) {
       {importSuccess !== null && (
         <div style={{ marginTop: 20 }}>
           <div className="empty-state" role="status" style={{ background: 'var(--pm-success-bg, #f0fdf4)', border: '1px solid var(--pm-success, #16a34a)', color: 'var(--pm-success, #16a34a)' }}>
-            {importSuccess} chercheur(s) importé(s) avec succès.
+            {t('admin.import.importSuccess', { count: importSuccess })}
           </div>
           <button
             className="btn btn-outline btn-sm"

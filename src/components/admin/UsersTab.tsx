@@ -58,7 +58,7 @@ export function UsersTab({ onToast }: Props) {
     if (!editingUserId) return
     try {
       await updateRole.mutateAsync({ userId: editingUserId, role: editRole })
-      onToast({ type: 'success', message: 'Role mis a jour.' })
+      onToast({ type: 'success', message: t('admin.users.roleUpdated') })
     } catch {
       onToast({ type: 'error', message: t('common.error') })
     }
@@ -73,7 +73,7 @@ export function UsersTab({ onToast }: Props) {
     }
     try {
       await revokeUser.mutateAsync(userId)
-      onToast({ type: 'success', message: 'Acces revoqu\u00e9.' })
+      onToast({ type: 'success', message: t('admin.users.revokeSuccess') })
     } catch {
       onToast({ type: 'error', message: t('common.error') })
     }
@@ -122,7 +122,7 @@ export function UsersTab({ onToast }: Props) {
           <table className="app-table" id="admin-tab-admin-users" aria-label={t('admin.tabs.users')}>
             <thead>
               <tr>
-                <th>Nom</th>
+                <th>{t('admin.users.nameHeader')}</th>
                 <th>{t('admin.users.email')}</th>
                 <th>{t('admin.users.role')}</th>
                 <th>{t('admin.users.status')}</th>
@@ -155,20 +155,20 @@ export function UsersTab({ onToast }: Props) {
                         style={{ width: 'auto', padding: '2px 6px', fontSize: 13 }}
                         value={editRole}
                         onChange={e => setEditRole(e.target.value as 'admin' | 'researcher')}
-                        aria-label="Nouveau role"
+                        aria-label={t('admin.users.newRoleLabel')}
                       >
-                        <option value="researcher">Chercheur</option>
-                        <option value="admin">Admin</option>
+                        <option value="researcher">{t('admin.users.roleResearcher')}</option>
+                        <option value="admin">{t('admin.users.roleAdmin')}</option>
                       </select>
                     ) : (
                       <span className={`badge ${u.role === 'admin' ? 'badge-admin' : 'badge-researcher'}`}>
-                        {u.role === 'admin' ? 'Admin' : 'Chercheur'}
+                        {u.role === 'admin' ? t('admin.users.roleAdmin') : t('admin.users.roleResearcher')}
                       </span>
                     )}
                   </td>
                   <td>
                     <span className={`badge ${u.status === 'active' ? 'badge-active' : 'badge-revoked'}`}>
-                      {u.status === 'active' ? 'Actif' : 'Révoqué'}
+                      {u.status === 'active' ? t('admin.users.statusActive') : t('admin.users.statusRevoked')}
                     </span>
                   </td>
                   <td>
@@ -178,9 +178,9 @@ export function UsersTab({ onToast }: Props) {
                           className="btn btn-primary btn-sm"
                           onClick={handleRoleSave}
                           disabled={updateRole.isPending}
-                          aria-label="Sauvegarder le role"
+                          aria-label={t('admin.users.saveRole')}
                         >
-                          Sauvegarder
+                          {t('admin.users.saveRole')}
                         </button>
                         <button
                           className="btn btn-ghost btn-sm"
@@ -253,7 +253,7 @@ export function UsersTab({ onToast }: Props) {
                 onClick={() => void handleInviteSubmit()}
                 disabled={inviteUser.isPending || !inviteEmail.trim()}
               >
-                {inviteUser.isPending ? t('common.loading') : 'Envoyer l\'invitation'}
+                {inviteUser.isPending ? t('common.loading') : t('admin.users.sendInvite')}
               </button>
             </div>
           </div>

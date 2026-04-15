@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import * as THREE from 'three'
 import { useClusters } from '../../hooks/useClusters'
 import { LoadingSpinner } from '../common/LoadingSpinner'
+import { useWebGLContextLoss } from '../../hooks/useWebGLContextLoss'
 
 function clusterPosition(i: number, total: number, radius = 8): THREE.Vector3 {
   const phi = Math.acos(1 - 2 * (i + 0.5) / total)
@@ -20,6 +21,7 @@ export function MiniMap() {
   const navigate = useNavigate()
   const { data: clusters, isLoading, isError } = useClusters()
   const mountRef = useRef<HTMLDivElement>(null)
+  const webglContextLost = useWebGLContextLoss(mountRef)
 
   const handleClick = () => navigate('/map')
 
@@ -185,6 +187,16 @@ export function MiniMap() {
       return (
         <div className="mini-map-placeholder">
           <span>{t('dashboard.minimap.noData')}</span>
+        </div>
+      )
+    }
+    if (webglContextLost) {
+      return (
+        <div className="mini-map-placeholder" style={{ flexDirection: 'column', gap: 10 }}>
+          <span style={{ fontSize: 12 }}>Contexte WebGL perdu</span>
+          <button className="btn btn-primary btn-sm" onClick={e => { e.stopPropagation(); window.location.reload() }}>
+            Recharger
+          </button>
         </div>
       )
     }

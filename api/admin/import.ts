@@ -27,9 +27,49 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const url = process.env.SUPABASE_URL!
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY!
-  const { rows } = req.body as { rows: Array<{ full_name: string; lab: string; keywords: string[]; bio: string; status: string }> }
+  const body = req.body as { rows?: unknown }
+  const { rows } = body
 
   if (!Array.isArray(rows) || rows.length === 0) return res.json({ count: 0 })
+
+  if (rows.length > 500) {
+    return res.status(400).json({ errors: [`Row count ${rows.length} exceeds maximum of 500`] })
+  }
+
+  const VALID_STATUSES = new Set(['active', 'pending', 'rejected'])
+  const validationErrors: string[] = []
+
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i] as Record<string, unknown>
+    if (typeof row !== 'object' || row === null) {
+      validationErrors.push(`Row ${i}: must be an object`)
+      continue
+    }
+    if (typeof row.name !== 'string' || row.name.trim().length === 0 || row.name.length > 200) {
+      validationErrors.push(`Row ${i}: name must be a non-empty string ≤200 chars`)
+    }
+    if (row.lab !== undefined && (typeof row.lab !== 'string' || row.lab.length > 200)) {
+      validationErrors.push(`Row ${i}: lab must be a string ≤200 chars`)
+    }
+    if (row.keywords !== undefined) {
+      if (!Array.isArray(row.keywords) || row.keywords.length > 50) {
+        validationErrors.push(`Row ${i}: keywords must be an array of ≤50 items`)
+      } else {
+        for (let k = 0; k < row.keywords.length; k++) {
+          if (typeof row.keywords[k] !== 'string' || (row.keywords[k] as string).length > 50) {
+            validationErrors.push(`Row ${i}: keyword[${k}] must be a string ≤50 chars`)
+          }
+        }
+      }
+    }
+    if (row.status !== undefined && !VALID_STATUSES.has(row.status as string)) {
+      validationErrors.push(`Row ${i}: status must be one of active, pending, rejected`)
+    }
+  }
+
+  if (validationErrors.length > 0) {
+    return res.status(400).json({ errors: validationErrors })
+  }
 
   const insertRes = await fetch(`${url}/rest/v1/researchers`, {
     method: 'POST',

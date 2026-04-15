@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { useClusters } from '../hooks/useClusters'
+import { useWebGLContextLoss } from '../hooks/useWebGLContextLoss'
 import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/common/LoadingSpinner'
 import { ErrorState } from '../components/common/ErrorState'
@@ -73,6 +74,7 @@ export function MapPage() {
   const [tooltip, setTooltip] = useState<{ x: number; y: number; name: string; lab: string; color: string } | null>(null)
 
   const mountRef = useRef<HTMLDivElement>(null)
+  const webglContextLost = useWebGLContextLoss(mountRef)
   const canvasWrapperRef = useRef<HTMLDivElement>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
   const sceneRef = useRef<THREE.Scene | null>(null)
@@ -568,6 +570,14 @@ export function MapPage() {
         aria-label={t('map.ariaLabel')}
         style={{ position: 'relative', overflow: 'hidden' }}
       >
+        {webglContextLost && (
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10, background: 'rgba(12,27,51,0.95)' }}>
+            <p style={{ color: '#fff', marginBottom: 16 }}>Le contexte WebGL a ete perdu.</p>
+            <button className="btn btn-primary" onClick={() => window.location.reload()}>
+              Recharger la carte
+            </button>
+          </div>
+        )}
         {isLoading && (
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
             <LoadingSpinner message={t('common.loading')} />

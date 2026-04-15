@@ -1,7 +1,9 @@
+import { lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { StatGrid } from '../components/dashboard/StatGrid'
 import { ActivityFeed } from '../components/dashboard/ActivityFeed'
-import { MiniMap } from '../components/dashboard/MiniMap'
+
+const MiniMap = lazy(() => import('../components/dashboard/MiniMap').then(m => ({ default: m.MiniMap })))
 
 export function DashboardPage() {
   const { t } = useTranslation()
@@ -16,7 +18,9 @@ export function DashboardPage() {
         <ActivityFeed />
         <div>
           <div className="card-title" style={{ marginBottom: 8 }}>{t('dashboard.minimap.title')}</div>
-          <MiniMap />
+          <Suspense fallback={<div style={{ height: 200 }} />}>
+            <MiniMap />
+          </Suspense>
         </div>
       </div>
     </div>

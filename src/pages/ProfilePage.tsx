@@ -28,13 +28,16 @@ export function ProfilePage() {
   const [bioExpanded, setBioExpanded] = useState(false)
   const { toasts, addToast, removeToast } = useToast()
 
-  const { data: profile, isLoading, isError, error } = useResearcherProfile(id)
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+  const isValidUuid = id ? UUID_RE.test(id) : false
 
-  const is404 = isError && (
+  const { data: profile, isLoading, isError, error } = useResearcherProfile(isValidUuid ? id : undefined)
+
+  const is404 = !isValidUuid || (isError && (
     (error as Error & { status?: number }).status === 404 ||
     (error as Error).message === 'Not found' ||
     (error as Error).message?.includes('PGRST116')
-  )
+  ))
 
   if (isLoading) return <LoadingSpinner />
 
@@ -52,7 +55,7 @@ export function ProfilePage() {
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
           <h2 style={{ marginBottom: 8 }}>{t('profile.notFound')}</h2>
           <p style={{ color: 'var(--pm-text-muted)', marginBottom: 20, fontSize: 14 }}>
-            Ce profil n'existe pas ou a ete supprime.
+            {t('profile.notFoundDetail')}
           </p>
           <button className="btn btn-primary" onClick={() => navigate('/researchers')}>
             {t('profile.backToList')}
@@ -70,7 +73,7 @@ export function ProfilePage() {
             {t('researchers.title')}
           </a>
           <span className="breadcrumb-sep">›</span>
-          <span>Erreur</span>
+          <span>{t('profile.errorBreadcrumb')}</span>
         </div>
         <ErrorState />
       </div>
@@ -105,7 +108,7 @@ export function ProfilePage() {
 
       {isOwn && isRejected && (
         <div className="banner-error" role="alert" style={{ marginBottom: 16 }}>
-          <strong>Votre profil a ete rejete.</strong> Raison : {profile.rejection_reason}
+          <strong>{t('profile.rejectionBanner')}</strong> {t('profile.rejectionReason')} : {profile.rejection_reason}
         </div>
       )}
 
@@ -204,7 +207,7 @@ export function ProfilePage() {
                 ))}
               </div>
             ) : (
-              <p style={{ color: 'var(--pm-text-muted)', fontSize: 14 }}>Aucun mot-cle.</p>
+              <p style={{ color: 'var(--pm-text-muted)', fontSize: 14 }}>{t('profile.noKeywords')}</p>
             )}
           </div>
 

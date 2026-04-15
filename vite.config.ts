@@ -12,4 +12,13 @@ export default defineConfig({
   server: {
     port: 5199,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-three': ['three'],
+        },
+      },
+    },
+  },
 })

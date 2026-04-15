@@ -58,12 +58,17 @@
     "noPublications": "No publications registered.",
     "noMapPosition": "This researcher has no map position yet.",
     "notFound": "Profile not found",
+    "notFoundDetail": "This profile does not exist or has been deleted.",
     "backToList": "Back to list",
     "readMore": "Read more",
     "readLess": "Read less",
     "keywords": "Keywords",
+    "noKeywords": "No keywords.",
     "publications": "Publications",
-    "deletedProfile": "(profile deleted)"
+    "deletedProfile": "(profile deleted)",
+    "errorBreadcrumb": "Error",
+    "rejectionBanner": "Your profile has been rejected.",
+    "rejectionReason": "Reason"
   },
   "editProfile": {
     "title": "Edit profile",
@@ -159,12 +164,29 @@
       "selfRevoke": "You cannot revoke your own access.",
       "noUsers": "No users.",
       "inviteSuccess": "Invitation sent.",
-      "inviteError": "Invitation failed, check the email address."
+      "inviteError": "Invitation failed, check the email address.",
+      "nameHeader": "Name",
+      "roleAdmin": "Admin",
+      "roleResearcher": "Researcher",
+      "statusActive": "Active",
+      "statusRevoked": "Revoked",
+      "newRoleLabel": "New role",
+      "saveRole": "Save",
+      "sendInvite": "Send invitation",
+      "roleUpdated": "Role updated.",
+      "revokeSuccess": "Access revoked."
     },
     "pending": {
       "approve": "Approve",
       "reject": "Reject",
-      "noPending": "No pending profiles."
+      "noPending": "No pending profiles.",
+      "colName": "Name",
+      "colLab": "Lab",
+      "colThemes": "Themes",
+      "colSubmitted": "Submitted on",
+      "colActions": "Actions",
+      "approveSuccess": "Profile approved.",
+      "rejectSuccess": "Profile rejected."
     },
     "settings": {
       "language": "Language",
@@ -174,7 +196,8 @@
       "saveSuccess": "Settings saved.",
       "saveError": "Save failed.",
       "thresholdWarning": "A threshold of 0.0 will consider all researchers as similar.",
-      "unsavedChanges": "Unsaved changes, leave anyway?"
+      "unsavedChanges": "Unsaved changes, leave anyway?",
+      "unsavedLabel": "Unsaved changes"
     },
     "logs": {
       "from": "From",
@@ -192,13 +215,20 @@
     "import": {
       "dropzone": "Drag a CSV or Excel file here, or click to select",
       "scholarUrl": "Google Scholar URL",
+      "scholarSubLabel": "— Import via Google Scholar — requires additional server configuration",
       "importBtn": "Import",
       "confirmBtn": "Import {{count}} researchers",
       "clear": "Clear",
       "invalidFormat": "Invalid format: expected columns: Name, Lab, Themes",
       "invalidUrl": "Invalid URL or profile not found.",
+      "scholarNotConfigured": "Google Scholar import is not yet configured. Use CSV import.",
       "duplicateWarning": "Duplicate detected",
-      "viewLogs": "View logs"
+      "viewLogs": "View logs",
+      "previewHeader": "Preview — {{count}} entry(ies)",
+      "colStatut": "Status",
+      "statusNew": "New",
+      "importSuccess": "{{count}} researcher(s) imported successfully.",
+      "importSuccessToast": "{{count}} researcher(s) imported."
     }
   },
   "common": {

@@ -30,7 +30,7 @@ export function PendingTab({ onToast }: Props) {
   const handleApprove = async (id: string) => {
     try {
       await approve.mutateAsync(id)
-      onToast({ type: 'success', message: 'Profil approuv\u00e9.' })
+      onToast({ type: 'success', message: t('admin.pending.approveSuccess') })
     } catch {
       onToast({ type: 'error', message: t('common.error') })
     }
@@ -39,7 +39,7 @@ export function PendingTab({ onToast }: Props) {
   const handleReject = async (id: string) => {
     try {
       await reject.mutateAsync({ id })
-      onToast({ type: 'success', message: 'Profil rejet\u00e9.' })
+      onToast({ type: 'success', message: t('admin.pending.rejectSuccess') })
     } catch {
       onToast({ type: 'error', message: t('common.error') })
     }
@@ -56,11 +56,11 @@ export function PendingTab({ onToast }: Props) {
           <table className="app-table" id="admin-tab-admin-pending" aria-label={t('admin.tabs.pending')}>
             <thead>
               <tr>
-                <th>Nom</th>
-                <th>Laboratoire</th>
-                <th>Themes</th>
-                <th>Soumis le</th>
-                <th>Actions</th>
+                <th>{t('admin.pending.colName')}</th>
+                <th>{t('admin.pending.colLab')}</th>
+                <th>{t('admin.pending.colThemes')}</th>
+                <th>{t('admin.pending.colSubmitted')}</th>
+                <th>{t('admin.pending.colActions')}</th>
               </tr>
             </thead>
             <tbody>
