@@ -256,5 +256,18 @@
     "back": "Back",
     "noData": "No data available.",
     "adminBadge": "Admin"
+  },
+  "feedback": {
+    "open": "Bug / Suggestion",
+    "title": "Report a bug or a suggestion",
+    "type": "Type",
+    "bug": "Bug (something is broken)",
+    "suggestion": "Suggestion (improvement idea)",
+    "message": "Your message",
+    "placeholder": "Be specific: which page, what you were doing, what should change...",
+    "pageHint": "Page",
+    "submit": "Send",
+    "thanks": "Thanks! Your feedback has been sent.",
+    "error": "Sending failed. Please retry."
   }
 }

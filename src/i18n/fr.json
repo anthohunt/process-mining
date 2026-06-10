@@ -256,5 +256,18 @@
     "back": "Retour",
     "noData": "Aucune donnee disponible.",
     "adminBadge": "Admin"
+  },
+  "feedback": {
+    "open": "Bug / Suggestion",
+    "title": "Signaler un bug ou une suggestion",
+    "type": "Type",
+    "bug": "Bug (quelque chose ne marche pas)",
+    "suggestion": "Suggestion (idee d amelioration)",
+    "message": "Votre message",
+    "placeholder": "Soyez precis : sur quelle page, ce que vous faisiez, ce qui devrait changer...",
+    "pageHint": "Page concernee",
+    "submit": "Envoyer",
+    "thanks": "Merci ! Votre retour a bien ete envoye.",
+    "error": "Echec de l envoi. Reessayez."
   }
 }
