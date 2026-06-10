@@ -1,0 +1,15 @@
+*.png
+*.output
+dist
+playwright-report
+test-results
+graphify-out
+.playwright-mcp
+.playwright-mcp-output*
+playwright-mcp-output*
+scripts/final-capture
+docs
+tests
+*.cjs
+.graphify_chunk*.txt
+.vercel/.env*.local
