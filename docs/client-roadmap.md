@@ -28,3 +28,13 @@ Marwa Hamdi (cliente, chercheuse process mining, encadrée par **Ronan**, La Roc
 | Été | Features 1→4 + allers-retours feedback + tests 3-4 chercheurs |
 | En // | Préparer migration serveurs école (Seb) |
 | Septembre | Site stabilisé sur serveurs école |
+
+## Avancement 2026-06-10 (session dev)
+Features **1, 2, 3, 4 livrées sur `staging`** (testées E2E), pas encore en prod :
+- ✅ 1 — inscription chercheur + formulaire guidé de création (`/profile/new`) + validation admin (option 2 = création libre, validée par Marwa)
+- ✅ 2 — onglets Communauté française / internationale (champ `origin`)
+- ✅ 3 — champ Enseignement/Cours (`teaches` + `teaching_details`), affiché sur la fiche
+- ✅ 4 — widget feedback Bug/Suggestion (`api/feedback.ts`) ; **reste** à brancher le webhook Discord (`DISCORD_FEEDBACK_WEBHOOK`)
+
+Migrations `005` (teaching/origin) + `006` (feedback) appliquées sur staging. Email envoyé à Marwa (accès staging + transcript).
+**À faire** : brancher webhook Discord, merger `staging`→`prod` après validation Marwa (+ décider confirmation email prod), accès prod à Marwa, migration serveurs école (sept), tests 3-4 chercheurs.
