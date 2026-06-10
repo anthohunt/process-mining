@@ -91,7 +91,9 @@
     "saveSuccess": "Profile saved successfully.",
     "saveError": "Save error, please try again.",
     "pendingWarning": "You already have a pending submission.",
-    "validationRequired": "This field is required."
+    "validationRequired": "This field is required.",
+    "teaches": "I teach / give process mining courses",
+    "teachingPlaceholder": "Specify: courses, webinars, in-person days, level, etc."
   },
   "map": {
     "title": "Thematic Map",
@@ -142,7 +144,13 @@
     "demoAdmin": "Demo Admin",
     "invalidCredentials": "Incorrect email or password.",
     "serviceUnavailable": "Service unavailable, please try again later.",
-    "sessionExpired": "Session expired, please log in again."
+    "sessionExpired": "Session expired, please log in again.",
+    "signupTitle": "Sign up",
+    "signupSubtitle": "Create your account to fill in your researcher information.",
+    "signupSubmit": "Create account",
+    "noAccount": "No account yet?",
+    "haveAccount": "Already have an account?",
+    "confirmEmailSent": "A confirmation email has been sent. Click the link, then sign in."
   },
   "admin": {
     "title": "Administration",

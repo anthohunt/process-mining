@@ -58,7 +58,11 @@ export function EditProfilePage() {
   const [kwInput, setKwInput] = useState('')
   const [kwDuplicate, setKwDuplicate] = useState(false)
   const [publications, setPublications] = useState<PubDraft[]>([])
+  const [teaches, setTeaches] = useState(false)
+  const [teachingDetails, setTeachingDetails] = useState('')
   const savingRef = useRef(false)
+  // Create mode when there is no :id in the route (/profile/new)
+  const isCreate = !id
   const [isSaving, setIsSaving] = useState(false)
   const [nameError, setNameError] = useState(false)
   const [pendingWarning, setPendingWarning] = useState(false)
@@ -70,6 +74,8 @@ export function EditProfilePage() {
       setLab(profile.lab ?? '')
       setBio(profile.bio ?? '')
       setKeywords(profile.keywords ?? [])
+      setTeaches((profile as { teaches?: boolean }).teaches ?? false)
+      setTeachingDetails((profile as { teaching_details?: string }).teaching_details ?? '')
       setPublications(
         (profile.publications ?? []).map(p => ({
           id: p.id,
@@ -135,6 +141,7 @@ export function EditProfilePage() {
       setNameError(true)
       return
     }
+    if (!user) return
     if (savingRef.current) return
     savingRef.current = true
     setNameError(false)
@@ -142,21 +149,43 @@ export function EditProfilePage() {
     setIsSaving(true)
 
     try {
-      // Update researcher record
-      const { error: updateError } = await supabase
-        .from('researchers')
-        .update({
-          full_name: name.trim(),
-          lab,
-          bio,
-          keywords,
-          status: 'pending',
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', id!)
-
-      if (updateError) {
-        throw updateError
+      // Create a brand-new self-service profile, or update the existing one.
+      let targetId = id
+      if (isCreate) {
+        const { data: created, error: insertError } = await supabase
+          .from('researchers')
+          .insert({
+            user_id: user.id,
+            full_name: name.trim(),
+            lab,
+            bio,
+            keywords,
+            teaches,
+            teaching_details: teachingDetails.trim(),
+            origin: 'fr',
+            status: 'pending',
+          })
+          .select('id')
+          .single()
+        if (insertError) throw insertError
+        targetId = created.id
+      } else {
+        const { error: updateError } = await supabase
+          .from('researchers')
+          .update({
+            full_name: name.trim(),
+            lab,
+            bio,
+            keywords,
+            teaches,
+            teaching_details: teachingDetails.trim(),
+            status: 'pending',
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', id!)
+        if (updateError) {
+          throw updateError
+        }
       }
 
       // Upsert publications: update existing (have id) and insert new ones (no id)
@@ -185,7 +214,7 @@ export function EditProfilePage() {
       if (newPubs.length > 0) {
         const { error: pubError } = await supabase.from('publications').insert(
           newPubs.map(p => ({
-            researcher_id: id!,
+            researcher_id: targetId!,
             title: p.title.trim(),
             coauthors: p.coauthors.trim(),
             venue: p.venue.trim(),
@@ -196,7 +225,7 @@ export function EditProfilePage() {
       }
 
       addToast('success', t('editProfile.saveSuccess'))
-      setTimeout(() => navigate(`/researchers/${id}`), 2500)
+      setTimeout(() => navigate(`/researchers/${targetId}`), 2500)
     } catch (err: unknown) {
       const message = err && typeof err === 'object' && 'message' in err
         ? (err as { message: string }).message
@@ -221,7 +250,7 @@ export function EditProfilePage() {
           {t('researchers.title')}
         </a>
         <span className="breadcrumb-sep">›</span>
-        <span>{t('editProfile.title')}</span>
+        <span>{isCreate ? t('editProfile.addTitle') : t('editProfile.title')}</span>
       </div>
 
       <div className="banner-warning" role="alert">
@@ -326,6 +355,31 @@ export function EditProfilePage() {
             value={bio}
             onChange={e => setBio(e.target.value)}
           />
+        </div>
+
+        {/* Enseignement / Cours */}
+        <div className="form-group">
+          <label className="form-label" htmlFor="edit-teaches" style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+            <input
+              id="edit-teaches"
+              type="checkbox"
+              checked={teaches}
+              onChange={e => setTeaches(e.target.checked)}
+              style={{ width: 'auto', margin: 0 }}
+            />
+            {t('editProfile.teaches')}
+          </label>
+          {teaches && (
+            <textarea
+              id="edit-teaching-details"
+              className="form-control"
+              rows={3}
+              style={{ marginTop: 8 }}
+              placeholder={t('editProfile.teachingPlaceholder')}
+              value={teachingDetails}
+              onChange={e => setTeachingDetails(e.target.value)}
+            />
+          )}
         </div>
 
         {/* Publications */}

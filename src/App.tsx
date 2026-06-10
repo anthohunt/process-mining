@@ -39,6 +39,7 @@ export default function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/researchers" element={<ResearchersPage />} />
+          <Route path="/profile/new" element={<PrivateRoute><EditProfilePage /></PrivateRoute>} />
           <Route path="/researchers/:id" element={<ProfilePage />} />
           <Route path="/researchers/:id/edit" element={<EditProfilePage />} />
           <Route path="/comparison" element={<ComparisonPage />} />

@@ -9,6 +9,7 @@ interface AuthState {
   isLoading: boolean
   setSession: (session: Session | null) => void
   signIn: (email: string, password: string) => Promise<{ error: string | null }>
+  signUp: (email: string, password: string) => Promise<{ error: string | null; needsConfirmation: boolean }>
   signOut: () => Promise<void>
   initialize: () => Promise<() => void>
   handleSessionExpiry: () => void
@@ -32,6 +33,21 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     if (error) return { error: error.message }
     get().setSession(data.session)
     return { error: null }
+  },
+
+  signUp: async (email, password) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { role: 'researcher' } },
+    })
+    if (error) return { error: error.message, needsConfirmation: false }
+    // If email confirmation is required, there is no active session yet.
+    if (data.session) {
+      get().setSession(data.session)
+      return { error: null, needsConfirmation: false }
+    }
+    return { error: null, needsConfirmation: true }
   },
 
   signOut: async () => {

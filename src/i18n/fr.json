@@ -91,7 +91,9 @@
     "saveSuccess": "Profil enregistre avec succes.",
     "saveError": "Erreur de sauvegarde, veuillez reessayer.",
     "pendingWarning": "Vous avez deja une soumission en attente.",
-    "validationRequired": "Ce champ est requis."
+    "validationRequired": "Ce champ est requis.",
+    "teaches": "Je donne des cours / formations en process mining",
+    "teachingPlaceholder": "Precisez : cours, webinaires, journees en presentiel, niveau, etc."
   },
   "map": {
     "title": "Carte Thematique",
@@ -142,7 +144,13 @@
     "demoAdmin": "Demo Admin",
     "invalidCredentials": "Email ou mot de passe incorrect.",
     "serviceUnavailable": "Service indisponible, reessayez plus tard.",
-    "sessionExpired": "Session expiree, veuillez vous reconnecter."
+    "sessionExpired": "Session expiree, veuillez vous reconnecter.",
+    "signupTitle": "Inscription",
+    "signupSubtitle": "Creez votre compte pour renseigner vos informations de chercheur.",
+    "signupSubmit": "Creer un compte",
+    "noAccount": "Pas encore de compte ?",
+    "haveAccount": "Deja un compte ?",
+    "confirmEmailSent": "Un email de confirmation vous a ete envoye. Cliquez sur le lien puis connectez-vous."
   },
   "admin": {
     "title": "Administration",
@@ -174,7 +182,7 @@
       "saveRole": "Sauvegarder",
       "sendInvite": "Envoyer l'invitation",
       "roleUpdated": "Role mis a jour.",
-      "revokeSuccess": "Acces revoqu\u00e9."
+      "revokeSuccess": "Acces revoqué."
     },
     "pending": {
       "approve": "Approuver",

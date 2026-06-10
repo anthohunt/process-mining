@@ -25,6 +25,9 @@ export type Database = {
           map_x: number | null
           map_y: number | null
           cluster_id: string | null
+          teaches: boolean
+          teaching_details: string
+          origin: 'international' | 'fr'
           created_at: string
           updated_at: string
         }
