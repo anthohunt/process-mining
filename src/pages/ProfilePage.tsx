@@ -148,6 +148,19 @@ export function ProfilePage() {
             </div>
           )}
 
+          {profile.teaches && (
+            <div className="profile-teaching" style={{ marginTop: 12 }}>
+              <span className="tag tag-green" style={{ display: 'inline-block', marginBottom: 6 }}>
+                {t('profile.teaches')}
+              </span>
+              {profile.teaching_details && (
+                <p style={{ margin: '4px 0 0', fontSize: 14, color: 'var(--pm-text-muted, #555)' }}>
+                  {profile.teaching_details}
+                </p>
+              )}
+            </div>
+          )}
+
           <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
             <button
               className="btn btn-outline btn-sm"

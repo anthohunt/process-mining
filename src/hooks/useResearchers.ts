@@ -7,6 +7,8 @@ export interface ResearcherListItem {
   lab: string
   keywords: string[]
   status: string
+  origin: 'international' | 'fr'
+  teaches: boolean
   publication_count: number
 }
 
@@ -22,6 +24,9 @@ export interface ResearcherProfile {
   map_x: number | null
   map_y: number | null
   cluster_id: string | null
+  teaches: boolean
+  teaching_details: string
+  origin: 'international' | 'fr'
   created_at: string
   updated_at: string
   publications: Publication[]
@@ -40,7 +45,7 @@ export interface Publication {
 async function fetchResearcherList(q: string, lab: string, theme: string): Promise<ResearcherListItem[]> {
   let query = supabase
     .from('researchers')
-    .select('id, full_name, lab, keywords, status')
+    .select('id, full_name, lab, keywords, status, origin, teaches')
     .eq('status', 'approved')
     .order('full_name')
 

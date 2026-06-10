@@ -48,6 +48,12 @@
       "themes": "Themes",
       "publications": "Publications",
       "actions": "Actions"
+    },
+    "tabs": {
+      "all": "Tous",
+      "international": "Communaute internationale",
+      "fr": "Communaute francaise",
+      "aria": "Filtrer par communaute"
     }
   },
   "profile": {
@@ -68,7 +74,8 @@
     "deletedProfile": "(profil supprime)",
     "errorBreadcrumb": "Erreur",
     "rejectionBanner": "Votre profil a ete rejete.",
-    "rejectionReason": "Raison"
+    "rejectionReason": "Raison",
+    "teaches": "Enseigne / donne des cours en process mining"
   },
   "editProfile": {
     "title": "Modifier le profil",

@@ -48,6 +48,12 @@
       "themes": "Themes",
       "publications": "Publications",
       "actions": "Actions"
+    },
+    "tabs": {
+      "all": "All",
+      "international": "International community",
+      "fr": "French community",
+      "aria": "Filter by community"
     }
   },
   "profile": {
@@ -68,7 +74,8 @@
     "deletedProfile": "(profile deleted)",
     "errorBreadcrumb": "Error",
     "rejectionBanner": "Your profile has been rejected.",
-    "rejectionReason": "Reason"
+    "rejectionReason": "Reason",
+    "teaches": "Teaches / gives process mining courses"
   },
   "editProfile": {
     "title": "Edit profile",

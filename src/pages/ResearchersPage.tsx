@@ -13,12 +13,19 @@ export function ResearchersPage() {
   const [search, setSearch] = useState('')
   const [labFilter, setLabFilter] = useState('')
   const [themeFilter, setThemeFilter] = useState('')
+  // Static (international) vs dynamic (french) community tabs
+  const [originTab, setOriginTab] = useState<'all' | 'international' | 'fr'>('all')
 
   const { data, isLoading, isError, refetch } = useResearcherList(search, labFilter, themeFilter)
 
   // Build lab/theme options from full unfiltered data when available
   const allLabs = [...new Set((data ?? []).map(r => r.lab))].sort()
   const allThemes = [...new Set((data ?? []).flatMap(r => r.keywords ?? []))].sort()
+
+  // Tab counts + origin-filtered list
+  const countIntl = (data ?? []).filter(r => r.origin === 'international').length
+  const countFr = (data ?? []).filter(r => r.origin === 'fr').length
+  const filtered = (data ?? []).filter(r => originTab === 'all' || r.origin === originTab)
 
   return (
     <div>
@@ -31,6 +38,25 @@ export function ResearchersPage() {
         >
           Explorer par theme
         </button>
+      </div>
+
+      {/* Static (international) vs dynamic (french) community tabs */}
+      <div className="researcher-tabs" role="tablist" aria-label={t('researchers.tabs.aria')} style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+        {([
+          { key: 'all', label: t('researchers.tabs.all'), count: (data ?? []).length },
+          { key: 'international', label: t('researchers.tabs.international'), count: countIntl },
+          { key: 'fr', label: t('researchers.tabs.fr'), count: countFr },
+        ] as const).map(tab => (
+          <button
+            key={tab.key}
+            role="tab"
+            aria-selected={originTab === tab.key}
+            className={`btn btn-sm ${originTab === tab.key ? 'btn-primary' : 'btn-outline'}`}
+            onClick={() => setOriginTab(tab.key)}
+          >
+            {tab.label} <span style={{ opacity: 0.7 }}>({tab.count})</span>
+          </button>
+        ))}
       </div>
 
       <div className="search-bar">
@@ -80,11 +106,11 @@ export function ResearchersPage() {
         />
       )}
 
-      {!isLoading && !isError && data && data.length === 0 && (
+      {!isLoading && !isError && data && filtered.length === 0 && (
         <EmptyState message={t('researchers.noResults')} />
       )}
 
-      {!isLoading && !isError && data && data.length > 0 && (
+      {!isLoading && !isError && data && filtered.length > 0 && (
         <div className="card" style={{ padding: 0 }}>
           <table className="app-table" aria-label={t('researchers.title')}>
             <thead>
@@ -97,7 +123,7 @@ export function ResearchersPage() {
               </tr>
             </thead>
             <tbody>
-              {data.map(r => (
+              {filtered.map(r => (
                 <tr
                   key={r.id}
                   onClick={() => navigate(`/researchers/${r.id}`)}
